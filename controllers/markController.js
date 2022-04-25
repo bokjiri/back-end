@@ -1,6 +1,1 @@
-
-
-
-exports.getMarks = async (req, res) => {
-    
-}
+exports.getMarks = async (req, res) => {}
