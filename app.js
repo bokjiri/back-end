@@ -5,8 +5,6 @@ const session = require("express-session")
 const cookieParser = require("cookie-parser")
 const cors = require("cors")
 const morgan = require("morgan")
-const passport = require("passport")
-const passportConfig = require("./login.kakao/")
 
 const whitelist = ["http://localhost:3000"]
 const corsOptions = {
@@ -47,9 +45,6 @@ app.use(
         },
     })
 )
-passportConfig()
-app.use(passport.initialize())
-app.use(passport.session())
 
 const Router = require("./routes")
 app.use("/api", Router)
