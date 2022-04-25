@@ -103,8 +103,14 @@ dist
 # TernJS port file
 .tern-port
 
+#uploads
 uploads
 
+#config
 config
 
+#public
 public
+
+#swagger-outpu.json
+swagger-output.json
