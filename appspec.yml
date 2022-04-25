@@ -1,0 +1,9 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ubuntu/build/
+hooks:
+  AfterInstall:
+    - location: scripts/after.install.sh
+      timeout: 300
