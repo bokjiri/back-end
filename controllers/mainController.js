@@ -1,1 +1,3 @@
-exports.getMain = async (req, res) => {}
+exports.getMain = async (req, res) => {
+    return false
+}
