@@ -10,5 +10,4 @@ router.use("/marks", markRouter)
 router.use("/tips", tipRouter)
 router.use("/main", mainRouter)
 
-
 module.exports = router

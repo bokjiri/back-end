@@ -1,6 +1,1 @@
-
-
-
-exports.getTips = async (req, res) => {
-    
-}
+exports.getTips = async (req, res) => {}

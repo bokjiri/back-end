@@ -1,5 +1,1 @@
-
-
-exports.getUsers = async (req, res) => {
-    
-}
+exports.getUsers = async (req, res) => {}
