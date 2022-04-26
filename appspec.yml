@@ -4,6 +4,14 @@ files:
   - source: /
     destination: /home/ubuntu/build
 hooks:
+  ApplicationStop:
+    - location: scripts/application.stop.sh
+      timeout: 300
+
   AfterInstall:
     - location: scripts/after.install.sh
+      timeout: 300
+
+  ApplicationStart:
+    - location: scripts/application.start.sh
       timeout: 300
