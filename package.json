@@ -32,10 +32,12 @@
         "passport": "^0.5.2",
         "passport-kakao": "^1.0.1",
         "redis": "^4.0.6",
-        "sequelize": "^6.19.0"
+        "sequelize": "^6.19.0",
+        "sinon": "^13.0.2"
     },
     "devDependencies": {
         "jest": "^27.5.1",
+        "node-mocks-http": "^1.11.0",
         "nodemon": "^2.0.15",
         "prettier": "^2.6.2",
         "sequelize-auto": "^0.8.8",
