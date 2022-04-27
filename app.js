@@ -5,6 +5,9 @@ const session = require("express-session")
 const cookieParser = require("cookie-parser")
 const cors = require("cors")
 const morgan = require("morgan")
+const connect = require("./schemas")
+
+connect()
 
 const whitelist = ["http://localhost:3000"]
 const corsOptions = {
