@@ -6,7 +6,7 @@ describe("basic test", () => {
     })
 })
 
-const { getUsers, postUsers, putUsers, deleteUsers } = require("./userController")
+const { getUsers, postUsers, putUsers, deleteUsers } = require("../user.controller")
 let req = httpMocks.createRequest()
 let res = httpMocks.createResponse()
 

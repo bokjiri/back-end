@@ -6,7 +6,7 @@ describe("basic test", () => {
     })
 })
 
-const { postTips } = require("./tipController")
+const { postTips } = require("../tip.controller")
 let req = httpMocks.createRequest()
 let res = httpMocks.createResponse()
 

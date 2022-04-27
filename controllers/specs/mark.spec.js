@@ -6,7 +6,7 @@ describe("basic test", () => {
     })
 })
 
-const { getMarks, postMarks, deleteMarks } = require("./markController")
+const { getMarks, postMarks, deleteMarks } = require("../mark.controller")
 let req = httpMocks.createRequest()
 let res = httpMocks.createResponse()
 

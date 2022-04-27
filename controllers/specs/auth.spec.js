@@ -12,7 +12,7 @@ describe("basic test", () => {
     // })
 })
 
-const { getKakao } = require("./authController")
+const { getKakao } = require("../auth.controller")
 let req = httpMocks.createRequest()
 let res = httpMocks.createResponse()
 
