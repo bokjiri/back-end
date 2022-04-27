@@ -7,15 +7,15 @@ describe("basic test", () => {
     })
 })
 
-const { getMain } = require("./mainController")
+const { getMain } = require("../main.controller")
 
 //Mock 함수 생성
-jest.mock("./mainController")
+jest.mock("../main.controller")
 
 //beforeEach
 let req, res
 beforeEach(() => {
-    getMain.mockClear()
+    // getMain.mockClear()
     req = httpMocks.createRequest()
     res = httpMocks.createResponse()
 })
@@ -29,9 +29,9 @@ describe("type test", () => {
 
 //getMain API TEST
 describe("getMain should return", () => {
-    beforeEach(() => {
-        // req.body = reqQuery
-    })
+    // beforeEach(() => {
+    //     // req.body = reqQuery
+    // })
     it("the statusCode 200", async () => {
         const GM = await getMain(req, res)
         expect(GM.statusCode).toEqual(200)

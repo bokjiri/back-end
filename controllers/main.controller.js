@@ -1,4 +1,5 @@
 exports.getMain = async (req, res) => {
+    return res.status(200)
     // if (!req.query.userCode) {
     //     return res.status(400).send({
     //         result: "FAIL",
