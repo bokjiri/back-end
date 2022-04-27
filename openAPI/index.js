@@ -3,10 +3,10 @@ const request = require("request-promise-native")
 const convert = require("xml-js")
 
 const fs = require("fs")
-fs.writeFile("./openAPI/output.txt", "", function () {
+fs.writeFile("./openAPI/output2.txt", "", function () {
     console.log("already reset")
 })
-const myConsole = new console.Console(fs.createWriteStream("./openAPI/output.txt"))
+const myConsole = new console.Console(fs.createWriteStream("./openAPI/output2.txt"))
 
 async function load() {
     let url = "http://apis.data.go.kr/B554287/NationalWelfareInformations/NationalWelfarelist"
@@ -30,9 +30,12 @@ async function load() {
             const jsonParse = JSON.parse(xmlToJson)
 
             const servList = jsonParse.wantedList.servList
+            let index = 1
             for (i of servList) {
-                myConsole.log("servId =", i.servId._text)
+                myConsole.log("index =", index)
+                index++
                 myConsole.log("servNm =", i.servNm._text)
+
                 if (i.trgterIndvdlArray !== undefined) {
                     myConsole.log("trgterIndvdlArray =", i.trgterIndvdlArray._text)
                 } else {
@@ -42,6 +45,11 @@ async function load() {
                     myConsole.log("obstKiArray =", i.obstKiArray._text)
                 } else {
                     myConsole.log("obstKiArray =", i.obstKiArray)
+                }
+                if (i.lifeArray !== undefined) {
+                    myConsole.log("lifeArray =", i.lifeArray._text)
+                } else {
+                    myConsole.log("lifeArray =", i.lifeArray)
                 }
                 myConsole.log("servDtlLink =", i.servDtlLink._text)
 
@@ -64,7 +72,15 @@ async function load() {
                         })
                         const jsonParse = JSON.parse(xmlToJson)
                         const a = jsonParse.wantedDtl.tgtrDtlCn._text.trim()
+                        // const b = jsonParse.wantedDtl.slctCritCn._text.trim()
+                        const c = jsonParse.wantedDtl.alwServCn._text.trim()
+                        const d = jsonParse.wantedDtl.jurMnofNm._text
+                        myConsole.log("jurMnofNm =", d)
                         myConsole.log("tgtrDtlCn =", a)
+                        myConsole.log("\n")
+                        // myConsole.log("slctCritCn =", b)
+                        // myConsole.log("\n")
+                        myConsole.log("alwServCn =", c)
                         myConsole.log("\n")
                     }
                 )
