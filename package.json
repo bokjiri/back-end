@@ -33,8 +33,11 @@
         "passport": "^0.5.2",
         "passport-kakao": "^1.0.1",
         "redis": "^4.0.6",
+        "request": "^2.88.2",
+        "request-promise-native": "^1.0.9",
         "sequelize": "^6.19.0",
-        "sinon": "^13.0.2"
+        "sinon": "^13.0.2",
+        "xml-js": "^1.6.11"
     },
     "devDependencies": {
         "jest": "^27.5.1",

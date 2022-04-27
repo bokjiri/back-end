@@ -1,0 +1,4350 @@
+index = 1
+servNm = 장애인자립자금대여
+trgterIndvdlArray = 장애인
+obstKiArray = 지체(전환대상), 시각
+lifeArray = 노년, 중장년, 청년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000026&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 지원대상 및 선정기준
+
+
+소득인정액이 기준 중위소득 50% 초과 100% 이하* 가구의 성년 등록 장애인을 지원합니다.
+* 20년 기준 4인 가구 기준 2,374,587원 초과 4,749,174원 이하
+※ 중위소득 50% 이하의 장애인의 경우, 미소금융재단의 장애인대출 상품 이용
+단, 시/군/구청에서 자립자금이나 자동차 구입자금을 빌릴 수 있도록 금융기관에 추천하여도 해당 금융기관의 여신규정(신용등급 및 보증인 대출 요건 등)에 따라 대여되지 않을 수 있습니다.
+
+
+index = 2
+servNm = 장애인 운전교육 사업
+trgterIndvdlArray = 장애인
+obstKiArray = 지체(전환대상), 시각
+lifeArray = 청소년, 청년, 노년, 중장년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000027&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 제1종 및 제2종 보통 면허(수동, 자동) 취득희망자 및 소지자인 지체장애인, 뇌병변장애인, 청각장애인 중 아래의 면허조건을 만족하는 분을 지원합니다.
+면허조건*(운전 시 운전보조기기가 필요한 조건)이 E, F, G, H, I**에 해당하는 분을 지원합니다.
+* 면허조건이란 신체장애인의 신체장애 정도에 적합한 운전보조기기나 특수제작승인 자동차로 운전을 해야 한다는 의미로, 전국운전면허시험장에서 신체검사 후 부여 받을 수 있으며 국민기초생활수급자는 면허조건없이 가능
+** E: 청각장애표시 및 볼록거울, F: 수동제어기 및 가속기, G: 특수제작 및 승인차, H: 우측방향지시기, I: 왼쪽엑셀러레이터
+
+
+index = 3
+servNm = 중증장애인 지역맞춤형 취업지원 사업
+trgterIndvdlArray = 장애인
+obstKiArray = 지체(전환대상)
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000045&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 비경제활동 또는 실업상태의 중증장애인을 지원합니다.
+
+
+index = 4
+servNm = 의료급여 장애인보조기기 지원
+trgterIndvdlArray = 저소득, 장애인
+obstKiArray = 지체(전환대상), 시각
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000067&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 의료급여 수급권자 중에서 등록 장애인에게 지원합니다.
+
+
+index = 5
+servNm = 척수장애인재활훈련지원
+trgterIndvdlArray = 장애인
+obstKiArray = 시각, 지체(전환대상)
+lifeArray = 청년, 중장년, 노년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001070&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 척수장애인을 지원합니다.
+
+
+index = 6
+servNm = 가사·간병 방문 지원사업
+trgterIndvdlArray = 장애인, 저소득, 한부모·조손
+obstKiArray = 지체(전환대상)
+lifeArray = 중장년, 구분없음(전생애), 아동, 청소년, 청년, 영유아
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001087&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 만 65세 미만의 생계의료주거교육급여 수급자 또는 차상위계층 중 가사간병서비스가 필요하신 분에게 지원합니다.
+
+
+index = 7
+servNm = 독거노인·중증장애인 응급안전안심서비스
+trgterIndvdlArray = 저소득, 장애인
+obstKiArray = 시각, 지체(전환대상)
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001093&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 지원대상 
+
+
+상시 보호가 필요한 독거노인 및 장애인에게 지원합니다.
+
+
+index = 8
+servNm = 보험급여(건강보험 장애인보조기기)
+trgterIndvdlArray = 장애인
+obstKiArray = 시각, 지체(전환대상)
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001136&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 건강보험 가입자 또는 피부양자 중 등록 장애인을 지원합니다.
+
+
+index = 9
+servNm = 시각장애인음악재활센터지원
+trgterIndvdlArray = 장애인
+obstKiArray = 지체(전환대상), 시각
+lifeArray = 청년, 청소년, 중장년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001143&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 시각장애인을 지원합니다.
+
+
+index = 10
+servNm = 발달장애인 가족휴식지원사업
+trgterIndvdlArray = 장애인, 저소득
+obstKiArray = 지체(전환대상), 시각
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001150&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 발달장애인(지적자폐성 장애인) 및 발달장애인의 가족을 지원합니다.
+제외대상자는 다음과 같습니다.
+
+장애아가족 양육지원사업의 휴식지원 프로그램 이용자
+다른 법령(또는 국가 예산)에 따라 발달장애인 가족휴식지원 사업과 유사한 서비스를 받고 있는 자
+
+
+index = 11
+servNm = 중도시각장애인재활훈련지원
+trgterIndvdlArray = 장애인
+obstKiArray = 시각, 지체(전환대상)
+lifeArray = 노년, 중장년, 청년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001151&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 산업재해, 교통사고, 질병 등 후천적 요인으로 인해 중도에 시력을 잃은 중도시각장애인을 지원합니다.
+
+
+index = 12
+servNm = 장애인보조견전문훈련기관지원
+trgterIndvdlArray = 장애인
+obstKiArray = 지체(전환대상), 시각
+lifeArray = 노년, 중장년, 청소년, 청년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001153&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 시각장애인, 청각장애인, 지체장애인 등 보조견이 필요한 장애인을 지원합니다.
+
+
+index = 13
+servNm = 중증장애인 근로자 출퇴근비용 지원
+trgterIndvdlArray = 장애인
+obstKiArray = 지체(전환대상)
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001154&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 중증장애인 근로자로서 다음의 요건을 모두 충족하는 분께 지원합니다.
+
+「장애인고용촉진 및 직업재활법」에 따른 중증장애인
+고용보험 피보험자
+최저임금 적용 제외 인가자
+중위소득 100% 미만인 자
+
+
+index = 14
+servNm = 국립특수학교 및 국립부설학교 특수학급 지원
+trgterIndvdlArray = 장애인
+obstKiArray = 지체(전환대상), 시각
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001173&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 국립특수학교(급)에 재학중인 장애 학생을 지원합니다.
+국립특수학교 5급, 국립대학 부설 학교 36학급을 지원합니다.
+특수교육보조원, 사회복무요원, 통합보조원 등을 지원합니다.
+
+
+index = 15
+servNm = 근로장애인 전환지원
+trgterIndvdlArray = 장애인
+obstKiArray = 지체(전환대상)
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001187&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 지원대상 및 선정기준
+
+
+장애인고용촉진 및 직업재활법 상 장애인으로, 장애인 직업재활시설 소속으로 최저임금 적용제외 인가를 받은 근로자를 지원합니다.
+
+
+index = 16
+servNm = 통신중계서비스 제공
+trgterIndvdlArray = 장애인
+obstKiArray = 시각, 지체(전환대상)
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003219&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 청각또는,언어장애인과 전화 통화를 원하는 사람에게 지원합니다.
+다른 사람과 전화 통화를원하는 청각장애인, 언어장애인을 지원합니다.
+
+
+index = 17
+servNm = 여성장애인교육지원
+trgterIndvdlArray = 장애인
+obstKiArray = 시각, 지체(전환대상)
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003220&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 장애인복지법 제32조(장애인등록)에 따른 등록 여성장애인을 지원합니다.
+
+
+index = 18
+servNm = 보조공학기기지원
+trgterIndvdlArray = 장애인
+obstKiArray = 시각, 지체(전환대상)
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003231&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 직업생활용 작업보조공학기기 및 차랑용 보조공학기기의 지원대상은 다음과 같습니다.
+
+장애인을 고용한 사업주 또는 고용하려는 사업주
+국가 및 지방자치단체의 장(공무원이 아닌 장애인근로자 대상)
+상시근로자 4인 이하의 장애인사업주로서 장애인을 고용하였거나 고용하려는 사업주
+장애인근로자(차량용 보조공학기기에 한함)
+
+
+index = 19
+servNm = 이동통신요금감면
+trgterIndvdlArray = 저소득, 보훈대상자, 장애인
+obstKiArray = 시각, 지체(전환대상)
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003257&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 기초생활수급자, 차상위계층, 기초연금수급자, 장애인, 국가유공자, 단체 및 시설을 지원합니다.
+기초생활수급자 : 「국민기초생활보장법」에 따라 국가로부터 지원을 받는 기초생활수급자
+- 생계, 의료, 주거, 교육급여 수급자
+차상위계층
+
+「국민기초생활보장법」에 따라 소득 인정액이 기준 중위소득의 50% 이하이며, 아래 법률에 따라 지원을 받는 사람 및 그 가구원
+「국민기초생활보장법」에 따른 자활에 필요한 사업에 참가하는 사람
+「국민건강보험법 시행령」에 따른 희귀난치성질환자 등으로서 본인부담액을 경감 받는 사람
+「장애인복지법」에 따른 장애수당을 지급받는 사람과 장애아동수당을 지급받는 사람
+「한부모가족지원법」에 따른 지원대상자(이 경우 소득인정액이 기준 중위소득의 100분의 52% 이하인 사람 포함)
+「장애인연금법」에 따라 장애인연금을 지급받는 사람
+「사회보장기본법」제37조제2항에 따라 구축운영 중인 시스템을 통해 차상위계층에 해당함이 확인되는 사람(차상위 계층 확인서 발급 대상자)
+※ 가구당 4인(소득인정액 조사에 포함된 가구원으로 만6세 이하는 제외)까지 감면 가능
+
+
+기초연금수급자 : 「기초연금법」 제2조제3호에 따른 기초연금 수급자
+장애인 : 「장애인복지법」에 의한 장애인
+국가유공자 : 감면대상 보훈대상 코드가 전상군경(21), 공상군경(23), 4.19혁명 상이자(51), 공상 공무원(61), 국가사회발전특별공로상이자(71), 6.18 자유 상이자(81), 5.18부상자(85)
+단체 및 시설
+
+「장애인복지법」에 의한 장애인 복지시설 및 장애인 복지단체
+「초/중등교육법」에 따른 특수학교
+「아동복지법」에 따른 아동복지시설
+「국가유공자 등 단체설립에 관한 법률」에 따른 단체
+- 대한민국상이군경회, 4.19 민주혁명회
+
+
+index = 20
+servNm = 장애인활동지원
+trgterIndvdlArray = 장애인
+obstKiArray = 시각, 지체(전환대상)
+lifeArray = 청소년, 청년, 아동, 중장년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003260&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 만 6세 이상 ~ 만 65세 미만인 등록 장애인 중 활동지원 서비스지원 종합조사 결과 활동지원등급 판정을받은 분에게지원합니다.
+장애인활동지원서비스를 받는 도중에 만 65세가 도래하여 장기요양인정 신청을 하였으나 등급 외 판정을 받아 장기요양 수급자에서 제외된 장애인을 지원합니다.
+시설 입소, 의료기관 입원 및 교정시설 또는 치료감호시설에 살다가 퇴소 또는 퇴원을 앞두고 있어 활동지원이 필요한 경우에 지원합니다.
+소득과 관계없이 신청 가능합니다.
+※ 2021년도에는 장애인활동지원 노인장기요양 전환자 서비스 감소분 지원 시범사업(65세 보전급여) 실시에 따라 장기요양 인정조사에서 수급자로 결정(1~5등급)되어 65세 이전 활동지원 급여량보다 60시간 이상 감소한 장애인에게 65세 보전급여를 지원합니다. 자세한 사항은 가까운 시군구 또는 읍면동에 문의바랍니다.
+
+
+index = 21
+servNm = 고엽제특별지원
+trgterIndvdlArray = 장애인, 보훈대상자
+obstKiArray = 지체(전환대상), 시각
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003261&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 생계곤란한 고엽제후유증환자 중 장애인복지법상 장애인 자녀가 있는 가정을 지원합니다.
+고엽제후유증2세환자 중 등급기준미달자를 지원합니다.
+
+
+index = 22
+servNm = 기존주택 전세임대주택 지원사업
+trgterIndvdlArray = 한부모·조손, 저소득, 장애인, 다자녀, 보훈대상자
+obstKiArray = 지체(전환대상), 시각
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003269&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 일반 전세임대주택은 무주택세대구성원으로서 사업대상지역에 거주하는 사람을 대상으로 합니다.
+
+1순위: 생계의료급여 수급자, 보호대상 한부모가족, 전년도 도시근로자 가구당 월평균 소득의 70% 이하인 장애인 등
+2순위 : 전년도 도시근로자 가구당 월평균소득의 50% 이하인 가구, 전년도 도시근로자 가구당 월평균 소득 이하인 장애인
+
+
+청년 전세임대주택은 무주택자인 대학생, 취업준비생, 19세~39세 청년(단, 혼인 중인 자는 제외)을 대상으로 합니다.
+
+1순위: 생계의료급여 수급자 가정의 청년, 보호대상 한부모 가족의 청년, 보호종료아동, 청소년쉼터 퇴소청소년 등
+2순위: 본인과 부모의 월평균 소득 합계가 전년도 도시근로자 가구당 월평균 소득의 100% 이하인 청년
+3순위: 본인의 월평균 소득이 전년도 도시근로자 가구당 월평균 소득의 100% 이하인 청년
+
+
+신혼부부 전세임대주택의 신혼부부는 두 가지 유형으로 나뉩니다.
+ 신혼부부Ⅰ: 무주택세대구성원으로서 해당 세대 월평균 소득이 전년도 도시근로자 가구당 월평균 소득의 70% 이하(맞벌이의 경우 90% 이하)의 신혼부부, 예비 신혼부부, 6세 이하 자녀를 양육하는 가정
+ 신혼부부 Ⅱ: 무주택세대구성원으로서 해당 세대 월평균 소득이 전년도 도시근로자 가구당 월평균 소득의 100% 이하(맞벌이의 경우 120% 이하)의 신혼부부, 예비 신혼부부, 6세 이하 자녀를 양육하는 가정
+
+1순위: 임신 중이거나 출산입양으로 미성년 자녀를 양육하는 경우
+2순위: 자녀가 없는 신혼부부
+3순위: 1 순위가 아닌 6세 이하 자녀를 둔 혼인가구
+
+
+다자녀 전세임대주택은 무주택세대구성원으로서 사업대상지역에서 두 명 이상의 자녀를 양육하는 가구를 대상으로 합니다.
+
+1순위: 생계주거의료교육급여 수급자, 차상위계층 등
+2순위: 전년도 도시근로자 가구당 월평균소득의 70% 이하인 가구
+
+
+소년소녀가정 등 전세주택 지원사업의 지원대상은 다음과 같습니다.
+
+소년소녀가정대리양육가정친인척위탁일반가정위탁 및 교통사고유자가정 등 월평균 소득 이하 가구, 퇴소 5년 이내인 아동복지시설퇴소자
+
+
+index = 23
+servNm = 여성장애인출산비용지원
+trgterIndvdlArray = 장애인
+obstKiArray = 지체(전환대상), 시각
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003278&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 등록 장애인여성이 출산이나 유산 또는 사산(임신기간 4개월 이상)을 했을 경우에 지원합니다.
+
+장애등급은 신청일 현재, 장애인복지법 제32조에 의거 등록한 여성장애인인 경우
+출산 당시 장애인 등록 신청 중인 여성이 출산 이후 장애인 등록된 경우에도 가능
+
+
+index = 24
+servNm = 장애인일자리지원
+trgterIndvdlArray = 장애인
+obstKiArray = undefined
+lifeArray = 청소년, 청년, 노년, 중장년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000025&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 만 18세 이상의등록된 미취업 장애인을 지원합니다.
+* 참고 : 「장애인복지법」
+
+
+index = 25
+servNm = 선천성대사이상 검사 및 환아관리
+trgterIndvdlArray = 저소득
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000040&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 선천성대사이상 검사비 지원 대상자는 기준중위소득 180%이하 가구의 영아입니다.
+환아관리대상자는 2차 정밀검사결과 선천성대사이상 질환으로 진단된 자로서 특수조제분유 및 저단백식품 등의 의료 지원이 필요하다고 인정된 신청일 현재 만 19세 미만의 환아입니다.
+선천성대사이상 질환은 고전적 페닐케톤뇨증 환아, 타이로신혈증, 단풍시럽뇨병, 메틸말론산혈증/프로피온산혈증, 아이소발레린산혈증, 지방산대사장애, 호모시스틴뇨, 요소회로대사장애(아르지닌혈증, 시트룰린혈증 등), 글루타르산뇨, 고글라이신혈증, 갈락토스혈증, 고칼슘혈증, 선천성 갑상선기능저하증 환아입니다.
+희귀 등 기타 질환은 크론병, 단장증후군, 담도폐쇄증, 장림프관확장증 환아를 대상으로 합니다.
+
+
+index = 26
+servNm = 보상금
+trgterIndvdlArray = 보훈대상자
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000043&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 지원대상 및 선정기준
+
+
+아래 대상자를 선정하여 지원합니다.
+
+독립유공자 및 그 유족
+전상군경, 공상군경, 재일학도의용군인, 4.19혁명 부상자, 특별공로상이자
+전몰군경, 순직군경, 4.19혁명사망자 및 특별공로순직자유족 중 선순위자 1명
+재해부상군경
+재해사망군경 유족 중 선순위자 1인
+
+
+index = 27
+servNm = 국가유공자등대부지원
+trgterIndvdlArray = 보훈대상자
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000048&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 독립국가유공자, 독립국가유공자의 유족 중 보상금을 받는 자, 독립국가유공자의 유족 중 보상금을 받는 자가 없는 경우에는 우선순위자, 독립유공자의 유족인 자녀 중 생활지원금을 받는 자,기타 법률에 따라 규정된 대부 대상자입니다.
+5.18민주유공자, 5.18민주유공자의 유족 중 우선순위자, 5.18민주화운동 희생자입니다.
+특수임무 유공자, 특수임무 유공자의 유족 중 우선순위자입니다.
+보훈보상 대상자(2012년 7월 1일 시행) 중 재해부상군경 및 재해부상공무원, 재해사망군경 및 재해사망공무원의 배우자, 재해부상군경 및 재해부상공무원이 사망한 경우 그 배우자입니다.
+
+
+index = 28
+servNm = 에너지 취약계층 고효율조명기기 무상교체 지원(취약계층 에너지복지사업)
+trgterIndvdlArray = 저소득
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000049&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 저소득층 :「국민기초생활보장법」제7조(급여의 종류)에 따른 생계의료주거교육 급여 수급권자의 가구 및 차상위계층에게 지원합니다. 
+사회복지시설 :「사회복지사업법」제34조(사회복지시설의 설치)에 따라 설치.운영하는 시설에 지원합니다.
+
+
+index = 29
+servNm = 무공영예수당
+trgterIndvdlArray = 보훈대상자
+obstKiArray = undefined
+lifeArray = 중장년, 노년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000050&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 60세 이상의 무공수훈자를 지원합니다.
+
+
+index = 30
+servNm = 고엽제환자2세수당
+trgterIndvdlArray = 보훈대상자
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000051&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 고엽제후유의증 환자지원 적용 대상자로 결정등록된 자 및 이미 사망한 고엽제후유증환자로 인정된 자의 자녀로서, 월남전에 참전한 이후 또는 1967년 10월 9일부터 1970년 7월31일 사이에 남방한계선 인접지역에서 복무하였거나 고엽제 살포업무에 참가한 날 이후에 임신되어 출생한 자녀 중 고엽제후유증이 있는 자를 지원합니다.
+
+
+index = 31
+servNm = 풍수해보험료 지원
+trgterIndvdlArray = 저소득
+obstKiArray = undefined
+lifeArray = 노년, 중장년, 청년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000053&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 주택소유자세입자 및 온실 소유자, 소상공인의 상가 및 공장 소유자 및 세입자 중 풍수해보험에 가입하는 국민에게 보험료 일부를 지원합니다.
+주택(동산 포함)이나 온실(비닐하우스 포함), 소상공인의 상가 및 공장이 풍수해로 피해를 입었을 경우에 지원합니다.
+대상재해는 태풍홍수호우강풍풍랑해일대설지진으로 인한 피해입니다.
+
+
+index = 32
+servNm = 국가보훈대상자 보훈장학금
+trgterIndvdlArray = 보훈대상자
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000054&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 대학원 장학 대상은 보훈법령에 따라 교육지원을 받는 본인, 배우자, 자녀로 상세 내용은 다음과 같습니다. 
+
+국가유공자 본인 및전몰순직자의 배우자
+고엽제후유의증 환자(수당 지급대상자)
+5.18 민주유공자 본인 및 사망행방불명자의 배우자
+특수임무유공자 본인 및 사망행방불명자의 배우자
+지원대상자 본인 및순직사망자의 배우자
+보훈보상대상자 본인 및 사망자의 배우자
+전상공상전몰순직재해부상재해사망군경의 자녀* * 부모가 모두 사망하고 35세 미만인 경우에만 해당
+
+특수학교 장학 대상은 특수학교 또는 일반학교에 재학중인 보훈법령에 의한 교육지원대상자 중 특수교육대상자입니다.
+6.25 전몰군경자녀 장학 대상은 6.25 전몰군경자녀수당을 받는 자의 대학재학 자녀입니다.
+
+
+index = 33
+servNm = 통합문화이용권
+trgterIndvdlArray = 저소득
+obstKiArray = undefined
+lifeArray = 청소년, 청년, 아동, 중장년, 노년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000055&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 기초생활수급자 및 차상위계층 중 6세 이상(2016.12.31. 이전 출생자)을 지원합니다. 
+
+기초생활수급자 : 생계의료주거교육급여 수급자와 조건부 수급자, 보장시설 수급자
+차상위계층 : 자활, 장애수당, 장애아동수당, 장애인연금, 본인부담경감, 저소득한부모가족, 차상위계층확인서발급(구 우선돌봄차상위), 교육급여 수급자(학생) 외 나머지 가구원
+
+
+index = 34
+servNm = 의료급여(요양비)
+trgterIndvdlArray = 저소득
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000056&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 긴급한 상황이나 그 밖의 부득이한 사유로 인해 의료급여 기관과 동일한 기능을 수행하는 기관에서 질병, 부상, 출산 등으로 의료급여를 받은 자에게 지원합니다.
+의료급여 기관 외의 장소에서 출산을 한 경우에도 지원합니다.
+
+
+index = 35
+servNm = 청년희망키움통장
+trgterIndvdlArray = 저소득
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000060&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 소득인정액이 기준중위소득 30% 이하인 가구의 청년(만15세 이상 39세 이하)을 지원합니다.
+
+
+index = 36
+servNm = 의료급여임신.출산진료비지원
+trgterIndvdlArray = 저소득
+obstKiArray = undefined
+lifeArray = 임신 · 출산
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000061&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 의료급여 수급자 중 임신 중이거나 출산(유산 및 사산 포함)한 수급권자 및 출산한 1세 미만의 자녀를 지원합니다.
+
+
+index = 37
+servNm = 기존주택등 매입임대주택 지원사업
+trgterIndvdlArray = 장애인, 저소득, 다문화·탈북민, 다자녀, 보훈대상자, 한부모·조손
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000062&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 지원대상  
+
+'일반 매입임대주택' 입주대상은 입주자 선정기준일에 해당 사업대상지역에 주민등록이 등재된 무주택세대구성원이며, 우선순위는 다음과 같습니다. 
+
+1순위 : 생계의료급여 수급자, 한부모가족, 수급권자 및 차상위계층 중 최저주거기준에 미달하거나 소득 대비 임차료 비율이 30%이상인 자, 국민기초생활보장법 제2조제1호 또는 제10호에 해당하는 65세 이상인 자, 장애인등록증이 교부된 자 중 전년도 도시근로자 가구당 월평균소득*의 70% 이하인 자 중 월평균소득 70% 이하인 자 * 해당세대의 월평균소득이 전년도 도시근로자 가구원수(태아 포함) 별 가구당 월평균 소득
+2순위 : 월평균소득 50% 이하인 자, 장애인등록증이 교부된 자 중 월평균소득 100% 이하인 자
+3순위 : 전년도 도시근로자 가구당 월평균 소득 70% 이하인 자로서 시장 등이 선정하는 자
+
+'청년 매입임대주택' 입주대상은 무주택자대학생,취업준비생,19세~39세이며, 우선순위는 다음과 같습니다. 
+
+1순위 : 국민기초생활보장법 제7조에 따른 생계,주거,의료급여 중 어느 하나에 해당하는 급여를 받는 수급자의 가구, 한부모가족지원법 시행규칙 제3조에 따라 여성가족부장관이 정하는 기준에 해당하는 한부모가족, 국민기초생활보장법 제2조제10호에 해당하는 가구
+2순위 : 본인과 부모의 월평균 소득이 전년도 도시근로자 가구당 월평균 소득 100% 이하이고 본인과 부모의 자산이 규칙 제13조제2항에 따라 국토교통부장관이 정하는 국민임대주택의 자산기준을 충족하는 청년
+3순위 : 제1순위 및 제2순위에 해당하지 아니하는 사람 중 본인의 월평균 소득이 전년도 도시근로자 가구당 월평균 소득 100% 이하이고 규칙 제13조제2항에 따라 국토교통부장관이 정하는 행복주택(청년)의 자산기준을 충족하는 청년
+
+'신혼부부 매입임대주택Ⅰ'의 입주대상은 무주택세대구성원으로서 해당 세대의 월평균 소득이 전년도 도시근로자 가구당 월평균 소득의 70%(배우자가 소득이 있는 경우에는 90%) 이하이고 규칙 제13조제2항에 따라 국토교통부장관이 정하는 국민임대주택의 자산기준을 충족하는 신혼부부, 예비 신혼부부, 6세 이하 자녀가 있는 한부모가족 혹은 혼인가구인 경우이며 우선순위는 다음과 같습니다. 
+
+제1순위 : 임신 중*입양(입양신고일 기준)하여 자녀**가 있는 신혼부부, 예비 신혼부부 및 6세 이하 자녀가 있는 한부모가족
+ * 임신진단서 혹은 자녀의 기본증명서상 출생신고일 기준으로 확인 ** 태아를 포함하며 「민법」상 미성년자로 한정
+제2순위 : 자녀가 없는 신혼부부, 예비 신혼부부
+제3순위 : 제1순위와 제2순위에 해당하지 아니하는 사람 중 6세 이하 자녀가 있는 혼인 가구
+
+'신혼부부 매입임대주택Ⅱ'의 입주대상은 무주택세대구성원으로서 해당 세대의 월평균 소득이 전년도 도시근로자 가구당 월평균 소득의 100%(맞벌이인 경우에는 120%) 이하(제4순위는 해당세대의 월평균 소득이 120%, 맞벌이인 경우에는 140% 이하)이고 규칙 제13조제2항에 따라 국토교통부장관이 정하는 행복주택(신혼부부)의 자산기준(제4순위는 신혼희망타운주택 중 공공분양주택)을 충족하는 신혼부부, 예비 신혼부부, 6세 이하 자녀가 있는 한부모 가족, 6세 이하 자녀가 있는 혼인 가구인 경우이며 우선순위는 다음과 같습니다. 
+
+제1순위 : 임신 중이거나 출산입양하여 자녀가 있는 신혼부부, 예비 신혼부부 및 6세 이하 자녀가 있는 한부모가족
+제2순위 : 자녀가 없는 신혼부부, 예비 신혼부부
+제3순위 : 제1순위와 제2순위에 해당하지 아니하는 사람 중 6세 이하 자녀가 있는 혼인 가구
+제4순위 : 혼인가구
+
+
+index = 38
+servNm = (북한이탈주민)교육비 지원
+trgterIndvdlArray = 다문화·탈북민
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000063&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 북한이탈주민으로서 입학 또는 편입학 당시 만 24세 이하의 중ㆍ고등학생과 만 34세 이하의 대학생의 교육비를 지원합니다.
+
+
+index = 39
+servNm = 발달장애인 부모상담지원사업
+trgterIndvdlArray = 장애인
+obstKiArray = undefined
+lifeArray = 중장년, 청년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000064&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 지적자폐성 장애인으로 등록된자녀의 부모 및 보호자를 지원합니다. 
+
+지적장애 또는 자폐성 장애를 부장애로 가진 경우도 포함
+발달장애인 자녀의 부모 동시 지원 가능
+발달장애인과 거주를 같이하면서 부모를 대신하여 발달장애인을 돌보는 보호자(2촌 이내)도 이용 가능
+
+
+index = 40
+servNm = 발달장애인 공공후견지원 사업
+trgterIndvdlArray = 장애인
+obstKiArray = undefined
+lifeArray = 청년, 청소년, 중장년, 노년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000065&wlfareInfoReldBztpCd=01
+tgtrDtlCn = (등록기준) 만 19세 이상 발달장애인*을 지원합니다. * 참고: 「장애인복지법」상 지적자폐성 장애인 
+(욕구기준) 의사결정 지원이 필요한 장애인을 지원합니다.
+
+
+index = 41
+servNm = 장애인 정보화교육
+trgterIndvdlArray = 장애인
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000066&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 모든 장애인이 지원대상입니다. 
+
+집합교육: 등록 장애인
+방문교육: 장애의 정도가 심한(별도기준) 장애인
+
+
+index = 42
+servNm = 양로지원
+trgterIndvdlArray = 보훈대상자
+obstKiArray = undefined
+lifeArray = 노년, 중장년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000069&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 독립유공자와 보상금 지급대상 선순위유족으로서 부양의무자가 없는 65세 이상 남성 또는 60세 이상 여성에게 지원합니다. 
+
+배우자가 60세 이상 남성 또는 55세 이상 여성일 경우 동반 입소가능
+
+국가유공자, 518민주유공자, 특수임무유공자와 그 유족(자녀는 제외) 중 부양의무자가 없는 65세 이상 남성 또는 60세 이상 여성 (단, 상이 유공자 본인의 경우 60세 이상 남성 또는 55세 이상 여성)에게 지원합니다. 
+
+배우자가 60세 이상 남성 또는 55세 이상 여성일 경우 동반 입소가능
+
+고엽제후유의증환자 중 장애정도판정자 및 참전유공자 중 부양의무자가 없는 65세 이상 남성 또는 60세 이상 여성에게 지원합니다.
+
+
+index = 43
+servNm = 에너지바우처
+trgterIndvdlArray = 저소득, 한부모·조손
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000072&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 소득기준과 가구원의 특성을 모두 충족하는 가구를 지원합니다.
+
+(소득기준) 국민기초생활보장법 상 생계급여 수급자 또는 의료급여 수급자
+(가구원 특성기준) 수급자 본인 또는 주민등록표상의 세대원이 다음 어느 하나에 해당: 노인(65세 이상), 영유아(만 6세 미만), 장애인, 임산부, 중증질환자, 희귀질환자, 중증난치질환자, 한부모가족, 소년소녀가정(가정위탁보호아동 포함)
+
+
+index = 44
+servNm = 양곡할인
+trgterIndvdlArray = 한부모·조손, 저소득
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000074&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 정부양곡 구입을 희망하는 기초생활수급자 및 차상위계층에게지원합니다.
+
+
+index = 45
+servNm = 스포츠강좌이용권
+trgterIndvdlArray = 저소득, 한부모·조손
+obstKiArray = undefined
+lifeArray = 영유아, 아동, 청소년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000076&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 생계, 의료, 주거, 교육급여 수급가구 및 차상위계층 가구*를 대상으로 지원합니다. * 차상위 장애자활근로본인부담 경감확인서 발급 대상 및 법정 한부모 지원 가구
+학교가정성폭력 등 범죄피해가정 중에서 경찰청이 추천한 가정을 지원합니다.
+
+
+index = 46
+servNm = (북한이탈주민) 탈북청소년 교육지원
+trgterIndvdlArray = 다문화·탈북민
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000086&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 탈북청소년(제3국 출생 탈북민 자녀 포함)을 지원합니다.
+
+
+index = 47
+servNm = 다함께 돌봄 사업
+trgterIndvdlArray = 다자녀, 한부모·조손
+obstKiArray = undefined
+lifeArray = 아동
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000089&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 돌봄이 필요한 만6~12세 아동(초등학생)에게 지원합니다. 
+
+소득수준 무관
+이용료 수납한도액 : 아동 1인당 월 10만원 이내(프로그램 활동비, 현장학습비 등) ※ 급간식을 제공할 경우, 월 10만원 이외 별도 수익자 부담 추가 가능
+
+
+index = 48
+servNm = 한부모가족복지시설 지원
+trgterIndvdlArray = 한부모·조손
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000091&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 기준 중위소득100% 이하 만 18세 미만(취학 시 만 22세 미만)의 아동을 양육하는 무주택 저소득 한부모가족을 지원합니다.
+
+
+index = 49
+servNm = 저소득층 기저귀·조제분유 지원
+trgterIndvdlArray = 한부모·조손, 저소득
+obstKiArray = undefined
+lifeArray = 영유아
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000092&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 저소득층 가구의 영아(0~24개월)에게 지원합니다.
+
+
+index = 50
+servNm = 국가유공자등생활조정수당
+trgterIndvdlArray = 보훈대상자
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000097&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 독립유공자, 국가유공자, 보훈보상대상자 및 그 선순위 유족 중 생활이 곤란한 사람을 지원합니다.
+국가유공자 등 생활수준 조사 지침에 따른 소득 및 재산 조사 결과, 소득인정액이 국가보훈처장이 정하여 고시한 기준 금액의 50% 이하이면서, 부양의무자가 없거나 부양의무자가 있어도 부양능력이 없거나 또는 부양을 받을 수 없는 사람을 선정하여 지원합니다.
+
+
+index = 51
+servNm = 국가유공자재가복지지원
+trgterIndvdlArray = 보훈대상자
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000098&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 독립유공자, 국가유공자, 보훈보상대상자, 5.18민주유공자, 특수임무유공자, 참전유공자, 고엽제후유의증환자를 지원합니다.
+국가유공자 등 예우 및 지원에 관한 법률 제4조 제1항에 따른 국가유공자 유족 중 배우자 또는 부모, 보훈보상대상자, 5.18민주유공자, 특수임무유공자의 배우자 또는 부모를 지원합니다.
+독립유공자 자녀 및 손자녀, 참전유공자 및 고엽제후유의증환자의 배우자를 지원합니다.
+
+
+index = 52
+servNm = 저소득장애인 진단서 발급비 및 검사비 지원사업
+trgterIndvdlArray = 장애인
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000099&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 진단비 대상자는 다음과 같습니다. 
+
+기초생활수급자로서 신규 등록장애인
+재판정시기가 도래한 장애인 중 기초수급자 또는 차상위계층 * 장애등급의 조정신청, 이의신청의 경우는 진단비 지원대상이 아님에 유의
+
+검사비 대상자는 다음과 같습니다. 
+
+의무재판정/장애연금수당 등을 위한 서비스재판정/직권재판정을 받아야하는 기초생활수급자 및 차상위계층인자* 행복e음에서 기초생활수급자는 신규 장애등록 신청 시 진단비/검사비 동시신청 가능합니다.
+시장/군수/구청장이 직권으로 장애상태를 확인하고자 하는 자
+
+허위 또는 부정으로 확인되어 경찰청 등에서 통보된 대상자는 심사결과 장애상태가 확인 된 경우에 지원이 가능합니다.
+
+
+index = 53
+servNm = 자산형성지원사업(희망키움통장Ⅰ, Ⅱ 및 내일키움통장)
+trgterIndvdlArray = 다자녀, 저소득, 한부모·조손
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000100&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 희망키움통장Ⅰ은 총 근로(사업)소득이 기준 중위소득 40%의 60% 이상인 생계의료급여 수급 가구를 대상으로 합니다.
+희망키움통장Ⅱ는 총 근로(사업)소득이 기준 중위소득 50% 이하인 주거교육급여 수급 가구 및 차상위 가구를 대상으로 합니다.
+내일키움통장은 자활근로사업단(근로유지형 제외)에서 1개월 이상 성실하게 참여한 근로자를 대상으로 합니다.
+
+
+index = 54
+servNm = 교통시설 이용지원(버스,내항여객선,KTX등)
+trgterIndvdlArray = 보훈대상자
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000101&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 애국지사, 국가유공상이자(1급~7급), 5.18민주화운동 부상자(1급~14급)를 지원합니다.
+
+애국지사, 전상군경, 공상군경, 4.19혁명부상자, 공상공무원, 5.18민주화운동부상자
+
+
+index = 55
+servNm = 의료급여(의료급여)
+trgterIndvdlArray = 저소득
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000102&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 생계의료주거교육급여 수급자, 의료급여법에 의한 수급권자, 타법에 의한 수급권자*에게 지원합니다.
+
+타법에 의한 수급권자
+
+- 이재민
+- 의상자 및 의사자의 유족
+- 입양아동(18세미만)
+- 국가유공자
+- 중요무형문화재의 보유자
+- 북한이탈주민
+- 5ㆍ18 민주화운동 관련자
+- 노숙인
+
+
+
+
+의료급여수급권자 중에서 급여대상의 본인부담금 기준액을 초과한 자에게 지원합니다.
+국민기초생활보장법에 의한 의료급여 수급권자는 1종 수급권자와 2종 수급권자로 구분하여 지원합니다.
+
+
+index = 56
+servNm = 시각·청각장애인용 TV 무료 보급사업
+trgterIndvdlArray = 장애인
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000104&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 주민등록상 국내에 거주중인 보건복지부 등록 시각청각장애인 또는 국가보훈처 등록 눈귀 상이등급자를 지원합니다.
+
+장애정도와 연령 등을 고려하여 선정 후 보급
+2016년부터 2021년까지 시각청각장애인용 TV를 받은 분은 신청 불가
+
+
+index = 57
+servNm = 애국지사특별예우금
+trgterIndvdlArray = 보훈대상자
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000750&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 대한민국 국적을 유지하고 있는 애국지사를 지원합니다(생존자에 한함).
+
+
+index = 58
+servNm = 여성청소년 생리용품 지원
+trgterIndvdlArray = 저소득, 한부모·조손
+obstKiArray = undefined
+lifeArray = 청소년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000781&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 신청기간 :2022. 1. 3. ~ 2022. 12. 16.(2022년 기준)
+자격기준: 저소득층만 9~24세여성청소년 
+
+「국민기초생활보장법」에 따른생계, 의료, 주거, 교육급여 수급자
+「국민기초생활보장법」에 따른법정 차상위계층
+「한부모가족지원법」제5조 및 제5조의 2에 따른 지원대상자 ※ 단, 19~24세 청소년은 2022년 5월부터 신청 및 지원 가능
+
+
+index = 59
+servNm = (북한이탈주민)사회보장 지원(수급권자 범위의 특례)
+trgterIndvdlArray = 다문화·탈북민
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000782&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 생활이 어려운 북한이탈주민을 지원합니다.
+
+
+index = 60
+servNm = (북한이탈주민)주택알선 지원
+trgterIndvdlArray = 다문화·탈북민
+obstKiArray = undefined
+lifeArray = 아동, 청년, 청소년, 노년, 중장년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000815&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 북한이탈주민법 제8조(보호결정 등)에 의해 탈북민으로 보호결정된 자에게 지원합니다.
+북한이탈주민법 제9조(보호결정의 기준) 제3항 제1호에 의거 보호대상자로 결정되지 아니한 사람 중 제9조 제1항 제4호 및 제5호에 해당하는 자에게 지원합니다.
+
+
+index = 61
+servNm = 다문화가족 지원사업
+trgterIndvdlArray = 다문화·탈북민
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000837&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 아래의 사항 중 하나에 해당하는 다문화가족과 결혼이민자를 지원합니다. 
+
+「재한외국인 처우 기본법」에 따라 결혼이민자와 대한민국 국적을 취득한 사람으로 이루어진 가족
+「국적법」에 따라 대한민국 국적을 취득한 자와 대한민국 국적을 취득한 사람으로 이루어진 가족
+
+
+index = 62
+servNm = 긴급복지 주거지원
+trgterIndvdlArray = 저소득
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000917&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 위기사유의 발생으로 임시거소 제공 또는 주거비 지원이 필요한 사람에게 지원합니다.
+위기 상황이란 구체적으로 다음과 같은 경우를 말합니다. 
+
+주 소득자가 사망, 가출, 행방불명, 구금시설에 수용되는 등의 사유로 소득을 상실한 경우
+중한 질병 또는 부상을 당한 경우
+가구 구성원으로부터 방임 또는 유기되거나 학대 등을 당한 경우
+가정폭력 또는 가구 구성원으로부터 성폭력을 당한 경우
+화재 또는 자연재해 등으로 인하여 거주하는 주택 또는 건물에서 생활하기 곤란한 경우
+주소득자 또는 부소득자의 휴업, 폐업 또는 사업장의 화재 등으로 인하여 실질적인 영업이 곤란하게 된 경우
+주소득자 또는 부소득자의 실직으로 소득을 상실한 경우
+보건복지부령으로 정하는 기준에 따라 지방자치단체의 조례로 정한 사유가 발생한 경우
+
+그 밖에 보건복지부 장관이 정하여 고시하는 경우는 다음과 같습니다. 
+
+주소득자와 이혼한 때
+단전된 때
+교정 시설에서 출소하여 생계가 곤란한 경우
+가족으로부터 방임유기 또는 생계 곤란 등으로 노숙을 하는 경우
+복지사각지대 발굴대상자, 통합사례관리 대상자 또는 자살고위험군으로서 관련 부서(기관)로 부터 생계가 어렵다고 추천을 받은 경우
+(한시) 코로나19로 인하여 주소득자 또는 부소득자가 무급휴직 등으로 소득을 상실한 경우
+(한시) 코로나10로 인하여 자영업자, 특수형태 근로종사자, 프리랜서인 주소득자 또는 부소득자의 소득이 급격히 감소한 경우
+
+
+index = 63
+servNm = (북한이탈주민)상담 지원
+trgterIndvdlArray = 다문화·탈북민
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000921&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 국내에 입국한 모든 북한이탈주민을 대상으로 지원합니다.
+
+
+index = 64
+servNm = 의료급여 중증질환, 희귀질환 및 중증난치질환자 지원
+trgterIndvdlArray = 저소득
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000923&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 의료급여 수급권자 중에서 보건복지부 장관이 고시하는 중증질환자, 중증난치희귀질환(결핵질환자 포함)을 가진 사람을 지원합니다.
+
+
+index = 65
+servNm = 산림복지서비스이용권
+trgterIndvdlArray = 장애인, 저소득
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000946&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 산림복지 소외자를 지원합니다.
+
+
+index = 66
+servNm = 위탁병원진료
+trgterIndvdlArray = 보훈대상자
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000968&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 전상군경, 공상군경, 419혁명부상자, 공상공무원, 특별공로상이자, 618자유상이자, 애국지사, 재해부상군경, 재해부상공무원, 518민주화운동부상자, 특수임무부상자, 고엽제후유의증환자, 고엽제후유증 2세 환자에게 국비 진료를 지원합니다.
+75세 이상의 건강보험 가입자로, 무공수훈자, 재일학도의용군인, 참전유공자, 보상금을 받는 선순위 유족, 보훈보상대상자의 배우자에게 감면 진료를 지원합니다.
+
+
+index = 67
+servNm = 보훈병원 진료
+trgterIndvdlArray = 보훈대상자
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000998&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 국비 진료 대상은 아래와 같습니다. 
+
+애국지사, 전상군경, 공상군경, 419혁명부상자, 공상공무원, 특별공로상이자, 618자유상이자, 재해부상군경, 재해부상공무원, 518민주화운동부상자, 특수임무부상자, 고엽제후유의증환자, 고엽제후유증 2세환자, 상이등급 미달 판정자(인정상이처에 한함)
+※ 2012년 7월 1일 이후 등록한 7급 상이자가 상이처 외의 질병에 대해 진료를 받는 경우 100분의 10을 본인이 부담 ※ 2016년 6월 23일 이후 등록한 고엽제후유의증(2세 포함) 경도환자, 특수임무부상자 7급 및 518민주화운동부상자 중 12~14등급 판정자는 상이처(인정 질환) 외의 질병에 대해 진료를 받는 경우 100분의 10을 본인이 부담
+
+감면 진료 대상은 아래와 같습니다. 
+
+무공수훈자, 보국수훈자, 재일학도의용군인, 국가사회발전특별공로자, 419혁명공로자, 특수임무공로자, 참전유공자, 기타518민주화운동희생자, 국가유공자의 배우자 또는 선순위 유족, 보훈보상대상자의 배우자, 518민주화운동유공자의 배우자 또는 선순위 유족, 장기복무재대군인 등
+
+
+index = 68
+servNm = 북한이탈주민 자산형성지원제도(미래행복통장)
+trgterIndvdlArray = 다문화·탈북민
+obstKiArray = undefined
+lifeArray = 청년, 청소년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001020&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 2014년 11월 29일 이후 입국하여 거주지 보호기간 내에 있는 만 18세 북한이탈주민 중 최초 거주지 전입 후 6개월이 지나고, 3개월 이상 취업사업 등의 경제활동을하고 있는 분을지원합니다.
+
+
+index = 69
+servNm = 장애아동입양 양육보조금
+trgterIndvdlArray = 장애인
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001021&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 입양특례법상 허가를 받은 입양기관에 의해 법의 요건과 절차를 갖추어 장애아동을 국내 입양한 가정에 지원합니다.
+
+
+index = 70
+servNm = 국가유공자등간호수당
+trgterIndvdlArray = 보훈대상자
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001059&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 전상군경, 공상군경, 4.19혁명부상자, 공상공무원 및 특별공로상이자로서 상이등급 1급 및 2급 해당자(지원대상자 포함), 재해부상군경, 재해부상공무원을 지원합니다.
+
+
+index = 71
+servNm = 정보통신보조기기 보급
+trgterIndvdlArray = 보훈대상자, 장애인
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001062&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 등록 장애인이거나 국가유공자 등 예우 및 지원에 관한 법률 제6조의 규정에 의하여 등록된 자
+
+
+index = 72
+servNm = 6.25자녀수당
+trgterIndvdlArray = 보훈대상자
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001064&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 1954. 10. 25일 이전(1950.6.25.이전 사망자 포함)에 전사하거나 순직한 전몰 또는 순직군경의 자녀를 지원합니다.
+1954.10.25.~1955.3.31. 사이 남부지구 경비사령부 제1,3,8경비대대 소속으로 참전하여 전사하거나 순직한 전몰 또는 순직군경의 자녀를 지원합니다.
+1954.10.25.~1955.6.30.사이 서남지구 전투경찰대 소속으로 참전하여 전사하거나 순직한 경찰공무원의 자의 자녀 중 국가유공자법 제13조의 규정에 의한 보상금 지급순위 선순위인 자 1인을 지원합니다. 단, 이 수당을 받을 권리는 다른 자녀에게 이전되지 않습니다.
+
+
+index = 73
+servNm = 고엽제후유의증수당
+trgterIndvdlArray = 보훈대상자
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001065&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 1964년 7월 18일부터 1973년 3월 23일 사이에 월남전에 참전하여 고엽제 살포지역에서 군인이나 군무원으로서 복무하고 전역 또는 퇴직하였거나, 정부의 승인을 얻어 전투나 군의 작전에 종군한 기자로서 고엽제 질병이 있는분을 지원합니다.
+국내전방복무, 1967년 10월 9일부터 1970년 7월 31일 사이에 남방한계선 인접지역에서 군인이나 군무원으로서 복무하였거나, 고엽제 살포업무에 참가하고 전역 또는 퇴직하여 고엽제 질병이 있는분을 지원합니다.
+
+
+index = 74
+servNm = 참전명예수당
+trgterIndvdlArray = 보훈대상자
+obstKiArray = undefined
+lifeArray = 노년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001066&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 65세 이상인 참전유공자를 지원합니다.
+단, 수당 지급 대상자가 전상군경, 공상군경, 무공수훈자, 6.25재일학도의용군인으로서 보훈급여금을 받거나 고엽제후유의증수당을 지급받는 경우에는 참전명예수당과 기존의 지원 중 한가지를 선택해야 합니다.
+
+
+index = 75
+servNm = 장애아보육료지원
+trgterIndvdlArray = 장애인
+obstKiArray = undefined
+lifeArray = 아동, 영유아
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001067&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 장애인복지카드(등록증)를 소유한 미취학 만 12세 이하의 장애아동을 지원합니다.
+단, 다음의 아동에 대해서는 예외적으로 지원할 수 있습니다. 
+
+장애인 등에 대한 특수교육법 제15조에 따라 특수교육 대상자로 선정된 만 3~5세 아동이 특수교육대상자 진단/평가 결과 통지서를 제출한 경우
+취학연령이 되었음에도 부득이하게 질병 등의 사유로 일반 초등학교 및 특수학교에 취학하지 못한 장애아동
+장애인 복지카드를 소지하거나 특수교육 대상자 진단/평가 결과 통지서를 제출한 경우
+장애인복지카드 또는 특수교육 대상자 진단,평가 결과 통지서를 미소지한 만 5세이하 영유아가 장애 소견이 있는 의사진단서를 제출할 경우
+장애아가 부득이하게 휴학한 경우에도 보육료 지원 가능(단, 장애인복지카드 소지자는 만 6세 이상 만 12세까지 지원, 특수교육 대상자 진단/평가 결과 통지서를 제출한 경우 만 6세 이상 만 8세까지 지원 가능)
+장애아동이 정부지원을 받는 특수학교(유치부 또는 초등학교 과정)를 이용할 경우 장애아 무상보육료 지원 불가하며, 초등학교 과정 아동은 방과후 보육료 지원 가능 ※ 특수교육대상자의 경우 만 8세까지 장애아방과후보육료 지원 가능
+
+
+index = 76
+servNm = 한부모가족 아동양육비 지원
+trgterIndvdlArray = 한부모·조손
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001068&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 서비스별 지원대상은 다음과 같습니다. 
+
+아동양육비: 지원대상자로 결정된 저소득 한부모가구의 만 18세 미만의 아동
+추가아동양육비: 조손가족 및 만 35세 이상 미혼 한부모가족의 만 5세 이하 자녀 만 25~34세 이하 청년 한부모가족의 만 18세 미만 자녀
+학용품비: 한부모가족(조손가족 포함)의 중학생 및 고등학생 자녀
+생활보조금: 한부모가족 복지시설에 입소한 저소득 한부모가족(조손가족 포함)
+
+
+index = 77
+servNm = 장기복무제대군인수업료보조
+trgterIndvdlArray = 보훈대상자
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001073&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 본인의 교육비는 10년 이상 군복무한 장기복무 제대군인 등록자로서 전역 후 3년 이내에 대학에 입학한 경우 지원합니다. 
+자녀의 교육비는 10년 이상 군복무자로서 국가보훈처의 생활수준 조사결과, 지원대상으로 결정된 제대 군인의 고등학교에 재학하는 자녀가 있는 경우 지원합니다.
+
+
+index = 78
+servNm = 고위험 임산부 의료비 지원
+trgterIndvdlArray = 저소득
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001088&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 19대 고위험 임신질환(조기진통, 분만관련 출혈, 중증 임신중독증, 양막의 조기파열, 태반조기박리, 전치태반, 절박유산, 양수과다증, 양수과소증, 분만전 출혈, 자궁경부무력증, 고혈압, 다태임신, 당뇨병, 대사장애를 동반한 임신과다구토, 신질환, 심부전, 자궁 내 성장 제한, 자궁 및 자궁의 부속기 질환)으로 진단받고 입원치료 받은 임산부를 지원합니다.
+
+
+index = 79
+servNm = 교육급여(맞춤형 급여)
+trgterIndvdlArray = 저소득
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001089&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 학교 또는 시설(초등학교, 중학교, 고등학교, 특수학교 등)에 입학 또는 재학하는 생계의료주거교육급여 수급자와 의사상자의 자녀에게 교육급여를 지원합니다.
+의료급여특례가구 중 특례수급자로 지정되지 아니한 나머지 가구원은 교육급여를 지급하지 않습니다.
+교육급여는 부양의무자 기준을 적용하지 않습니다.
+소득인정액 기준은 중위소득의 50% 이하이며, 가구원에 따른 금액은 아래와 같습니다.
+
+1인 가구: 913,916원
+2인 가구: 1,544,040원
+3인 가구: 1,991,975원
+4인 가구: 2,438,145원
+5인 가구: 2,878,687원
+
+
+index = 80
+servNm = 국가유공자의료급여증발급
+trgterIndvdlArray = 저소득
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001091&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 보장가구 구성 및 가족의 범위는 수권자 및 그 가족을 대상으로 합니다. 
+ 
+주민등록표에 기재된 자로 생계나 주거를 같이 하는 자에게 지원(민법상 가족의 범위에 속하지 않는 동거인은 제외) 
+동일 주민등록표에 기재되지 아니하였더라도 배우자와 30세 미만 미취업 미혼 자녀는 포함 
+외국인, 보장가구 제외자 범위 등은 국민기초생활보장법 준용
+
+
+index = 81
+servNm = 가족역량강화지원 사업
+trgterIndvdlArray = 한부모·조손
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001098&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 기준 중위소득 100% 이하 (손)자녀를 양육하는 한부모조손가족 등 가족기능 및 역량강화를 위해 지원이 필요 가족을 지원합니다. 
+
+자립의지가 있는 비수급저소득 가구 우선 지원
+세월호피해구제및지원특별법 제29조에 따라 친권자가 사망하거나 생사가 분명하지 아니한 미성년인 피해자는 학습정서지원 및 교육문화 프로그램 지원가능
+
+재난사고 등 경제사회적 위기사건에 직면한 긴급위기가족을 지원합니다.
+
+
+index = 82
+servNm = 미혼모·부 초기지원(권역별미혼모부자거점기관 운영)
+trgterIndvdlArray = 한부모·조손
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001102&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 미혼모부자 가구를 지원합니다.
+
+
+index = 83
+servNm = 초중고 교육비 지원사업(고교학비 지원)
+trgterIndvdlArray = 한부모·조손, 저소득
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001103&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 다음에 해당하면 학비를 지원합니다. 
+
+저소득층 수급 자격을 보유하거나, 가구의 소득인정액이 지원기준에 해당하는 학생(단, 시/도교육청별로 지원 범위 다름)
+각 학교별 학교장 추천이 결정된 학생
+법무부장관이 추천하는 난민 인정자 또는 그 자녀
+
+다음의 경우에 해당하면 학비를 지원하지 않습니다. 
+
+공무원 및 기업체, 은행 등 직장에서 학비를 보조 받고 있는 경우
+타 부처 및 지방자치단체, 공공기관 등에서 학비를 지원받고 있는 경우
+일정 이상의 소득과 재산이 있어 학비 부담에 어려움이 없는 경우
+기타 법령에 따라 학비 전액 또는 일부를 지원받고 있거나 받기로 예정된 경우
+
+
+index = 84
+servNm = 한부모가족자녀 교육비 지원
+trgterIndvdlArray = 한부모·조손
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001104&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 고등학교에 재학 중인 한부모가족의 자녀와 조손가족의 손자녀를 지원합니다.
+
+
+index = 85
+servNm = 지역아동센터 지원
+trgterIndvdlArray = 한부모·조손, 다문화·탈북민, 장애인, 저소득
+obstKiArray = undefined
+lifeArray = 청소년, 아동
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001107&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 방과후 돌봄이 필요한 아동에게 서비스를 지원하는 지역아동센터, 아동복지교사를 대상으로 지원합니다.
+
+
+index = 86
+servNm = 청소년한부모자립지원
+trgterIndvdlArray = 한부모·조손
+obstKiArray = undefined
+lifeArray = 청년, 아동, 청소년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001109&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 지원대상 및 선정기준 
+아동을 양육하는 부 또는 모가 만 24세 이하이고, 소득이 기준 중위소득 60% 이하인 한부모 가구를 지원합니다.
+
+
+index = 87
+servNm = (특수교육대상자) 치료지원서비스
+trgterIndvdlArray = 장애인
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001113&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 특수교육대상자 중 치료지원대상자를 지원합니다.
+
+
+index = 88
+servNm = 노인 안검진 및 개안수술
+trgterIndvdlArray = 저소득, 한부모·조손
+obstKiArray = undefined
+lifeArray = 노년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001115&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 안검진은 만 60세 이상의 노인을 대상으로 하되, 저소득층을 우선 지원합니다.
+개안수술은 만 60세이상 노인으로 수술대상(백내장, 망막질환, 녹내장 등 기타 안질환)안질환자를 우선 지원합니다.
+
+
+index = 89
+servNm = 장애인문화·예술 지원
+trgterIndvdlArray = 장애인
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001117&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 함께누리 지원(공모,지원) 사업을 진행하여 공모 프로그램 유형별로 적합성을 검토 후 선정합니다.
+
+주관단체: 문체부, 한국장애인문화예술원
+공모(지원) 및 신청기간: 1월~2월
+사업기간: 3월~12월
+
+
+index = 90
+servNm = 장애입양아동 의료비지원
+trgterIndvdlArray = 장애인
+obstKiArray = undefined
+lifeArray = 청소년, 영유아, 아동
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001121&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 장애아동 양육보조금 지급대상자로 결정된 아동에게 지원합니다.
+
+
+index = 91
+servNm = 국가유공자 등 LPG차량 세금인상분 지원
+trgterIndvdlArray = 보훈대상자
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001122&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 국가유공상이자(1~7급), 5.18민주화운동부상자(1~14급), 고엽제후유의증, 독립유공자, 보훈보상ㆍ지원대상자(1~7급)가 이용하는 보철용 LPG차량 1대에 대하여 지원합니다.
+
+
+index = 92
+servNm = 영주귀국정착금
+trgterIndvdlArray = 보훈대상자
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001127&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 영주 귀국한 독립유공자와 그 유족 중에서 세대주를 지원합니다. 
+ 
+배우자, 자녀, 손자녀, 며느리로서 1945년 8월 15일 이전에 구호적에 기재된 자
+
+
+index = 93
+servNm = 저소득층에너지효율개선
+trgterIndvdlArray = 저소득
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001128&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 수선 유지비 지급대상을 제외한 기초생활수급가구, 차상위계층, 사각지대에 처한 일반 저소득가구(지자체 추천)를 지원합니다.
+
+
+index = 94
+servNm = 청소년한부모고교생교육비지원
+trgterIndvdlArray = 한부모·조손
+obstKiArray = undefined
+lifeArray = 청소년, 청년, 아동
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001129&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 정규 고등학교 과정(특수목적고 및 자율형 사립고 포함)의 교육을 받고 있거나 받으려고 하는 만 24세 이하의 청소년 한부모를 지원합니다
+
+
+index = 95
+servNm = 선천성 난청검사 및 보청기 지원
+trgterIndvdlArray = 저소득
+obstKiArray = undefined
+lifeArray = 영유아
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001130&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 시ㆍ군ㆍ구(보건소) 관할 지역에 주소지를 둔 신생아를 지원합니다.
+예산의 범위 내에서 시장, 군수, 구청장 또는 보건소장이 지원이 필요하다고 인정한 경우에도 지원합니다.
+
+
+index = 96
+servNm = 국가보훈대상자 지원(수업료면제)
+trgterIndvdlArray = 보훈대상자
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001131&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 국가보훈 관계법령에서 규정하는 다음의 교육지원대상자에게 지원합니다.
+
+독립유공자예우에 관한 법률 제15조의 교육지원대상자
+국가유공자 등 예우 및 지원에 관한 법률 제22조의 교육지원대상자
+보훈보상대상자 지원에 관한 법률 제25조의 교육지원대상자
+고엽제후유의증 등 환자지원 및 단체설립에 관한 법률 제7조의5의 교육지원대상자
+518민주유공자예우에 관한 법률 제12조의 교육지원대상자
+특수임무유공자 예우 및 단체설립에 관한 법률 제11조의 교육지원대상자
+
+
+index = 97
+servNm = 생계급여(맞춤형 급여)
+trgterIndvdlArray = 저소득
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001132&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 가구의 소득인정액이 생계급여 선정기준 이하로서 생계급여 수급자로 결정된 수급자에게 지급합니다.
+단, 타 법령에 의하여 생계급여를 지원받는 아래 사례는 제외합니다.
+
+노숙인 자활시설 및 청소년쉼터 또는 한국법무보호공단시설 거주자
+하나원에 재원중인 북한이탈주민 등 타 법령에 따라 국가 또는 지방자치단체 등으로부터 생계를 보장받는 사람
+ ※ 보장시설수급자는 별도의 급여기준에 따라 지급합니다.
+
+
+index = 98
+servNm = 해산급여
+trgterIndvdlArray = 저소득
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001135&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 생계, 의료, 주거급여 수급자가 출산한 경우(출산예정 포함)에 해산급여를 지급합니다.
+
+
+index = 99
+servNm = 탈북학생 교육지원
+trgterIndvdlArray = 다문화·탈북민
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001142&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 초, 중학교에 재학중인 탈북학생을 지원합니다.
+
+
+index = 100
+servNm = 장애인거주시설 실비입소료 지원
+trgterIndvdlArray = 저소득, 장애인
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001144&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 실비 입소 장애인 거주시설에 입소한 저소득 장애인을 지원합니다.
+
+
+index = 101
+servNm = 긴급복지 연료비 및 전기요금
+trgterIndvdlArray = 저소득
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001162&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 긴급지원 대상가구의 위기상황을 극복하기 위해 필요한 비용 또는 현물을 지원하는 것으로 * 긴급복지지원(주지원)을 받는 가구 중 연료비, 전기요금 지원이 필요하다고 인정되는 가구에게 지원합니다.
+위기사유란 구체적으로 다음과 같은 경우를 말합니다. 
+
+주소득자가 사망, 가출, 행방불명, 구금시설에 수용되는 등의 사유로 소득을 상실한 경우
+중한 질병 또는 부상을 당한 경우
+가구구성원으로부터 방임 또는 유기되거나 학대 등을 당한 경우
+가정폭력 또는 가구구성원으로부터 성폭력을 당한 경우
+화재 또는 자연재해 등으로 인하여 거주하는 주택 또는 건물에서 생활하기 곤란한 경우
+주 소득자 또는 부 소득자의 휴업, 폐업 또는 사업장의 화재 등으로 인하여 실질적인 영업이 곤란하게 된 경우
+주 소득자 또는 부 소득자의 실직으로 소득을 상실한 경우
+보건복지부령으로 정하는 기준에 따라 지방자치 단체의 조례로 정한 사유가 발생한 경우
+그 밖에 보건복지부 장관이 정하여 고시하는 경우
+
+그 밖에 보건복지부 장관이 정하여 고시하는 경우는 다음과 같습니다. 
+
+주 소득자와 이혼한 때
+단전된 경우(전류 제한기를 부설한 경우 포함)
+교정시설에서 출소한 자가 생계가 곤란한 경우
+가족으로부터 방임유기또는 생계 곤란 등으로 노숙을 하는 경우
+복지사각지대 발굴대상자, 통합사례관리 대상자 또는 자살고위험군으로서 관련 부서(기관)로 부터 생계가 어렵다고 추천을 받은 경우
+(한시) 코로나19로 인하여 주소득자 또는 부소득자가 무급휴직 등으로 소득을 상실한 경우
+(한시) 코로나19로 인하여 자영업자, 특수형태 근로종사자 또는 프리랜서인 주소득자 또는 부소득자의 소득이 급격히 감소한 경우
+
+
+index = 102
+servNm = 발달장애인 주간활동서비스
+trgterIndvdlArray = 장애인
+obstKiArray = undefined
+lifeArray = 노년, 중장년, 청년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001165&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 지원대상 및 선정기준
+
+
+만 18세~64세 「장애인복지법」상 등록된 지적 및 자폐성 장애인을 지원합니다.
+*장애인 당사자 및 가구의 소득수준과 무관하게 신청 가능합니다.
+
+
+index = 103
+servNm = (북한이탈주민)자립자활지원
+trgterIndvdlArray = 다문화·탈북민
+obstKiArray = undefined
+lifeArray = 청소년, 청년, 노년, 중장년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001168&wlfareInfoReldBztpCd=01
+tgtrDtlCn = (취업지원센터) 구인-구직을 희망하는 북한이탈주민 또는 기관(업체)를 지원합니다. 
+(취업역량강화) 취업을 희망하는 북한이탈주민 중 청소년청년 중심으로 지원합니다. 
+(통일형예비사회적기업) 예비사회적기업의 조직형태를 갖추고, 탈북민 채용을 희망하는 기업을 육성 및 지원합니다. 
+(탈북민고용 모범사업주) 연간 평균 3명 이상 탈북민을 고용하고, 연간 5퍼센트 이상의 월평균 근로자를 탈북민으로 고용한 사업주에게 지원합니다. 
+(영농정착지원) 영농희망자 또는 현재 영농에 종사하는 북한이탈주민에게 지원합니다. 
+(창업지원) 창업을 희망하거나 또는 기창업한 북한이탈주민에게 지원합니다.
+
+
+index = 104
+servNm = 의료급여 틀니·치과임플란트    
+trgterIndvdlArray = 저소득
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001169&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 만 65세 이상의 의료급여수급권자이면서, 치과 병의원에서 시술 전에 국민건강보험공단 등록시스템(요양기관 정보마당)을 통해 직접 등록 또는 의료급여 수급권자가 발급받은 발급받은 틀니(치과임플란트) 등록신청서를 관할 시군구청 또는 읍면동에 방문하여 제출등록하신 분을 지원합니다.(사전등록제 실시)
+
+
+틀니는 동일부위(상악하악) 동일종류(완전틀니부분틀니)의 경우 7년에 1회 급여적용이 원칙이며, 구강상태가 심각하게 변화되어 새로운 틀니가 필요한 경우 7년 이내에 재제작 가능
+치과 임플란트는 1인당 평생 2개 급여 적용
+진료전달체계: 의료급여 진료절차(1차2차3차) 준수
+
+
+index = 105
+servNm = 청소년 발달장애학생 방과후활동서비스
+trgterIndvdlArray = 장애인
+obstKiArray = undefined
+lifeArray = 아동, 청소년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001178&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 만 12세 ~ 17세의 중고등학교(일반학교 및 특수학교), 전공과에 재학 중인 「장애인복지법」상 등록된 지적 및 자폐성 장애인을 지원합니다.
+
+
+index = 106
+servNm = 노인 무릎인공관절 수술 지원 사업
+trgterIndvdlArray = 저소득, 한부모·조손
+obstKiArray = undefined
+lifeArray = 노년, 중장년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001179&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 무릎인공관절 수술이 필요한 저소득층 노인을 지원합니다.
+
+
+index = 107
+servNm = 학교우유급식
+trgterIndvdlArray = 한부모·조손, 저소득
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001182&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 초중고등학교에 재학 중인 생계, 의료, 주거, 교육급여 가구의 학생에게 지원합니다.
+한부모 가정의 대상자에게 지원합니다.
+특수교육 대상자에게 지원합니다.
+차상위계층 가구의 학생에게 지원합니다. * 차상위계층은 소득 인정액이 기준 중위소득의 50% 이하인 사람 중 기초생활수급자가 아닌 경우
+차상위 자활차상위 본인부담차상위 장애수당차상위 장애연금우선돌봄 차상위 대상자 가구의 초등학생, 중학생에게 지원합니다.
+예산 범위 내에서 시도시자사가 지역 여건에 따라 해당 교육기관과 협의하여 선정한교육비 지원대상자, 국가유공자 자녀 등지원이 필요하다고 판단되는 학생에게도 지원합니다.
+
+
+index = 108
+servNm = 암환자의료비지원
+trgterIndvdlArray = 저소득
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001184&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 소아암환자와 성인암환자에게 의료비를 지원합니다.
+
+
+index = 109
+servNm = 의료급여수급권자 영유아건강검진비 지원
+trgterIndvdlArray = 저소득
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001185&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 의료급여 수급권자 중 만 6세 미만의 모든 영유아를 대상으로 합니다.
+
+
+index = 110
+servNm = 산모·신생아 건강관리 지원사업
+trgterIndvdlArray = 저소득
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001188&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 국내에 주민등록(주민등록을 한 재외국민 포함) 또는 외국인 등록을 둔 출산 가정*을 지원합니다. * 단, 부부 모두가 외국인인 경우 각각의국내 체류자격 비자(사증) 종류가 F-2(거주), F-5(영주), F-6(결혼이민)인 경우에 한함
+
+
+index = 111
+servNm = (북한이탈주민)취업 지원
+trgterIndvdlArray = 다문화·탈북민
+obstKiArray = undefined
+lifeArray = 노년, 중장년, 청년, 청소년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003168&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 고용지원금은 취업보호기간(거주지 보호기간 중 최초 취업한 날부터 3년) 내 북한이탈주민을 고용한 사업주를 지원합니다. 
+취업장려금, 직업훈련장려금, 자격취득장려금은 거주지 보호기간(5년) 내의 북한이탈주민의 취업을 지원합니다. 
+ 
+2014년 11월 29일 이후 입국하여 보호결정을 받은 주민은 장려금을 지급하지 않고, 미래행복통장 제도가 적용
+
+
+index = 112
+servNm = 의료급여본인부담면제
+trgterIndvdlArray = 저소득
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003171&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 의료급여 수급권자 중 본인부담 면제 대상자에게 지원합니다.
+
+
+index = 113
+servNm = (북한이탈주민)정착금 지원
+trgterIndvdlArray = 다문화·탈북민
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003172&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 통일부장관의 보호 결정을 받은 북한이탈주민을 지원합니다.
+
+
+index = 114
+servNm = 장애인스포츠강좌이용권 지원
+trgterIndvdlArray = 장애인, 저소득
+obstKiArray = undefined
+lifeArray = 청년, 청소년, 중장년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003173&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 만19세~64세 저소득층 장애인을 지원합니다. * 단, 스포츠강좌이용권과 중복 지원하지 않습니다.
+
+
+index = 115
+servNm = 장애인창업육성
+trgterIndvdlArray = 장애인
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003174&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 장애인(국가유공자 중 상이자 포함) 예비창업자와 업종전환자를 지원합니다.
+
+
+index = 116
+servNm = 결혼이민자 통번역 서비스
+trgterIndvdlArray = 다문화·탈북민
+obstKiArray = undefined
+lifeArray = 임신 · 출산, 중장년, 청년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003175&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 한국말이 서툰 결혼이민자의 가족사회생활에 필요한 의사소통을 지원하기 위한 다문화가족 및 다문화가족을 직간접적으로 지원하는 개인 또는 기관을 지원합니다.
+
+
+index = 117
+servNm = 농식품바우처 시범사업
+trgterIndvdlArray = 저소득
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003176&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 2022년 농식품바우처 시범지역인 15개 시군구의 기초생활수급자와 차상위계층 가구에 지원합니다. 
+
+15개 시범지역(부산진구 당감1동, 부전2동,인천 옹진군, 경기도 양평군, 강원도 평창군, 충청북도 괴산군, 충청남도 당진시, 충청남도 청양군 전라북도 김제시, 전라북도 정읍시, 전라남도 장성군, 전라남도 해남군,  경상북도 예천군, 경상북도 청도군, 경상남도 거제시, 경상남도 밀양시)
+
+
+index = 118
+servNm = 복권기금 꿈사다리 장학사업
+trgterIndvdlArray = 한부모·조손, 저소득
+obstKiArray = undefined
+lifeArray = 청소년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003177&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 학교에 재학 중인 중2~고3 학생 중 역량과 잠재력이 있는 우수학생을 지원합니다.
+
+다만, 고등공민학교 및 고등기술학교는 제외
+
+
+대상자 기본 요건은 다음과 같습니다.
+
+국민기초생활수급자
+한부모가족 지원대상자
+법정 차상위계층 학생
+
+
+index = 119
+servNm = 긴급복지 생계지원
+trgterIndvdlArray = 저소득
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003180&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 지원 대상은 아래와 같습니다. 
+ 
+주소득자가 사망, 가출, 행방불명, 구금시설에 수용되는 등의 사유로 소득을 상실한 경우 
+중한 질병이나 부상을 당한 경우 
+가구구성원으로부터 방임 또는 유기되거나 학대 등을 당한 경우 
+가구 구성원으로부터 가정 폭력 또는 성폭력을 당한 경우 
+화재 또는 자연재해 등으로 거주하고 있는 주택이나 건물에서 생활하기 곤란한 경우 
+주소득자 또는 부소득자의 휴업, 폐업 또는 사업장의 화재 등으로 인하여 실질적인 영업이 곤란하게 된 경우 
+주소득자 또는 부소득자의 실직으로 소득을 상실한 경우 
+보건복지부령으로 정하는 기준에 따라 지방자치 단체의 조례로 정한 사유가 발생한 경우 
+그 밖에 보건복지부 장관이 정하여 고시하는 경우 
+ 
+그 밖에 보건복지부 장관이 정하여 고시하는 경우는 다음과 같습니다. 
+ 
+주 소득자와 이혼한 때 
+단전된 경우(전류 제한기를 부설한 경우 포함) 
+교정시설에서 출소한 자가 생계가 곤란한 경우 
+가족으로부터 방임유기 또는 생계곤란 등으로 노숙을 하는 경우 
+복지사각지대 발굴대상자, 통합사례관리 대상자 또는 자살고위험군으로서 관련 부서(기관)로 부터 생계가 어렵다고 추천을 받은 경우 
+(한시) 코로나19로 인하여 주소득자 또는 부소득자가 무급휴직 등으로 소득을 상실한 경우 
+(한시) 코로나19로 인하여 자영업자, 특수형태 근로종사자 또는 프리랜서인 주소득자 또는 부소득자의 소득이 급격히 감소한 경우
+
+
+index = 120
+servNm = 장애인의료비지원
+trgterIndvdlArray = 저소득, 장애인
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003181&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 의료급여 2종 수급권자인 등록 장애인과 차상위 본인부담 경감대상 등록장애인(만성 질환자, 18세 미만 등록 장애인 포함)을 지원합니다.
+장애인 의료비는 장애인에게만 지원되고 장애인과 세대를 같이 하는 비장애인에게는 지원하지 않습니다.
+
+
+index = 121
+servNm = 양육비 이행 원스톱 종합서비스
+trgterIndvdlArray = 한부모·조손
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003186&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 만 19세 미만 자녀를 양육하고 있는 한부모 조손가족을 지원합니다.
+취학 중인 22세 미만 자녀와 군복무 후 복학한 "22세 미만 + 군 복무기관" 자녀를 양육하고 있는 한부모와 조손가족을 지원합니다.
+
+
+index = 122
+servNm = 다문화·탈북학생 멘토링
+trgterIndvdlArray = 다문화·탈북민
+obstKiArray = undefined
+lifeArray = 청소년, 아동
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003188&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 국공립 유치원,초등학생, 중학생, 고등학생 중 다문화 가정의 학생과 탈북 학생을 지원합니다.
+
+
+index = 123
+servNm = 중증장애인직업재활지원
+trgterIndvdlArray = 장애인
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003189&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 만 15세 이상 등록장애인을 지원합니다.
+
+
+index = 124
+servNm = 의료급여(의료급여대지급금지원)
+trgterIndvdlArray = 저소득
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003190&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 2종 의료급여 수급권자에게 지원합니다.
+비급여항목은 지원대상이 아닙니다.
+
+
+index = 125
+servNm = 노인맞춤돌봄서비스
+trgterIndvdlArray = 저소득
+obstKiArray = undefined
+lifeArray = 노년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003191&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 돌봄서비스가 필요한 만 65세 이상 어르신을 지원합니다.
+
+
+
+
+중점돌봄군은 신체적인 기능제한으로 일상생활 지원 필요가 큰 대상으로 대상자 선정조사 결과, 신체영역이 상이면서 사회영역 또는 정신영역에서 중또는 상이 1개 이상으로 판정된 대상자 입니다.
+일반돌봄군은 사회적인 관계 단절 및 일상생활 어려움으로 돌봄이 필요가 있는 대상으로 대상자 선정조사 결과, 사회영역이 중이상 이면서, 신체영역 또는 정신영역에서 중또는 상이 1개 이상으로 판정된 대상자(중점돌봄군 제외) 입니다.
+
+
+index = 126
+servNm = 다문화가족 방문교육 서비스
+trgterIndvdlArray = 다문화·탈북민
+obstKiArray = undefined
+lifeArray = 임신 · 출산, 청년, 아동, 청소년, 영유아
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003192&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 방문 한국어교육 서비스는 최초 입국 5년 이하*의 결혼이민자와 중도입국 자녀를 지원합니다. * 단, 입국 5년 이상이 경과한 경우라도 임신, 출산, 취업 등 타당한 이유가 있는 경우, 지자체장과 협의 하에 지원 가능
+방문 부모교육 서비스는 임신신생아기, 유아기, 아동기 각 생애주기별 각 1회지원합니다.
+방문 자녀생활 서비스는 만 3세~만 12세 이하의 다문화가족 자녀, 중도입국 자녀를 지원합니다.
+
+
+index = 127
+servNm = 발달재활서비스
+trgterIndvdlArray = 장애인
+obstKiArray = undefined
+lifeArray = 아동, 청소년, 영유아
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003195&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 기준중위소득의 180% 이하인 만 18세 미만 등록 장애아동을 지원합니다.
+
+
+index = 128
+servNm = 장애아동수당
+trgterIndvdlArray = 저소득
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003198&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 만 18세 미만의 등록 장애인으로 생계의료주거교육급여 수급자 및 차상위계층을 지원합니다.
+
+
+index = 129
+servNm = 의료급여(본인부담 상한금)
+trgterIndvdlArray = 저소득
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003202&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 의료급여 1종 및 2종 수급권자에게 지원합니다.
+
+
+index = 130
+servNm = 사망일시금
+trgterIndvdlArray = 보훈대상자
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003203&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 지원대상 및 선정기준
+
+
+보상금을 받고 있는 독립(국가)유공자 및 보훈보상대상자사망 시 다음의 대상자에게 지원합니다.
+
+보상금 지급순위에 따라 유족에게 사망일시금을 지급
+유족이 없을 경우, 사망 당시 생활을 같이 하고 있던 친족 중 재산 상속인이 될 자의 신청에 따라 당해 재산상속인에게 지급
+재산 상속인이 될 자도 없는 경우에는 장제를 행하는 자에게 지급할 수 있음
+
+
+보상금을 받고 있는 독립(국가)유공자 및 보훈보상대상자의 유족이 사망 시, 다음의 대상자에게 지원합니다.
+
+당해 보상금을 받을 수 있는 다른 유족이 없는 경우에 한하여 지급
+사망 당시 생활을 같이 하고 있던 친족 중 재산 상속인이 될 자의 신청에 따라 당해 재산상속인에게 지급
+재산상속인이 될 자도 없는 경우에는 장제를 행하는 자에게 지급할 수 있음
+
+
+index = 131
+servNm = (북한이탈주민) 의료비 지원
+trgterIndvdlArray = 다문화·탈북민
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003206&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 2021년에 질병으로 치료받은 북한이탈주민을 지원합니다.
+
+
+index = 132
+servNm = 장기복무제대군인 취업지원
+trgterIndvdlArray = 보훈대상자
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003208&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 군에서 10년 이상 복무 후 전역한 장교, 준사관, 부사관에게 취업을 지원합니다.
+
+
+index = 133
+servNm = 독립유공자 (손)자녀 생활지원금
+trgterIndvdlArray = 저소득
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003209&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 보상금을 받지 않는 독립유공자의 (손)자녀로서 기초생활수급자(생계 및 의료급여),기준 중위소득 70% 이하자, 기초연금수급자(단독 또는 부부세대)에게 생활지원금을 지원합니다.
+
+
+index = 134
+servNm = 장애인보조기기 교부
+trgterIndvdlArray = 저소득, 장애인
+obstKiArray = undefined
+lifeArray = 노년, 중장년, 청소년, 청년, 아동, 영유아
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003211&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 수급자 및 차상위이면서 등록한 지체뇌병변시각청각심장호흡지적자폐성언어 장애인을 지원합니다.* 참고: 「장애인복지법」제32조, 「국민기초생활보장법」
+
+
+index = 135
+servNm = 국가보훈대상자학습보조비지급
+trgterIndvdlArray = 보훈대상자
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003216&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 중학교, 고등학교에 재학 중인 유공자 본인 및 그 자녀, 전몰순직사망행방불명자의 배우자를 지원합니다.
+대학교에 재학 중인 국가유공자(애국지사, 고엽제후유의증환자, 5.18 민주유공자, 특수임무유공자, 보훈보상대상자 포함) 본인 및 전몰순직사망행방불명자의 배우자를 지원합니다.
+특수교육 대상자로서 특수교육을 받는 교육지원대상자에게 지원합니다.
+
+
+index = 136
+servNm = 장애인자립생활지원센터 지원
+trgterIndvdlArray = 장애인
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003217&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 모든 장애인을 지원 대상으로 하며, 시설거주 장애인, 탈시설 장애인, 재가 장애인 등자립을 희망하는 장애인에 동료상담, 자립지원계획수립, 장애인인식개선 등을우선 지원합니다.
+
+
+index = 137
+servNm = 의료급여(의료급여건강생활유지비)
+trgterIndvdlArray = 저소득
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003218&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 1종 수급권자 전체(본인부담 면제자, 급여제한자의 경우에는 제외)에게 본인부담금을 지원합니다.
+비급여항목은 지원대상이 아닙니다.
+
+
+index = 138
+servNm = 취약계층 환경성질환 예방사업
+trgterIndvdlArray = 저소득
+obstKiArray = undefined
+lifeArray = 청소년, 청년, 아동, 노년, 중장년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003225&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 실내환경 진단 및 컨설팅(1,500개소) 
+
+어려운 경제사정으로 생활이 곤란한 가구*의 가구원으로서 환경성질환을 앓고 있거나, 실내환경이 열악한 곳에 거주하고 있는 취약계층
+ * 생활이 곤란한 가구: 자활급여를 받는 차상위자, 본인부담액을 경감받는 사람, 장애수당 또는 장애아동수당을 지급받는 사람, 장애인연금을 지급받는 사람, 차상위계층으로 결정된 사람, 생계급여주거급여의료급여 또는 교육급여의 수급자, 「한부모가족지원법」 제5조 및 제5조의2에 따른 지원대상자** 참고법령: 「국민기초생활 보장법 시행령」 제5조의5, 「국민건강보험법 시행령」 별표 2 제3호라목, 「장애인복지법」 제49조 제1항 또는 제50조 제1항, 「장애인연금법」 제4조, 「국민기초생활 보장법」 제24조 제1항, 「국민기초생활 보장법」 제7조 제1항 제1호부터 제4호, 「한부모가족지원법」 제5조 및 제5조의2
+저소득가구, 한부모가구 등 취약계층 가구 1,100개소 및 독거노인가구, 경로당, 장애인시설 등 민감계층 활동공간 400개소
+
+실내환경 개선(500개소) 
+
+실내환경 진단컨설팅(현장방문) 결과 및 사업 효과성 등을 종합적으로 검토한 결과 개선이 시급한 가구
+저소득가구, 한부모가구 등 취약계층 가구 250개소 및 독거노인가구, 경로당, 장애인시설 등 민감계층 활동공간 250개소 ※ 실내환경 개선은 실내환경 진단컨설팅 완료 가구(시설) 1,500개소 중 500개소를 지원하며 지자체(시도) 예산확보 여부에 따라 지원 규모는 달라질 수 있음
+
+환경성 질환자 진료지원 서비스(350명) 
+
+지자체, 환경보건센터 등으로부터 추천을 받은 환경성질환을 앓고 있는 취약계층 소아, 청소년 및 어르신※ 위 대상은 실내환경 진단컨설팅 대상 가구 중 환경성 질환을 앓고 있는 가구원
+
+
+index = 139
+servNm = 초.중.고 학생 교육정보화 지원
+trgterIndvdlArray = 저소득, 한부모·조손
+obstKiArray = undefined
+lifeArray = 청소년, 아동
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003227&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 생계의료주거교육급여 수급자, 한부모가족 보호 대상자(법정 한부모), 차상위계층 등의 초등학생, 중학생, 고등학생을 지원합니다. 
+
+시/도 교육청의 기준에 따라서 지원대상과 학년의 범위가 서로 다름
+
+
+index = 140
+servNm = 의료급여 선택의료급여기관제
+trgterIndvdlArray = 저소득
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003228&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 생활이 어려운 저소득계층 중 같은 병으로 여러 병의원을 이용하였거나 중복투약으로 인하여 연간 급여일수 상한을 초과하여 의료급여를 받고자 하는 경우와 자발적으로 참여하는 경우에 지원합니다.
+
+
+index = 141
+servNm = 농업인안전보험
+trgterIndvdlArray = 저소득
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003232&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 농업인안전보험은 아래의 대상자에게 지원합니다. 
+
+만 15~87세(일부 상품은 84세)*이며 영농 활동에 종사하는 농업인**
+* 일반1형산재근로자전용은 만 15~87세, 일반2형일반3형산재형은 만 15~84세** 경영주인 농업인 및 경영주외 농업인(무급 가족종사자, 피고용인-외국인근로자 포함)
+위 농업인을 피보험자로 하는 보험계약자*
+*「산업재해보상보험법」에 따른 산업재해보상보험 및「어선원 및 어선 재해보상보험법」에 따른 어선원보험의 적용을 받은 사람은 제외됨. 단, 산재어선원 보험의 적용받는 사업장 이외의 장소에서 농업작업을 하려는 농업인 또는 농업근로자는 피보험자 가능※ 최근 2년 이내에 보험 관련 보험사기행위로 형사처벌을 받은 경우는 제외됩니다.
+
+
+농작업근로자안전보험은 만 15~87세의 농업근로자(90일 미만)를 고용한 농업인 경영주에게 지원합니다.
+
+
+index = 142
+servNm = 어촌생활돌봄지원
+trgterIndvdlArray = 한부모·조손, 장애인
+obstKiArray = undefined
+lifeArray = 노년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003233&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 어업인 가구, 어촌 거주자 또는 어촌 소재 사회복지시설을 지원합니다.
+
+
+index = 143
+servNm = 미숙아 및 선천성이상아 의료비 지원
+trgterIndvdlArray = 저소득
+obstKiArray = undefined
+lifeArray = 영유아
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003237&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 미숙아는 다음의 경우에 지원합니다.
+
+긴급한 수술 또는 치료가 필요하여 출생 후 24시간 이내에 신생아중환자실(NICU)에 입원한
+ 경우※ 신생아중환자실 부족에 따른 대기 또는 이송의 사유로 출생 후 24시간 이내에 신생아중환자실에 입원 하지 못한 경우, 의료기관의 확인을 받아 지원 가능
+
+
+
+
+
+선천성이상아는 다음의 경우에 지원합니다.
+
+(2020.9.1 이후 출생아) 출생후 1년 이내에 선천성 이상(Q코드)으로 진단받고, 선천성이상 질환을 치료하기 위하여 출생 후 1년 이내에 입원하여 수술
+2020.8.31 이전 출생아) 출생 후 28일 이내에 선천성이상(Q코드)으로 진단받고, 선천성이상 질환을 치료하기 위하여 출생 후 6개월 이내에 입원하여 수술
+※ 반드시 입원하여 치료를 위한 수술을 시행하고 그에 따른 치료비용에 한하여 지원
+
+
+index = 144
+servNm = 의료급여수급권자 일반건강검진비 지원
+trgterIndvdlArray = 저소득
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003238&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 일반건강검진은 의료급여수급권자 중 만 19~64세 세대주 및세대원을 지원합니다.
+의료급여생애전환기검진은 의료급여수급권자 중 만 66세이상 세대주 및 세대원을 지원합니다.
+
+
+index = 145
+servNm = 평생교육바우처
+trgterIndvdlArray = 저소득
+obstKiArray = undefined
+lifeArray = 청년, 노년, 중장년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003240&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 기초생활수급자 및 차상위 계층, 기준중위소득 65%이하의 성인에게 지원합니다.
+
+
+index = 146
+servNm = 재난적의료비 지원 사업
+trgterIndvdlArray = 저소득, 장애인
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003247&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 과도한 의료비로 인한 경제적 부담을 겪는 가구에 의료비를 지원합니다.
+
+의료기관 등에서 입원 진료를 받는 경우(모든 질환 적용)와 6대 중증질환(암, 뇌혈관질환, 심장질환, 희귀질환, 중증난치질환, 중증화상질환)으로 의료기관 등에서 외래 진료를 받은 경우
+
+
+index = 147
+servNm = 장애인연금
+trgterIndvdlArray = 장애인
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003249&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 만 18세 이상의 등록한 장애인연금법상 중중장애인 중 소득인정액이 보건복지부장관이 매년 결정고시하는 금액 이하인 경우에 지원합니다. * 참고: 「장애인연금법」 제2조제1호, 「장애인연금법」 시행령 제2조, 장애정도판정기준(제5장 장애인연금 수급을 위한 중증장애인 판정기준)
+다음의 직역연금 요건에 해당하는 분은장애인연금 수급대상에서 제외합니다. 
+
+공무원, 사립학교교직원, 군인, 별정우체국직원 등 직역연금 수급권자 및 그 배우자
+다만, 다음 조건에 해당하는 경우에는 장애인연금 수급대상에 포함합니다.
+  직역재직기간 10년 미만인 연계퇴직연금수급권자 및 그 배우자   장해일시금, 비공무상 장해일시금, 비직무상 장해일시금, 퇴직유족연금일시금, 퇴직유족일시금(공무상 사망 등에 따라 순직유족연금 대신 받은 경우 또는 직무상유족연금을 갈음하여 선택한 경우)을 받은 이후 5년이 경과된 직역연금 수급권자 및 그 배우자
+
+
+index = 148
+servNm = 급식비
+trgterIndvdlArray = 장애인, 저소득, 한부모·조손
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003255&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 저소득층 수급 자격자(기초, 한부모, 법정 차상위)인 학생을 지원합니다.
+가구의 소득인정액이 시도교육청별 지원기준에 해당하는 학생을 지원합니다.
+각 학교별 학교장 추천이 결정된 학생을 지원합니다..
+법무부장관이 추천한 난민인정자 또는 그 자녀를 지원합니다.
+외부기관, 사회단체 및 독지가 등으로부터 중식비를 지원받고 있는 학생(중복지원 배제)은 제외합니다.
+
+
+index = 149
+servNm = 아동발달지원계좌(디딤씨앗통장)지원
+trgterIndvdlArray = 저소득
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003258&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 만 18세 미만의 아동복지시설(아동양육시설, 공동생활가정)보호아동, 가정위탁 보호아동, 장애인시설 생활 아동, 소년소녀가정 아동에게 지원합니다.
+
+
+지원 제외 대상
+
+정부나 지자체에서 지원하는 유사한 형태의 자산형성지원사업과 중복 지원하지 않습니다.
+희망플러스통장(서울시), 꿈나래통장(서울시) 등과 중복 지원하지 않습니다.
+서울시는 꿈나래통장사업을 진행하고 있으므로 중복 지원 가능성을 고려하여 기초수급가정은 사업 지역에서 제외합니다.
+다만, 지원 대상 및 사업 취지를 고려하여 희망키움통장과는 중복 지원이 가능합니다(2013년 1월 1일부터).
+
+
+index = 150
+servNm = 중증장애인지원고용(훈련수당)
+trgterIndvdlArray = 장애인
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003259&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 훈련생은 구직 등록한 15세 이상의 중증장애인으로 본인 또는 보호자의 취업의사가 있고 지원고용 과정을 통해 취업하는데 동의하는 경우 지원합니다.
+사업체는 4대보험(국민건강, 국민연금, 고용보험, 산재보험)에 가입해야 지원합니다.
+지원 제외 대상은 다음과 같습니다.
+
+해당 연도에 지원고용 3회를 초과하여 참여한 장애인
+정당한 사유 없이 지원고용 참여를 중도 포기한 후에 3개월이 경과되지 않은 장애인
+
+
+index = 151
+servNm = 장애아가족양육지원
+trgterIndvdlArray = 장애인
+obstKiArray = undefined
+lifeArray = 영유아, 청소년, 아동
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003262&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 만 18세 미만의 장애정도가 심한장애아동을 양육하는 가정을 지원합니다.
+
+
+index = 152
+servNm = 장애수당
+trgterIndvdlArray = 저소득
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003265&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 생계의료주거교육급여 수급자 및 차상위계층 중 만 18세 이상의 장애인연금법상 중증장애인에 해당 하지 않는 장애인을 지원합니다.
+
+
+index = 153
+servNm = 장제급여
+trgterIndvdlArray = 저소득
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003267&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 생계, 의료, 주거급여 수급자가 사망한 경우와 의사자로 사망한 경우에 지원합니다.
+의사자에 대한 장제급여 신청기간은 의사자 인정일로부터 3년 이내로 제한합니다.
+
+
+index = 154
+servNm = 의료급여(본인부담 보상금)
+trgterIndvdlArray = 저소득
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003273&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 의료급여 수급권자 중에서 급여대상 본인부담금이 일정한 금액을 초과한 수급권자에게 지원합니다.
+비급여항목은 지원대상이 아닙니다.
+
+
+index = 155
+servNm = 국가유공자보철구지급
+trgterIndvdlArray = 보훈대상자
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003274&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 상이를 입은 국가유공자를 지원합니다.
+
+전상군경, 공상군경, 4.19혁명 부상자, 공상 공무원, 국가사회 발전 특별공로 상이자, 6.18자유상이자, 국가유공자에 준하는 군경, 전투종사 군무원 등
+
+
+애국지사, 5.18민주화운동 부상자, 고엽제 후유의증 환자, 재해부상군경 및 재해부상공무원, 국가유공자에 해당되지 않지만 해당 부상으로 인하여 수술한 자를 지원합니다.
+
+
+index = 156
+servNm = 언어발달지원사업
+trgterIndvdlArray = 장애인, 한부모·조손
+obstKiArray = undefined
+lifeArray = 아동, 영유아
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003279&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 부모 또는 조손 가정의 조부모 중, 어느 한 쪽 (조)부모가 시각, 청각 ,언어, 지적, 자폐성, 뇌병변 등록 장애인일 경우, 만 12세 미만의 비장애 자녀에게 지원합니다.
+
+
+index = 157
+servNm = 국가보훈대상자 취업능력개발지원
+trgterIndvdlArray = 보훈대상자
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003281&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 당해 채용(자격)시험 응시요건을 갖춘 취업지원 대상자를 지원합니다.
+고교졸업 예정자에 대한 지원과정 및 시기는 다음과 같습니다. 
+
+지원과정 :6급이하 공무원, 공기업 채용시험,인적성,면접,NCS,코딩자격, 무인초경량비행장치 관련 자격, 정보화자격증 일부과정
+지원시기 :최종학년 하계방학 기간부터 수강한 경우 지원
+
+만 60세 이상 64세 이하인 경우 지원과정은 다음과 같습니다. 
+
+지원과정 : 인적성,면접,NCS,경비신임,요양보호사, 무인초경량비행장치 관련 자격, 정보화자격증 일부, 유공자 본인 또는 상이자와 유가족인 배우자로 한정된 과정의 일부과정
+
+
+지원 제외대상은 다음과 같습니다. 
+
+제대군인
+제대군인과 경합자로서 직업교육훈련 바우처 지원대상자 * 단, 제대군인과 국가유공자 본인 자격 중복인 경우에는 일부 지원대상
+법정취업자, 보훈특별고용통지서가 발급된 자, 가점 또는 일반직공무원등 특별채용 합격자로 결정된 자 * 법정취업 이전에 수강한 과목 또는 수강 중에 법정 취업한 경우는 수강 종료 후 1년 이내 수강료 지원 신청을 할 수 있음
+만 65세 이상자(비용지원 신청일 기준)* 경비신임교육(일반,특수), 공인중개사, 주택관리사, 요양보호사 과정은 연령제한 없음
+18세 미만자로서 초ㆍ중ㆍ고등학교(2학년 이하) 재학생
+
+
+index = 158
+servNm = 아동통합서비스지원(드림스타트사업)
+trgterIndvdlArray = 저소득
+obstKiArray = undefined
+lifeArray = 청소년, 아동, 영유아
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003283&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 지원대상 
+
+
+0세(임산부)이상 만 12세(초등학생 이하) 취약계층 아동 및 가족이 대상입니다.
+
+만 13세 이상의 초등학교 재학 아동 포함
+수급자 및 차상위계층 가정, 보호대상한부모가정(조손가정 포함), 학대 및 성폭력피해아동 등에 대한 우선지원 원칙
+
+
+index = 159
+servNm = 직업능력개발운영(훈련수당)
+trgterIndvdlArray = 장애인
+obstKiArray = undefined
+lifeArray = 청소년, 청년, 중장년, 노년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00004651&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 15세 이상 장애인 중 직업능력개발훈련을 희망하거나 필요로 하는 자를 지원합니다.
+
+
+index = 160
+servNm = 장애인인턴제
+trgterIndvdlArray = 장애인
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00004654&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 중증장애인과 장년장애인을 대상으로 합니다. 
+ 
+중증장애: 뇌병변, 정신, 심장, 신장, 언어, 호흡기, 뇌전증, 자폐성, 시각, 척수손상 또는 근육병증으로 운동기능 장애가 있는 지체장애 
+장년장애인: 만 50세 이상 장년층 장애인
+
+
+index = 161
+servNm = 장애인취업성공패키지
+trgterIndvdlArray = 장애인
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00004655&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 각 유형별로 아래와 같은 대상자에게 지원합니다. 
+
+Ⅰ유형 참여자: 취업을 희망하는 만 18세 이상69세 이하 장애인  * 69세를 초과하더라도 상담 및 평가를 통해 취업의욕 및 역량이 높을 경우에는 참여여부 판단
+Ⅱ유형 참여자: 만 18세 이상69세 이하 중위소득 50%이하의 저소득층 장애인
+ * 중위소득 50%이하의 저소득층 여부는 기초생활수급자(생계, 주거, 의료, 교육) 혹은 차상위 계층여부 등으로 확인할 수 있음
+
+
+index = 162
+servNm = 과학문화 바우처 지원
+trgterIndvdlArray = 장애인, 저소득, 한부모·조손
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00004658&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 아래의 경제적, 지역적, 기타 사회적 배려 계층을 대상으로 지원합니다. 
+ 
+기초생활수급자, 차상위계층 
+도서벽지학교 
+경증 장애인, 한부모가정, 조손가정, 다문화가정
+
+
+index = 163
+servNm = 장애인 신규고용장려금
+trgterIndvdlArray = 장애인
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00004659&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 소규모 사업주*가 2022년 1월 1일 이후 장애인 근로자를 신규 고용하여 6개월 이상 고용을 유지한 경우 최대 12개월 간 신규고용장려금을 지원합니다.
+ * 소규모 사업주란 상시 근로자 수가 5인이상 ~ 50인 미만인 경우 
+
+최저임금이상자 또는 최저임금적용제외 인가를 받은 장애인에 한해 지원합니다.
+고용보험법에 따른 고용보험 가입대상으로 고용보험에 가입하지 않은 장애인근로자는 제외됩니다.
+「장애인고용법」 제30조에 따른 장애인고용장려금을 지원받는 경우, 동일 근로자에 대하여 신규고용장려금 중복지원이 불가합니다.
+
+
+index = 164
+servNm = 농어가목돈마련저축 저축장려금 지급
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 노년, 중장년, 청년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000023&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 농어민, 축산업자, 임업인 등을 지원합니다. 
+
+참고: 「농어가목돈마련저축에 관한 법률」 시행령 제2조
+
+
+index = 165
+servNm = 아이돌봄 서비스
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 영유아, 아동, 청소년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000024&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 정부 지원 대상은 아동의 연령이 만 12세 이하, 부모의 취업 등으로 양육공백이 발생, 가구 기준중위소득 150% 이하 인 가정을 대상으로 합니다. 
+가구 소득에 따라 서비스 유형별 정부 지원의 범위가 달라지며 소득 기준을 초과하는 경우에도 자부담하여 서비스를 이용할 수 있습니다. 
+ * 보육료, 유아학비, 가정 양육수당과 중복지원하지 않습니다.
+
+
+index = 166
+servNm = 공동육아나눔터 운영
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 영유아, 청소년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000028&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 취학 전후의 아동 및 부모에게 지원합니다.
+
+
+index = 167
+servNm = 육아종합지원서비스 제공
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 영유아
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000030&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 중앙(1개소)과 지방육아종합지원센터(18개소)를 지원합니다.
+
+
+index = 168
+servNm = 노후준비서비스
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 청년, 청소년, 중장년, 노년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000031&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 일반 국민 모두가 해당합니다.
+
+
+index = 169
+servNm = 실종아동 등 보호 및 지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 청소년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000032&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 지원대상
+
+
+가족을 잃어버린 실종아동(실종당시 18세 미만 아동), 실종장애인(지적/자폐성/정신) 본인과 그 가족, 치매환자를 지원합니다. 
+실종아동을 신고(국번없이 182, 경찰청) 후 연계하여 지원합니다.
+
+
+index = 170
+servNm = 노인복지민간단체지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 노년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000033&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 지원대상
+
+
+노인복지 및 효행관련 사업을 3년 이상 수행한 경험이 있는 단체이고, 전국적으로 사업수행이 가능한 단체로 선정된 단체를 지원합니다. 
+
+
+
+
+선정기준
+
+
+노인복지관련 전문가로 사업심사위원회를 구성하여 1, 2차 심사를 거쳐 선정합니다.
+
+
+index = 171
+servNm = 청소년특별지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 청년, 청소년, 아동
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000078&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 만 9세 이상부터 만 18세 이하의 청소년을 지원합니다.
+ ※ 「초중등 교육법」제2조에 따른 학교에 재학 중인 만 18세 초과 만 24세 이하의 청소년도 포함 
+
+청소년복지 지원법 제19조 제1항에 따른 교육적 선도 대상자 중에서 비행이나 일탈행동을 예방할 필요가 있는 청소년을 지원합니다.
+학교 밖 청소년 지원에 관한 법률 제2조제2호에 따른 학교 밖 청소년을 지원합니다.
+보호자가 없거나, 실질적으로 보호자의 보호를 받지 못하는 청소년을 지원합니다.
+
+
+index = 172
+servNm = 아동안전지킴이
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 중장년, 노년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000748&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 요보호 아동, 청소년, 여성 보호 및 취업 취약계층(노년층)을 지원합니다.
+
+
+index = 173
+servNm = 청소년복지시설 운영 지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 청년, 아동, 청소년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000751&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 만 9세 ~ 만 24세가정 밖의청소년을 지원합니다.
+
+
+index = 174
+servNm = 학교 밖 청소년 지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 청소년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000948&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 만 9~24세의 학교 밖 청소년을 지원합니다.
+
+
+index = 175
+servNm = 유아학비 지원(만3~5세 누리과정 지원)
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 영유아
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000969&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 국공립 및 사립유치원에 다니는 만 3~5세 유아를 지원합니다. 
+
+'18년 1~2월생으로서 유치원 조기 입학을 희망하여 만 3세반에 취원한 유아도 지원 대상
+취학대상 아동('14.1.1~12.31.출생)이 취학을 유예하는 경우, 유예한 1년에 한하여 만 5세 유아 무상교육비 지원(취학유예 통지서 제출)
+유아학비 지원자격이 있고 사립유치원에 다니는 법정저소득층(기초생활수급자, 차상위계층, 한부모 가정) 유아에 대하여 추가 저소득층 유아학비 지원
+
+아래의 경우 지원대상에서 제외됩니다. 
+
+대한민국 국적을 가지지 않은 유아(난민 및 「재한외국인 처우 기본법」에 따라 법무부장관이 인정한 '특별기여자 등'은예외적으로 인정)
+가정 양육수당 및 어린이집 보육료를 지원받고 있는 유아
+유치원 이용시간에 아이돌봄서비스 등과 중복지원 불가
+해외체류 기간이 31일째 되는 일 유아학비 지원자격 중지
+
+
+index = 176
+servNm = 내일이룸학교 운영
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 청년, 청소년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001026&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 만 15세 이상 24세 미만의 학교 밖 청소년에게 지원합니다.
+
+
+index = 177
+servNm = 지역사회서비스 투자사업
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 아동, 청소년, 청년, 영유아, 노년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001061&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 기준 중위소득이 140% 이하인 경우에 지원합니다.
+단, 아동청소년 심리지원사업(중위소득160%), 노인대상사업(기초연금수급자), 장애인보조기기렌탈비만아동건강관리서비스(소득기준없음) 별도 기준 적용
+
+
+index = 178
+servNm = 취학전 아동 실명예방
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 영유아, 청소년, 아동
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001081&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 이동 정밀검진 대상자는 다음과 같습니다.
+
+영유아 건강검진 시각이상 의심 판정자
+전년도 및 당해 연도 영유아 건강검진 미실시자
+안과가 없는 지역 외 보건소 요청으로 안과검진을 필요로 하는 지역 등
+다문화가정 어린이
+드림스타트(전국 229개) 등 취약 어린이
+조손가정 어린이
+보호자 희망 및 보건소에 의해 의뢰된 어린이 등
+
+
+
+
+
+저소득 가정 눈 수술비 지원 대상자는 다음과 같습니다.
+
+눈 수술이 필요하다는 진단을 받은 만 10세 미만의 어린이 중,
+- 국민기초생활보장법 에 따른 수급자 또는 차상위계층
+- 2021년도 기준 중위소득 80%이하 대상
+
+
+
+
+
+약시 추후관리 대상자는 다음과 같습니다.
+
+2013년 1월 1일 이후 출생한 어린이 중 눈 질환으로 인해 가림치료가 필요하다는 의사의 진단을 받은 어린이
+
+
+
+
+
+저시력 어린이 시각재활 대상자는 다음과 같습니다.
+
+초등학생 어린이 중,
+- 좋은 눈의 최대교정시력이 0.05이상, 0.3 이하인 어린이
+- 시야각이 10도 이내인 어린이
+
+
+index = 179
+servNm = 산재근로자직장복귀지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 청년, 중장년, 노년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001085&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 산업재해 장해등급 제1급~제12급에 해당하는 소속 재해자를원래 다니던직장에 복귀시켜 고용을 유지한 사업주를 지원합니다.
+
+
+index = 180
+servNm = 산재근로자복지지원(장학금)
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 청년, 청소년, 중장년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001095&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 장학금 선발신청서 접수일을 기준으로 산업재해*로 인정받은 근로자 중에서 아래 사항에 해당하고 무상교육 비대상 학교에 재학중인 고등학생이 신청대상입니다. 
+* 참고: 산업재해보상보험법
+ 
+
+사망근로자의 배우자,자녀
+상병보상연금 수급자 본인,배우자, 자녀
+장해등급 1~7급에 해당하는 본인, 배우자, 자녀
+5년 이상 장기요양자 중에서 이황화탄소(CS₂) 질병 판정자 본인, 배우자, 자녀
+
+교육과학기술부장관이 인정하는 고등학교 학력을 인정하는 학교에 입학 또는 재학중인 자를 지원합니다. 
+
+정규고등학교
+고등공민학교, 고등기술학교
+특수학교
+평생교육시설
+
+
+index = 181
+servNm = 주택담보노후연금보증
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 노년, 중장년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001108&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 지원대상 및 선정기준
+
+
+합산공시가격 9억원 이하의 주택을소유한 분으로 만 55세 이상이면 지원합니다. 부부인 경우 연장자 기준입니다.
+부부기준으로 보유주택의 합산가격이 9억원 이하이면 거주하는 주택으로 주택연금을 가입하고, 9억원을 초과하면 2주택을 보유한 경우에 한하여 3년 이내에 담보주택 이외의 주택을 처분한다는 조건으로 가입할 수 있습니다.
+대상주택은 주택법상 주택 및 노인복지주택, 주택면적 1/2 이상인 복합용도주택, 주거 목적의 오피스텔입니다.
+
+
+index = 182
+servNm = 어르신 문화프로그램운영
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 중장년, 노년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001111&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 50세 이상의 어르신이면 지원 가능합니다.
+
+
+index = 183
+servNm = 이주배경 청소년 지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 청소년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001114&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 다문화가족의 청소년, 탈북 청소년, 중도입국 청소년 등 이주배경청소년을지원합니다.
+
+
+index = 184
+servNm = 차상위본인부담경감대상자지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 노년, 중장년, 청소년, 영유아, 아동, 청년, 구분없음(전생애)
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001119&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 희귀난치성중증 질환자, 만성 질환자, 18세 미만인 자 중 소득인정액 기준과 부양의무자 기준(부양 요건)을 모두 갖춘 사람에게 지원합니다. 
+
+희귀난치성중증 질환자: 보건복지부 장관이 고시하는 희귀난치성 질환 또는 중증 질환(암, 중증화상)을 가진 경우* 참고: 본인일부부담금 산정특례에 관한 기준(보건복지부 고시 제2018-255호) 제9조
+만성 질환자: 희귀난치성 질환 또는 중증 질환 외의 질환으로 6개월 이상 치료받고 있거나, 6개월 이상 치료를 필요로 하는 경우
+18세 미만인 자: 18세가 되는 날이 속하는 해까지 지원 * 다만, 18세 이상 20세 미만의 중고등학교 재학생은 20세가 되는 날이 속하는 달까지 인정하고, 20세가 되기 전에 중고등학교를 졸업하는 경우에는 졸업하는 달까지 인정
+
+
+index = 185
+servNm = 교육복지우선지원사업
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 아동, 청소년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001120&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 다음 조건에 해당하는 자로서 종합적인 교육지원이 필요하다고 사업학교의 장이 인정하는 자를 지원합니다. 
+
+교육급여 수급권자
+차상위 계층의 자녀
+보호대상자인 한부모가족의 자녀
+북한이탈주민 보호대상자의 자녀
+다문화가족의 자녀
+특수교육 대상자
+그 밖에 교육감이 정하는 학생
+
+
+index = 186
+servNm = 진폐근로자보호
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 노년, 중장년, 청년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001124&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 광업 분진작업 종사하였거나 종사하는진폐근로자와 그 유족에게 지원합니다.
+
+
+index = 187
+servNm = 산재근로자직업훈련
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 청년, 노년, 중장년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001125&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 사업 신청일 현재 직업이 없는 산재 제1급~제12급인 산재근로자 중 장해판정일로 부터 3년 이내이어야 합니다.
+
+
+index = 188
+servNm = 자활근로(기초, 차상위)
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 청년, 중장년, 노년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001138&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 국민기초생활보장법에 따른 수급자 및 차상위 계층을 지원합니다.
+
+
+index = 189
+servNm = 성매매 피해아동청소년 통합지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 아동, 청소년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001139&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 주민등록상 20세 미만의 성매매 피해 아동청소년을 지원합니다. 
+
+검찰, 경찰에서 성매매 피해아동청소년으로 통보된 청소년
+아웃리치, 사이버 또래상담실, 성매매피해상담소, 1388, 1366, (가출)청소년쉼터 등 유관기관에서 연계된 성매매 피해아동청소년
+
+
+index = 190
+servNm = 방과후보육료지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 청소년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001140&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 차상위 이하(법정 저소득층 포함) 및 장애아동에 해당되는 취학아동이 방과후에 어린이집을 일일 4시간 이상 이용하는 경우 지원합니다.
+
+
+index = 191
+servNm = 지역사회 청소년통합지원체계(청소년안전망)
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 청소년, 청년, 아동
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001141&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 만 9~24세의 청소년에게 지원합니다.
+
+
+index = 192
+servNm = 청소년 매체활용 역기능 해소사업(청소년인터넷·스마트폰 과의존 치료비 지원)
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 청년, 청소년, 아동
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001145&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 인터넷스마트폰 이용습관 진단 전수조사 결과 과의존위험군으로 진단 받은청소년에게 치유서비스를 지원합니다.
+과의존위험군 청소년을 대상으로 치료비를 지원합니다.
+만 19세 미만 소득수준에 관계없이 전체 청소년을 대상으로 합니다.
+기준 중위소득 50% 이하, 한부모가정, 소년소녀가장 등 취약계층 가정의 청소년을 우선 지원합니다.
+
+
+index = 193
+servNm = 쉼터퇴소청소년 자립지원수당 지급
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 청소년, 청년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001146&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 청소년쉼터 퇴소자를 지원합니다.
+
+
+index = 194
+servNm = 그 밖의 연장형 보육료 등 지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 영유아
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001147&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 지원대상 및 선정기준
+
+
+그 밖의 연장형 보육료는 만 0~2세 종일반 보육료(기본보육시간 보육료 지원아동은 휴일보육료만 지원가능), 만 3~5세 누리과정 보육료, 다문화 보육료 및 장애아 보육료(취학전) 지원 아동을 지원합니다.
+
+만 12세 이하 취학아동 중 법정 저소득층과 장애아동(복지카드 소지자)*에 대해서는 야간연장 보육료에 한해 지원 가능
+복지카드 미소지자인 취학 장애아동은 특수교육대상자 진단평가 통지서 제출시 만 8세까지 지원
+
+
+야간12시간 보육료, 24시간 보육료는 24시간 지정 어린이집을 이용하는 경우에만 지원합니다.
+원장 겸 교사의 자녀는 그 밖의 연장형 보육료 지원대상에서 제외됩니다.
+야간12시간 보육료는 주간에 어린이집을 이용하지 않는 아동이 야간에 이용하는 경우에만 지원을 받을 수 있으며 취학아동은 지원이 불가합니다.
+24시간 보육료는 부모가 야간에 경제활동에 종사하는 가정, 한부모 또는 조손가정 등의 아동으로 주간 보육도 이용하고 야간보육이 불가피하다고 판단되는 아동을 지원합니다.
+
+
+index = 195
+servNm = 근로·자녀장려금
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 청년, 노년, 중장년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001148&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 전년도 6월 1일 현재 가구원 모두가 소유하고 있는 재산 합계액이 2억원 미만이면 신청 가능합니다.(가구원은신청자, 배우자, 부양자녀, 동일주소에서 생계를 같이하는 직계존비속 등 포함)
+
+
+index = 196
+servNm = 노숙인등 복지지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 청년, 노년, 중장년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001152&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 노숙인 등의 복지 및 자립지원에 관한 법률제 2조에 따른 노숙인을 대상으로 합니다.
+
+
+index = 197
+servNm = 재취업지원서비스 시행지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 중장년, 노년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001156&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 재취업지원서비스를 제공하는 의무대상 사업주와서비스를 제공하고자 하는 사업주를 지원합니다.
+
+
+index = 198
+servNm = 지역자활센터 운영
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 노년, 중장년, 청년, 청소년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001157&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 지원대상 및 선정기준
+
+
+지역자활센터 중 지역사회복지사업 및 자활지원사업의 수행능력과 경험 등이 있는 사회복지법인 등 비영리법인과 단체*를 지원합니다.
+* 비영리민간단체지원에 관한 법률 2조에 등록된 단체로 정관 및 규약상 해당 사업을 수행할 수 있는 단체
+
+
+index = 199
+servNm = 치매치료관리비지원사업
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 노년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001158&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 해당 지역 주민(주민등록 기준) 중 보건소(치매상담센터)에 치매환자로 등록된 자로서 치매치료관리비 지원을 받고자 하는 자가 선정기준을 만족하면 지원합니다.
+
+
+index = 200
+servNm = 기초연금
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 노년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001164&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 만 65세 이상인 어르신으로서소득인정액이 매년 보건복지부장관이 정하여 고시하는 금액 이하인 사람에게지원합니다. 
+
+단, 직역연금 수급권자와 그 배우자는 기초연금 지급대상에서 제외하나, 특례대상과 예외대상에 해당하는 경우는 수급권자의 범위에 포함
+
+
+index = 201
+servNm = 아동수당 지급
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 아동, 청소년, 영유아
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001171&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 만 8세미만 아동(0~95개월)에게 지급합니다.
+
+
+index = 202
+servNm = 독거노인종합지원센터운영
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 노년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001181&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 지원대상 
+
+독거노인 관련 사업의 원활한 추진을 위해 관련 전문성을 보유한 기관을 선정하여 지원합니다.
+
+
+index = 203
+servNm = 다문화보육료지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 영유아
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001183&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 다문화가족 자녀 중 초등학교 취학전 만 0세~만 5세아를 지원합니다.
+
+
+index = 204
+servNm = 긴급복지 해산비지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 임신 · 출산
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003178&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 긴급지원(주급여)을 받는 가구 중 가구 구성원이 출산(출산 예정도 포함)한 경우에 지원합니다. 
+조산 및 분만 후의 필요한 조치와 보호를 위한 지원합니다. 
+위기 사유란 구체적으로 다음과 같은 경우를 말합니다. 
+ 
+주소득자가 사망, 가출, 행방불명, 구금시설에 수용되는 등의 사유로 소득을 상실한 경우 
+중한 질병이나 부상을 당한 경우 
+가구구성원으로부터 방임 또는 유기되거나 학대 등을 당한 경우 
+가정폭력 또는 가구 구성원으로부터 성폭력을 당한 경우 
+화재 또는 자연재해 등으로 인하여 거주하는 주택 또는 건물에서 생활하기 곤란한 경우 
+주소득자 또는 부소득자의 휴업, 폐업 또는 사업장의 화재 등으로 인하여 실질적인 영업이 곤란하게 된 경우 
+주소득자 또는 부소득자의 실직으로 소득을 상실한 경우 
+보건복지부령으로 정하는 기준에 따라 지방자치단체의 조례로 정한 사유가 발생한 경우 
+ 
+그 밖에 보건복지부 장관이 정하여 고시하는 경우는 다음과 같습니다. 
+ 
+주 소득자와 이혼한 때 
+단전된 때 (전류 제한기를 부설한 경우 포함) 
+교정시설에서 출소한 자가 생계가 곤란한 경우 
+가족으로부터 방임유기 또는 생계 곤란 등으로 노숙을 하는 경우 
+복지사각지대 발굴대상자, 통합사례관리 대상자 또는 자살고위험군으로서 관련 부서(기관)로 부터 생계가 어렵다고 추천을 받은 경우 
+(한시) 코로나19로 인하여 주소득자 또는 부소득자가 무급휴직 등으로 소득을 상실한 경우 
+(한시) 코로나19로 인하여 자영업자, 특수형태 근로종사자, 프리랜서인 주소득자 또는 부소득자의 소득이 급격히 감소한 경우
+
+
+index = 205
+servNm = 청소년치료재활센터 운영
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 청소년, 아동
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003185&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 만 9세~만 18세(만 9세 입교일 기준, 만 18세 수료일 기준)로 정서와 행동 영역에서 우울, 불안, 주의력결핍과잉행동장애(ADHD) 등의 문제로 학교생활이나 대인관계에서 어려움을 겪는 청소년과 부모를 지원합니다.
+
+
+index = 206
+servNm = 청소년활동지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 청소년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003187&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 청소년의 역량 개발을 위한 보편적 사업으로 전체 청소년을 대상으로 지원합니다.
+
+
+index = 207
+servNm = 국가장학금(Ⅰ, Ⅱ유형)
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 청년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003197&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 대한민국 국적을 소지한 국내 대학의 학자금지원 8구간 이하 대학생 중 최소한의 성적 및 이수학점 기준을 충족하는 경우에 지원합니다.* 단, Ⅱ유형은 대학 자체기준으로 선발
+
+
+index = 208
+servNm = 청소년동반자프로그램 운영
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 아동, 청소년, 청년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003200&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 만 9~24세 청소년을 대상으로 지원합니다.
+
+
+index = 209
+servNm = 청소년사이버상담센터 운영
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 청소년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003204&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 청소년기본법에 따른만 9~24세 청소년과 부모, 보호자, 청소년 지도자 등을 지원합니다.
+
+
+index = 210
+servNm = 중장년 기술창업센터 지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 노년, 중장년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003205&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 만 40세 이상 (예비)창업자를 지원합니다.
+
+
+index = 211
+servNm = 인플루엔자 국가예방접종 지원사업
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 아동, 영유아, 청소년, 노년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003213&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 만 65세이상 어르신(1957.12.31.이전 출생자)을 지원합니다.
+생후6개월~만13세 어린이(2009.1.1.~2022.8.31.출생자)를 지원합니다. 
+
+접종일 기준 생후 6개월 이상인 경우만 접종 가능합니다.
+
+
+
+임신부는임신 여부를 확인할 수 있는 산모 수첩, 고운맘카드 등을 지참하여야합니다.
+
+
+index = 212
+servNm = 재해위로금지급
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 노년, 중장년, 청년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003214&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 자연현상으로 인하여 발생한 재해나 거주하고 있는 주택의 화재로 선포된 특별재난지역의 인명 또는 재산상의 피해를 입은 독립유공자, 국가유공자, 518민주유공자, 특수임무유공자 또는 각각 대상자의 유가족 중 선순위자 1인에 한하여 지원합니다.
+* 감염병으로 특별재난지역이 선포된 경우 특별재난지역 외의 지역 및 선포 이전의 동일한 사망피해에 대해서도 재해위로금 지급
+
+
+index = 213
+servNm = 보호종료아동 주거지원 통합서비스
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 청소년, 청년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003221&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 아동양육시설, 공동생활가정, 가정위탁 보호종료 5년 이내 아동 중 선정기준을 모두 충족하는 경우 지원합니다.
+
+
+
+
+
+선정기준
+
+
+한국토지주택공사(LH) 매입전세임대주택, 일반 월세주택(반전세 포함) 거주 중인 자(계약 완료 후 2달 이내 거주 예정인 자 포함)를 지원합니다.
+재계약을 포함하여 계약 잔여기간이 최소 1년 이상인 자를 지원합니다.
+
+
+index = 214
+servNm = 입양아동 양육수당 지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 청소년, 영유아, 아동
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003235&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 입양특례법상 허가를 받은 입양기관을 통해서 법에서 정한 요건과 절차를 갖추어 국내에 입양한 가정에 지원합니다.
+
+
+index = 215
+servNm = 청소년전화1388 및 모바일문자상담 운영
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 청소년, 아동, 청년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003236&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 만 9~24세 청소년을 지원합니다.
+
+
+index = 216
+servNm = 노후긴급자금 대부사업
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 중장년, 노년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003241&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 만 60세 이상의 국민연금 수급자를 지원합니다. 
+
+실 소요액으로 연간 연금수령액의 2배 이내(최고 1,000만원)
+
+
+index = 217
+servNm = 어린이 국가예방접종 지원사업
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 영유아, 아동, 청소년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003242&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 만 12세 이하 어린이에게 지원합니다.
+
+2021년 기준, 2008년 1월 1일 이후 출생자
+
+
+index = 218
+servNm = 국민취업지원제도
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 청년, 청소년, 중장년, 노년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003245&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 저소득 구직자, 청년, 경력단절여성 등 취업 취약계층을지원합니다.
+
+
+index = 219
+servNm = 청소년산모 임신·출산 의료비 지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 임신 · 출산, 청소년, 아동
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003246&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 임신확인서로 임신이 확인된 만 19세 이하의 청소년산모에게 지원합니다.
+
+
+index = 220
+servNm = 만0-5세 보육료지원사업
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 영유아
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003250&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 어린이집을 이용하는 만 0~5세 아동의 보육료를 지원합니다.
+2021년 만 0세에서 5세아동의 연령구분은 다음과 같습니다.(22년 2월까지 적용)
+
+만 0세 : 20. 01. 01. 이후 출생 아동
+만 1세 : 19. 01. 01. ~ 19. 12. 31.까지의 출생 아동
+만 2세 : 18. 01. 01. ~ 18. 12. 31.까지의 출생 아동
+만 3세 : 17. 01. 01. ~ 17. 12. 31.까지의 출생아동
+만 4세 : 16. 01. 01. ~ 16. 12. 31.까지의 출생 아동
+만 5세 : 15. 01. 01. ~ 15. 12. 31.까지의 출생 아동(취학유예아동인 경우 14. 1. 1. ~ 14. 12. 31.)
+취학아동(방과후보육료) : 14. 01. 01. ~ 08. 12. 31.까지의 출생 아동
+
+
+단, 유치원과 어린이집 등에서 누리과정을 제공 받는 유아에 대한 무상보육기간은 3년을 초과할 수 없습니다.
+
+
+index = 221
+servNm = 노인보호전문기관
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 노년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003252&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 학대피해노인 및 가족, 학대행위자를 지원합니다.
+
+
+index = 222
+servNm = 청소년방과후아카데미운영지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 청소년, 아동
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003254&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 방과 후 돌봄이 필요한 취약계층 청소년(초4~중3)을 대상으로 합니다. 
+연령기준은 만 9세 이상~ 만 15세 이하입니다.
+
+
+index = 223
+servNm = WEE 클래스 상담지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 청소년, 아동
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003263&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 초중고 학교 재학생 중 학교 부적응 학생 및 위기학생, 일반학생이 지원대상입니다.
+
+
+index = 224
+servNm = 일반 상환 학자금대출
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 청년, 중장년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003276&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 국내대학 또는 대학원에 재학중이거나,입학할 예정인 대한민국 국민을 대상으로 지원합니다.
+
+
+index = 225
+servNm = 취업 후 상환 학자금대출
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 중장년, 노년, 청년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003277&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 지원대상  
+
+교육부 또는한국장학재단과 협약을 체결한 국내 고등교육기관 재학 또는 입학하는학부생 및일반대학원생(전문대의 전문기술석사 이수 중인 자 포함)을지원합니다.
+
+
+index = 226
+servNm = 전립선등 노인성질환 예방관리
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 중장년, 노년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003280&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 지역 보건소 및 전립선 관리 환경이 취약한 도서벽지등에 거주하는 55세 이상 남성 중 전립선 비대 의심자를 지원합니다.
+
+
+index = 227
+servNm = 다문화가족 자녀 언어발달지원서비스
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 영유아, 청소년, 아동
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003282&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 아래의 대상을 우선선정합니다. 
+ 
+국민기초생활보장 수급자, 기준 중위소득 52% 이하인 가정 
+한부모가정, 조손가정, 맞벌이가정, 다자녀가정(3자녀 이상), 가구원에 장애가 있거나 요양이 필요한 질병이 있는 경우 
+섬벽지 지역 거주가정 
+위 우선지원 기준을 초과하더라도 시군구청장이 필요하다고 판단되는 경우(예 : 휴폐업한 영세영업자, 실직된 임시일용직 등 저소득 무직가구 등에 대하여 우선 선정 가능)
+
+
+index = 228
+servNm = (산재근로자)케어센터지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 중장년, 노년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00004648&wlfareInfoReldBztpCd=01
+tgtrDtlCn = (경기케어센터) 
+
+입소가 결정된 날 현재 만 60세 이상의 장해등급* 제1~3급에 해당하는 경우* 참고: 「산업재해보상보험법」
+만 60세 미만 산재장해등급 제1~3급 해당자 중 운영위원회에서 입소가 가능하다고 인정하는 경우
+
+(태백케어센터) 
+
+입소가 결정된 날 현재 만 60세 이상의 진폐장해인, 비진폐장해인(만성폐쇄성폐질환 급여수급자, 진폐의증자)
+만 60세 미만이나 운영위원회에서 입소가 가능하다고 인정하는 자
+
+
+index = 229
+servNm = 청소년성문화센터설치운영
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 아동, 청소년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00004650&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 유치원, 초/중/고등학생 및 교사, 학부모 등에게 지원합니다.
+
+
+index = 230
+servNm = 첫만남이용권
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 임신 · 출산, 영유아
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00004656&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 2022년 1월 1일 이후 출생아로서 출생 신고되어 정상적으로 주민등록번호를 부여받은 아동을 지원합니다.
+만 0세의 영유아를 대상으로 합니다.
+
+
+index = 231
+servNm = 영아수당 지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 영유아
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00004657&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 최대 24개월 미만의 영유아를 지원합니다.
+
+
+index = 232
+servNm = 고령자 고용지원금
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = 중장년, 노년
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00004660&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 60세 이상인 근로자의 수가 증가하는 사업주를 지원합니다.
+
+
+index = 233
+servNm = 정신건강복지센터운영(아동청소년정신건강증진사업 포함)
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003169&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 중증 정신질환자를 비롯한 다음의 아동ㆍ청소년 및 정신건강 관계자는 해당 지역 정신건강복지센터를 방문하여 지원을 신청할 수 있습니다. 
+
+아동청소년 정신건강증진사업 대상자 
+
+- 지역 사회 내 만18세 이하 아동청소년(미취학 아동포함)
+- 지역사회 내 취약계층(북한이탈 주민, 다문화가정, 조손가정, 한부모가정)아동청소년
+- 청소년쉼터(가출청소년 일시 보호소) 청소년, 공동생활 가정, 아동복지시설의 아동청소년 등
+- 부모, 교사, 시설 종사자 등 아동ㆍ청소년 정신건강 관계자
+
+
+index = 234
+servNm = 장애인 창업점포 지원사업
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003170&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 장애인 예비 창업자 및 업종전환자를 대상으로 지원합니다.
+
+
+index = 235
+servNm = 긴급복지 의료지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003179&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 수술 또는 입원이 필요한 심각한 질병이나 부상으로 인하여 발생한 의료비를 감당하기 어려운 분을 대상으로 합니다. 
+
+지원 요청 후 사망한 분도 지원대상에 포함됩니다.
+단, 동일한 부상이나 질병에 대해 지원을 받은 분은 이전 지원 종료 후 2년이 경과하는 경우 재지원하실 수 있습니다.
+
+
+index = 236
+servNm = 산림복지일자리(산림서비스도우미)
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003182&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 신청일 현재 만 18세 이상으로 산림분야의 사회서비스일자리사업 지침에 해당하는 분을 지원합니다.
+
+
+index = 237
+servNm = 장애인 표준사업장 설립지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003183&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 장애인표준사업장을 설립, 운영하고자 하는 사업주를 지원합니다.
+장애인직업재활시설은 제외합니다.
+
+
+index = 238
+servNm = 초등돌봄교실
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003184&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 돌봄이 꼭 필요한 맞벌이, 저소득층, 한부모 가정 등의 초등학생을 대상으로 돌봄서비스를 제공합니다.
+
+초등돌봄교실 : 1~2학년 중심
+* 3학년 이상의 경우, 1~2학년 학생을 수용한 후 추가 수용이 가능한 경우 학교여건에 따라 우선순위를 정해 수용
+방과후 연계형 돌봄교실 : 3~4학년 학생 중심
+* 방과후학교 프로그램에 1~2개 이상 참여하면서 초등돌봄교실(오후돌봄)을 이용하지 않는 학생
+
+
+index = 239
+servNm = 제대군인 대부지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003193&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 군에서 10년 이상 복무하고 전역한 제대군인에게 지원합니다.
+주택구입(신축) 주택임차 대부의 경우 대부신청일 기준 무주택자에게 지원합니다.* 주택을 구입(신축)한 경우에는 부부공동명의로 소유권 등기를 한 경우에도 제대 군인 본인의 지분(50% 이상)을 담보로 대부를 지원합니다.
+아파트 분양의 경우, 아파트 분양 대상 결정자 중 희망자에게 대출을 지원합니다.
+농업에 종사하거나 종사하고자 하는 사람으로서 농토구입 예정이신 분께 농토구입비에 대한 대출을지원합니다.(단, 본인 및 직계 존비속이 직접 경작하는 경우에 한함)
+소규모 사업을 운영하고 있거나 신규로 운영하고자 하는 본인과 배우자(법인사업 등 일부업종 제외)에게 사업비 대출을 지원합니다.
+신규 또는 기존의 개인택시 사업자에게 차량 구입비, 차고 시설비 등의 소요자금에 대한 대출을 지원합니다.
+재해 복구비, 의료비, 경조비 및 전세보증금 인상 등으로 긴급 가계자금이 필요한 경우에 대출을 지원합니다.
+본인 또는 자녀가 국내의 전문대학 이상(대학원 포함)에 입학 또는 재학 중일 때에 학자금 대출을 지원합니다.(가구당 인원 제한없이 지원가능)
+
+
+index = 240
+servNm = 시설급여
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003194&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 장기요양 1~5등급을 받은 65세 이상 노인 및 노인성 질병을 가진 65세 미만 국민(건강보험 가입자 및 의료급여 적용자)에게 지원합니다.
+
+
+index = 241
+servNm = 도서민 여객선 운임지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003196&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 지원대상 
+
+
+제주도 본도 및 연도연륙교를 제외한 전국 도서 지역에 거주하는 주민을 지원합니다.
+
+
+index = 242
+servNm = 창작준비금 지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003199&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 예술활동증명을 완료한 예술인을 지원합니다.
+당해연도 최초사업 공고일 이후부터 당해연도 내 구직급여를 미수급한 예술인을 지원합니다.
+신청인 및 배우자의 소득인정액이 기준중위소득 120%이하인 예술인을 지원합니다.
+
+
+index = 243
+servNm = 주거급여(맞춤형 급여)
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003201&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 소득인정액 기준 이하의 가구가 안정된 주거생활을 할 수 있도록 실제임차료, 유지수선비 등을 지원합니다.
+주거급여가 불필요하거나, 타 법령 등에 의하여 주거를 제공받고 있는 수급자에 대해서는 주거급여를 지급하지 않습니다.
+
+
+index = 244
+servNm = 취약농가인력지원(영농도우미, 행복나눔이(가사도우미) 지원)
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003207&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 사고를 당했거나 질병이 발생하여 영농활동이 곤란한 농업인에게 영농도우미를 지원합니다.
+농촌에 거주하는 65세 이상의 가구(독거노인 포함)와 중위소득 50% 이하의 수급자 가정, 결혼이민여성, 다문화 가정, 조손 가구, 장애인 가구에 행복나눔이를 지원합니다.
+
+
+index = 245
+servNm = 장애인기업 성장기반 구축
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003210&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 장애인 기업 등록증을 보유한 기업을 대상으로 합니다.
+
+
+index = 246
+servNm = 납북피해자 지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003212&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 소유주택이 없는 전후 납북피해자를 지원합니다.
+한국토지주택공사에서 납북피해자를 대상으로 하는 특별공급 주택을 배정하여 통일부에 추천요청을 하면, 통일부에서 공고를 하고 신청자가 제출한 서류를 검토하여 대상자를 추천합니다.
+
+전후납북피해자 여부, 무주택 여부 등을 확인 후 기관 추천
+대상자가 임대주택 우선공급 신청을 위해 납북피해자 확인서 발급을 요청하면, 제출서류 검토 후 확인서 발급
+
+
+index = 247
+servNm = 한센인 피해자지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003215&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 한센인피해사건진상규명위원회에서 피해자로 결정한 사람을 지원합니다.
+
+
+index = 248
+servNm = 버팀목전세자금대출
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003222&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 아래 소득기준을 충족하는 대출 신청일 현재 만19세이상인 무주택 세대주를 지원합니다.
+
+부부합산 연소득50백만원* 이하
+순자산 기준금액이 2.92억원 이하의 부양가족 및 기초생활수급자, 차상위계층, 한부모가정 중 세대주
+세대원 전원이 무주택인 경우
+* 단, 신혼부부, 2자녀 이상 가구, 혁신도시 이전 공공기관 종사자 등 6천만 원까지 허용
+
+
+대상주택은 다음과 같습니다.
+
+전용면적: 85㎡ 이하(수도권 제외한 도시지역이 아닌 읍면 지역은 100㎡ 이하)
+전세보증금: 수도권 3억원, 지방 2억원 이하
+* 2자녀이상 가구는 수도권 4억원, 지방3억원 이하
+
+
+index = 249
+servNm = 경계선지능아동 자립지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003223&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 아래에 해당하는 경계선지능아동과 돌봄 종사자에게 지원합니다.
+
+아동양육시설, 공동생활가정 내 경계선지능아동
+아동양육시설, 공동생활가정 돌봄종사자
+
+
+index = 250
+servNm = 모성보호육아지원(출산전후휴가(유산ㆍ사산휴가 포함) 급여, 육아휴직등 급여)
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003226&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 출산전후휴가(유산ㆍ사산휴가 포함), 육아휴직 및 육아기 근로시간 단축, 배우자 출산휴가를 사용한 근로자를 지원합니다.
+고용보험 가입 예술인노무제공자로서 출산한 여성을 지원합니다.
+
+
+index = 251
+servNm = 긴급복지 사회복지시설이용지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003229&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 위기사유 발생으로 사회복지사업법에 따른 사회복지시설에서 제공하는 서비스가 필요하다고 인정되는 사람에게 지원합니다. 
+위기 상황이란 구체적으로 다음과 같은 경우를 말합니다. 
+ 
+주소득자가 사망, 가출, 행방불명, 구금시설에 수용되는 등의 사유로 소득을 상실한 경우 
+중한 질병 또는 부상을 당한 경우 
+가구구성원으로부터 방임 또는 유기되거나 학대 등을 당한 경우 
+가정폭력 또는 가구 구성원으로부터 성폭력을 당한 경우 
+화재 또는 자연재해 등으로 인하여 거주하는 주택 또는 건물에서 생활하기 곤란한 경우 
+주소득자 또는 부소득자의 휴업, 폐업 또는 사업장의 화재 등으로 인하여 실질적인 영업이 곤란하게 된 경우 
+주소득자 또는 부소득자의 실직으로 소득을 상실한 경우 
+보건복지부령으로 정하는 기준에 따라 지방자치단체의 조례로 정한 사유가 발생한 경우 
+그 밖에 보건복지부 장관이 정하여 고시하는 경우 
+ 
+그 밖에 보건복지부 장관이 정하여 고시하는 경우는 다음과 같습니다. 
+ 
+주소득자와 이혼한 때 
+단전된 경우(전류 제한기를 부설한 경우 포함) 
+교정 시설에서 출소하여 생계가 곤란한 경우 
+가족으로부터 방임유기 또는 생계곤란 등으로 노숙을 하는 경우 
+복지사각지대 발굴대상자, 통합사례관리 대상자 또는 자살고위험군으로서 관련 부서(기관)로 부터 생계가 어렵다고 추천을 받은 경우 
+(한시) 코로나19로 인하여 주소득자 또는 부소득자가 무급휴직 등으로 소득을 상실한 경우 
+(한시) 코로나19로 인하여 자영업자, 특수형태 근로종사자, 프리랜서인 주소득자 또는 부소득자의 소득이 급격히 감소한 경우
+
+
+index = 252
+servNm = 영주귀국 사할린한인 정착비 및 시설운영지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003230&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 영주 귀국 사할린한인 1세 및 1세의 배우자, 직계비속1인과 그 배우자를 지원합니다.
+
+
+index = 253
+servNm = 사회적기업일자리창출사업
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003234&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 사회적기업, 예비사회적기업을 지원합니다.
+
+
+index = 254
+servNm = 고용복지플러스센터
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003239&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 구인 및 구직자를 대상으로 지원합니다.
+
+
+index = 255
+servNm = 보훈요양원 이용지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003243&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 보훈요양원에 입소하고, 아래 내용에 해당하는 대상자에게 지원합니다.
+
+독립유공자, 국가유공자, 518민주유공자, 특수임무유공자 본인 및 배우자, 유족 중 부모(선순위)
+고엽제후유의증환자 중 장애정도판정자 및 참전유공자 본인
+
+
+index = 256
+servNm = 국민임대주택공급
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003244&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 입주자모집공고일 현재 무주택세대구성원으로 소득 및 자산보유기준을 충족하는 자를 지원합니다.
+
+
+index = 257
+servNm = 재가급여
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003248&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 65세 이상 노인 및 노인성 질병을 가진 65세 미만 국민으로서 장기요양 1~5등급 또는 인지지원등급을 받은 사람을 지원합니다.
+
+
+index = 258
+servNm = 산림보호지원단
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003251&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 신청일 기준 현재 만 18세 이상인 자 중6개월 이상장기실업자, 저소득층, 장애인등 취업 취약계층을 우선선발하여 지원합니다.
+
+
+index = 259
+servNm = 가정양육수당 지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003253&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 어린이집, 유치원(특수학교 포함), 종일제 아이돌봄 서비스를 이용하지 않고 가정에서 영유아를 돌보는 경우에 지원합니다. 
+
+대한민국 국적 및 유효한 주민등록번호를 보유하였거나 재외국민*으로 등록관리되는아동에게 지원합니다. * 재외국민 출국자는 제외됩니다.
+자녀의 보육상황(가정양육어린이집유치원)에 따라 서비스 변경신청이 필요합니다.
+
+
+index = 260
+servNm = 외국인근로자 등 의료지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003256&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 노숙인, 외국인근로자 및 그 배우자와 자녀(만 18세 미만), 국적 취득 전 결혼이민자 및 그 자녀(만 18세 미만), 난민 및 그 자녀(만 18세 미만)로서 건강보험, 의료급여 등 각종 의료보장제도에 의해서 의료혜택을 받을 수 없는 자로 국내에 거주하는 외국인(노숙인의 경우 내국인)을 지원합니다.* 보건복지부 홈페이지 '외국인근로자 등 의료지원 사업안내' 참고
+
+
+index = 261
+servNm = 지역사회 통합건강증진사업
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003264&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 전국 시/도 및 시/군/구의 일반 주민을 지원합니다.
+일부 항목에 대해서는 소득수준에 따라 대상자를 선정합니다.
+
+
+index = 262
+servNm = 직업훈련생계비대부
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003266&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 고용노동부가 지원하는 훈련 중 총 140시간 이상 직업훈련을 받고 있는 비정규직근로자, 전직실업자, 무급휴직자, 피보험자인 자영업자로서가구별 연간 소득금액이 기준 중위소득의 80% 이하인 사람을지원합니다. 
+
+고용노동부가 지원하는 훈련은 지방자치단체 설치 공공직업훈련시설에서 실시하는 취업목적의 훈련도 포함함
+
+실업급여 수급중인 자는 제외합니다.
+
+
+index = 263
+servNm = 가정위탁아동 상해보험료 지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003268&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 가정위탁보호아동으로 결정된 아동, 연장보호아동, 일시위탁아동을 대상으로 지원합니다.
+
+
+index = 264
+servNm = 입양·가정위탁아동 심리치료 지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003270&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 국내입양, 가정위탁아동 중 과잉행동장애(ADHD), 정서불안장애 등으로 인해 상담, 치료가 필요한 아동에게 지원합니다.
+※ 만 18세 이상이더라도 고등학교 재학 중인 입양위탁아동과 가정위탁 연장보호아동도 포함
+
+
+index = 265
+servNm = 내집마련 디딤돌 대출
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003271&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 부부합산 연간급여(소득)가 6천만원(생애최초 주택구입자, 2자녀이상 가구 또는 신혼가구는 연소득7천만원) 이하이고,
+ 순자산 가액이 4.58억원이하이며, 대출신청일 현재 세대주를 포함한 세대원 전원이 무주택인 세대주 (만 30세미만 단독세대주 제외)를 대상으로 합니다.
+
+
+index = 266
+servNm = 의사상자지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003272&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 의사상자심사위원회에서 심사하고 결정합니다.
+
+아래의 요건을 충족하는 경우 대상자로 인정됩니다.
+ 직무 외의 행위로
+ 자신의 생명 또는 신체 상의 위험을 무릅쓰고
+ 급박한 위험이나 재해에 처한 다른 사람의 생명, 신체, 재산을 구하기 위한 
+ 직접적이고 적극적인 행위를 하다가  사망하거나 부상을 입은 사람
+아래의 요건을 충족하는 경우에는 대상자에서 제외됩니다.
+ 자신의 행위로 위해에 처한 사람을 구조하다가 사망 부상한 경우 구조 또는 그와 밀접한 행위와 관련없는 자신의 중대한 과실이 직접적인 원인이 되어 사망하거나 부상을 입은 사람
+
+
+index = 267
+servNm = 범죄피해자에 대한 경제적 지원 사업
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003275&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 범죄피해자는 타인의 범죄행위로 피해를 당한 본인 및 그 배우자(사실상의 혼인관계를 포함), 조부모, 부모, 자녀 등 4촌 이내의 친족이 해당합니다.
+범죄피해의 구체적인 대상자는 다음과 같습니다.
+
+불법 행위로 범죄피해를 입은 경우
+국내에서 발생한 범죄
+범죄피해자가 범죄행위 당시 대한민국 국민이거나 대한민국에 적법하게 체류할 수 있는 자격을 가진 외국인일 것(피해자와 가해자가 모두 외국인인 경우 범죄피해자는 외국인 등록또는 국내거소신고를 마쳐야함)
+범죄피해자에게 범죄의 발생 및 확대에 중대한 귀책사유가 없을 것
+범죄피해자가 가해자로부터 피해의 전부 또는 일부를 배상받지 못하였을 것
+
+
+index = 268
+servNm = 출산육아기 고용안정장려금
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003224&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 근로자에게 육아휴직 또는 육아기 근로시간 단축(육아휴직등)을 30일 이상 허용한 사업주를 지원합니다.
+피보험자인 근로자에게 유사산휴가, 출산전후휴가, 육아휴직, 육아기 근로시간 단축을 30일 이상 부여하거나 허용하고 대체인력을 고용한 사업주를 지원합니다.
+
+
+index = 269
+servNm = 중장기복무 제대군인 무료법률 구조지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000747&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 지방 보훈청 또는 보훈지청에서 지원대상으로 결정한 중ㆍ장기복무 제대군인(군인연금 수급권이 없는 5년 이상 19년 6개월 미만 복무자) 중 기준 중위소득 125% 이하인 자를 지원합니다.
+
+
+index = 270
+servNm = 입양숙려기간 모자지원사업
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000807&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 지원기간 동안 입양에 동의한 사실이 없는 출산 예정 또는 출산한 미혼/이혼 한부모를 지원합니다.
+
+
+index = 271
+servNm = 농업인자녀 및 농업후계인력장학금 지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000812&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 청년창업농육성 장학금은 졸업 후 농식품분야에 취창업하고자 하는 대학생에게 지원합니다.
+농식품인재 장학금은 농업계대학 농림축산식품계열학과 재학생에게 지원합니다.
+농업인자녀 장학금은 농업인의 자녀인 대학생에게 지원합니다.
+
+
+index = 272
+servNm = 노후공공임대주택시설개선(그린홈)
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000814&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 15년 이상 경과된 공공임대주택(영구 및 50년임대) 입주자를지원합니다.
+
+
+index = 273
+servNm = (산재근로자)사회심리재활지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000022&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 산업재해로 치료 중이거나 치료를 완료한 산재노동자 중 각 서비스별 요건에 해당하는 사람를 지원합니다. 
+
+(재활스포츠)스포츠가 필요하고, 요양하고 있는산재노동자 및 산재장해인
+(심리상담) 심리상태 불안자 및 트라우마 호소자
+(사회심리재활프로그램) 요양중인 산재노동자 및 산재장해인
+(취미활동반)진폐증 등 진행성 질병으로 입원요양 중인 산재근로자
+(멘토링프로그램)요양환자로 멘토링이 필요한 사람
+
+
+index = 274
+servNm = 고용보험 미적용자 출산급여 지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000838&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 소득활동을 하고 있지만 고용보험 미적용으로 출산전후휴가급여를 받지 못하는 출산여성(유산, 사산의 경우 포함)에게 지원합니다.
+
+
+index = 275
+servNm = 행복주택 공급
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00004649&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 대학생, 청년(19~39세등), (예비)신혼부부, 한부모가족, 고령자(65세 이상), 주거급여 수급자, 산업단지근로자, 창업인, 지역전략산업종사자, 중소기업전용주택에 입주하는 장기근속자를 대상으로 지원합니다.
+
+
+index = 276
+servNm = 보육교직원 인건비 지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000842&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 국공립, 사회복지법인, 법인 단체 등 취약보육서비스를 제공하는 어린이집에 대하여 보육교직원의 인건비를 지원합니다.
+
+
+index = 277
+servNm = 희귀질환자 의료비지원사업
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000864&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 희귀질환자 산정특례 등록자에 한하여 신청 및 지원이 가능합니다.
+요양급여 비용 중 본인부담금은 환자가구와 부양의무자가구의 소득재산 기준을 만족하는 건강보험가입자에 대하여 아래와 같은 경우에 지원합니다. 
+
+진료비: 희귀질환자 의료비지원사업 대상 질환(1,147개 질환) 및 그 합병증으로 인한 진료를 받을 경우
+보조기기 구입비: 장애인 등록법에 등록된 자로서 대상질환(93개)에 대해담당 의사의 진단서 또는 처방전을 발급받아 구입하는 경우
+인공호흡기 및 기침유발기 대여료: 대상 질환(103개)에 대해국민건강보험공단에서 인공호흡기 대여료를 지원받는 경우
+
+간병비는 대상 질환(97개)에 대해다음과 같은 경우 지원합니다. 
+
+환자 가구와 부양의무자 가구의 소득 및 재산 기준을 만족하는 건강보험 가입자 또는 의료급여 수급권자 및 차상위 본인부담 경감대상자인 경우
+지체 또는 뇌병변 '장애의 정도가 심한 장애인' 중 장애정도가 별도의 의학적 기준을 충족하는 자※ 지체장애끼리 합산장애 외의 종합장애를 인정하지 않으며, 지체장애 1급 또는 뇌병변장애 1급 해당자 준하는 기준
+
+특수식이 구입비는 대상 질환(28개)에 대해특수 조제분유및 저단백 햇반을 구입할 때 다음과 같은 대상자에게 지원합니다. 
+
+만 19세 이상 해당 질환 대상자인 경우※ 만 19세 미만 생일이 속한 달까지는 선천성 대사 이상 및 환아관리 사업에서 지원 신청 가능
+환자 가구와 부양의무자 가구의 소득재산 기준을 만족하는 건강보험 가입자 또는 의료급여 수급권자 및 차상위 본인부담 경감대상자인 경우
+
+
+지원 제외 대상 
+
+외국 국적자(외국인 특례자는 지원대상자임)
+국적을 상실하거나 국외에 이주한 자
+아래와 같이 다른 사업의 지원을 받는 환자 
+
+국민건강보험 또는 의료급여 본인부담금의 부과가 제외된 무료치료 환자
+민간단체 등으로부터 정기적인 의료비 지원을 받고 있는 자(정부지원금액과 차액이 발생하는 경우 관련 증빙자료를 제출하면 차액만큼 지원)
+기타 다른 법령에 의하여 의료비 등을 지원 받고 있는 자(차액이 발생하는 경우에는 차액만큼 지원)
+
+
+index = 278
+servNm = 방과후학교자유수강권
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000867&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 저소득층의 초등학생, 중학생, 고등학생 자녀를 지원합니다.
+
+
+index = 279
+servNm = 난임부부시술비지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000034&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 법적 혼인상태에 있거나, 신청일 기준 1년 이상 사실상 혼인관계를 유지하였다고 관할 보건소로부터 확인된 난임부부(매 회차시마다 지원신청 접수일 기준)를 지원합니다.
+2019년 7월부터 연령제한은 폐지되었습니다.
+* 다만, 지원결정서 발급 후 시작한 시술이 건강보험 적용이 불가한 경우는 정부지원이 불가합니다.
+부부 중 한 명은 대한민국 국적이어야 하며, 나머지 한 명이 외국 국적이면 모두 건강보험 가입자일 경우 지원합니다.
+
+
+index = 280
+servNm = 개발제한구역 거주민 생활비용보조사업
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000035&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 다음에 해당하는 사람으로서 해당 가구의 월평균 소득금액이 통계청장이 공표한 전년도 통계자료를 기준으로 도시지역 가구당 월평균 소득 이하인 세대의 세대주에게 지원합니다. 
+ 
+지정당시거주자 
+지정당시거주자의 자녀 또는 배우자로서 출생 또는 혼인 이후 그와 함께 개발제한구역에서 계속하여 거주한 사람(지정당시거주자인 세대주가 사망한 경우에 한정) 
+자녀 또는 배우자가 생업을 목적으로 3년 이하의 기간 동안 개발제한구역 밖에 거주한 경우 또는 학업을 목적으로 개발제한구역 밖에 거주한 경우에는 개발제한구역에서 계속하여 거주한 자
+
+
+index = 281
+servNm = 비주택 주거급여수급자 주거상향지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000036&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 공공임대주택 입주자격을 갖춘 비주택거주자에게 해당 서비스를 지원합니다.
+
+
+index = 282
+servNm = 시간제보육
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000037&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 어린이집, 유치원 등을 이용하지 않고 영아수당(현금) 또는양육수당을 수급 중인 아동(6개월 이상 36개월 미만의 영아)에게 지원합니다.
+
+
+index = 283
+servNm = 독립유공자 제수비 지급
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000038&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 독립유공자 유족으로 등록된 수권유족(권한을 부여받도록 특별히 지정한 유족)에게 지급합니다. 
+제사주관자가 따로 있는 경우에는 유족 간의 협의(수권자 포함)를 거친 후 제사 주관자에게 지급합니다. 
+단, 국적상실자는 지급 대상에서제외됩니다.
+
+
+index = 284
+servNm = 어선원 및 어선 재해보상보험
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000041&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 어선원이나 어선 소유자의 재해보상보험료를 지원하나원양어선, 수산물 운송어선 등은 지원대상에서 제외됩니다.
+어선원보험의 경우 3톤 이상은 당연가입 대상이며 가족승선어선, 내수면어선, 어장관리선은 당연가입 제외됩니다.
+
+
+index = 285
+servNm = 생활안정자금(융자)
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000044&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 의료비혼례비장례비 부모 요양비자녀 학자금자녀양육비 대상자는 다음과 같습니다. 
+
+융자 신청일 현재 소속 사업장에 3개월 이상 근로 중인 자 ※ 일용근로자는 신청일 이전 90일 이내 고용보험 근로 내용 확인신고서에 따른 근로일수가 45일 이상인 경우에 지원
+월평균 소득이 3인가구 기준 중위소득2/3 이하인 근로자 * 단, 비정규직 근로자는 소득요건 미적용
+
+임금감소생계비 대상자는 다음과 같습니다. 
+
+신청일 현재 소속사업장에 6개월 이상 근로중인 자
+소속 사업장의 경영상 이유에 의한 조치로 3개월 이상 소득이 감소하고, 신청일 이전 3개월 간의 월 평균소득이 30%이상 감소한 자
+융자신청일 이전 3개월간의 월 평균소득이 3인가구 기준 중위소득이 3분의2에 해당하는 금액의 70% 이하인 근로자
+
+소액생계비는 대상자는 다음과 같습니다. 
+
+신청일 현재 소속 사업장에 3개월 이상 근로 중인 자 ※ 건설일용근로자는 신청일 이전 180일 이내 고용보험법 시행규칙 별지 제7호서식의 고용보험 근로내용 확인신고서에 따른 근로일수가 45일 이상인 경우에 지원
+개인사정, 계절사업 등의 이유로 월소득이 직전달에 비해 30% 이상 감소한 자
+임금이 감소한 융자 대상 월 소득이 3인가구 기준 중위소득의 3분의2에 해당하는 금액의 70%이하인 근로자
+
+
+index = 286
+servNm = 공공(임대)주택신재생에너지지원(구 보금자리주택신재생보급)
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000046&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 공공(임대)주택인 경우에 지원합니다.
+ * 「공공주택 특별법」제2조제1호 가목의 주택으로, 「공공주택 특별법 시행령」 제2조 제1항 제1호와 제2호에 따른 임대조건으로 임대하는 주택※ 지원계획 : 22년 사전수요조사 결과(변동가능)
+
+
+index = 287
+servNm = 고혈압·당뇨병 등록관리사업
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000047&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 지원대상 및 선정기준
+
+
+필수대상인 만 65세 이상 고혈압, 당뇨 환자에게 의료비를 지원하고, 교육 및 알림 상담 서비스를 지원합니다.
+권고대상인 만 30세 이상 고혈압당뇨 환자에게 교육 및 알림 상담 서비스를 지원합니다.
+본 사업은 지역특화 사업으로써 아래의 지역에서만 시행합니다.
+
+사업지역: 서울(성동구), 광주(광산구), 울산(중구), 세종(세종시), 경기(광명시, 남양주시, 안산시, 부천시, 하남시), 강원(동해시, 홍천군), 전북(진안군), 전남(목포시, 여수시, 장성군), 경북(경주시, 포항시), 경남(사천시), 제주(제주시)
+
+
+index = 288
+servNm = 인문100년장학금
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000052&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 국내 4년제 대학의 인문사회계열 학과(부) 재학생 중이며, 선발지원 기준을 충족하는우수 학생(1학년, 3학년)을 지원합니다.
+
+
+index = 289
+servNm = 공공주택공급(공공분양 및 공공임대)
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000057&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 입주자모집공고일 현재 해당 주택건설지역(특별시광역시특별자치시특별자치도 또는 시군의 행정구역을 말함)에 거주하는 무주택세대구성원으로서 해당 세대의 소득 및 보유자산(토지, 건물 및 자동차)이 국토교통부장관이 정하는 기준 이하인 사람을 지원합니다.
+
+
+index = 290
+servNm = 소상공인지원(융자)
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000058&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 소상공인을 지원합니다.
+단, 아래의 업종을 운영하는 소상공인은 지원대상에서 제외합니다.
+
+유흥 향락 업종
+불건전 업종
+기타 국민보건 및 건전문화에 반할 우려가 있다고 중소기업청장이 지정한 업종
+
+
+index = 291
+servNm = 희망복지지원단 통합사례관리사업
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000059&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 통합사례관리를 통해 가난을 벗어나고자 하고, 자활을 도울 수 있는 가구를 대상으로 지원합니다.
+
+생계의료주거교육급여 수급자 중 특히 신규 수급자, 생계의료주거교육급여 수급 탈락자 등
+
+
+차상위 빈곤가구, 특히 긴급지원 대상가구 및 생계의료주거교육급여 수급 탈락가구 중 통합사례관리를 통해 빈곤을 예방할 수 있도록 도울 수 있는 가구
+지자체 복지사각지대 조사를 통해 발굴된 위기가구* 중 통합사례관리가 필요한 가구
+* 청중장년 1인가구, 돌봄위기가구, 저소득 한부모 및 청소년 한부모 가구, 휴폐업자, 실직자, 자살 고위험군 등
+
+
+index = 292
+servNm = 장애인고용시설장비 융자·지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000068&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 장애인복지법 시행령에 따른 장애인 기준이나 국가유공자 등 예유 및 지원에 관한 법률 시행령에 따른 상이등급 기준에 해당하는 장애인을 고용하여 사업을 운영하고 있거나, 장애인을 고용하여 사업을 운영하고자 하는 사업주를 지원합니다.
+
+
+index = 293
+servNm = 국가유공자등취업지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000070&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 독립유공자 본인 및 배우자, 자녀, 손자녀를 지원합니다.
+
+독립유공자의 장손인 손자녀가 질병 또는 장애나 고령 등으로 취업이 어려운 경우, 그 장손인 손자녀의 자녀 중 1명 지원
+
+
+국가유공자, 6.18자유상이자 본인 및 배우자, 자녀, (조)부모를 지원합니다.
+
+2012.7.1. 이전 등록자로서 사망한 국가유공자의 자녀가 없고 부모만 있는 경우로서 그 부 또는 모가 질병 또는 장애나 고령 등으로 인하여 취업이 어려운 경우에 그 부 또는 모가 지정하는 사망한 국가유공자의 형제자매 중 1인
+2012.7.1. 이전 등록자로서 1953.7.27이전 및 참전유공자 예우에 관한 법률 별표의 규정에 의한 전투 중에 전사 또는 순직한 군경의 자녀가 질병 또는 장애나 고령 등으로 인하여 취업이 어려운 경우에 그 6.25전몰.순직군경 유자녀의 자녀 1인
+단, 전몰.순직군경의 배우자 또는 부모가 1993년 1월 1일 이후 보상금을 받은 사실이 있는 경우는 제외
+
+
+보훈보상대상자 본인 및 배우자를 지원합니다.
+
+재해부상군경 및 재해부상공무원, 그 배우자를 지원
+재해사망군경 및 재해사망공무원의 배우자 지원
+
+
+5.18민주유공자, 특수임무유공자 본인 및 배우자, 자녀, (조)부모를 지원합니다.
+
+2012.7.1. 이전 등록자로서 사망한 5.18민주유공자, 특수임무사망자의 배우자 및 자녀가 없고 부모만 있는 경우로서 그 부 또는 모가 질병 또는 장애나 고령 등으로 인하여 취업이 어려운 경우에 그 부 또는 모가 지정하는 5.18민주유공자 및 특수임무사망자 또는 행방불명자의 형제자매 중 1인
+
+
+장애정도판정 고엽제후유의증환자 본인 및 배우자, 자녀를 지원합니다.
+
+
+index = 294
+servNm = 여성경제활동 촉진지원(여성새로일하기지원센터 사업)
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000071&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 혼인, 임신, 출산, 육아와 가족구성원을 돌봐야 하는 이유로 경제활동을 중단하였거나 경제활동을 한 적이 없는 여성 중 구직을 희망하는 여성을 지원합니다.
+
+
+index = 295
+servNm = 지역 청소년활동정책 진흥사업(구 17개 시도 지방청소년 활동진흥센터 운영 지원)
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000073&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 지방에 중앙의 청소년정책을 전달하기 위한 17개 시도 지방 센터 지원사업으로, 수혜 범위는 지역 전체의 청소년 및 청소년 지도자입니다.
+
+
+index = 296
+servNm = 여성기업종합지원센터운영
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000075&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 여성이 운영하는 기업이나 예비여성창업자를 지원합니다.
+
+
+index = 297
+servNm = 원폭피해자지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000077&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 원폭 피해자에게 지원합니다.
+
+
+index = 298
+servNm = 지방세 비과세감면(주민세, 취득세, 자동차세, 재산세, 지역자원시설세 등)
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000087&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 생계의료주거교육급여 수급자 등의 균등할 주민세를 감면합니다. 
+
+수급자, 외국인등록한 날로 부터 1년이 경과되지 않은 외국인, 미성년자(단, 미성년자가 아닌 자와 주민등록상 같은 세대를 구성하는 경우 제외), 세대원
+
+지방세를 감면하고 있는 대상자는 다음과 같습니다. 
+
+국가유공자 단체 등* * 대한민국상이군경회, 전몰군경유족회, 전몰군경미망인회, 광복회, 419민주혁명회, 419혁명희생자유족회, 419혁명공로자회, 재일학도의용군동지회 및 무공수훈자회, 대한민국특수임무유공자회, 고엽제전우회, 6.25참전유공자회, 대한민국월남전참전자회
+노인복지시설을 설치운영하는 자
+사회복지법인과 사회복지시설로서 양로시설(입소자의 비용이 없거나 국가 또는 지자체가 전액으로 부담하는 시설로 한정), 아동양육시설, 모자가족복지시설, 부자가족복지시설, 미혼모자가족복지시설, 한센병요양시설, 사단법인 한국한센복지협회
+어린이집 및 유치원, 「아동복지법」 제52조제1항제8호에 따른 지역아동센터를설치운영하는 자
+
+차량취득세 및 자동차세 감면대상자는 다음과 같습니다. 
+
+국가유공자로서 상이등급 1급부터 7급
+518민주화운동부상자로서 신체장해등급 1급부터 14급까지의 판정을 받은 자
+고엽제후유의증환자로서 경도 장애 이상의 장애등급 판정을 받은 자
+장애인(장애의 정도가 심한 장애인)이 본인명의로 등록하거나 그 장애인과 동일한 세대별 주민등록표에 기재되어 있고 가족관계등록부에 따라 장애인의 배우자ㆍ직계혈족ㆍ형제자매, 장애인의 직계혈족의 배우자, 장애인의 배우자의 직계혈족ㆍ형제자매 중 어느 하나에 해당하는 관계가 있는 것이 확인(취득세의 경우에는 해당 자동차 등록일에 세대를 함께 하는 것이 확인되는 경우로 한정)되는 사람이 공동명의로 등록하는 자동차
+
+다자녀가구의 경우,자동차취득세감면을 지원하며 다자녀가구에 대한 상세 내용은 다음과 같습니다. 
+
+만 18세미만 3명 이상의 자녀 양육자(가족관계등록부 기준, 양자 및 배우자 자녀 포함 / 입양자녀의 경우 친생부모의 자녀수에 포함하지 않음)
+
+
+index = 299
+servNm = 석면피해구제급여
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000088&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 석면피해(특별유족)를 인정 받은 자를 지원합니다.
+산재보험이나 다른 법에 의한 보상을 받은 경우에는 지원 대상에서 제외합니다.
+
+
+index = 300
+servNm = 장애대학생 교육활동 지원(구, 장애대학생 도우미 지원)
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000090&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 장애대학(원)생이 재학 중인 대학을 지원합니다.
+
+
+index = 301
+servNm = 버팀목대출보증
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000093&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 신청일 현재 세대주로서 세대주를 포함한 세대원 전원이 무주택자에게 지원합니다.
+배우자 소득 합산 연소득이 5천만원 이하, 21년기준 순자산가액 2.92억원 이하인 자(배우자 합산)에게 지원합니다.
+
+
+index = 302
+servNm = 청소년유해환경개선
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000094&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 청소년 유해환경 개선과 관련된 단체 및 사업자를 지원합니다.
+
+
+index = 303
+servNm = 저임금근로자 사회보험료지원사업(두루누리)
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000095&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 근로자 10인 미만사업의 월평균보수 230만원 미만 근로자, 예술인, 특고(플랫폼종사자 포함) 및 그 해당사업주가 부담하는 고용보험, 국민연금 보험료의 일부를 지원합니다. 
+
+예술인, 특고(특수형태 근로종사자)는 고용보험료만 지원
+
+지원신청일 직전 1년간 고용연금보험 자격취득 이력이 없는신규가입자에 대해서만 지원합니다.
+
+
+index = 304
+servNm = 제대군인전직지원금
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000096&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 5년 이상, 19년 6개월 미만을 복무하고 전역한 제대군인을 지원합니다.
+
+
+index = 305
+servNm = 기타재가급여(장기요양보험 복지용구)
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000103&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 장기요양 1~5등급, 인지지원등급을 받은 65세 이상 노인 및 노인성 질병을 가진 65세 미만 국민(건강보험 가입자 및 의료급여 수급자)에게 지원합니다.
+다음에 해당하는 경우 지원 대상에서 제외합니다.
+
+노인장기요양법 수급자 중 시설급여를 제공하는 장기요양기관에 입소한 자
+타 법령에 다른 사회복지시설(사회복지사업법 제34조 제2항의 규정에 의한 신고를 하지아니하고 설치, 운영되는 시설을 포함)에 입소한 사람
+다만, 노인복지법 제32조에 의한 노인복지주택에 입소 중인 수급자는 제외
+복지용구 급여를 받던 중 시설입소 시 그 시점부터 지급 중단
+수급자가 의료기관에 15일 이상 입원한 기간에는 전동침대, 수동침대, 이동욕조, 목욕리프트 대여 불가
+수급자가 복지용구와 동일한 품목을 타 법령에 의해 지급받은 경우 급여 제한(수급자가 장애인으로서 복지용구와 동일한 품목을 국민건강보험법에 따라 장애인 보장구 급여를 지급받은 경우)
+
+
+index = 306
+servNm = 건강가정지원센터운영
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001186&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 해당서비스를 신청한 대한민국 국민을 지원합니다.
+
+
+index = 307
+servNm = 청소년국제교류
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001174&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 만 15세~24세 청소년(프로그램에 따라 지원 가능 연령 상이)에게 지원합니다. 
+
+사회적 배려계층 : 기초생활수급자, 저소득한부모가족, 다문화가족, 장애청소년, 북한이탈자, 법정차상위계층, 농어촌청소년
+
+
+index = 308
+servNm = 보호종료아동 자립수당 지급
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001175&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 아동복지시설, 가정위탁보호종료 3년 이내 아동을 지원합니다.
+
+
+index = 309
+servNm = 암검진사업
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001176&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 의료급여 수급권자에게 지원합니다. 
+건강보험가입자 및 피부양자로서 당해연도 검진대상자 중 보험료 부과기준으로 지역가입자는 월 94,000원 이하, 직장가입자는 월 100,000원 이하인 자(2020년 11월 기준)를 지원합니다.
+
+
+index = 310
+servNm = 저소득층 본인부담금 경감
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001177&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 본인부담금 100분의 60을 감경하는자는 아래와 같습니다.
+
+의료급여법 제3조제1항제2호부터 제9호까지의 규정에 따른 수급자
+국민건강보험법 시행규칙 제15조에 따라 국민건강보험공단으로부터 건강보험 본인부담액 경감 인정을 받은 자
+천재지변 등 보건복지부령으로 정하는 사유로 인하여 생계가 곤란한 자
+국민건강보험법 제69조 제4항 및 제5항의 월별 보험료액이 국민건강보험 가입자 종류별 및 가입자 수별 보험료 순위 0~25% 이하에 해당되며, 직장가입자는 재산이 일정 기준 이하인 자
+
+
+
+
+
+본인부담금의 100분의 40을 감경하는 자는 아래와 같습니다.
+
+국민건강보험법 제69조제4항 및 제5항의 월별 보험료액이 국민건강보험 가입자 종류별 및 가입자수별 보험료 순위 25% 초과~50% 이하에 해당되며, 직장가입자는 재산이 일정기준 이하인 자
+
+
+index = 311
+servNm = 학대피해아동 쉼터 설치 및 운영
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001180&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 학대피해아동을 지원합니다.
+
+
+index = 312
+servNm = 국민연금 출산크레딧
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00004647&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 2008.1.1. 이후 둘째 이상 자녀를 출산(입양포함)한국민연금 가입자를 지원합니다.
+
+
+index = 313
+servNm = 긴급복지 장제비지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000892&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 위기사유는 구체적으로 다음과 같은 경우를 말합니다. 
+
+주소득자가 사망, 가출, 행방불명, 구금시설에 수용되는 등의 사유로 소득을 상실한 경우
+중한 질병이나 부상을 당한 경우
+가구구성원으로부터 방임 또는 유기되거나 학대 등을 당한 경우
+가정폭력 또는 가구구성원으로부터 성폭력을 당한 경우
+화재 또는 자연재해 등으로 인하여 거주하는 주택 또는 건물에서 생활하기 곤란한 경우
+주소득자 또는 부소득자의 휴업, 폐업 또는 사업장의 화재 등으로 인하여 실질적인 영업이 곤란하게 된 경우
+주소득자 또는 부소득자의 실직으로 소득을 상실한 경우
+보건복지부령의 기준에 따라 지방자치단체의 조례로 정한 사유가 발생한 경우
+그 밖에 보건복지부 장관이 정하여 고시하는 경우
+
+그 밖에 보건복지부 장관이 정하여 고시하는 경우는 다음과 같습니다. 
+
+주소득자와 이혼한 때
+단전된 경우(전류 제한기를 부설한 경우 포함)
+교정시설에서 출소한 자가 생계가 곤란한 경우
+가족으로부터 방임유기또는 생계곤란 등으로 노숙을 하는 경우
+복지사각지대 발굴대상자, 통합사례관리 대상자 또는 자살고위험군으로서 관련 부서(기관)로 부터 생계가 어렵다고 추천을 받은 경우
+(한시) 코로나19로 인하여 주소득자 또는 부소득자가 무급휴직 등으로 소득을 상실한 경우
+(한시) 코로나19로 인하여 자영업자, 특수형태 근로종사자 또는 프리랜서인 주소득자 또는 부소득자의 소득이 급격히 감소한 경우
+
+
+index = 314
+servNm = 중독관리통합지원센터 운영 
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000896&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 인구 20만 이상 시/구에 중독관리통합지원센터 1개소 설치를 원칙으로 하며, 현재 전국 50개소 센터에 대한 운영을 지원합니다.
+이용대상은 다음과 같습니다.
+※ 해당 중독관리통합지원센터(구, 알콜상담센터)는 관내 주민을 우선하되, 상황에 따라 인근 지역주민에게도 관련 서비스 제공 가능
+
+
+지역사회 내 알콜 의존자, 문제음주자와 그 가족 등 지역주민
+의료기관 또는 시설 등에서 퇴원(소)한 알코올 의존자 중 사회적응훈련을 필요로 하는 알콜 의존 및 남용자
+기타 알콜 관련 상담 및 재활훈련 서비스가 필요한 자
+
+
+index = 315
+servNm = 여성기업 판로지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000922&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 여성기업, (예비)여성창업자를지원합니다.
+
+
+index = 316
+servNm = 영구임대주택공급
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000888&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 다음에 해당되는 경우에 지원합니다.
+
+생계의료급여 수급자
+국가유공자
+일본군 위안부 피해자
+지원대상 한부모가족
+도시근로자 월평균소득 70% 이하의 북한이탈주민 및 장애인 등 무주택세대 구성원
+
+
+index = 317
+servNm = 여성창업경진대회
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00000975&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 여성기업 및 여성(예비)창업자를 지원합니다.
+
+
+index = 318
+servNm = 대학생근로장학금지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001060&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 국내의 사업 참여대학에 재학중이거나, 입학 예정인 대한민국 국민을 지원합니다.
+
+
+index = 319
+servNm = 주거안정 월세대출
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001063&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 우대형의 경우 사회취약계층(취업준비생, 사회초년생, 희망키움통장 가입자, 근로장려금 수급자, 자녀장려금 수급자, 주거급여 수급자) 중 무주택(세대원포함) 세대주인 자에게 지원합니다.
+일반형의 경우 부부합산소득 5천만원 이하인 자에게 지원합니다.
+
+
+index = 320
+servNm = 산재근로자 합병증 등 예방관리
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001069&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 의학적으로 합병증 등 예방관리를 위한 진료가 필요한 44개 증상을 지원합니다.
+
+
+index = 321
+servNm = 이공계 국가우수장학금
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001071&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 대통령과학장학금은 국내 및 해외 4년제 대학의 자연과학 및 공학계열 학과(부)에 입학예정 또는 확정인 신입생이거나 3학년 재학중인 자를 대상으로 지원합니다.
+이공계 국가우수장학금은 국내 4년제 대학의 자연과학 및 공학계열 학과(부)에 입학예정 또는 확정인 신입생이거나 3학년 재학중인 자를 대상으로 지원합니다.
+
+
+index = 322
+servNm = 가정폭력·성폭력 피해자 무료법률지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001072&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 가정폭력 및 성폭력 피해자(외국인 등록여부와 상관없이 국내 거주 외국인 여성 포함), 스토킹데이트폭력 피해자를 지원합니다.
+
+
+index = 323
+servNm = 재해보상금
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001074&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 사망한 군인, 사망 또는 상이를 입은 의무경찰, 교정시설경비교도대원 및 의무소방원을 대상으로지원합니다.
+
+
+index = 324
+servNm = 장애학생 정보격차 해소 지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001075&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 장애인 등에 대한 특수교육법에 따른 특수교육대상자의 특수학교 및 특수학급 교사, 일반학교 교사 등을 지원합니다.
+특수교육 대상자는 시각 장애인, 청각 장애인, 지체 장애인, 지적 장애인, 자폐성 장애인, 정서행동 장애인, 의사소통 장애인, 학습 장애인, 건강 장애인, 발달지체 장애인입니다.
+
+
+index = 325
+servNm = 서민금융 활성화 지원(햇살론youth 보증사업)
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001076&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 만 19세 이상 ~ 34세 이하이면서 연소득 3천 5백만원 이하인 대학생, 청년에게 지원합니다.
+
+
+index = 326
+servNm = 가정폭력상담소 운영지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001077&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 가정폭력, 스토킹데이트폭력피해자와 그 가족을 지원합니다.
+
+
+index = 327
+servNm = 산재근로자 창업점포지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001078&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 아래 내용 중 어느 하나에 해당하는 산재근로자(2개월 이상 요양)로서 훈련직종 또는 취득자격증이나 일정기간 이상 종사한 업종과 관련된 업종으로 창업을 원하는 자를 지원합니다. ※ 19년부터 신규지원 중단(기존 선정자 유지지원)
+아래의 기준으로 선정된 기존 지원자는 유지지원합니다. 
+
+공단과 계약을 체결한 직업훈련기관 또는 공단이 지원하는 직업훈련과정을 수료한 자(단, 1997.3.1. 이후 공단 재활훈련원 훈련과정을 80% 이수한 자도 포함)
+2008년 7월 이후 직업능력개발시설에서 직업훈련을 수료한 자
+그 밖의 다른 법령에 따라 예산 및 기금이 지원되는 창업훈련과정을 수료한 자
+자격기본법 또는 국가기술자격법에 따른 자격증(공인 받지 않은 민간자격증이나 운전면허증 제외)을 취득한 자
+법에 따른 진폐장해등급 결정을 받았거나 진폐의증(0/1)에 활동성 폐결핵이 합병되어 법에 따른 요양급여를 수급한 후 요양종결한 자
+2년 이상 종사한 업종과 관련 있는 업종으로 창업을 희망하는 자
+사회적기업, 예비사회적기업으로서, 창업점포지원 신청 당시 사회적기업 육성법에 따른 유급근로자를 1명 이상 고용하고, 근로자의 30% 이상이 산재장해인에 해당하는 조직
+예비사회적기업 인증을 준비 중인 법인
+
+
+index = 328
+servNm = 주거안정 월세대출 보증
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001079&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 보증금 1억원 이하 및 월세 70만원 이하인 주택도시기금 주거안정 월세대출 대상자(청년)을 지원합니다. 단, 아래의 사유에 해당되는 분은 보증을 이용할 수 없습니다.
+
+보증신청일 현재 공사의 구상권 또는 유동화미수채권 등이 회수되지 아니한 주채무자와 그 배우자 및 채무관계자(다만, 법적 변제의무 종결자 및 물적담보제공자는 제외)
+공사에서 정한 보증사고 사유에 해당되어 사고처리(사고처리 유보 포함, 이하 같음)된 자와 그 배우자 및 채무관계자
+공사 개인신용평가시스템에 의한 보증거절등급자
+신용관리정보를 보유하고 있는 자
+구상채권회수보증의 피보증인 및 연대보증인
+채권자가 될 금융기관의 대출금을 연체중인 자
+부실자료제출 확정자로서 보증제한기간이 경과하지 아니한 자
+그 밖에 보증제한 대상자로 사장이 정한 경우에 해당하는 자
+
+
+index = 329
+servNm = 산재근로자 생활안정자금융자
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001080&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 월평균 소득이 중위소득 이하인 자로 아래의 경우에 해당하는 자를 지원합니다. 
+
+산재보험법에 의한 사망근로자 유족급여 수급권자(단, 방계 일시금 수급권자 제외)
+상병보상연금수급권자, 장해등급 제1급부터 제9급까지 결정받은 자
+5년 이상 장기요양 중인 이황화탄소 질병판정자(CS2)
+3개월 이상 요양 중인 산재근로자로서 평균임금이 최저임금 이하에 해당하는 자(의료비,혼례비,장례비에 한정)
+
+
+index = 330
+servNm = 신재생에너지확대기반조성(사회복지시설)
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001082&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 지자체 소유, 관리 또는 위탁사회복지시설에 지원합니다.
+
+
+index = 331
+servNm = 온라인 정보화교육
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001083&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 전 국민을 대상으로 합니다.
+
+
+index = 332
+servNm = 여성긴급전화 1366센터 운영 지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001084&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 가정폭력, 성폭력, 성매매 관련 여성폭력 피해여성을 지원합니다.
+
+
+index = 333
+servNm = 특별현금급여(가족요양비)
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001086&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 장기요양 1~5등급을 받은 65세 이상 노인 및 노인성 질병을 가진 65세 미만 국민(건강보험 가입자 및 의료급여 수급자) 중 아래에 해당하는 자를 지원합니다.
+
+도서, 벽지 등 장기요양기관이 부족한 지역으로 장관이 정하여 고시하는 지역에 거주하고 있는 자.
+천재지변 등의 사유로 장기요양기관이 제공하는 서비스를 이용하기 어렵다고 장관이 인정한 자
+대통령령에 따른 감염병 환자, 정신장애인, 신체적 변형 등으로 대인과의 접촉을 기피하는 자
+
+
+index = 334
+servNm = 장애인고용장려금지급
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001090&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 월별 상시 근로자의 3.1%(공공기관 및 지방공기업 3.6%)를 초과하여 장애인을 고용한 사업주에게 지원합니다. ※ 단, 최저임금 이상을 받거나 최저임금의 적용 제외 인가를 받은 장애인에 한해 지원
+고용보험에 가입하지 않은 장애인근로자는 고용장려금 지급기준이 되는 대상인원에서 제외됩니다.(2018년 발생분부터)
+「고용보험법」, 「산업재해보상보험법」, 「사회적기업 육성법」의 규정에 따른 지원금 및 장려금을 지급받는 장애인 근로자에 대하여그 지급 기간에는타지원금과의 차액만을 지급합니다.
+
+
+index = 335
+servNm = 요양급여(보조기)-산재보험급여
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001092&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 업무상 재해로 인하여 장해가 발생되어 재활보조기구 지급 대상에 해당하는 산재근로자를 지원합니다.
+
+
+index = 336
+servNm = 어린이집지원(교사근무환경개선비,교사겸직원장지원비)
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001094&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 어린이집 또는 시간제보육제공기관에서 반을 맡고 있는 담임교사(보육교사 또는 특수교사) 및 연장보육 전담교사, 담임교사와 연장보육 전담교사를 대체하는 대체교사로서 아래의 기준을 충족하는 사람이 지원대상입니다.
+평일 8시간을 원칙으로 월 15일 이상 어린이집 또는 시간제보육 제공기관에서 실제 근무 또는 평일 4시간을 원칙으로 월 15일 이상 어린이집 및 시간제보육 제공기관에서 실제 근무한 사람을 지원합니다.
+월급여 야간연장 교사는 일 6시간 이상 8시간 이내 근무 가능합니다.
+신학기 적응기간(3,4월)에 한하여 대체교사 유휴인력 어린이집 지원 시 담임교사지원비 지급 가능합니다.
+실제 근무일수가 15일 미만일 경우에는 근로자의 날, 공휴일(일요일 제외) 및 대체공휴일을 근무일수에 포함가능 하며, 월 5일 이내 휴가 또는 월 5일 이내의 법정보수교육 참석일을 추가포함 가능합니다. (다만, 원장사전직무교육은 인정 불가)
+야간연장 교사, 방과후 교사, 24시간 교사도 지원대상 기준을 충족하는 경우 지원 가능합니다.
+1일 2시간의 근로시간 단축 근무를 시행하고 있는 임신 후 12주 이내 또는 36주 이후에 있는 여성 교사, 육아기 근로시간 단축 근무자가 월15일 이상 근무하는 경우 지원가능(전액 지급)합니다.
+
+
+index = 337
+servNm = 농어촌출신대학생학자금융자
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001096&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 농어촌 지역에 주소를 두고 6개월(180일) 이상 거주하고 있는 학부모의 자녀를 지원합니다.
+농어촌 지역에 주소를 두고 6개월(180일) 이상 거주하며 농어업에 종사하는 대학생을 지원합니다.
+
+
+index = 338
+servNm = 농업인연금보험료지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001097&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 지역가입자 중 농업인에게 지원합니다.
+
+
+index = 339
+servNm = 농업인건강보험료지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001099&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 지역건강보험에 가입한 세대 중 농촌 및 준농촌지역에 거주하면서 농업, 축산업, 임업에 종사하는 자에게 지원합니다.
+
+
+index = 340
+servNm = 큰글자책 보급 및 활성화 지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001100&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 고령자와 저시력자 등 공공도서관 이용자를 지원합니다.
+
+
+index = 341
+servNm = 폭력피해여성 주거지원 사업
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001101&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 자립자활의 의지가 있는 가정폭력, 성폭력 피해여성 및 동반가족을 지원합니다.
+장기보호시설 입주자, 이주여성(불법체류자 제외)도 입주 대상자입니다.
+장애인 피해 여성 또는 동반가족 중 장애인이 있을 경우에도 지원합니다.
+
+
+index = 342
+servNm = 가정폭력피해자 치료회복 프로그램 및 의료비지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001105&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 가정폭력을 당한 피해자 및 동반아동을 지원합니다.
+
+
+index = 343
+servNm = 일본군'위안부' 피해자 생활안정지원사업
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001106&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 생활안정지원대상자로 등록된 일본군'위안부' 생존 피해자를 지원합니다.
+
+
+index = 344
+servNm = 재가암환자관리
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001110&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 모든 재가암환자(치료 중인 암환자, 말기암환자, 암생존자 등)에게지원합니다. 
+재가암환자관리 서비스를 희망하는 모든 암환자에게 지원합니다. 
+지역사회기관으로부터 의뢰된 암환자를 지원합니다.
+
+
+index = 345
+servNm = 긴급복지 교육지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001112&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 긴급복지 주지원*을 받는 가구 중 초/중/고등학생으로 학비 지원이 필요하다고 인정되는 사람에게 지원합니다.
+ * 법정용어 통일로 인해 기존 주급여, 부가급여가 주지원, 부가지원으로 변경되어 안내됩니다. ** 위기 상황에 따라 주지원 및 부가지원이 결정될 수 있으며 주지원에는 "생계지원, 의료지원, 주거지원, 사회복지시설 이용지원"이 있고, 부가지원에는 "교육, 그 밖의 지원"이 있습니다. 
+긴급복지 주지원 대상자로서 국가 또는 지방자치단체 등으로부터 타 교육지원을 받고 있는 사람은 지원대상에서 제외됩니다.
+
+
+index = 346
+servNm = 입양비용지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001116&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 입양특례법상 허가를 받은 입양기관에 의해 요건과 절차를 갖춰 국내 입양한 가정을 지원합니다.
+
+
+index = 347
+servNm = 고등학교 무상교육
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001118&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 초중등교육법상 고등학교고등기술학교 및 이에 준하는 각 종 학교 등에 재학하는 학생을 지원합니다. 
+
+20년은 고등학교 2.3학년 학생 대상 무상교육, 21년은 전 학년 확대 * (예외) 시도의 조례에서 수업료와 그 밖의 납부금을 해당 학교의 장이 정하도록 한 사립학교
+
+
+index = 348
+servNm = 서민금융 활성화 지원(근로자햇살론 보증사업)
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001126&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 1개월 이상 근로중(최근 1년 이내 3개월 이상 근로의 경우 포함)이며 연간 근로소득 금액이 3,500만원이하 또는 개인신용평점이하위 100분의 20 이하면서 연간 근로소득 금액 4,500만원 이하인 자를 지원합니다.
+아래의 요건에 해당하는 자는 지원대상에서 제외됩니다. 
+
+한국신용정보원의 「신용정보관리규약」에 따른 연체, 대위변제대지급, 부도정보, 금융질서문란정보, 공공정보를 보유한 자
+「채무자 회생 및 파산에 관한 법률」에 의해 회생절차, 파산절차 및 개인회생절차 개시의 신청이 있거나 그 절차가 진행중인 자
+
+
+index = 349
+servNm = 장애친화 건강검진기관
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001133&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 장애인과 노인 등 거동이 불편한 수검자를 지원합니다. 
+
+다만, 중증장애인 이용시 별도의 검진가산비용에 대해 검진기관 추가 지원합니다.
+
+
+index = 350
+servNm = 권역재활병원 공공재활프로그램 운영지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001134&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 권역재활병원* 내원 환자 및 지역사회 장애인으로 공공재활 프로그램을 필요로 하는 분에게 지원합니다. * 권역재활병원 현황(전국 7개소): 경인재활의료센터병원, 강원도권역재활병원, 대전충청권역의료재활센터, 호남권역 재활병원, 영남권역재활병원, 제주권역재활병원, 경북권역재활병원
+
+
+index = 351
+servNm = 손자녀가계지원비
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001137&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 광복(1945년 8월 15일) 이후에 사망한 독립유공자의 선순위 자녀의 자녀 중 나이가 많은 자 1인을 지원합니다. * 다만, 독립유공자를 주로 부양한 자가 있는 경우에는 그 사람을 우선합니다.
+앞의 규정에도 불구하고 동순위 유족간의 협의에 의하여 동순위 유족 중 1인을 가계지원비를 받을 자로 지정한 경우에는 그 사람에게 가계지원비를 지원합니다.
+
+
+index = 352
+servNm = 공공산림가꾸기
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001149&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 만 18세 이상의 성인 중에서 실업자 또는 정기적인 소득이 없는 일용근로자를 지원합니다.
+지원 제외 대상은 다음과 같습니다. 
+
+산림육성의 특성상 기계 장비를 사용해야 하므로 청각, 간질, 정신질환 등의 장애가 있는 지원자
+전년도 일자리 참여자 중에서 잦은 결근, 지각, 조퇴, 음주, 근무지 이탈 또는 감독자의 지시에 불응했던 참여자, 근무태도가 불량했던 참여자
+고등학교, 대학교(2년제~3년제 대학 및 대학원 포함)에 재학 중인 학생
+
+
+index = 353
+servNm = 노인일자리 및 사회활동 지원사업
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001155&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 사회활동 지원사업 참여 조건에 부합하는 만 65세 이상 어르신을 지원하며, 일부 사업의 경우 만 60세 이상인 분들도 지원 가능합니다. 
+ 
+공익활동: 만 65세 이상 기초연금수급자(만 65세 이상 기초연금수급 대기자가 없을 경우 예외적으로 만 60~64세 차상위 계층 참여 허용) 
+사회서비스형: 만 65세 이상(단, 일부유형은 만 60세 이상) 
+시장형사업단취업알선형: 만 60세 이상 사업특성 적합자 
+ 
+신청 제외자는 다음과 같습니다. 
+ 
+국민기초생활보장법에 의한 생계급여 수급자 
+국민건강보험 직장가입자(취업알선형 제외)  시장형 사업단은 해당 사업단의 건강보험 직장가입자일 경우 해당없음 
+장기요양보험 등급 판정자 1~5등급, 인지지원등급 
+정부부처 및 지자체에서 추진하는 일자리사업에 2개 이상 참여하고 있는 자  노인일자리 및 사회활동 지원사업 내 중복참여 불가
+
+
+index = 354
+servNm = 입원 및 격리치료명령 결핵환자 부양가족생활보호비 지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001159&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 입원(격리치료)명령을 받아 소득을 상실한 결핵환자로 당해 연도 가구별 기준 중위소득 수준의 120% 미만(환자가구)에 해당하는 경우 지원합니다.
+
+단, 기초생활수급자는 제외
+입원(격리치료)명령 실시 이전 최근 1년 이내에 소득이 확인된 환자
+
+
+index = 355
+servNm = 노숙자 등 알코올중독자 사례관리 사업
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001160&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 전국 6개소의 중독관리통합지원센터를 지원합니다.
+
+지원대상기관: 노숙자 쉼터 등 노숙인 관련 시설, 보호관찰소, 사회복지관, 경찰서, 소방서, 가정폭력상담소, 여성의 전화 등
+연계대상기관: 정신의료기관, 사회복귀시설, 기타 정신보건시설
+
+
+중독관리통합지원센터 이용대상은 상담, 치료, 재활서비스를 필요로 하는 노숙인 및 주취범죄자로서, 유관기관과 연계하여 대상자를 발굴하고, 서비스를 제공합니다.
+
+
+index = 356
+servNm = 표준모자보건수첩 제작 배부
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001161&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 지원대상 및 선정기준
+
+
+임신부 또는 출생사실이 확인된 영유아 중 보건소에 등록된 자를 지원합니다.
+
+
+index = 357
+servNm = 직장어린이집 설치 지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001163&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 직장 어린이집을 단독 또는 공동으로 설치, 운영하는 고용보험 가입 사업주나 사업주 단체에게 지원합니다.
+
+
+index = 358
+servNm = 성폭력피해자 지원사업
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001166&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 성폭력 피해자를 대상으로 지원합니다.
+
+
+index = 359
+servNm = 장애인기업종합지원센터운영
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001167&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 창업 3년 미만 장애인기업 및 장애인 예비창업자를 지원합니다.
+
+
+index = 360
+servNm = 장기요양급여이용지원
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001170&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 독립유공자, 국가유공자, 518민주유공자, 특수임무유공자 및 배우자, 유족 중 부모(선순위)를 지원합니다.
+고엽제후유의증환자 중 장애정도판정자 및 참전유공자를 지원합니다.
+
+
+index = 361
+servNm = 취약계층취업촉진 사업
+trgterIndvdlArray = undefined
+obstKiArray = undefined
+lifeArray = undefined
+servDtlLink = https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00001172&wlfareInfoReldBztpCd=01
+tgtrDtlCn = 지원대상 및 선정기준
+
+
+실업급여 수급자, 국민취업지원제도 참여자, 그 밖에 상담을 거쳐 취업의욕과 취업기술 향상이 필요한 취업취약계층을 지원합니다.
+
+
