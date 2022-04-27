@@ -2,11 +2,11 @@ exports.getUsers = async (req, res) => {
     return false
 }
 exports.postUsers = async (req, res) => {
-    return false
+    return res.status(201)
 }
 exports.putUsers = async (req, res) => {
-    return false
+    return res.status(200)
 }
 exports.deleteUsers = async (req, res) => {
-    return false
+    return res.status(200)
 }

@@ -1,3 +1,3 @@
 exports.getKakao = async (req, res) => {
-    return false
+    return res.status(200)
 }

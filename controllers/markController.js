@@ -1,5 +1,5 @@
 exports.getMarks = async (req, res) => {
-    return false
+    return res.status(200)
 }
 exports.postMarks = async (req, res) => {
     return false
