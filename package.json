@@ -18,6 +18,7 @@
     "homepage": "https://github.com/bokjiri/back-end#readme",
     "dependencies": {
         "aws-sdk": "^2.1120.0",
+        "bcrypt": "^5.0.1",
         "cookie-parser": "^1.4.6",
         "cors": "^2.8.5",
         "dotenv": "^16.0.0",
