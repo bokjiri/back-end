@@ -31,7 +31,7 @@ connect()
 // const swaggerFile = require("./swagger-output")
 
 // app.use("/swagger", swaggerUi.serve, swaggerUi.setup(swaggerFile))
-app.use(cors())
+app.use(cors({ origin: ["http://localhost:3000", "http://ec2-3-36-132-198.ap-northeast-2.compute.amazonaws.com"] }))
 app.use(morgan("dev"))
 app.use(express.json())
 app.use(express.static("public"))
