@@ -1,5 +1,5 @@
 const { updateUserInfo } = require("../services/user.service")
-
+const jwt = require("jsonwebtoken")
 exports.getUsers = async (req, res) => {
     return res.status(200)
 }
@@ -21,4 +21,26 @@ exports.putUsers = async (req, res) => {
 }
 exports.deleteUsers = async (req, res) => {
     return res.status(200)
+}
+exports.kakaoCallback = async (req, res) => {
+    const { user } = req.session.passport
+    const { userId, nickname, profileUrl } = user
+    const payload = { userId, nickname, profileUrl }
+    const accessToken = jwt.sign(payload, process.env.ACCESSKEY, {
+        expiresIn: process.env.ATOKENEXPIRE,
+    })
+    const refreshToken = jwt.sign({ userId }, process.env.REFRESHKEY, {
+        expiresIn: process.env.RTOKENEXPIRE,
+    })
+    res.cookie("ACCESS_TOKEN", accessToken, {
+        sameSite: "None",
+        httpOnly: true,
+        secure: true,
+    })
+        .cookie("REFRESH_TOKEN", refreshToken, {
+            sameSite: "None",
+            httpOnly: true,
+            secure: true,
+        })
+        .redirect("http://localhost:3000")
 }
