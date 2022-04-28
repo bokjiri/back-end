@@ -33,14 +33,14 @@ exports.kakaoCallback = async (req, res) => {
         expiresIn: process.env.RTOKENEXPIRE,
     })
     res.cookie("ACCESS_TOKEN", accessToken, {
-        SameSite: "None",
+        SameSite: "Lax",
         httpOnly: true,
         secure: false,
     })
         .cookie("REFRESH_TOKEN", refreshToken, {
-            SameSite: "None",
+            SameSite: "Lax",
             httpOnly: true,
             secure: false,
         })
-        .json({ accessToken, refreshToken })
+        .redirect(302, "http://localhost:3000/main")
 }
