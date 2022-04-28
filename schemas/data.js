@@ -2,7 +2,7 @@ const mongoose = require("mongoose")
 const autoIdSetter = require("./autoidsetter")
 const dataSchema = mongoose.Schema({
     desire: {
-        type: [String],
+        type: String,
     },
     target: {
         type: [String],

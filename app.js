@@ -44,8 +44,9 @@ app.use(
         saveUninitialized: false,
         secret: process.env.SESSION_SECRET,
         cookie: {
+            sameSite: "Lax",
             httpOnly: true,
-            secure: false,
+            secure: true,
         },
     })
 )
