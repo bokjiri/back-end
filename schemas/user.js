@@ -1,21 +1,17 @@
 const mongoose = require("mongoose")
-
+const autoIdSetter = require("./autoidsetter")
 const userSchema = mongoose.Schema({
-    userId: {
-        type: Number,
-        required: true,
-    },
     target: {
-        type: [Number],
+        type: [String],
     },
     obstacle: {
-        type: [Number],
+        type: [String],
     },
     lifeCycle: {
-        type: [Number],
+        type: [String],
     },
     mark: {
-        type: [Number],
+        type: [String],
     },
     email: {
         type: String,
@@ -27,5 +23,5 @@ const userSchema = mongoose.Schema({
         type: String,
     },
 })
-
+autoIdSetter(userSchema, mongoose, "userSchema", "userId")
 module.exports = mongoose.model("User", userSchema)
