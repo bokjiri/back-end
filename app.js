@@ -27,12 +27,11 @@ connect()
 // }
 // app.use(cors(corsOptions))
 
-
 // const swaggerUi = require("swagger-ui-express")
 // const swaggerFile = require("./swagger-output")
 
 // app.use("/swagger", swaggerUi.serve, swaggerUi.setup(swaggerFile))
-// app.use(cors(corsOptions))
+app.use(cors())
 app.use(morgan("dev"))
 app.use(express.json())
 app.use(express.static("public"))
