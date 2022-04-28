@@ -1,5 +1,4 @@
-const data = require("../schemas/data")
-const { createUser } = require("../services/user.service")
+const { updateUserInfo } = require("../services/user.service")
 
 exports.getUsers = async (req, res) => {
     return res.status(200)

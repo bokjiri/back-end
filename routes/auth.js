@@ -1,6 +1,17 @@
-const router = require("express").Router()
-const authController = require("../controllers/auth.controller")
+const passport = require("passport")
+const kakaoStrategy = require("../controllers/auth.controller")
+const { findUser } = require("../services/user.service")
 
-router.use("/kakao", authController.getKakao)
+module.exports = () => {
+    passport.serializeUser((user, done) => {
+        done(null, user)
+    })
 
-module.exports = router
+    passport.deserializeUser((user, done) => {
+        const { email } = user
+        findUser(email)
+            .then((user) => done(null, user))
+            .catch((err) => done(err))
+    })
+    kakaoStrategy()
+}
