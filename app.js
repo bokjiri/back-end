@@ -25,6 +25,9 @@ connect()
 //     optionsSuccessStatus: 204,
 //     credentials: true,
 // }
+// app.use(cors(corsOptions))
+
+
 // const swaggerUi = require("swagger-ui-express")
 // const swaggerFile = require("./swagger-output")
 
