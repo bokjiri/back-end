@@ -6,6 +6,8 @@ const cookieParser = require("cookie-parser")
 const cors = require("cors")
 const morgan = require("morgan")
 const connect = require("./schemas")
+const passport = require("passport")
+const passportConfig = require("./routes/auth")
 
 connect()
 
@@ -25,13 +27,13 @@ connect()
 // }
 // app.use(cors(corsOptions))
 
-app.use(morgan("dev"))
 
 // const swaggerUi = require("swagger-ui-express")
 // const swaggerFile = require("./swagger-output")
 
 // app.use("/swagger", swaggerUi.serve, swaggerUi.setup(swaggerFile))
-
+// app.use(cors(corsOptions))
+app.use(morgan("dev"))
 app.use(express.json())
 app.use(express.static("public"))
 app.use(express.urlencoded({ extended: false }))
@@ -48,6 +50,9 @@ app.use(
         },
     })
 )
+passportConfig()
+app.use(passport.initialize())
+app.use(passport.session())
 
 const Router = require("./routes")
 app.use("/api", Router)

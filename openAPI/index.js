@@ -8,9 +8,9 @@ connect()
 
 let arr = [100, 110, 120, 130, 140, 150, 160, 170, 180]
 let arr1 = ["일자리", "주거", "일상생활", "신체건강 및 보건의료", "정신건강 및 심리정서", "보호 및 돌봄·요양", "보육 및 교육", "문화 및 여가", "안전 및 권익보장"]
-async function load2() {
+function load2() {
     for (let i = 0; i < arr.length; i++) {
-        await load(arr[i], arr1[i])
+        load(arr[i], arr1[i])
     }
 }
 async function load(asd, zxc) {
@@ -83,9 +83,16 @@ async function load3(servList, zxc) {
                     space: 4,
                 })
                 const jsonParse = JSON.parse(xmlToJson)
-                const a = jsonParse.wantedDtl.tgtrDtlCn._text.trim()
-                const c = jsonParse.wantedDtl.alwServCn._text.trim()
-                const d = jsonParse.wantedDtl.jurMnofNm._text
+                let a
+                let c
+                let d
+                if (jsonParse.wantedDtl.tgtrDtlCn !== undefined) {
+                    a = jsonParse.wantedDtl.tgtrDtlCn._text.trim()
+                }
+                if (jsonParse.wantedDtl.alwServCn !== undefined) {
+                    c = jsonParse.wantedDtl.alwServCn._text.trim()
+                }
+                d = jsonParse.wantedDtl.jurMnofNm._text
 
                 const institution = d
                 const summary = a
