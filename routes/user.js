@@ -25,13 +25,12 @@ router.get(
             httpOnly: true,
             secure: true,
         })
-        res.cookie("REFRESH_TOKEN", refreshToken, {
-            sameSite: "None",
-            httpOnly: true,
-            secure: true,
-        })
-
-        res.redirect("http://localhost:3000")
+            .cookie("REFRESH_TOKEN", refreshToken, {
+                sameSite: "None",
+                httpOnly: true,
+                secure: true,
+            })
+            .redirect("http://localhost:3000")
     }
 )
 module.exports = router
