@@ -7,10 +7,12 @@ module.exports = () => {
         new KakaoStrategy(
             {
                 clientID: process.env.KAKAO_ID,
-                callbackURL: "/api/users/kakao/callback",
+                callbackURL: "https://pooreum.shop/api/users/kakao/callback",
             },
             async (accessToken, refreshToken, profile, done) => {
                 try {
+                    console.log(accessToken)
+                    console.log(refreshToken)
                     const { email } = profile._json.kakao_account
                     const exUser = await findUser(email)
                     if (exUser) {
