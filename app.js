@@ -32,7 +32,8 @@ connect()
 
 // app.use("/swagger", swaggerUi.serve, swaggerUi.setup(swaggerFile))
 const corsOptions = {
-    origin: ["http://localhost:3000", "https://pooreum.shop", "https://kauth.kakao.com"],
+    origin: "*",
+    credentials: true,
 }
 
 app.use(cors(corsOptions))
