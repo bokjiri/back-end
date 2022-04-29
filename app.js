@@ -32,7 +32,7 @@ connect()
 
 // app.use("/swagger", swaggerUi.serve, swaggerUi.setup(swaggerFile))
 const corsOptions = {
-    origin: "*",
+    origin: ["http://localhost:3000"],
     credentials: true,
 }
 
