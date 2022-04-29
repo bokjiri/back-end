@@ -44,5 +44,5 @@ exports.kakaoCallback = async (req, res) => {
         httpOnly: true,
         secure: true,
     })
-    res.redirect("http://localhost:3000")
+    res.redirect("http://localhost:3000/main")
 }
