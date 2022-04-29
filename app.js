@@ -46,8 +46,11 @@ app.disable("x-powered-by")
 app.use(
     session({
         resave: false,
-        saveUninitialized: false,
+        saveUninitialized: true,
         secret: process.env.SESSION_SECRET,
+        sameSite: "None",
+        httpOnly: true,
+        secure: true,
         cookie: {
             sameSite: "None",
             httpOnly: true,
