@@ -1,13 +1,36 @@
-const { showMark } = require("../services/mark.service")
+// const { showMark, pushMark, deleteMark, topMark } = require("../services/mark.service")
+const { showMark, pushMark, deleteMark } = require("../services/mark.service")
 
 exports.getMarks = async (req, res) => {
-    const { userId } = req.params
-    await showMark(userId)
-    return res.status(200)
+    try {
+        const { userId } = req.params
+        const userMark = await showMark(userId)
+        if (!userMark) return res.status(400).json({ message: "북마크 데이터를 받아 오지 못했습니다." })
+        res.status(200).json({ userMark })
+    } catch (err) {
+        res.status(400).json()
+    }
 }
+
 exports.postMarks = async (req, res) => {
-    return res.status(200)
+    try {
+        const { userId } = req.params
+        const { dataId } = req.body
+        const checkMark = await pushMark(userId, dataId)
+        if (!checkMark) return res.status(400).json({ message: "북마크 수정에 실패하였습니다." })
+        res.status(200).json({ message: "SUCCESS" })
+    } catch (err) {
+        res.status(400).json({ message: "FAIL" })
+    }
 }
+
 exports.deleteMarks = async (req, res) => {
-    return res.status(200)
+    const { dataId } = req.body
+    const { userId } = req.params
+    try {
+        await deleteMark(userId, dataId)
+        res.status(200).json({ result: "success" })
+    } catch (err) {
+        res.status(400).json({ result: err })
+    }
 }
