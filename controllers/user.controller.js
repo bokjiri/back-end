@@ -24,8 +24,8 @@ exports.deleteUsers = async (req, res) => {
 }
 exports.kakaoCallback = async (req, res) => {
     const { user } = req.session.passport
-    const { userId, nickname, profileUrl } = user
-    const payload = { userId, nickname, profileUrl }
+    const { userId, nickname, profileUrl, email } = user
+    const payload = { userId, nickname, profileUrl, email }
     const accessToken = jwt.sign(payload, process.env.ACCESSKEY, {
         expiresIn: process.env.ATOKENEXPIRE,
     })
