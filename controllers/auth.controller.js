@@ -7,7 +7,7 @@ module.exports = () => {
         new KakaoStrategy(
             {
                 clientID: process.env.KAKAO_ID,
-                callbackURL: "https://pooreum.shop/api/users/kakao/callback",
+                callbackURL: "http://localhost:3000/api/users/kakao/callback",
             },
             async (accessToken, refreshToken, profile, done) => {
                 try {
