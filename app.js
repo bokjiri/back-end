@@ -32,7 +32,7 @@ connect()
 
 // app.use("/swagger", swaggerUi.serve, swaggerUi.setup(swaggerFile))
 const corsOptions = {
-    origin: ["http://localhost:3000", "http://ec2-3-36-132-198.ap-northeast-2.compute.amazonaws.com"],
+    origin: ["http://localhost:3000", "https://pooreum.shop"],
     credentials: true,
 }
 
