@@ -32,17 +32,5 @@ exports.kakaoCallback = async (req, res) => {
     const refreshToken = jwt.sign({ userId }, process.env.REFRESHKEY, {
         expiresIn: process.env.RTOKENEXPIRE,
     })
-    res.header("Access-Control-Allow-Origin", "http://localhost:3000")
-    res.header("Access-Control-Allow-Credentials", true)
-    res.cookie("ACCESS_TOKEN", accessToken, {
-        sameSite: "None",
-        httpOnly: true,
-        secure: true,
-    })
-    res.cookie("REFRESH_TOKEN", refreshToken, {
-        sameSite: "None",
-        httpOnly: true,
-        secure: true,
-    })
     res.status(200).json({ result: true, accessToken, refreshToken })
 }
