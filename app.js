@@ -49,7 +49,7 @@ app.use(
         saveUninitialized: false,
         secret: process.env.SESSION_SECRET,
         cookie: {
-            SameSite: "None",
+            sameSite: "None",
             httpOnly: true,
             secure: true,
         },
