@@ -50,17 +50,23 @@ async function load3(servList, zxc) {
         const name = i.servNm._text
         let target
         if (i.trgterIndvdlArray !== undefined) {
-            target = i.trgterIndvdlArray._text
+            let a = i.trgterIndvdlArray._text.split(", ")
+            console.log(a)
+            target = a
         } else {
         }
         let obstacle
         if (i.obstKiArray !== undefined) {
-            obstacle = i.obstKiArray._text
+            let b = i.obstKiArray._text.split(", ")
+            console.log(b)
+            obstacle = b
         } else {
         }
         let lifeCycle
         if (i.lifeArray !== undefined) {
-            lifeCycle = i.lifeArray._text
+            let c = i.lifeArray._text.split(", ")
+            console.log(c)
+            lifeCycle = c
         } else {
         }
         const link = i.servDtlLink._text
