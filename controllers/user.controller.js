@@ -44,5 +44,5 @@ exports.kakaoCallback = async (req, res) => {
         httpOnly: true,
         secure: true,
     })
-    res.status(200).json({ result: true })
+    res.status(200).json({ result: true, accessToken, refreshToken })
 }
