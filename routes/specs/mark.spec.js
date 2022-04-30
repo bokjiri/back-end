@@ -1,26 +1,43 @@
 const request = require("supertest")
 const app = require("../../app")
-const markData = require("../../test/data/new-mark2.json")
 const userId = 1
+let dataId = [23, 24]
 
-it("PUT /api/marks/:userId", async () => {
-    const res = await request(app)
-        .put("/api/marks/" + userId)
-        .send(markData)
-    expect(res.statusCode).toBe(200)
-})
-// it("PUT /api/marks/:userId로 보냈을때 에러코드를 500을 주냐?", async () => {
-//     const res = await request(app)
-//         .put("/api/marks/" + userId)
-//         .send({ userId: })
-//     expect(res.statusCode).toBe(500) //name 만 보내면 500에러를 내뱉는다.
-//     expect(response.body).toStrictEqual({ message: "Product validation failed: description: Path `description` is required." }) //에러 메세지를 확인 하고 해당 메세지를 붙여서 맞는지 확인한다.
-// })
+describe("북마크 통합 테스트", () => {
+    it("PUT /api/marks/:userId 가 잘 되나?", async () => {
+        const res = await request(app)
+            .put("/api/marks/" + userId)
+            .send({ dataId })
+        expect(res.statusCode).toBe(200)
+        expect(res.body).toEqual({ message: "SUCCESS" })
+    })
+    it("PUT /api/marks/:userId 에러 상황?", async () => {
+        const res = await request(app).put("/api/marks/9999999").send(dataId)
+        expect(res.statusCode).toBe(400)
+        expect(res.body).toEqual({ message: "북마크 수정에 실패하였습니다." })
+    })
 
-it("GET /api/marks/:userId 가 잘 되니?", async () => {
-    const res = await request(app).get("/api/marks/" + userId)
-    expect(res.statusCode).toBe(200)
-    expect(res.body.desire).toEqual(markData.desire)
-    expect(res.body.name).toEqual(markData.name)
-    expect(res.body.dataId).toEqual(markData.dataId)
+    it("GET /api/marks/:userId 가 잘 되니?", async () => {
+        const res = await request(app).get("/api/marks/" + userId)
+        expect(res.statusCode).toBe(200)
+        expect(res.body.userMark).toBeDefined()
+        dataId.push(res.body.userMark[0].dataId)
+    })
+    it("GET /api/marks/:userId 에러 상황", async () => {
+        const res = await request(app).get("/api/marks/9999999")
+        expect(res.statusCode).toBe(400)
+        expect(res.body).toEqual({ message: "북마크 데이터를 받아 오지 못했습니다." })
+    })
+
+    it("DELETE /api/marks/:userId 가 잘 되나?", async () => {
+        const res = await request(app)
+            .delete("/api/marks/" + userId)
+            .send({ dataId })
+        expect(res.statusCode).toBe(200)
+    })
+    it("DELETE /api/marks/:userId 에러 상황", async () => {
+        const res = await request(app).delete("/api/marks/9999999").send()
+        expect(res.statusCode).toBe(400)
+        // expect(res.body).toBe(200)
+    })
 })
