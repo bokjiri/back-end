@@ -1,6 +1,6 @@
 const passport = require("passport")
 const KakaoStrategy = require("passport-kakao").Strategy
-const { findUser, createUser } = require("../services/user.service")
+const { createUser, checkByEmail } = require("../services/user.service")
 
 module.exports = () => {
     passport.use(
@@ -11,10 +11,8 @@ module.exports = () => {
             },
             async (accessToken, refreshToken, profile, done) => {
                 try {
-                    console.log(accessToken)
-                    console.log(refreshToken)
                     const { email } = profile._json.kakao_account
-                    const exUser = await findUser(email)
+                    const exUser = await checkByEmail(email)
                     if (exUser) {
                         done(null, exUser)
                     } else {
