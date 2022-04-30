@@ -7,9 +7,16 @@ exports.updateUserInfo = async (target, obstacle, lifeCycle, userId) => {
         console.log(error)
     }
 }
-exports.findUser = async (email) => {
+exports.checkByEmail = async (email) => {
     try {
         return await User.findOne({ email })
+    } catch (error) {
+        console.log(error)
+    }
+}
+exports.checkById = async (userId) => {
+    try {
+        return await User.findOne({ userId })
     } catch (error) {
         console.log(error)
     }
