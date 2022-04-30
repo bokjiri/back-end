@@ -117,3 +117,6 @@ swagger-output.json
 
 #orm.js
 orm.js
+
+#local.js
+local.js
