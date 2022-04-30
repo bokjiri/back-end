@@ -1,6 +1,9 @@
 const mongoose = require("mongoose")
 const autoIdSetter = require("./autoidsetter")
 const userSchema = mongoose.Schema({
+    household: {
+        type: [String],
+    },
     target: {
         type: [String],
     },
