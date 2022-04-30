@@ -82,18 +82,39 @@ describe("북마크 테스트 코드", () => {
     })
 
     describe("deleteMarks 관련 테스트", () => {
+        it("User findOne이 잘 되는가?", async () => {
+            req.body.dataId = dataId
+            req.params.userId = userId
+            await markController.deleteMarks(req, res)
+            const option = { _id: false, mark: true }
+            expect(User.findOne).toHaveBeenCalledWith({ userId }, option)
+        })
         it("User update가 잘 되는가?", async () => {
             req.body.dataId = dataId
             req.params.userId = userId
+            User.findOne.mockReturnValue(mark)
             const deleteMark = { $pullAll: { mark: dataId } }
             await markController.deleteMarks(req, res)
             expect(User.updateOne).toHaveBeenCalledWith({ userId }, deleteMark)
         })
         it("User update가 200과 응답값을 잘 리턴하는가?", async () => {
+            req.body.dataId = dataId
+            req.params.userId = userId
+            User.findOne.mockReturnValue(mark)
             User.updateOne.mockReturnValue(dataId)
-            const deleteMarkResult = { result: "success" }
+            const deleteMarkResult = { result: "SUCCESS" }
             await markController.deleteMarks(req, res)
             expect(res.statusCode).toBe(200)
+            expect(res._getJSONData()).toStrictEqual(deleteMarkResult)
+        })
+        it("User update가 400과 응답값을 잘 리턴하는가?", async () => {
+            req.body.dataId = dataId
+            req.params.userId = userId
+            User.findOne.mockReturnValue(null)
+            User.updateOne.mockReturnValue(null)
+            const deleteMarkResult = { message: "북마크 삭제를 실패하였습니다." }
+            await markController.deleteMarks(req, res)
+            expect(res.statusCode).toBe(400)
             expect(res._getJSONData()).toStrictEqual(deleteMarkResult)
         })
     })
