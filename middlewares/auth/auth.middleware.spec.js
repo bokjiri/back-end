@@ -1,9 +1,14 @@
+require("dotenv").config()
 const httpMocks = require("node-mocks-http")
 const authController = require("./auth.middleware")
 const emptyAuth = require("../../test/user/empty.json")
 const incorrectAuth = require("../../test/user/incorrect.json")
 const notBearerAuth = require("../../test/user/bearer.json")
 const invalidAuth = require("../../test/user/invalid.json")
+const expiredAccessToken = require("../../test/user/expieredaccess.json")
+jest.mock("../../services/user.service")
+jest.mock("jsonwebtoken")
+const jwt = require("jsonwebtoken")
 
 let req, res
 beforeEach(() => {
@@ -37,26 +42,37 @@ describe("auth.middleware test", () => {
         expect(res.statusCode).toBe(401)
         expect(res._getJSONData().message).toStrictEqual("만료되었거나, 유효하지 않은 토큰입니다.")
     })
-    // it("액세스 토큰검증 verifyToken이 실행되고 만료된 토큰인 경우 '액세스 토큰 만료'라는 메세지를 보내는가", async () => {
-    //     verifyToken.mockReturnValue("jwt expired")
-
-    //     console.log(verifyToken)
-    //     expect(verifyToken).toBeCalledWith("액세스 토큰 만료")
-    //     expect(res.statusCode).toBe(401)
-    //     expect(res._getJSONData().message).toStrictEqual("액세스 토큰 만료")
-    // })
-    // it("만료된 토큰", async () => {
-    //     const req = {
-    //         headers: {
-    //             authorization: "expiredToken",
-    //         },
-    //     }
-    //     const error = { message: "jwt expired" }
-    //     jwt.verify.mockImplementation(() => {
-    //         throw error
-    //     })
-    //     authController(req, res, next)
-    //     expect(res.statusCode).toBe(401)
-    //     expect(res._getJSONData().message).toStrictEqual("액세스 토큰 만료")
-    // })
+    it("액세스 토큰과 리프레시 토큰이 모두 만료된 토큰인 경우 '리프레시 토큰 만료'이라는 메세지를 보내는가", async () => {
+        const error = { name: "TokenExpiredError", message: "jwt expired" }
+        req.headers = expiredAccessToken
+        jwt.verify = jest.fn(() => {
+            throw error
+        })
+        authController(req, res, next)
+        expect(res.statusCode).toBe(401)
+        expect(res._getJSONData().message).toStrictEqual("리프레시 토큰 만료")
+    })
 })
+
+// const { userId, nickname, profileUrl, email } = user
+// const payload = { userId, nickname, profileUrl, email }
+// const accessToken = jwt.sign(payload, process.env.ACCESSKEY, {
+//     expiresIn: 0,
+// })
+// const refreshToken = jwt.sign({ userId }, process.env.REFRESHKEY, {
+//     expiresIn: process.env.RTOKENEXPIRE,
+// })
+// const authorization = `Bearer ${accessToken}`
+// const reauthorization = `Bearer ${refreshToken}`
+// console.log(authorization)
+// console.log(reauthorization)
+// req.headers = { authorization, reauthorization }
+// jest.mock("jsonwebtoken", () => {
+//     return {
+//         sign: jest.fn(() => "TOKEN"),
+//         verify: jest.fn(() => ({ error: { name: "TokenExpiredError" } })),
+//     }
+// })
+// jwt.verify = jest.fn(() => {
+//     return Error({ name: "TokenExpiredError" })
+// })
