@@ -1,5 +1,5 @@
 // const { showMark, pushMark, deleteMark, topMark } = require("../services/mark.service")
-const { showMark, pushMark, deleteMark, topMark, showMarkRedis, pushMarkRedis, deleteMarkRedis } = require("../services/mark.service")
+const { showMark, pushMark, deleteMark, topMark, likemark, showMarkRedis, pushMarkRedis, deleteMarkRedis, topLikesMarkRedis } = require("../services/mark.service")
 
 exports.getMarks = async (req, res) => {
     try {
@@ -39,9 +39,20 @@ exports.deleteMarks = async (req, res) => {
     }
 }
 
-exports.topMarks = async (req, res) => {
-    const topMarkList = await topMark()
-    res.status(200).json({ topMarkList })
+exports.likeMarks = async (req, res) => {
+    try {
+        const { userId } = req.params
+        const { dataId } = req.body
+        await likemark(userId, dataId)
+        res.status(200).json({ message: "SUCCESS" })
+    } catch (err) {
+        res.status(400).json({ message: "FAIL" })
+    }
 }
 
-// exports.likeMarks = async (req, res) => {}
+exports.topMarks = async (req, res) => {
+    const { userId } = req.body
+    const topMarkList = await topMark(userId)
+    await topLikesMarkRedis(userId)
+    res.status(200).json({ MarkList: topMarkList })
+}

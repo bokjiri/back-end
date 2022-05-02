@@ -6,7 +6,6 @@ router.get("/:userId", redisMiddlewares.markRedis, markController.getMarks)
 router.get("/", markController.topMarks)
 router.put("/:userId", markController.postMarks)
 router.delete("/:userId", markController.deleteMarks)
-// router.post("/like:dataId")
-// router.delete("/like:dataId")
+router.put("/like/:userId", markController.likeMarks)
 
 module.exports = router
