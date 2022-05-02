@@ -1,27 +1,41 @@
 const User = require("../schemas/user")
 
-exports.updateUserInfo = async (target, obstacle, lifeCycle, userId) => {
+exports.updateUserInfo = async (userId, lifeCycle, target, obstacle) => {
     try {
+        const check = await this.checkById(userId)
+        if (check === undefined) throw new Error()
         return await User.updateOne({ userId }, { $set: { target, obstacle, lifeCycle } })
+    } catch (error) {
+        console.log(error)
+    }
+}
+exports.deleteUserInfo = async (userId) => {
+    try {
+        const check = await this.checkById(userId)
+        if (check === undefined) throw new Error()
+        return await User.deleteOne({ userId })
     } catch (error) {
         console.log(error)
     }
 }
 exports.checkByEmail = async (email) => {
     try {
-        return await User.findOne({ email })
+        const user = await User.findOne({ email }, { _id: false, __v: false })
+        if (!user) throw new Error()
+        return user
     } catch (error) {
         console.log(error)
     }
 }
 exports.checkById = async (userId) => {
     try {
-        return await User.findOne({ userId })
+        const user = await User.findOne({ userId }, { _id: false, __v: false })
+        if (!user) throw new Error()
+        return user
     } catch (error) {
         console.log(error)
     }
 }
-
 exports.createUser = async (email, nickname, profileUrl) => {
     try {
         return await User.create({ email, nickname, profileUrl })
