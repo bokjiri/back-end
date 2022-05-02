@@ -13,6 +13,11 @@ const userSchema = mongoose.Schema({
     mark: {
         type: [String],
     },
+    likeMark: {
+        type: [Number],
+    },
+    topLikeMarkList: [{ desire: String, name: String, dataId: Number }],
+
     email: {
         type: String,
     },

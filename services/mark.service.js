@@ -18,6 +18,11 @@ exports.pushMarkRedis = async (userId) => {
 exports.deleteMarkRedis = async (userId) => {
     await redisSet(userId)
 }
+exports.topLikesMarkRedis = async (userId) => {
+    const markInfo = await User.findOne({ userId }, { _id: false, topLikeMarkList: true })
+    const topLikesMarkList = JSON.stringify(markInfo)
+    await Client.set("topMarkList", topLikesMarkList)
+}
 
 exports.showMark = async (userId) => {
     try {
@@ -28,14 +33,10 @@ exports.showMark = async (userId) => {
 
 exports.pushMark = async (userId, dataId) => {
     try {
-        const checkuser = await User.findOne({ userId })
         return User.updateOne(
             { userId },
             {
-                $set: { mark: dataId },
-            },
-            {
-                $unset: { mark: checkuser.mark },
+                $push: { mark: dataId },
             }
         )
     } catch (err) {}
@@ -52,12 +53,12 @@ exports.deleteMark = async (userId, dataId) => {
     } catch (err) {}
 }
 
-exports.topMark = async () => {
-    const userMarkList = await User.find({}, { _id: false, mark: true })
+exports.topMark = async (userId) => {
+    const userMarkList = await User.find({}, { _id: false, likeMark: true })
     let arr1 = []
     let result = {}
     userMarkList.map((value) => {
-        arr1.push(...value.mark)
+        arr1.push(...value.likeMark)
     })
     arr1.forEach((x) => {
         result[x] = (result[x] || 0) + 1
@@ -98,6 +99,34 @@ exports.topMark = async () => {
         markListCleansing.push(...value)
     })
     // console.log("markListCleansing: " + markListCleansing)
-
+    await User.updateOne(
+        { userId },
+        {
+            $set: { topLikeMarkList: markListCleansing },
+        },
+        {
+            $unset: { topLikeMarkList: markListCleansing },
+        }
+    )
     return markListCleansing
+}
+
+exports.likemark = async (userId, dataId) => {
+    const findLikeMark = await User.findOne({ userId }, { _id: false, likeMark: true })
+
+    if (findLikeMark.likeMark.includes(dataId)) {
+        return await User.updateOne(
+            { userId },
+            {
+                $pullAll: { likeMark: dataId },
+            }
+        )
+    } else {
+        return await User.updateOne(
+            { userId },
+            {
+                $push: { likeMark: dataId },
+            }
+        )
+    }
 }
