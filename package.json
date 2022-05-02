@@ -43,7 +43,7 @@
     "devDependencies": {
         "jest": "^27.5.1",
         "node-mocks-http": "^1.11.0",
-        "nodemon": "^2.0.15",
+        "nodemon": "^2.0.16",
         "prettier": "^2.6.2",
         "supertest": "^6.2.3",
         "swagger-autogen": "^2.21.1",

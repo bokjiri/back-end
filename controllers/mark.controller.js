@@ -1,5 +1,5 @@
 // const { showMark, pushMark, deleteMark, topMark } = require("../services/mark.service")
-const { showMark, pushMark, deleteMark, pushMarkRedis, showMarkRedis, deleteMarkRedis } = require("../services/mark.service")
+const { showMark, pushMark, deleteMark, topMark, showMarkRedis, pushMarkRedis, deleteMarkRedis } = require("../services/mark.service")
 
 exports.getMarks = async (req, res) => {
     try {
@@ -31,10 +31,17 @@ exports.deleteMarks = async (req, res) => {
     const { userId } = req.params
     try {
         const checkDelete = await deleteMark(userId, dataId)
-        deleteMarkRedis(userId)
+        await deleteMarkRedis(userId)
         if (!checkDelete) return res.status(400).json({ message: "북마크 삭제를 실패하였습니다." })
         res.status(200).json({ result: "SUCCESS" })
     } catch (err) {
         res.status(400).json({ result: err })
     }
 }
+
+exports.topMarks = async (req, res) => {
+    const topMarkList = await topMark()
+    res.status(200).json({ topMarkList })
+}
+
+// exports.likeMarks = async (req, res) => {}
