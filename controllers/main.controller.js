@@ -1,17 +1,19 @@
+const { checkUserData } = require("../services/main.service")
+
 exports.getMain = async (req, res) => {
-    return res.status(200)
-    // if (!req.query.userCode) {
-    //     return res.status(400).send({
-    //         result: "FAIL",
-    //         code: "-10",
-    //         message: "필수 입력값 조회 실패",
-    //     })
-    // }
-    // const { userCode } = req.query
-    // return res.status(200).send({
-    //     result: "SUCCESS",
-    //     code: "0",
-    //     message: "정책 추천 성공",
-    //     response: userCode,
-    // })
+    const { userId } = req.query
+    try {
+        let checkedData = await checkUserData(userId)
+        return res.status(200).json({
+            result: "SUCCESS",
+            message: "추천 조회 성공",
+            checkedData,
+        })
+    } catch (error) {
+        console.log(error)
+        res.status(400).json({
+            result: "FAIL",
+            message: "실패",
+        })
+    }
 }
