@@ -17,7 +17,7 @@ describe("유저 컨트롤러 테스트", () => {
         it("tokenUserId !== userId인 경우 '회원정보 조회 중 오류가 발생했습니다.'라는 메세지를 보내는가", async () => {
             req.params.userId = 1
             res.locals.userId = 2
-            userController.getUsers(req, res)
+            await userController.getUsers(req, res)
             expect(res.statusCode).toBe(400)
             expect(res._getJSONData().message).toStrictEqual("회원정보 조회 중 오류가 발생했습니다.")
         })
@@ -43,7 +43,7 @@ describe("유저 컨트롤러 테스트", () => {
         it("tokenUserId !== userId인 경우 '회원정보 수정 중 오류가 발생했습니다.'라는 메세지를 보내는가", async () => {
             req.params.userId = 1
             res.locals.userId = 2
-            userController.putUsers(req, res)
+            await userController.putUsers(req, res)
             expect(res.statusCode).toBe(400)
             expect(res._getJSONData().message).toStrictEqual("회원정보 수정 중 오류가 발생했습니다.")
         })
@@ -68,7 +68,7 @@ describe("유저 컨트롤러 테스트", () => {
         it("tokenUserId !== userId인 경우 '회원정보 삭제 중 오류가 발생했습니다.'라는 메세지를 보내는가", async () => {
             req.params.userId = 1
             res.locals.userId = 2
-            userController.deleteUsers(req, res)
+            await userController.deleteUsers(req, res)
             expect(res.statusCode).toBe(400)
             expect(res._getJSONData().message).toStrictEqual("회원정보 삭제 중 오류가 발생했습니다.")
         })
