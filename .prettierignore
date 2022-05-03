@@ -1,2 +1,2 @@
 .env
-appspec.yml
+*.yml
