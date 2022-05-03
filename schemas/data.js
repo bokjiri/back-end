@@ -28,6 +28,18 @@ const dataSchema = mongoose.Schema({
     support: {
         type: String,
     },
+    region: {
+        type: String,
+    },
+    job: {
+        type: String,
+    },
+    edu: {
+        type: String,
+    },
+    period: {
+        type: String,
+    },
 })
 autoIdSetter(dataSchema, mongoose, "dataSchema", "dataId")
 module.exports = mongoose.model("Data", dataSchema)
