@@ -42,12 +42,38 @@ describe("auth.middleware test", () => {
         expect(res.statusCode).toBe(401)
         expect(res._getJSONData().message).toStrictEqual("만료되었거나, 유효하지 않은 토큰입니다.")
     })
+    // it("액세스 토큰이 만료된 토큰이고 리프레시 토큰이 유효한 경우 '액세스 토큰 재발행'이라는 메세지를 보내는가", async () => {
+    //     const error = { name: "TokenExpiredError", message: "jwt expired" }
+    //     const refreshToken = jwt.sign({ a: "a" }, process.env.REFRESHKEY, {
+    //         expiresIn: process.env.RTOKENEXPIRE,
+    //     })
+    //     const reauthorization = `Bearer ${refreshToken}`
+    //     console.log(reauthorization)
+    //     req.headers = expiredAccessToken
+    //     jwt.verify = jest
+    //         .fn()
+    //         .mockImplementationOnce(() => {
+    //             throw error
+    //         })
+    //         .mockImplementationOnce(() => {
+    //             throw { userId: 12, iat: 1651465544, exp: 11651465544 }
+    //         })
+    //     authController(req, res, next)
+    //     console.log(jwt.verify.mock)
+    //     expect(res.statusCode).toBe(401)
+    //     expect(res._getJSONData().message).toStrictEqual("액세스 토큰 재발행")
+    // })
     it("액세스 토큰과 리프레시 토큰이 모두 만료된 토큰인 경우 '리프레시 토큰 만료'이라는 메세지를 보내는가", async () => {
         const error = { name: "TokenExpiredError", message: "jwt expired" }
+        const refreshToken = jwt.sign({}, process.env.REFRESHKEY, {
+            expiresIn: process.env.RTOKENEXPIRE,
+        })
+        const reauthorization = `Bearer ${refreshToken}`
         req.headers = expiredAccessToken
         jwt.verify = jest.fn(() => {
             throw error
         })
+
         authController(req, res, next)
         expect(res.statusCode).toBe(401)
         expect(res._getJSONData().message).toStrictEqual("리프레시 토큰 만료")
