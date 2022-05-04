@@ -44,17 +44,11 @@ async function load2(i, index) {
 
                 if (
                     i.majrRqisCn._cdata === "제한없음" &&
-                    /[^주관기관과 동일]/.test(i.cnsgNmor._cdata) &&
-                    /[^null]/.test(i.cnsgNmor._cdata) &&
-                    /[^\-]/.test(i.cnsgNmor._cdata) &&
-                    /^[^읍면동]/.test(i.cnsgNmor._cdata) &&
-                    /^[가-힣]/.test(i.cnsgNmor._cdata) &&
-                    /^[^대한]/.test(i.cnsgNmor._cdata) &&
-                    /^[^2018]/.test(i.rqutPrdCn._cdata) &&
-                    /^[^2019]/.test(i.rqutPrdCn._cdata) &&
-                    /^[^2020]/.test(i.rqutPrdCn._cdata) &&
-                    /^[^2021]/.test(i.rqutPrdCn._cdata) &&
                     area.indexOf(a) !== -1 &&
+                    /[^2018]/.test(i.rqutPrdCn._cdata) &&
+                    /[^2019]/.test(i.rqutPrdCn._cdata) &&
+                    /[^2020]/.test(i.rqutPrdCn._cdata) &&
+                    /[^2021]/.test(i.rqutPrdCn._cdata) &&
                     /^http/.test(i.rqutUrla._cdata) &&
                     (/^미취업자$/.test(i.empmSttsCn._cdata) || /^제한없음$/.test(i.empmSttsCn._cdata))
                 ) {
@@ -110,9 +104,19 @@ async function load2(i, index) {
                     region = i.cnsgNmor._cdata.substring(0, 2)
                     myConsole.log("지역", { region })
                     const period1 = i.rqutPrdCn._cdata.replace(/[^0-9]/g, "")
-                    myConsole.log("신청기간", period1)
+                    myConsole.log("신청기간1", { period1 })
+
+                    let period2
+                    if (/~/.test(i.rqutPrdCn._cdata)) {
+                        period2 = i.rqutPrdCn._cdata.split("~")
+                        myConsole.log("신청기간2", { period2 })
+                    } else if (/-/.test(i.rqutPrdCn._cdata)) {
+                        period2 = i.rqutPrdCn._cdata.split("-")
+                        myConsole.log("신청기간2", { period2 })
+                    }
+
                     period = i.rqutPrdCn._cdata
-                    myConsole.log("신청기간", i.rqutPrdCn._cdata)
+                    myConsole.log("신청기간", { period })
                     myConsole.log("신청절차", i.rqutProcCn._cdata)
                     myConsole.log("심사발표", i.jdgnPresCn._cdata)
 
