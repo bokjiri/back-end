@@ -1,2 +1,0 @@
-Tip log Data
-userId: 19 dataId: 1,5,2,0,1,5,1,2
