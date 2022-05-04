@@ -25,7 +25,7 @@ exports.checkUserData = async (isUser, isData) => {
         if (isUser.lifeCycle.length !== 0) {
             for (let i = 0; i < isUser.lifeCycle.length; i++) {
                 isData.forEach((data) => {
-                    if (data.lifeCycle.includes(isUser.lifeCycle[i]) === true) {
+                    if (data.lifeCycle.includes(isUser.lifeCycle[i]) === true || data.lifeCycle[0] === undefined) {
                         checkedWithLifeCycle.push(data)
                     }
                 })
@@ -41,7 +41,7 @@ exports.checkUserData = async (isUser, isData) => {
         if (isUser.target.length !== 0) {
             for (let i = 0; i < isUser.target.length; i++) {
                 checkedWithLifeCycle.forEach((data) => {
-                    if (data.target.includes(isUser.target[i]) === true) {
+                    if (data.target.includes(isUser.target[i]) === true || data.target[0] === undefined) {
                         checkedWithTarget.push(data)
                     }
                 })
@@ -57,7 +57,7 @@ exports.checkUserData = async (isUser, isData) => {
         if (isUser.obstacle.length !== 0) {
             for (let i = 0; i < isUser.obstacle.length; i++) {
                 checkedWithTarget.forEach((data) => {
-                    if (data.obstacle.includes(isUser.obstacle[i]) === true) {
+                    if (data.obstacle.includes(isUser.obstacle[i]) === true || data.obstacle[0] === undefined) {
                         checkedWithObstacle.push(data)
                     }
                 })
