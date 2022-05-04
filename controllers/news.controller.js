@@ -33,7 +33,9 @@ exports.newsData = () => {
             async function (err, res, body) {
                 let originNewsData = JSON.parse(body) //json으로 파싱
                 originNewsData.items.map((value) => {
-                    result.push({ title: value.title, link: value.originallink, desc: value.description, date: value.pubDate })
+                    const myRegExp1 = /<[^>]*>?/g
+                    htmlTxt = value.title.replace(myRegExp1, "")
+                    result.push({ title: value.title.replace(myRegExp1, ""), link: value.originallink, desc: value.description.replace(myRegExp1, ""), date: value.pubDate })
                 })
                 resolve(result)
                 const newsData = JSON.stringify(result)
