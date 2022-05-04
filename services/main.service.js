@@ -1,58 +1,73 @@
 const User = require("../schemas/user")
 const BokjiApi = require("../schemas/data")
 
-exports.checkUserData = async (userId) => {
+exports.checkUserId = async (userId) => {
+    try {
+        const [userData] = await User.find({ userId }, { _id: false, lifeCycle: true, target: true, obstacle: true })
+        console.log(userData)
+        return userData
+    } catch (err) {}
+}
+
+exports.checkBokjiApi = () => {
+    try {
+        return BokjiApi.find({})
+    } catch (err) {}
+}
+
+exports.checkUserData = async (isUser, isData) => {
+    // console.log(isUser)
+    // console.log(isData)
     try {
         // checkedData = []
-        const [userData] = await User.find({ userId }, { _id: false, lifeCycle: true, target: true, obstacle: true })
-
         checkedWithLifeCycle = []
-        //만약 userData에 lifecycle이 존재한다면
-        if (userData.lifeCycle.length !== 0) {
-            for (let i = 0; i < userData.lifeCycle.length; i++) {
-                checkedWithLifeCycle.push(await BokjiApi.find({ lifeCycle: userData.lifeCycle[i] }))
+        //만약 isUser에 lifecycle이 존재한다면
+        if (isUser.lifeCycle.length !== 0) {
+            for (let i = 0; i < isUser.lifeCycle.length; i++) {
+                isData.forEach((data) => {
+                    if (data.lifeCycle.includes(isUser.lifeCycle[i]) === true) {
+                        checkedWithLifeCycle.push(data)
+                    }
+                })
             }
         }
-        //만약 userData에 lifecycle이 존재하지 않는다면
+        //만약 isUser에 lifecycle이 존재하지 않는다면
         else {
-            checkedWithLifeCycle.push(await BokjiApi.find({}))
+            checkedWithLifeCycle = isData
         } // console.log(checkedWithLifeCycle)
 
         checkedWithTarget = []
-        //만약 userData에 target이 존재한다면
-        if (userData.target.length !== 0) {
-            for (let i = 0; i < userData.target.length; i++) {
-                checkedWithLifeCycle[0].forEach((data) => {
-                    if (data.target.includes(userData.target[i]) === true) {
+        //만약 isUser에 target이 존재한다면
+        if (isUser.target.length !== 0) {
+            for (let i = 0; i < isUser.target.length; i++) {
+                checkedWithLifeCycle.forEach((data) => {
+                    if (data.target.includes(isUser.target[i]) === true) {
                         checkedWithTarget.push(data)
                     }
                 })
             }
         }
-        //만약 userData에 target이 존재하지 않는다면
+        //만약 isUser에 target이 존재하지 않는다면
         else {
             checkedWithTarget = checkedWithLifeCycle
         } // console.log(checkedWithTarget)
 
-        //만약 userData에 obstacle이 존재한다면
+        //만약 isUser에 obstacle이 존재한다면
         checkedWithObstacle = []
-        if (userData.obstacle.length !== 0) {
-            for (let i = 0; i < userData.obstacle.length; i++) {
+        if (isUser.obstacle.length !== 0) {
+            for (let i = 0; i < isUser.obstacle.length; i++) {
                 checkedWithTarget.forEach((data) => {
-                    if (data.obstacle.includes(userData.obstacle[i]) === true) {
+                    if (data.obstacle.includes(isUser.obstacle[i]) === true) {
                         checkedWithObstacle.push(data)
                     }
                 })
             }
         }
-        //만약 userData에 obstacle이 존재하지 않는다면
+        //만약 isUser에 obstacle이 존재하지 않는다면
         else {
             checkedWithObstacle = checkedWithTarget
-        }
-        console.log(checkedWithObstacle)
+        } // console.log(checkedWithObstacle)
 
         return checkedWithObstacle
-    } catch (error) {
-        console.log(error)
-    }
+    } catch (err) {}
 }
