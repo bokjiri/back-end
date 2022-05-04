@@ -34,14 +34,17 @@ exports.newsData = () => {
                 let originNewsData = JSON.parse(body) //json으로 파싱
                 originNewsData.items.map((value) => {
                     const myRegExp1 = /<[^>]*>?/g
-                    htmlTxt = value.title.replace(myRegExp1, "")
-                    result.push({ title: value.title.replace(myRegExp1, ""), link: value.originallink, desc: value.description.replace(myRegExp1, ""), date: value.pubDate })
+                    const myRegExp2 = /&quot;/g
+                    const title = value.title.replace(myRegExp1, "").replace(myRegExp2, "")
+                    const desc = value.title.replace(myRegExp1, "").replace(myRegExp2, "")
+
+                    result.push({ title, link: value.originallink, desc, date: value.pubDate })
                 })
                 resolve(result)
                 const newsData = JSON.stringify(result)
 
                 Client.set("newsData", newsData)
-                // Client.expire("newsData", 3600)
+                Client.expire("newsData", 10)
             }
         )
         // })
