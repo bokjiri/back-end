@@ -36,9 +36,9 @@ exports.newsData = () => {
                     result.push({ title: value.title, link: value.originallink, desc: value.description, date: value.pubDate })
                 })
                 resolve(result)
-                // const newsData = JSON.stringify(result)
+                const newsData = JSON.stringify(result)
 
-                // Client.set("newsData", newsData)
+                Client.set("newsData", newsData)
                 // Client.expire("newsData", 3600)
             }
         )
