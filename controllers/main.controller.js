@@ -38,6 +38,33 @@ exports.getMain = async (req, res) => {
     }
     try {
         let checkedData = await checkUserData(isUser, isData)
+        console.log(checkedData[0].desire)
+        let work = []
+        let houseLife = []
+        let health = []
+        let eduCare = []
+        let safetyRight = []
+        let etc = []
+        checkedData.forEach((data)=>{
+            if(data.desire === "일자리"){
+                work.push(data)
+            }
+            if(data.desire === "주거 및 일상생활"){
+                houseLife.push(data)
+            }
+            if(data.desire === "건강"){
+                health.push(data)
+            }
+            if(data.desire === "교육 및 돌봄"){
+                eduCare.push(data)
+            }
+            if(data.desire === "안전 및 권익보장"){
+                safetyRight.push(data)
+            }
+            if(data.desire === "기타"){
+                etc.push(data)
+            }
+        })
         //checkedData는 배열 안에 오브젝트(정책 하나)가 들어가있어야 한다.
         /*=====================================================================================
         #swagger.responses[200] = {
@@ -49,6 +76,12 @@ exports.getMain = async (req, res) => {
             result: "SUCCESS",
             message: "메인 페이지 추천 정책 조회 성공",
             checkedData,
+            work,
+            houseLife,
+            health,
+            eduCare,
+            safetyRight,
+            etc
         })
     } catch (error) {
         console.log(error)
