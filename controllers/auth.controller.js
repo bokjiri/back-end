@@ -13,14 +13,14 @@ module.exports = () => {
                 try {
                     const { email } = profile._json.kakao_account
                     const exUser = await checkByEmail(email)
-                    if (exUser) {
-                        done(null, exUser)
-                    } else {
+                    if (exUser === undefined) {
                         const email = profile._json.kakao_account.email
                         const nickname = profile.displayName
                         const profileUrl = profile._json.kakao_account.profile.profile_image_url
                         const newUser = await createUser(email, nickname, profileUrl)
                         done(null, newUser)
+                    } else {
+                        done(null, exUser)
                     }
                 } catch (error) {
                     console.error(error)
