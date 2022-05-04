@@ -28,10 +28,10 @@ module.exports = async (req, res, next) => {
         const confirmUser = await checkById(aToken.userId)
 
         if (!confirmUser) throw new Error()
-        res.locals.userId = confirmUser.userId
-        res.locals.email = confirmUser.email
-        res.locals.nickname = confirmUser.nickname
-        res.locals.profileUrl = confirmUser.profileUrl
+        res.locals.userId = confirmUser[0].userId
+        res.locals.email = confirmUser[0].email
+        res.locals.nickname = confirmUser[0].nickname
+        res.locals.profileUrl = confirmUser[0].profileUrl
 
         next()
     } catch (error) {
