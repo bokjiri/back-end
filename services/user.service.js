@@ -29,7 +29,7 @@ exports.checkByEmail = async (email) => {
 }
 exports.checkById = async (userId) => {
     try {
-        const user = await User.find({ userId }, { _id: false, __v: false })
+        const user = await User.findOne({ userId }, { _id: false, __v: false })
         if (!user) throw new Error()
         return user
     } catch (error) {
