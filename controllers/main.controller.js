@@ -1,3 +1,4 @@
+const e = require("express")
 const { checkUserData, checkUserId, checkBokjiApi } = require("../services/main.service")
 
 exports.getMain = async (req, res) => {
@@ -26,8 +27,8 @@ exports.getMain = async (req, res) => {
         =====================================================================================*/
         return res.status(400).json({ result: "FAIL", code: -11, message: "데이터베이스 조회 실패" })
     }
-    const isData = await checkBokjiApi()
-    if (!isData) {
+    const allData = await checkBokjiApi()
+    if (!allData) {
         /*=====================================================================================
         #swagger.responses[400] = {
             description: 'BokjiApi가 DB에 존재하지 않을 때, 아래 예제와 같은 형태로 응답받습니다.',
@@ -36,9 +37,14 @@ exports.getMain = async (req, res) => {
         =====================================================================================*/
         return res.status(400).json({ result: "FAIL", code: -11, message: "데이터베이스 조회 실패" })
     }
+    let isData = []
+    allData.forEach((data)=>{
+        if(data.lifeCycle[0] !== undefined || data.target[0] !== undefined || data.obstacle[0] !== undefined ){
+            isData.push(data)
+        } 
+    })
     try {
         let checkedData = await checkUserData(isUser, isData)
-        console.log(checkedData[0].desire)
         let work = []
         let houseLife = []
         let health = []

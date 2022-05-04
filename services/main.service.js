@@ -4,7 +4,7 @@ const BokjiApi = require("../schemas/data")
 exports.checkUserId = async (userId) => {
     try {
         const [userData] = await User.find({ userId }, { _id: false, lifeCycle: true, target: true, obstacle: true })
-        console.log(userData)
+        // console.log(userData)
         return userData
     } catch (err) {}
 }
