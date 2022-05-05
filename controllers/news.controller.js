@@ -1,4 +1,5 @@
 const request = require("request")
+const News = require("../schemas/news")
 const Client = require("../schemas/redis")
 require("dotenv").config()
 const NAVER_CLIENT_ID = process.env.CLIENTID
@@ -12,13 +13,19 @@ const option = {
     sort: "sim", //정렬 유형 (sim:유사도)
 }
 
+async function redisSet() {
+    const NewsDataList = await News.find({}, { _id: false, newsId: false, __v: false })
+    const newsData = JSON.stringify(NewsDataList)
+    await Client.set("newsData", newsData)
+    await Client.expire("newsData", 3600)
+}
+
 exports.newsData = () => {
     // const rule = new schedule.RecurrenceRule()
     // rule.dayOfWeek = [0, new schedule.Range(0, 6)]
     // rule.minute = 30
     // rule.second = 30
     return new Promise((resolve, reject) => {
-        let result = []
         // schedule.scheduleJob(rule, () => {
         request.get(
             {
@@ -29,22 +36,33 @@ exports.newsData = () => {
                     "X-Naver-Client-Secret": NAVER_CLIENT_SECRET,
                 },
             },
-
             async function (err, res, body) {
                 let originNewsData = JSON.parse(body) //json으로 파싱
-                originNewsData.items.map((value) => {
-                    const myRegExp1 = /<[^>]*>?/g
-                    const myRegExp2 = /&quot;/g
-                    const title = value.title.replace(myRegExp1, "").replace(myRegExp2, "")
-                    const desc = value.title.replace(myRegExp1, "").replace(myRegExp2, "")
-
-                    result.push({ title, link: value.originallink, desc, date: value.pubDate })
-                })
-                resolve(result)
-                const newsData = JSON.stringify(result)
-
-                Client.set("newsData", newsData)
-                Client.expire("newsData", 10)
+                let newsList = originNewsData.items
+                const news = await News.find({}, { _id: false, newsId: true })
+                const myRegExp1 = /<[^>]*>?/g
+                const myRegExp2 = /&quot;/g
+                let createNews
+                let updateNews
+                for (let i = 0; i < newsList.length; i++) {
+                    const title = newsList[i].title.replace(myRegExp1, "").replace(myRegExp2, "")
+                    const link = newsList[i].link
+                    const desc = newsList[i].description.replace(myRegExp1, "").replace(myRegExp2, "")
+                    const date = newsList[i].pubDate
+                    if (news.length === 0) {
+                        createNews = await News.create({ title, link, desc, date })
+                    } else {
+                        updateNews = await News.updateOne({ newsId: news[i].newsId }, { $set: { title, link, desc, date } })
+                    }
+                }
+                const NewsDataList = await News.find({}, { _id: false, newsId: false, __v: false })
+                if (createNews) {
+                    redisSet()
+                } else if (updateNews.acknowledged) {
+                    redisSet()
+                }
+                redisSet()
+                resolve(NewsDataList)
             }
         )
         // })
