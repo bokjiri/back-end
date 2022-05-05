@@ -1,25 +1,43 @@
 const mongoose = require("mongoose")
 const autoIdSetter = require("./autoidsetter")
 const dataSchema = mongoose.Schema({
-    desire: {
+    lifeCycle: {
+        type: [String],
+    },
+    gender: {
         type: String,
     },
-    target: {
-        type: [String],
+    region: {
+        type: String,
     },
     obstacle: {
         type: [String],
     },
-    lifeCycle: {
+    scholarship: {
         type: [String],
     },
+    job: {
+        type: String,
+    },
+    marriage: {
+        type: String,
+    },
+    children: {
+        type: Number,
+    },
+    household: {
+        type: Number,
+    },
+    salary: {
+        type: Number,
+    },
+    target: {
+        type: [String],
+    },
+    desire: {
+        type: String,
+    },
     name: {
-        type: String,
-    },
-    link: {
-        type: String,
-    },
-    institution: {
         type: String,
     },
     summary: {
@@ -28,16 +46,13 @@ const dataSchema = mongoose.Schema({
     support: {
         type: String,
     },
-    region: {
-        type: String,
-    },
-    job: {
-        type: String,
-    },
-    edu: {
-        type: String,
-    },
     period: {
+        type: String,
+    },
+    institution: {
+        type: String,
+    },
+    link: {
         type: String,
     },
 })
