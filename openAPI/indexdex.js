@@ -57,79 +57,32 @@ async function load2(page) {
                     i.jdgnPresCn._cdata.search(/2021|2020/) === -1 && //심사발표
                     (/^미취업자$/.test(i.empmSttsCn._cdata) || /^제한없음$/.test(i.empmSttsCn._cdata)) //참여요건 - 취업상태
                 ) {
-                    let name
-                    let summary
-                    let desire
-                    let lifeCycle = []
-                    let job
-                    let edu
-                    let institution
-                    let region = a
-                    let link
-                    let support
-                    let target
                     // myConsole.log("기관 및 지자체 구분", i.polyBizTy._cdata)
-                    name = i.polyBizSjnm._cdata
-                    // myConsole.log("정책명", { name })
-                    if (/여성/.test(name)) {
-                        target = "여성"
-                        // myConsole.log({ target })
-                    }
-
-                    summary = i.polyItcnCn._cdata
-                    // myConsole.log("정책소개", { summary })
-                    if (i.plcyTpNm._cdata === "취업지원" || i.plcyTpNm._cdata === "창업지원") {
-                        desire = "일자리"
-                        // myConsole.log("정책유형", { desire })
-                    } else if (i.plcyTpNm._cdata === "주거·금융") {
-                        desire = "주거 및 일상생활"
-                        // myConsole.log("정책유형", { desire })
-                    } else if (i.plcyTpNm._cdata === "생활·복지") {
-                        desire = "건강"
-                        // myConsole.log("정책유형", { desire })
-                    } else if (i.plcyTpNm._cdata === "정책참여") {
-                        desire = "안전 및 권익보장"
-                        // myConsole.log("정책유형", { desire })
-                    } else if (i.plcyTpNm._cdata === "코로나19") {
-                        desire = "기타"
-                        // myConsole.log("정책유형", { desire })
-                    }
-
-                    job = i.empmSttsCn._cdata
-                    // myConsole.log("참여요건 - 취업상태", { job })
-                    edu = i.accrRqisCn._cdata
-                    // myConsole.log("참여요건 - 학력", { edu })
                     // myConsole.log("참여요건 - 전공", i.majrRqisCn._cdata)
                     // myConsole.log("참여요건 - 특화분야", i.cnsgNmor._cdata)
-                    institution = i.cnsgNmor._cdata
-                    // myConsole.log("신청기관명", { institution })
-
-                    // myConsole.log("지역", { region })
-
-                    let period4 = i.rqutPrdCn._cdata
-                    // myConsole.log("신청기간", { period4 })
+                    // myConsole.log("신청절차", i.rqutProcCn._cdata)
+                    // myConsole.log("심사발표", i.jdgnPresCn._cdata)
+                    // myConsole.log("지원규모", i.sporScvl._cdata)
 
                     let period1
                     let period2 = []
+                    let period3 = i.rqutPrdCn._cdata
                     let resultPeriod
                     if (/~/.test(i.rqutPrdCn._cdata)) {
                         period1 = i.rqutPrdCn._cdata.split("~")
                         resultPeriod = await period(period1, period2)
-                        // if (resultPeriod !== false) myConsole.log("신청기간", { period: resultPeriod })
                     } else if (/-/.test(i.rqutPrdCn._cdata) && i.rqutPrdCn._cdata.length !== 1) {
                         period1 = i.rqutPrdCn._cdata.split("-")
                         resultPeriod = await period(period1, period2)
-                        // if (resultPeriod !== false) myConsole.log("신청기간", { period: resultPeriod })
                     } else if (/\//.test(i.rqutPrdCn._cdata)) {
                         period1 = i.rqutPrdCn._cdata.split("/")
                         resultPeriod = await period(period1, period2)
-                        // if (resultPeriod !== false) myConsole.log("신청기간", { period: resultPeriod })
                     } else if (/수시/.test(i.rqutPrdCn._cdata)) {
-                        resultPeriod = period4
+                        resultPeriod = period3
                     } else if (/상시/.test(i.rqutPrdCn._cdata)) {
-                        resultPeriod = period4
+                        resultPeriod = period3
                     } else if (/연중/.test(i.rqutPrdCn._cdata)) {
-                        resultPeriod = period4
+                        resultPeriod = period3
                     } else if (/\./.test(i.rqutPrdCn._cdata)) {
                         period1 = i.rqutPrdCn._cdata.split(/\D/).filter(Boolean)
                         if (period1.length === 1) {
@@ -159,27 +112,40 @@ async function load2(page) {
                     if (resultPeriod === false) continue
                     if (resultPeriod === undefined) continue
 
-                    // console.log(resultPeriod)
-                    // myConsole.log("신청기간1", { period: resultPeriod })
-                    // myConsole.log("신청절차", i.rqutProcCn._cdata)
-                    // myConsole.log("심사발표", i.jdgnPresCn._cdata)
-
-                    link = i.rqutUrla._cdata
-                    // myConsole.log("지원규모", i.sporScvl._cdata)
-                    support = i.sporCn._cdata
-                    // myConsole.log("지원내용", { support })
+                    let lifeCycle = []
                     if (i.ageInfo._cdata.replace(/[^0-9]/g, "").length === 4) {
                         lifeCycle[0] = String(i.ageInfo._cdata.replace(/[^0-9]/g, "")[0]) + String(i.ageInfo._cdata.replace(/[^0-9]/g, "")[1])
                         lifeCycle[1] = String(i.ageInfo._cdata.replace(/[^0-9]/g, "")[2]) + String(i.ageInfo._cdata.replace(/[^0-9]/g, "")[3])
-                        // return lifeCycle
-                        // myConsole.log("참여요건 - 연령", { lifeCycle })
                     } else if (i.ageInfo._cdata.replace(/[^0-9]/g, "").length === 0) {
                         lifeCycle.push("제한없음")
-                        // return lifeCycle
-                        // myConsole.log("참여요건 - 연령", { lifeCycle: i.ageInfo._cdata.replace(/[^0-9]/g, "") })
                     }
 
-                    // myConsole.log("사이트 링크 주소", { link })
+                    let target
+                    if (i.polyBizSjnm._cdata.search(/여성|출산/) !== -1) {
+                        target = "여성"
+                    }
+
+                    let desire
+                    if (i.plcyTpNm._cdata === "취업지원" || i.plcyTpNm._cdata === "창업지원") {
+                        desire = "일자리"
+                    } else if (i.plcyTpNm._cdata === "주거·금융") {
+                        desire = "주거 및 일상생활"
+                    } else if (i.plcyTpNm._cdata === "생활·복지") {
+                        desire = "건강"
+                    } else if (i.plcyTpNm._cdata === "정책참여") {
+                        desire = "안전 및 권익보장"
+                    } else if (i.plcyTpNm._cdata === "코로나19") {
+                        desire = "기타"
+                    }
+
+                    let name = i.polyBizSjnm._cdata
+                    let summary = i.polyItcnCn._cdata
+                    let job = i.empmSttsCn._cdata
+                    let scholarship = i.accrRqisCn._cdata.split(", ")
+                    let institution = i.cnsgNmor._cdata
+                    let region = a
+                    let link = i.rqutUrla._cdata
+                    let support = i.sporCn._cdata
 
                     myConsole.log({ page })
                     myConsole.log({ name })
@@ -187,14 +153,14 @@ async function load2(page) {
                     myConsole.log({ summary })
                     myConsole.log({ desire })
                     myConsole.log({ job })
-                    myConsole.log({ edu })
+                    myConsole.log({ scholarship })
                     myConsole.log({ institution })
                     myConsole.log({ region })
                     myConsole.log({ link })
                     myConsole.log({ support })
                     myConsole.log({ target })
-                    // myConsole.log({ period4 })
-                    myConsole.log({ period: period4 })
+                    // myConsole.log({ period3 })
+                    myConsole.log({ period: period3 })
                     myConsole.log({ 심사발표: i.jdgnPresCn._cdata })
                     myConsole.log("-------------------")
                     // await Data.create({
@@ -203,7 +169,7 @@ async function load2(page) {
                     //     summary,
                     //     desire,
                     //     job,
-                    //     edu,
+                    //     scholarship,
                     //     institution,
                     //     region,
                     //     link,
@@ -226,10 +192,6 @@ async function period(period1, period2) {
     period2[1] = period1[1].split(/\D/).filter(Boolean)
     if (period2[0][0] === "2022") period2[0][0] = period2[0][0].replace("2022", "22")
     if (period2[1][0] === "2022") period2[1][0] = period2[1][0].replace("2022", "22")
-    if (period2[0][0] === "2021") return false
-    if (period2[1][0] === "2021") return false
-    if (period2[0][0] === "2020") return false
-    if (period2[1][0] === "2020") return false
     if (period2[0].length !== period2[1].length) {
         period2[1].unshift(period2[0][0])
     } else if (period2[0][0] > period2[1][0]) {
