@@ -57,11 +57,11 @@ exports.newsData = () => {
                 }
                 const NewsDataList = await News.find({}, { _id: false, newsId: false, __v: false })
                 if (createNews) {
-                    redisSet()
+                    await redisSet()
                 } else if (updateNews.acknowledged) {
-                    redisSet()
+                    await redisSet()
                 }
-                redisSet()
+                await redisSet()
                 resolve(NewsDataList)
             }
         )
