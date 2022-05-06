@@ -30,8 +30,9 @@ exports.deleteMarks = async (req, res) => {
     const { dataId } = req.body
     const { userId } = req.params
     try {
-        await deleteMark(userId, dataId)
-        await deleteMarkRedis(userId)
+        const check = await deleteMark(userId, dataId)
+        if (!check) return res.status(400).json({ message: "북마크 삭제를 실패하였습니다." })
+        deleteMarkRedis(userId)
         res.status(200).json({ result: "SUCCESS" })
     } catch (err) {
         console.error(err)
