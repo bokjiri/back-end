@@ -17,6 +17,7 @@ exports.postMarks = async (req, res) => {
     try {
         const { userId } = req.params
         const { dataId } = req.body
+        console.log("userId: " + userId, "dataId: " + dataId)
         const checkMark = await pushMark(userId, dataId)
         await pushMarkRedis(userId)
         if (!checkMark) throw new Error()
@@ -27,10 +28,10 @@ exports.postMarks = async (req, res) => {
 }
 
 exports.deleteMarks = async (req, res) => {
-    const { dataId } = req.body
-    const { userId } = req.params
-    console.log("userId: " + userId, "dataId: " + dataId)
     try {
+        const { dataId } = req.body
+        const { userId } = req.params
+        console.log("userId: " + userId, "dataId: " + dataId)
         const check = await deleteMark(userId, dataId)
         if (!check) return res.status(400).json({ message: "삭제할 북마크가 존재하지 않습니다." })
         deleteMarkRedis(userId)
