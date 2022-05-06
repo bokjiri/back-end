@@ -55,7 +55,9 @@ exports.deleteMark = async (userId, dataId) => {
         } else {
             throw new Error()
         }
-    } catch (err) {}
+    } catch (err) {
+        console.log(err)
+    }
 }
 
 exports.topMark = async (userId) => {
