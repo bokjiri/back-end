@@ -14,8 +14,7 @@ const userSchema = mongoose.Schema({
         type: String,
     },
     disability: {
-        type: Boolean,
-        default: false,
+        type: [String],
     },
     obstacle: {
         type: [String],

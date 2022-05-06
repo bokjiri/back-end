@@ -25,13 +25,13 @@ exports.getUsers = async (req, res) => {
 
 exports.putUsers = async (req, res) => {
     try {
-        const { lifeCycle, gender, region, disability, obstacle } = req.body
+        const { age, gender, region, disability, obstacle } = req.body
 
         const userId = parseInt(req.params.userId)
         const tokenUserId = res.locals.userId
         if (tokenUserId !== userId) throw new Error()
 
-        const result = await userService.updateUserInfo(userId, lifeCycle, gender, region, disability, obstacle)
+        const result = await userService.updateUserInfo(userId, age, gender, region, disability, obstacle)
         if (result === undefined) throw new Error()
         res.status(201).json({
             result: true,
