@@ -17,6 +17,7 @@ async function redisSet() {
     const NewsDataList = await News.find({}, { _id: false, newsId: false, __v: false })
     const newsData = JSON.stringify(NewsDataList)
     await Client.set("newsData", newsData)
+
     // await Client.expire("newsData", 3600)
 }
 
