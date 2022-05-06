@@ -29,7 +29,7 @@ const userSchema = mongoose.Schema({
         type: [String],
     },
     mark: {
-        type: [String],
+        type: [Number],
     },
     likeMark: {
         type: [Number],

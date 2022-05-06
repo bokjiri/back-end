@@ -44,12 +44,12 @@ exports.pushMark = async (userId, dataId) => {
 
 exports.deleteMark = async (userId, dataId) => {
     try {
-        const CheckMark = await User.findOne({ userId }, { _id: false, mark: true })
-        if (CheckMark) {
-            return User.updateOne({ userId }, { $pullAll: { mark: dataId } })
-        } else {
-            return undefined
-        }
+        return User.updateOne(
+            { userId },
+            {
+                $pullAll: { mark: [dataId] },
+            }
+        )
     } catch (err) {}
 }
 
