@@ -8,7 +8,7 @@ const dataSchema = mongoose.Schema({
         type: [Number],
     },
     gender: {
-        type: String,
+        type: [String],
     },
     region: {
         type: String,
