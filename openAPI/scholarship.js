@@ -5,10 +5,10 @@ const Data = require("../schemas/data")
 const connect = require("../schemas")
 connect()
 // const fs = require("fs")
-// fs.truncate("./openAPI/gender.txt", () => {
+// fs.truncate("./openAPI/scholar.txt", () => {
 //     console.log("File Content Deleted")
 // })
-// const myConsole = new console.Console(fs.createWriteStream("./openAPI/gender.txt"))
+// const myConsole = new console.Console(fs.createWriteStream("./openAPI/scholar.txt"))
 let arr = [100, 110, 120, 130, 140, 150, 160, 170, 180]
 let arr1 = ["일자리", "주거 및 일상생활", "주거 및 일상생활", "건강", "건강", "교육 및 돌봄", "교육 및 돌봄", "기타", "안전 및 권익보장"]
 function load2() {
@@ -103,7 +103,11 @@ async function load3(servList, zxc) {
                 }
 
                 let institution = jsonParse.wantedDtl.jurMnofNm._text
-                if (/여성/.test(name)) {
+
+                if (
+                    (/중등|고등/.test(name) && /대학/.test(name)) ||
+                    (/중등|고등/.test(summary) && /대학/.test(summary) && !/자녀|학부모|국가유공자|근로자/.test(summary) && !/중장년|노년/.test(lifeCycle))
+                ) {
                     desire = desire
                     target = target
                     obstacle = obstacle
@@ -113,9 +117,9 @@ async function load3(servList, zxc) {
                     institution = institution
                     summary = summary
                     support = support
-                    let gender = "여성"
-                    // await Data.create({ lifeCycle, gender, desire, target, obstacle, name, link, institution, summary, support })
-                } else if (/남성/.test(summary) && !/여성/.test(summary)) {
+                    let scholarship = ["고등학교 졸업 미만", "대학(원) 재학"]
+                    await Data.updateOne({ name }, { $set: { scholarship } })
+                } else if (/대학/.test(name) || (/대학/.test(summary) && !/자녀|일용|근로자/.test(summary))) {
                     desire = desire
                     target = target
                     obstacle = obstacle
@@ -125,8 +129,20 @@ async function load3(servList, zxc) {
                     institution = institution
                     summary = summary
                     support = support
-                    let gender = "남성"
-                    // await Data.create({ lifeCycle, gender, desire, target, obstacle, name, link, institution, summary, support })
+                    let scholarship = "대학(원) 재학"
+                    await Data.updateOne({ name }, { $set: { scholarship } })
+                } else if (/중등|고등/.test(name) || (/중등|고등/.test(summary) && !/자녀|학부모|국가유공자|근로자/.test(summary) && !/중장년|노년/.test(lifeCycle))) {
+                    desire = desire
+                    target = target
+                    obstacle = obstacle
+                    lifeCycle = lifeCycle
+                    name = name
+                    link = link
+                    institution = institution
+                    summary = summary
+                    support = support
+                    let scholarship = "고등학교 졸업 미만"
+                    await Data.updateOne({ name }, { $set: { scholarship } })
                 } else {
                     desire = desire
                     target = target
@@ -137,8 +153,8 @@ async function load3(servList, zxc) {
                     institution = institution
                     summary = summary
                     support = support
-                    let gender = ""
-                    // await Data.create({ lifeCycle, gender, desire, target, obstacle, name, link, institution, summary, support })
+                    let scholarship = ""
+                    await Data.updateOne({ name }, { $set: { scholarship } })
                 }
             }
         )

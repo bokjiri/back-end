@@ -9,7 +9,7 @@ const NAVER_CLIENT_SECRET = process.env.CLIENTSECRET
 const option = {
     query: "복지정책", //이미지 검색 텍스트
     start: 1, //검색 시작 위치
-    display: 10,
+    display: 8,
     sort: "sim", //정렬 유형 (sim:유사도)
 }
 
