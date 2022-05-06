@@ -8,7 +8,7 @@ const userSchema = mongoose.Schema({
         type: [String],
     },
     gender: {
-        type: String,
+        type: [String],
     },
     region: {
         type: String,

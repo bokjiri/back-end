@@ -7,9 +7,6 @@ const dataSchema = mongoose.Schema({
     age: {
         type: [Number],
     },
-    gender: {
-        type: [String],
-    },
     region: {
         type: String,
     },
