@@ -4,6 +4,9 @@ const dataSchema = mongoose.Schema({
     lifeCycle: {
         type: [String],
     },
+    age: {
+        type: [Number],
+    },
     gender: {
         type: String,
     },

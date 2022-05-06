@@ -1,8 +1,11 @@
 const mongoose = require("mongoose")
 const autoIdSetter = require("./autoidsetter")
 const userSchema = mongoose.Schema({
-    lifeCycle: {
+    age: {
         type: Number,
+    },
+    lifeCycle: {
+        type: [String],
     },
     gender: {
         type: String,
@@ -12,6 +15,7 @@ const userSchema = mongoose.Schema({
     },
     disability: {
         type: Boolean,
+        default: false,
     },
     obstacle: {
         type: [String],
