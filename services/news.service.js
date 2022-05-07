@@ -22,8 +22,9 @@ async function redisSet() {
 exports.newsData = async () => {
     const rule = new schedule.RecurrenceRule()
     rule.dayOfWeek = [0, new schedule.Range(0, 6)]
-    rule.minute = 30
-    // rule.second = 30
+    // rule.minute = 30
+    rule.tz = "Asia/Seoul"
+    rule.second = 30
     schedule.scheduleJob(rule, () => {
         request.get(
             {
