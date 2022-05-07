@@ -6,7 +6,7 @@ const NAVER_CLIENT_ID = process.env.CLIENTID
 const NAVER_CLIENT_SECRET = process.env.CLIENTSECRET
 const schedule = require("node-schedule")
 const option = {
-    query: "복지정책 복지서비스", //이미지 검색 텍스트
+    query: "복지정책", //이미지 검색 텍스트
     start: 1, //검색 시작 위치
     display: 8,
     sort: "sim", //정렬 유형 (sim:유사도)
@@ -24,7 +24,7 @@ exports.newsData = async () => {
     rule.dayOfWeek = [0, new schedule.Range(0, 6)]
     rule.minute = 30
     rule.tz = "Asia/Seoul"
-    // rule.second = 30
+    // rule.second = 15
     schedule.scheduleJob(rule, () => {
         request.get(
             {
