@@ -1,13 +1,13 @@
 require("dotenv").config()
 const request = require("request-promise-native")
 const convert = require("xml-js")
-const Data = require("../schemas/data")
+const Youth = require("../schemas/youth")
 const connect = require("../schemas")
 const moment = require("moment")
+const area = require("./area2")
 
 connect()
 const fs = require("fs")
-const area = require("./area")
 fs.truncate("./openAPI/sample.txt", () => {
     console.log("File Content Deleted")
 })
@@ -41,14 +41,16 @@ async function load2(page) {
 
             for (i of empsInfo) {
                 let a = i.cnsgNmor._cdata.substring(0, 2)
-                if (a === "남양") a = "남양주"
-                if (a === "서귀") a = "서귀포"
-                if (a === "동두") a = "동두천"
-                if (a === "의정") a = "의정부"
 
+                for (j of area) {
+                    if (j[1][0] + j[1][1] === a) {
+                        a = j
+                        break
+                    }
+                }
                 if (
                     i.majrRqisCn._cdata === "제한없음" && //전공
-                    area.indexOf(a) !== -1 && // 지역이 아닌 값
+                    Array.isArray(a) && // 지역이 아닌 값
                     /^http/.test(i.rqutUrla._cdata) && // 링크
                     i.polyBizSjnm._cdata.search(/2021|2020/) === -1 && //정책명
                     i.rqutPrdCn._cdata.search(/2021|2020/) === -1 && //신청날짜
@@ -70,13 +72,13 @@ async function load2(page) {
                     let resultPeriod
                     if (/~/.test(i.rqutPrdCn._cdata)) {
                         period1 = i.rqutPrdCn._cdata.split("~")
-                        resultPeriod = await period(period1, period2)
+                        resultPeriod = await deletePastPeriod(period1, period2)
                     } else if (/-/.test(i.rqutPrdCn._cdata) && i.rqutPrdCn._cdata.length !== 1) {
                         period1 = i.rqutPrdCn._cdata.split("-")
-                        resultPeriod = await period(period1, period2)
+                        resultPeriod = await deletePastPeriod(period1, period2)
                     } else if (/\//.test(i.rqutPrdCn._cdata)) {
                         period1 = i.rqutPrdCn._cdata.split("/")
-                        resultPeriod = await period(period1, period2)
+                        resultPeriod = await deletePastPeriod(period1, period2)
                     } else if (/수시/.test(i.rqutPrdCn._cdata)) {
                         resultPeriod = period3
                     } else if (/상시/.test(i.rqutPrdCn._cdata)) {
@@ -159,24 +161,23 @@ async function load2(page) {
                     myConsole.log({ link })
                     myConsole.log({ support })
                     myConsole.log({ target })
-                    // myConsole.log({ period3 })
                     myConsole.log({ period: period3 })
                     myConsole.log({ 심사발표: i.jdgnPresCn._cdata })
                     myConsole.log("-------------------")
-                    // await Data.create({
-                    //     lifeCycle,
-                    //     name,
-                    //     summary,
-                    //     desire,
-                    //     job,
-                    //     scholarship,
-                    //     institution,
-                    //     region,
-                    //     link,
-                    //     support,
-                    //     target,
-                    //     period,
-                    // })
+                    await Youth.create({
+                        age: lifeCycle,
+                        name,
+                        summary,
+                        desire,
+                        job,
+                        scholarship,
+                        institution,
+                        region,
+                        link,
+                        support,
+                        target,
+                        period: period3,
+                    })
                 } else {
                     continue
                 }
@@ -185,7 +186,7 @@ async function load2(page) {
     )
 }
 
-async function period(period1, period2) {
+async function deletePastPeriod(period1, period2) {
     const date = moment().format("YYMMDD")
     const dateNum = Number(date)
     period2[0] = period1[0].split(/\D/).filter(Boolean)

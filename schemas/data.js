@@ -8,7 +8,7 @@ const dataSchema = mongoose.Schema({
         type: [Number],
     },
     region: {
-        type: String,
+        type: [String],
     },
     obstacle: {
         type: [String],
