@@ -5,7 +5,7 @@ const dataSchema = mongoose.Schema({
         type: [String],
     },
     age: {
-        type: [Number],
+        type: [String],
     },
     region: {
         type: [String],
