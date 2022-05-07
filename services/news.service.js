@@ -65,6 +65,10 @@ exports.newsData = async () => {
     // })
 }
 exports.newsDataList = async () => {
-    const NewsDataList = await News.find({}, { _id: false, newsId: false, __v: false })
-    return NewsDataList
+    try {
+        const NewsDataList = await News.find({}, { _id: false, newsId: false, __v: false })
+        return NewsDataList
+    } catch (err) {
+        throw new Error()
+    }
 }
