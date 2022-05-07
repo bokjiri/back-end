@@ -104,7 +104,7 @@ async function load3(servList, zxc) {
 
                 let institution = jsonParse.wantedDtl.jurMnofNm._text
 
-                if (1) {
+                if (/결혼/.test(summary) && !/근로자|독거노인|중도입국/.test(summary)) {
                     desire = desire
                     target = target
                     obstacle = obstacle
@@ -114,6 +114,7 @@ async function load3(servList, zxc) {
                     institution = institution
                     summary = summary
                     support = support
+                    marriage = ""
                     myConsole.log({ marriage })
                     myConsole.log({ desire })
                     myConsole.log({ target })

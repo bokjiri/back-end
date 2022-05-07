@@ -25,44 +25,44 @@ exports.newsData = async () => {
     rule.minute = 30
     rule.tz = "Asia/Seoul"
     // rule.second = 30
-    schedule.scheduleJob(rule, () => {
-        request.get(
-            {
-                uri: "https://openapi.naver.com/v1/search/news.json", //xml 요청 주소는 https://openapi.naver.com/v1/search/image.xml
-                qs: option,
-                headers: {
-                    "X-Naver-Client-Id": NAVER_CLIENT_ID,
-                    "X-Naver-Client-Secret": NAVER_CLIENT_SECRET,
-                },
+    // schedule.scheduleJob(rule, () => {
+    request.get(
+        {
+            uri: "https://openapi.naver.com/v1/search/news.json", //xml 요청 주소는 https://openapi.naver.com/v1/search/image.xml
+            qs: option,
+            headers: {
+                "X-Naver-Client-Id": NAVER_CLIENT_ID,
+                "X-Naver-Client-Secret": NAVER_CLIENT_SECRET,
             },
-            async function (err, res, body) {
-                let originNewsData = JSON.parse(body) //json으로 파싱
-                let newsList = originNewsData.items
-                const news = await News.find({}, { _id: false, newsId: true })
-                const myRegExp1 = /<[^>]*>?/g
-                const myRegExp2 = /&quot;/g
-                let createNews
-                let updateNews
-                for (let i = 0; i < newsList.length; i++) {
-                    const title = newsList[i].title.replace(myRegExp1, "").replace(myRegExp2, "")
-                    const link = newsList[i].link
-                    const desc = newsList[i].description.replace(myRegExp1, "").replace(myRegExp2, "")
-                    const date = newsList[i].pubDate
-                    if (news.length === 0) {
-                        createNews = await News.create({ title, link, desc, date })
-                    } else {
-                        updateNews = await News.updateOne({ newsId: news[i].newsId }, { $set: { title, link, desc, date } })
-                    }
-                    if (createNews) {
-                        await redisSet()
-                    } else if (updateNews.acknowledged) {
-                        await redisSet()
-                    }
+        },
+        async function (err, res, body) {
+            let originNewsData = JSON.parse(body) //json으로 파싱
+            let newsList = originNewsData.items
+            const news = await News.find({}, { _id: false, newsId: true })
+            const myRegExp1 = /<[^>]*>?/g
+            const myRegExp2 = /&quot;/g
+            let createNews
+            let updateNews
+            for (let i = 0; i < newsList.length; i++) {
+                const title = newsList[i].title.replace(myRegExp1, "").replace(myRegExp2, "")
+                const link = newsList[i].link
+                const desc = newsList[i].description.replace(myRegExp1, "").replace(myRegExp2, "")
+                const date = newsList[i].pubDate
+                if (news.length === 0) {
+                    createNews = await News.create({ title, link, desc, date })
+                } else {
+                    updateNews = await News.updateOne({ newsId: news[i].newsId }, { $set: { title, link, desc, date } })
                 }
-                console.log("news Data update....SUCCESS!")
+                if (createNews) {
+                    await redisSet()
+                } else if (updateNews.acknowledged) {
+                    await redisSet()
+                }
             }
-        )
-    })
+            console.log("news Data update....SUCCESS!")
+        }
+    )
+    // })
 }
 exports.newsDataList = async () => {
     const NewsDataList = await News.find({}, { _id: false, newsId: false, __v: false })
