@@ -37,7 +37,7 @@ exports.newsData = async (req, res, next) => {
         const stringToJsonData = JSON.parse(redis)
         console.log("redis have news data!!!")
         res.status(200).json({
-            newsData: stringToJsonData,
+            newsList: stringToJsonData,
         })
     }
 }
