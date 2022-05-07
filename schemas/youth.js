@@ -1,19 +1,13 @@
 const mongoose = require("mongoose")
 const autoIdSetter = require("./autoidsetter")
-const userSchema = mongoose.Schema({
-    age: {
-        type: Number,
-    },
+const youthSchema = mongoose.Schema({
     lifeCycle: {
         type: [String],
     },
-    gender: {
+    age: {
         type: [String],
     },
     region: {
-        type: [String],
-    },
-    disability: {
         type: [String],
     },
     obstacle: {
@@ -25,29 +19,42 @@ const userSchema = mongoose.Schema({
     job: {
         type: String,
     },
+    marriage: {
+        type: String,
+    },
+    children: {
+        type: Number,
+    },
+    household: {
+        type: Number,
+    },
     salary: {
         type: Number,
     },
     target: {
         type: [String],
     },
-    mark: {
-        type: [Number],
-    },
-    likeMark: {
-        type: [Number],
-    },
-    topLikeMarkList: [{ desire: String, name: String, dataId: Number }],
-
-    email: {
+    desire: {
         type: String,
     },
-    nickname: {
+    name: {
         type: String,
     },
-    profileUrl: {
+    summary: {
+        type: String,
+    },
+    support: {
+        type: String,
+    },
+    period: {
+        type: String,
+    },
+    institution: {
+        type: String,
+    },
+    link: {
         type: String,
     },
 })
-autoIdSetter(userSchema, mongoose, "userSchema", "userId")
-module.exports = mongoose.model("User", userSchema)
+autoIdSetter(youthSchema, mongoose, "youthSchema", "youthId")
+module.exports = mongoose.model("Youth", youthSchema)
