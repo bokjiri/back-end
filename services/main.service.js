@@ -67,7 +67,8 @@ exports.checkUserData = async (isUser, isData) => {
         else {
             checkedWithObstacle = checkedWithTarget
         } // console.log(checkedWithObstacle)
-
-        return checkedWithObstacle
+        
+        let result = checkedWithObstacle.filter((v, i) => checkedWithObstacle.indexOf(v).name === i.name);
+        return result
     } catch (err) {}
 }
