@@ -6,6 +6,6 @@ exports.findData = async (dataId) => {
         if (!data) throw new Error()
         return data
     } catch (error) {
-        console.log(error)
+        console.error(error)
     }
 }
