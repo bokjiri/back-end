@@ -24,11 +24,11 @@ exports.checkUserData = async (isUser, isData) => {
         //만약 isUser에 lifecycle이 존재한다면
         if (isUser.lifeCycle.length !== 0) {
             for (let i = 0; i < isUser.lifeCycle.length; i++) {
-                isData.forEach((data) => {
-                    if (data.lifeCycle.includes(isUser.lifeCycle[i]) === true || data.lifeCycle[0] === undefined) {
-                        checkedWithLifeCycle.push(data)
+                for (let j = 0; j < isData.length; j++){
+                    if (isData[j].lifeCycle.includes(isUser.lifeCycle[i]) === true || isData[j].lifeCycle[0] === undefined) {
+                        checkedWithLifeCycle.push(isData[j])
                     }
-                })
+                }
             }
         }
         //만약 isUser에 lifecycle이 존재하지 않는다면
@@ -40,11 +40,11 @@ exports.checkUserData = async (isUser, isData) => {
         //만약 isUser에 target이 존재한다면
         if (isUser.target.length !== 0) {
             for (let i = 0; i < isUser.target.length; i++) {
-                checkedWithLifeCycle.forEach((data) => {
-                    if (data.target.includes(isUser.target[i]) === true || data.target[0] === undefined) {
-                        checkedWithTarget.push(data)
+                for (let j = 0; j < checkedWithLifeCycle.length; j++){
+                    if (checkedWithLifeCycle[j].target.includes(isUser.target[i]) === true || checkedWithLifeCycle[j].target[0] === undefined) {
+                        checkedWithTarget.push(checkedWithLifeCycle[j])
                     }
-                })
+                }
             }
         }
         //만약 isUser에 target이 존재하지 않는다면
@@ -56,11 +56,11 @@ exports.checkUserData = async (isUser, isData) => {
         checkedWithObstacle = []
         if (isUser.obstacle.length !== 0) {
             for (let i = 0; i < isUser.obstacle.length; i++) {
-                checkedWithTarget.forEach((data) => {
-                    if (data.obstacle.includes(isUser.obstacle[i]) === true || data.obstacle[0] === undefined) {
-                        checkedWithObstacle.push(data)
+                for (let j = 0; j < checkedWithTarget.length; j++){
+                    if (checkedWithTarget[j].obstacle.includes(isUser.target[i]) === true || checkedWithTarget[j].obstacle[0] === undefined) {
+                        checkedWithObstacle.push(checkedWithTarget[j])
                     }
-                })
+                }
             }
         }
         //만약 isUser에 obstacle이 존재하지 않는다면
