@@ -112,7 +112,7 @@ config
 #public
 public
 
-#swagger-outpu.json
+#swagger-output.json
 swagger-output.json
 
 #orm.js

@@ -28,10 +28,11 @@ connect()
 // }
 // app.use(cors(corsOptions))
 
-// const swaggerUi = require("swagger-ui-express")
-// const swaggerFile = require("./swagger-output")
+const swaggerUi = require("swagger-ui-express")
+const swaggerFile = require("./swagger-output")
 
-// app.use("/swagger", swaggerUi.serve, swaggerUi.setup(swaggerFile))
+app.use("/swagger", swaggerUi.serve, swaggerUi.setup(swaggerFile))
+
 const corsOptions = {
     origin: ["http://localhost:3000"],
     credentials: true,
