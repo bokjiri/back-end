@@ -7,7 +7,7 @@ const cors = require("cors")
 const morgan = require("morgan")
 const connect = require("./schemas")
 const passport = require("passport")
-const passportConfig = require("./routes/auth")
+const passportConfig = require("./kakao/index")
 const { newsData } = require("./services/news.service")
 
 connect()
