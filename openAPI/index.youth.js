@@ -19,13 +19,12 @@ updateData()
 
 async function updateData() {
     await load()
-    findPastData()
+    // await findPastData()
 }
 async function load() {
-    for (let i = 0; i < 120; i++) {
-        console.log("i", i)
+    for (let i = 1; i < 3; i++) {
         for (let j = 0; j < regionCode.length; j++) {
-            console.log("j", j)
+            console.log(j)
             await load2(i, regionCode[j], regionName[j])
         }
     }
@@ -49,30 +48,15 @@ async function load2(page, regionCode, regionName) {
                 space: 4,
             })
             const jsonParse = JSON.parse(xmlToJson)
+            console.log(regionCode)
+            // let total = jsonParse.empsInfo.totalCnt._text
+            // let pageIndex = jsonParse.empsInfo.pageIndex._text
             const empsInfo = jsonParse.empsInfo.emp
-            console.log(empsInfo)
             if (Array.isArray(empsInfo)) {
                 for (i of empsInfo) {
-                    // const checkExist = await Data.find({ name: i.polyBizSjnm._cdata })
-                    // if (checkExist.length !== 0) continue
-                    // for (j of area) {
-                    //     console.log(i.cnsgNmor._cdata)
-                    //     console.log("j", j[1])
-                    //     console.log("indexOf", a.indexOf(j[1]))
-                    //     if (a.indexOf(j[1]) !== -1) {
-                    //         a = j
-                    //         console.log("a", a)
-                    //         continue
-                    //     }
-                    // }
-                    // console.log("a", a)
-                    // console.log("j", area[1])
-                    // console.log("indexOf", a.indexOf(area[1]))
-                    // if (a.indexOf(area[1]) !== -1) {
-                    //     a = area
-                    //     continue
-                    // }
-
+                    let name = i.polyBizSjnm._cdata
+                    const check = await Data.findOne({ name })
+                    if (check) continue
                     if (
                         i.majrRqisCn._cdata === "제한없음" && //전공
                         /^http/.test(i.rqutUrla._cdata) && // 링크
@@ -139,12 +123,12 @@ async function load2(page, regionCode, regionName) {
                         if (resultPeriod === false || resultPeriod === undefined) continue
 
                         let period3 = i.rqutPrdCn._cdata
-                        let lifeCycle = []
+                        let age = []
                         if (i.ageInfo._cdata.replace(/[^0-9]/g, "").length === 4) {
-                            lifeCycle[0] = String(i.ageInfo._cdata.replace(/[^0-9]/g, "")[0]) + String(i.ageInfo._cdata.replace(/[^0-9]/g, "")[1])
-                            lifeCycle[1] = String(i.ageInfo._cdata.replace(/[^0-9]/g, "")[2]) + String(i.ageInfo._cdata.replace(/[^0-9]/g, "")[3])
+                            age[0] = String(i.ageInfo._cdata.replace(/[^0-9]/g, "")[0]) + String(i.ageInfo._cdata.replace(/[^0-9]/g, "")[1])
+                            age[1] = String(i.ageInfo._cdata.replace(/[^0-9]/g, "")[2]) + String(i.ageInfo._cdata.replace(/[^0-9]/g, "")[3])
                         } else if (i.ageInfo._cdata.replace(/[^0-9]/g, "").length === 0) {
-                            lifeCycle.push("제한없음")
+                            age.push("제한없음")
                         }
 
                         let target
@@ -152,7 +136,7 @@ async function load2(page, regionCode, regionName) {
                             target = "여성"
                         }
 
-                        let desire
+                        let desire //i.plcyTpNm._cdata = 정책유형
                         if (i.plcyTpNm._cdata === "취업지원" || i.plcyTpNm._cdata === "창업지원") {
                             desire = "일자리"
                         } else if (i.plcyTpNm._cdata === "주거·금융") {
@@ -165,33 +149,37 @@ async function load2(page, regionCode, regionName) {
                             desire = "기타"
                         }
 
-                        let name = i.polyBizSjnm._cdata
-                        let summary = i.polyItcnCn._cdata
-                        let job = i.empmSttsCn._cdata
-                        let scholarship = i.accrRqisCn._cdata.split(", ")
-                        let institution = i.cnsgNmor._cdata
-
-                        let link = i.rqutUrla._cdata
-                        let support = i.sporCn._cdata
-                        let region = regionName
-                        // myConsole.log({ page })
-                        // myConsole.log({ name })
-                        // myConsole.log({ lifeCycle })
-                        // myConsole.log({ summary })
-                        // myConsole.log({ desire })
-                        // myConsole.log({ job })
-                        // myConsole.log({ scholarship })
-                        // myConsole.log({ institution })
-                        // myConsole.log({ region })
-                        // myConsole.log({ link })
-                        // myConsole.log({ support })
-                        // myConsole.log({ target })
-                        // myConsole.log({ period: period3 })
-                        // myConsole.log({ 심사발표: i.jdgnPresCn._cdata })
-                        // myConsole.log("-------------------")
+                        // let total = i.totalCnt._cdata //총건수
+                        //정책명
+                        let summary = i.polyItcnCn._cdata //정책소개
+                        let job = i.empmSttsCn._cdata // 참여요건 - 취업상태
+                        let scholarship = i.accrRqisCn._cdata.split(", ") // 참여요건 - 학력
+                        let institution = i.cnsgNmor._cdata // 신청기관명
+                        let link = i.rqutUrla._cdata // 사이트 링크 주소
+                        let support = i.sporCn._cdata // 지원내용
+                        let region = regionName // 지역
+                        let process = i.rqutProcCn._cdata
+                        // myConsole.log({ total })
+                        // myConsole.log({ pageIndex })
+                        myConsole.log({ page })
+                        myConsole.log({ name })
+                        myConsole.log({ age })
+                        myConsole.log({ summary })
+                        myConsole.log({ desire })
+                        myConsole.log({ job })
+                        myConsole.log({ scholarship })
+                        myConsole.log({ institution })
+                        myConsole.log({ region })
+                        myConsole.log({ link })
+                        myConsole.log({ support })
+                        myConsole.log({ target })
+                        myConsole.log({ period: period3 })
+                        myConsole.log({ 심사발표: i.jdgnPresCn._cdata })
+                        myConsole.log({ process })
+                        myConsole.log("-------------------")
 
                         await Data.create({
-                            age: lifeCycle,
+                            age,
                             name,
                             summary,
                             desire,

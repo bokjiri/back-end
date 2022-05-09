@@ -4,6 +4,9 @@ const userSchema = mongoose.Schema({
     age: {
         type: Number,
     },
+    marriage: {
+        type: [String],
+    },
     lifeCycle: {
         type: [String],
     },
@@ -23,7 +26,7 @@ const userSchema = mongoose.Schema({
         type: [String],
     },
     job: {
-        type: String,
+        type: [String],
     },
     salary: {
         type: Number,
