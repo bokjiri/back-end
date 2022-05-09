@@ -1,5 +1,5 @@
 const passport = require("passport")
-const kakaoStrategy = require("../controllers/auth.controller")
+const kakaoStrategy = require("./strategy")
 const { checkByEmail } = require("../services/user.service")
 
 module.exports = () => {
