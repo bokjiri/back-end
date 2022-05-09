@@ -51,27 +51,28 @@ exports.getMain = async (req, res) => {
         let eduCare = []
         let safetyRight = []
         let etc = []
-        checkedData.forEach((data)=>{
-            if(data.desire === "일자리"){
-                work.push(data)
+        for (let i = 0; i < checkedData.length; i++){
+            if(checkedData[i].desire === "일자리"){
+                work.push(checkedData[i])
             }
-            if(data.desire === "주거 및 일상생활"){
-                houseLife.push(data)
+            if(checkedData[i].desire === "주거 및 일상생활"){
+                houseLife.push(checkedData[i])
             }
-            if(data.desire === "건강"){
-                health.push(data)
+            if(checkedData[i].desire === "건강"){
+                health.push(checkedData[i])
             }
-            if(data.desire === "교육 및 돌봄"){
-                eduCare.push(data)
+            if(checkedData[i].desire === "교육 및 돌봄"){
+                eduCare.push(checkedData[i])
             }
-            if(data.desire === "안전 및 권익보장"){
-                safetyRight.push(data)
+            if(checkedData[i].desire === "안전 및 권익보장"){
+                safetyRight.push(checkedData[i])
             }
-            if(data.desire === "기타"){
-                etc.push(data)
+            if(checkedData[i].desire === "기타"){
+                etc.push(checkedData[i])
             }
-        })
+        }
         //checkedData는 배열 안에 오브젝트(정책 하나)가 들어가있어야 한다.
+        
         /*=====================================================================================
         #swagger.responses[200] = {
             description: '정상적으로 값을 받았을 때, 아래 예제와 같은 형태로 응답받습니다.',
