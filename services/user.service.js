@@ -21,8 +21,7 @@ exports.deleteUserInfo = async (userId) => {
 exports.checkByEmail = async (email) => {
     try {
         const user = await User.findOne({ email }, { _id: false, __v: false })
-        console.log("service checkByEmail", user)
-        if (!user) throw new Error()
+        if (user === null) throw new Error()
         return user
     } catch (error) {
         console.log(error)
