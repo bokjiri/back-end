@@ -1,4 +1,3 @@
-// const { showMark, pushMark, deleteMark, topMark } = require("../services/mark.service")
 const { showMark, pushMark, deleteMark, topMark, likemark, showMarkRedis, pushMarkRedis, deleteMarkRedis, topLikesMarkRedis } = require("../services/mark.service")
 
 exports.getMarks = async (req, res) => {

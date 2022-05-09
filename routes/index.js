@@ -7,7 +7,7 @@ const mainRouter = require("./main")
 const authRouter = require("./auth")
 const newsRouter = require("./news")
 const detailRouter = require("./detail")
-
+const searchRouter = require("./search")
 
 router.use("/users", userRouter)
 router.use("/marks", markRouter)
@@ -16,5 +16,6 @@ router.use("/main", mainRouter)
 router.use("/auth", authRouter)
 router.use("/news", newsRouter)
 router.use("/detail", detailRouter)
+router.use("/search", searchRouter)
 
 module.exports = router
