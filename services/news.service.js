@@ -45,7 +45,9 @@ exports.newsData = async () => {
                     image: $(node).find(".dsc_thumb .thumb").attr("src"),
                 })
             })
-            let sliceNews = news.slice(0, 8)
+
+            let sliceNews = news.sort().slice(0, 8)
+
             for (let i = 0; i < sliceNews.length; i++) {
                 let title = sliceNews[i].title
                 let desc = sliceNews[i].desc
@@ -56,13 +58,14 @@ exports.newsData = async () => {
                 if (findNews.length === 0) {
                     createNews = await News.create({ title, link, desc, date, image })
                 } else {
-                    updateNews = await News.updateOne({ newsId: news[i].newsId }, { $set: { title, link, desc, date, image } })
+                    updateNews = await News.updateOne({ newsId: findNews[i].newsId }, { $set: { title, link, desc, date, image } })
                 }
                 if (createNews) {
                     await redisSet()
                 } else if (updateNews.acknowledged) {
                     await redisSet()
                 }
+                await redisSet()
             }
         }
 
