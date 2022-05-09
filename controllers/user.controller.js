@@ -9,7 +9,7 @@ exports.getUsers = async (req, res) => {
 
         const data = await userService.checkById(userId)
         data.region = data.region.join(" ")
-        if (data === undefined) throw new Error()
+        if (!data) throw new Error()
         res.status(201).json({
             result: true,
             message: "회원정보 조회 완료",
@@ -33,7 +33,7 @@ exports.patchUsers = async (req, res) => {
         if (tokenUserId !== userId) throw new Error()
 
         const result = await userService.updateUserInfo(userId, age, gender, arrRegion, disability, obstacle, job, marriage, target, salary, scholarship)
-        if (result === undefined) throw new Error()
+        if (!result) throw new Error()
         res.status(201).json({
             result: true,
             message: "회원정보 수정 완료",
@@ -53,7 +53,7 @@ exports.deleteUsers = async (req, res) => {
         if (tokenUserId !== userId) throw new Error()
 
         const result = await userService.deleteUserInfo(userId)
-        if (result === undefined) throw new Error()
+        if (!result) throw new Error()
         res.status(201).json({
             result: true,
             message: "회원정보 삭제 완료",

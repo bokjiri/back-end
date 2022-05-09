@@ -26,8 +26,8 @@ module.exports = async (req, res, next) => {
         const aToken = jwt.verify(tokenValue, process.env.ACCESSKEY)
 
         const confirmUser = await checkById(aToken.userId)
-
         if (!confirmUser) throw new Error()
+
         res.locals.userId = confirmUser.userId
         res.locals.email = confirmUser.email
         res.locals.nickname = confirmUser.nickname
@@ -51,6 +51,7 @@ module.exports = async (req, res, next) => {
                     throw new Error()
                 }
                 const confirmUser = await checkById(aTokenDecode.userId)
+                if (!confirmUser) throw new Error()
                 const { userId, nickname, profileUrl, email } = confirmUser
                 const payload = { userId, nickname, profileUrl, email }
                 const accessToken = jwt.sign(payload, process.env.ACCESSKEY, {
