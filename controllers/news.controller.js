@@ -1,10 +1,27 @@
 const { newsDataList } = require("../services/news.service")
 
 exports.getNews = async (req, res) => {
+    /*========================================================================================================
+    #swagger.tags = ['News']
+    #swagger.summary = '뉴스 데이터 조회'
+    #swagger.description = '뉴스 데이터를 조회한다.'
+    ========================================================================================================*/
     try {
         const newsList = await newsDataList()
-        res.status(200).json({ newsList })
+        /*=====================================================================================
+        #swagger.responses[200] = {
+            description: '정상적으로 값을 받았을 때, 아래 예제와 같은 형태로 응답받습니다.',
+            schema: { result: "SUCCESS", message: "뉴스 데이터 조회 성공", newsList }
+        }
+        =====================================================================================*/
+        res.status(200).json({ result: "SUCCESS", newsList })
     } catch (err) {
-        res.status(400).json({ message: "뉴스데이터 조회 실패" })
+        /*=====================================================================================
+        #swagger.responses[400] = {
+            description: '정상적으로 값을 받지 못했을 때, 아래 예제와 같은 형태로 응답받습니다.',
+            schema: { result: "FAIL", message: "뉴스 데이터 조회 실패" }
+        }
+        =====================================================================================*/
+        res.status(400).json({ result: "FAIL", message: "뉴스 데이터 조회 실패" })
     }
 }
