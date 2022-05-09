@@ -1,16 +1,9 @@
 require("dotenv").config()
-const request = require("request")
 const News = require("../schemas/news")
 const Client = require("../schemas/redis")
-const NAVER_CLIENT_ID = process.env.CLIENTID
-const NAVER_CLIENT_SECRET = process.env.CLIENTSECRET
+const axios = require("axios")
+const cheerio = require("cheerio")
 const schedule = require("node-schedule")
-const option = {
-    query: "복지정책", //이미지 검색 텍스트
-    start: 1, //검색 시작 위치
-    display: 8,
-    sort: "sim", //정렬 유형 (sim:유사도)
-}
 
 async function redisSet() {
     const NewsDataList = await News.find({}, { _id: false, newsId: false, __v: false })
@@ -26,44 +19,58 @@ exports.newsData = async () => {
     rule.tz = "Asia/Seoul"
     // rule.second = 15
     schedule.scheduleJob(rule, () => {
-        request.get(
-            {
-                uri: "https://openapi.naver.com/v1/search/news.json", //xml 요청 주소는 https://openapi.naver.com/v1/search/image.xml
-                qs: option,
-                headers: {
-                    "X-Naver-Client-Id": NAVER_CLIENT_ID,
-                    "X-Naver-Client-Secret": NAVER_CLIENT_SECRET,
-                },
-            },
-            async function (err, res, body) {
-                let originNewsData = JSON.parse(body) //json으로 파싱
-                let newsList = originNewsData.items
-                const news = await News.find({}, { _id: false, newsId: true })
-                const myRegExp1 = /<[^>]*>?/g
-                const myRegExp2 = /&quot;/g
-                let createNews
-                let updateNews
-                for (let i = 0; i < newsList.length; i++) {
-                    const title = newsList[i].title.replace(myRegExp1, "").replace(myRegExp2, "")
-                    const link = newsList[i].link
-                    const desc = newsList[i].description.replace(myRegExp1, "").replace(myRegExp2, "")
-                    const date = newsList[i].pubDate
-                    if (news.length === 0) {
-                        createNews = await News.create({ title, link, desc, date })
-                    } else {
-                        updateNews = await News.updateOne({ newsId: news[i].newsId }, { $set: { title, link, desc, date } })
-                    }
-                    if (createNews) {
-                        await redisSet()
-                    } else if (updateNews.acknowledged) {
-                        await redisSet()
-                    }
+        const getHTML = async (keyword) => {
+            try {
+                return await axios.get("https://search.naver.com/search.naver?where=news&sm=tab_jum&query= " + encodeURI(keyword))
+            } catch (err) {}
+        }
+
+        const parsing = async (keyword) => {
+            const html = await getHTML(keyword)
+            const $ = cheerio.load(html.data)
+            const newsList = $(".news_wrap")
+
+            let news = []
+
+            let createNews
+            let updateNews
+            const findNews = await News.find({}, { _id: false, newsId: true })
+
+            newsList.each((idx, node) => {
+                news.push({
+                    title: $(node).find(".news_tit").text(),
+                    desc: $(node).find(".dsc_txt_wrap").text(),
+                    link: $(node).find(".news_tit").attr("href"),
+                    date: $(node).find(".info_group span.info").text(),
+                    image: $(node).find(".dsc_thumb .thumb").attr("src"),
+                })
+            })
+            let sliceNews = news.slice(0, 8)
+            for (let i = 0; i < sliceNews.length; i++) {
+                let title = sliceNews[i].title
+                let desc = sliceNews[i].desc
+                let link = sliceNews[i].link
+                let date = sliceNews[i].date
+                let image = sliceNews[i].image
+
+                if (findNews.length === 0) {
+                    createNews = await News.create({ title, link, desc, date, image })
+                } else {
+                    updateNews = await News.updateOne({ newsId: news[i].newsId }, { $set: { title, link, desc, date, image } })
                 }
-                console.log("news Data update....SUCCESS!")
+                if (createNews) {
+                    await redisSet()
+                } else if (updateNews.acknowledged) {
+                    await redisSet()
+                }
             }
-        )
+        }
+
+        parsing("복지정책")
+        console.log("news Data update....SUCCESS!")
     })
 }
+
 exports.newsDataList = async () => {
     try {
         const findNewsDataList = await News.find({}, { _id: false, newsId: false, __v: false })

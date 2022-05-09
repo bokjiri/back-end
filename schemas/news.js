@@ -14,6 +14,9 @@ const news = mongoose.Schema({
     date: {
         type: String,
     },
+    image: {
+        type: String,
+    },
 })
 autoIdSetter(news, mongoose, "news", "newsId")
 module.exports = mongoose.model("news", news)
