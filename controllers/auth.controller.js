@@ -13,8 +13,9 @@ module.exports = () => {
                 try {
                     const { email } = profile._json.kakao_account
                     const exUser = await checkByEmail(email)
-                    if (exUser[0] !== undefined) {
-                        done(null, exUser[0])
+                    console.log("auth.controller exUser", exUser)
+                    if (exUser !== undefined) {
+                        done(null, exUser)
                     } else {
                         const email = profile._json.kakao_account.email
                         const nickname = profile.displayName
