@@ -13,8 +13,8 @@ module.exports = () => {
                 try {
                     const { email } = profile._json.kakao_account
                     const exUser = await checkByEmail(email)
-                    if (exUser.length !== 0) {
-                        done(null, exUser[0])
+                    if (exUser) {
+                        done(null, exUser)
                     } else {
                         const email = profile._json.kakao_account.email
                         const nickname = profile.displayName

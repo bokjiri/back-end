@@ -3,7 +3,7 @@ const User = require("../schemas/user")
 exports.updateUserInfo = async (userId, age, gender, region, disability, obstacle, job, marriage, target, salary, scholarship) => {
     try {
         const check = await this.checkById(userId)
-        if (check === undefined) throw new Error()
+        if (!check) throw new Error()
         return await User.updateOne({ userId }, { $set: { age, gender, region, disability, obstacle, job, marriage, target, salary, scholarship } })
     } catch (error) {
         console.log(error)
@@ -12,7 +12,7 @@ exports.updateUserInfo = async (userId, age, gender, region, disability, obstacl
 exports.deleteUserInfo = async (userId) => {
     try {
         const check = await this.checkById(userId)
-        if (check === undefined) throw new Error()
+        if (!check) throw new Error()
         return await User.deleteOne({ userId })
     } catch (error) {
         console.log(error)
@@ -20,18 +20,14 @@ exports.deleteUserInfo = async (userId) => {
 }
 exports.checkByEmail = async (email) => {
     try {
-        const user = await User.find({ email }, { _id: false, __v: false })
-        if (!user) throw new Error()
-        return user
+        return await User.findOne({ email }, { _id: false, __v: false })
     } catch (error) {
         console.log(error)
     }
 }
 exports.checkById = async (userId) => {
     try {
-        const user = await User.findOne({ userId }, { _id: false, __v: false })
-        if (!user) throw new Error()
-        return user
+        return await User.findOne({ userId }, { _id: false, __v: false })
     } catch (error) {
         console.log(error)
     }
