@@ -20,8 +20,8 @@ exports.deleteUserInfo = async (userId) => {
 }
 exports.checkByEmail = async (email) => {
     try {
-        const user = await User.findOne({ email }, { _id: false, __v: false })
-        if (user === null) throw new Error()
+        const user = await User.find({ email }, { _id: false, __v: false })
+        if (!user) throw new Error()
         return user
     } catch (error) {
         console.log(error)
