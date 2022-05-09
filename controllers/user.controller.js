@@ -9,7 +9,6 @@ exports.getUsers = async (req, res) => {
 
         const data = await userService.checkById(userId)
         data.region = data.region.join(" ")
-        console.log(data.region)
         if (data === undefined) throw new Error()
         res.status(201).json({
             result: true,
@@ -25,7 +24,7 @@ exports.getUsers = async (req, res) => {
     }
 }
 
-exports.putUsers = async (req, res) => {
+exports.patchUsers = async (req, res) => {
     try {
         const { age, gender, region, disability, obstacle } = req.body
         const arrRegion = region.split(" ")

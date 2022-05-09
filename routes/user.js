@@ -2,7 +2,7 @@ const passport = require("passport")
 const router = require("express").Router()
 const authMiddleware = require("../middlewares/auth/auth.middleware")
 
-const { kakaoCallback, getUsers, putUsers, deleteUsers } = require("../controllers/user.controller")
+const { kakaoCallback, getUsers, patchUsers, deleteUsers } = require("../controllers/user.controller")
 
 router.get("/me", authMiddleware, (req, res) => {
     res.send({})
@@ -17,7 +17,7 @@ router.get(
     kakaoCallback
 )
 router.get("/:userId", authMiddleware, getUsers)
-router.put("/:userId", authMiddleware, putUsers)
+router.patch("/:userId", authMiddleware, patchUsers)
 router.delete("/:userId", authMiddleware, deleteUsers)
 
 module.exports = router
