@@ -26,7 +26,7 @@ exports.getDetail = async (req, res) => {
             data,
         })
     } catch (error) {
-        console.log(error)
+        console.error(error)
         /*=====================================================================================
         #swagger.responses[400] = {
             description: '정상적으로 값을 받지 못했을 때, 아래 예제와 같은 형태로 응답받습니다.',
