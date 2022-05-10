@@ -1,14 +1,15 @@
 require("dotenv").config()
 const request = require("request-promise-native")
 const convert = require("xml-js")
-const Data = require("../schemas/data")
 const connect = require("../schemas")
+const { genderData, marriageData, scholarshipData } = require("./cleansing")
 connect()
 // const fs = require("fs")
-// fs.truncate("./openAPI/marriage.txt", () => {
+// fs.truncate("./openAPI/gender.txt", () => {
 //     console.log("File Content Deleted")
 // })
-// const myConsole = new console.Console(fs.createWriteStream("./openAPI/marriage.txt"))
+// const myConsole = new console.Console(fs.createWriteStream("./openAPI/gender.txt"))
+
 let arr = [100, 110, 120, 130, 140, 150, 160, 170, 180]
 let arr1 = ["일자리", "주거 및 일상생활", "주거 및 일상생활", "건강", "건강", "교육 및 돌봄", "교육 및 돌봄", "기타", "안전 및 권익보장"]
 function load2() {
@@ -103,68 +104,10 @@ async function load3(servList, zxc) {
                 }
 
                 let institution = jsonParse.wantedDtl.jurMnofNm._text
-                let marriage
-                if (/결혼/.test(summary) && !/근로자|독거노인|중도입국/.test(summary)) {
-                    desire = desire
-                    target = target
-                    obstacle = obstacle
-                    lifeCycle = lifeCycle
-                    name = name
-                    link = link
-                    institution = institution
-                    summary = summary
-                    support = support
-                    marriage = "기혼"
-                    // await Data.create({ lifeCycle, marriage, desire, target, obstacle, name, link, institution, summary, support })
-                } else if (/ 미혼\/이혼 /.test(summary)) {
-                    desire = desire
-                    target = target
-                    obstacle = obstacle
-                    lifeCycle = lifeCycle
-                    name = name
-                    link = link
-                    institution = institution
-                    summary = summary
-                    support = support
-                    marriage = ["이혼", "미혼"]
-                    // await Data.create({ lifeCycle, marriage, desire, target, obstacle, name, link, institution, summary, support })
-                } else if (/미혼/.test(name) || (/미혼/.test(summary) && !/근로자|국가유공자/.test(summary) && !/국가유공자/.test(name))) {
-                    desire = desire
-                    target = target
-                    obstacle = obstacle
-                    lifeCycle = lifeCycle
-                    name = name
-                    link = link
-                    institution = institution
-                    summary = summary
-                    support = support
-                    marriage = "미혼"
-                    // await Data.create({ lifeCycle, marriage, desire, target, obstacle, name, link, institution, summary, support })
-                } else if (/이혼/.test(name) || (/이혼/.test(summary) && !/노숙/.test(summary))) {
-                    desire = desire
-                    target = target
-                    obstacle = obstacle
-                    lifeCycle = lifeCycle
-                    name = name
-                    link = link
-                    institution = institution
-                    summary = summary
-                    support = support
-                    marriage = "이혼"
-                    // await Data.create({ lifeCycle, marriage, desire, target, obstacle, name, link, institution, summary, support })
-                } else {
-                    desire = desire
-                    target = target
-                    obstacle = obstacle
-                    lifeCycle = lifeCycle
-                    name = name
-                    link = link
-                    institution = institution
-                    summary = summary
-                    support = support
-                    marriage
-                    // await Data.create({ lifeCycle, marriage, desire, target, obstacle, name, link, institution, summary, support })
-                }
+
+                await marriageData(name, summary)
+                await genderData(name, summary)
+                await scholarshipData(name, summary, lifeCycle)
             }
         )
     }
