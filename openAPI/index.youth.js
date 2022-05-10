@@ -1,11 +1,9 @@
 require("dotenv").config()
 const request = require("request-promise-native")
 const convert = require("xml-js")
-const Youth = require("../schemas/youth")
 const Data = require("../schemas/data")
 const connect = require("../schemas")
 const moment = require("moment")
-const area = require("./area2")
 const { regionCode, regionName } = require("./area")
 
 connect()
@@ -54,10 +52,11 @@ async function load2(page, regionCode, regionName) {
             const empsInfo = jsonParse.empsInfo.emp
             if (Array.isArray(empsInfo)) {
                 for (i of empsInfo) {
-                    let name = i.polyBizSjnm._cdata
+                    let name = i.polyBizSjnm._cdata //정책명
                     const check = await Data.findOne({ name })
                     if (check) continue
                     if (
+                        i.accrRqisCn._cdata.search(/제한없음/) !== -1 && //학력
                         i.majrRqisCn._cdata === "제한없음" && //전공
                         /^http/.test(i.rqutUrla._cdata) && // 링크
                         i.polyBizSjnm._cdata.search(/2021|2020/) === -1 && //정책명
@@ -74,61 +73,30 @@ async function load2(page, regionCode, regionName) {
                         // myConsole.log("심사발표", i.jdgnPresCn._cdata)
                         // myConsole.log("지원규모", i.sporScvl._cdata)
                         const resultPeriod = await classifyPeriod(i.rqutPrdCn._cdata)
-                        // let period1
-                        // let period2 = []
-                        // let period3 = i.rqutPrdCn._cdata
-                        // let resultPeriod
-                        // if (/~/.test(i.rqutPrdCn._cdata)) {
-                        //     period1 = i.rqutPrdCn._cdata.split("~")
-                        //     resultPeriod = await deletePastPeriod(period1, period2)
-                        // } else if (/-/.test(i.rqutPrdCn._cdata) && i.rqutPrdCn._cdata.length !== 1) {
-                        //     period1 = i.rqutPrdCn._cdata.split("-")
-                        //     resultPeriod = await deletePastPeriod(period1, period2)
-                        // } else if (/\//.test(i.rqutPrdCn._cdata)) {
-                        //     period1 = i.rqutPrdCn._cdata.split("/")
-                        //     resultPeriod = await deletePastPeriod(period1, period2)
-                        // } else if (/수시/.test(i.rqutPrdCn._cdata)) {
-                        //     resultPeriod = period3
-                        // } else if (/상시/.test(i.rqutPrdCn._cdata)) {
-                        //     resultPeriod = period3
-                        // } else if (/연중/.test(i.rqutPrdCn._cdata)) {
-                        //     resultPeriod = period3
-                        // } else if (/\./.test(i.rqutPrdCn._cdata)) {
-                        //     period1 = i.rqutPrdCn._cdata.split(/\D/).filter(Boolean)
-                        //     if (period1.length === 1) {
-                        //         continue
-                        //     }
-                        //     if (period1.length === 2) {
-                        //         period1[2] = "30"
-                        //     }
-                        //     if (period1.length > 3) {
-                        //         continue
-                        //     }
-                        //     if (String(period1[0]).length === 4) {
-                        //         period1[0] = String(period1[0][2]) + String(period1[0][3])
-                        //     }
-                        //     if (String(period1[1]).length === 1) {
-                        //         period1[1] = "0" + String(period1[1])
-                        //     }
-                        //     if (String(period1[2]).length === 1) {
-                        //         period1[2] = "0" + String(period1[2])
-                        //     }
-
-                        //     period1 = Number(period1.join(""))
-                        //     const date = moment().format("YYMMDD")
-                        //     const dateNum = Number(date)
-                        //     if (dateNum < period1) resultPeriod = period1
-                        // }
 
                         if (resultPeriod === false || resultPeriod === undefined) continue
 
-                        let period3 = i.rqutPrdCn._cdata
                         let age = []
-                        if (i.ageInfo._cdata.replace(/[^0-9]/g, "").length === 4) {
-                            age[0] = String(i.ageInfo._cdata.replace(/[^0-9]/g, "")[0]) + String(i.ageInfo._cdata.replace(/[^0-9]/g, "")[1])
-                            age[1] = String(i.ageInfo._cdata.replace(/[^0-9]/g, "")[2]) + String(i.ageInfo._cdata.replace(/[^0-9]/g, "")[3])
-                        } else if (i.ageInfo._cdata.replace(/[^0-9]/g, "").length === 0) {
-                            age.push("제한없음")
+                        if (/~/.test(i.ageInfo._cdata)) {
+                            age = i.ageInfo._cdata.split("~")
+                            age[0] = age[0].replace(/[^0-9]/g, "")
+                            if (!age[0]) age[0] = "0"
+                            age[1] = age[1].replace(/[^0-9]/g, "")
+                            if (!age[1]) age[1] = "999"
+                            // console.log("~.test", age, i.ageInfo._cdata)
+                        } else if (/제한없음/.test(i.ageInfo._cdata)) {
+                            // console.log("제한없음", i.ageInfo._cdata)
+                        } else if (/이상/.test(i.ageInfo._cdata) && /[^이하]/.test(i.ageInfo._cdata)) {
+                            age[0] = i.ageInfo._cdata.replace(/[^0-9]/g, "")
+                            age[1] = "999"
+                            // console.log("이상", i.ageInfo._cdata, age)
+                        } else if (/[^이상]/.test(i.ageInfo._cdata) && /이하/.test(i.ageInfo._cdata)) {
+                            age[0] = "0"
+                            age[1] = i.ageInfo._cdata.replace(/[^0-9]/g, "")
+                            // console.log("이하", i.ageInfo._cdata, age)
+                        } else {
+                            age = i.ageInfo._cdata
+                            console.log("else", i.ageInfo._cdata)
                         }
 
                         let target
@@ -150,15 +118,18 @@ async function load2(page, regionCode, regionName) {
                         }
 
                         // let total = i.totalCnt._cdata //총건수
-                        //정책명
+
                         let summary = i.polyItcnCn._cdata //정책소개
-                        let job = i.empmSttsCn._cdata // 참여요건 - 취업상태
-                        let scholarship = i.accrRqisCn._cdata.split(", ") // 참여요건 - 학력
+                        let job // 참여요건 - 취업상태
+                        if (i.empmSttsCn._cdata !== "제한없음") job = i.empmSttsCn._cdata // 참여요건 - 취업상태
+                        let scholarship // 참여요건 - 학력
+                        if (i.accrRqisCn._cdata !== "제한없음") scholarship = i.accrRqisCn._cdata // 참여요건 - 학력
                         let institution = i.cnsgNmor._cdata // 신청기관명
                         let link = i.rqutUrla._cdata // 사이트 링크 주소
                         let support = i.sporCn._cdata // 지원내용
                         let region = regionName // 지역
                         let process = i.rqutProcCn._cdata
+                        let period = i.rqutPrdCn._cdata
                         // myConsole.log({ total })
                         // myConsole.log({ pageIndex })
                         myConsole.log({ page })
@@ -173,7 +144,7 @@ async function load2(page, regionCode, regionName) {
                         myConsole.log({ link })
                         myConsole.log({ support })
                         myConsole.log({ target })
-                        myConsole.log({ period: period3 })
+                        myConsole.log({ period })
                         myConsole.log({ 심사발표: i.jdgnPresCn._cdata })
                         myConsole.log({ process })
                         myConsole.log("-------------------")
@@ -190,7 +161,8 @@ async function load2(page, regionCode, regionName) {
                             link,
                             support,
                             target,
-                            period: period3,
+                            period,
+                            process,
                         })
                     } else {
                         continue

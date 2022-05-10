@@ -16,6 +16,9 @@ const dataSchema = mongoose.Schema({
     scholarship: {
         type: [String],
     },
+    target: {
+        type: [String],
+    },
     job: {
         type: String,
     },
@@ -31,8 +34,8 @@ const dataSchema = mongoose.Schema({
     salary: {
         type: Number,
     },
-    target: {
-        type: [String],
+    process: {
+        type: String,
     },
     desire: {
         type: String,
