@@ -144,8 +144,82 @@ exports.getMain = async (req, res) => {
                 }
             }
         } // console.log(checkedWithRegion)
+        //-----------------------------------------------------------scholarship 조건 검사-----------------------------------------------------------------//
+        let checkedWithScholarship = []
+        //만약 isUser에 scholarship 조건이 존재하지 않는다면
+        if (isUser.scholarship.length === 0 || !isUser.scholarship[0]) {
+            checkedWithScholarship = checkedWithRegion
+        }
+        //만약 isUser에 scholarship 조건이 존재한다면
+        else {
+            for (let j = 0; j < checkedWithRegion.length; j++) {
+                if (checkedWithRegion[j].scholarship.includes(isUser.scholarship[0]) === true || checkedWithRegion[j].scholarship[0] === undefined) {
+                    checkedWithScholarship.push(checkedWithRegion[j])
+                }
+            }
+        } // console.log(checkedWithScholarship)
+        //-----------------------------------------------------------job 조건 검사-----------------------------------------------------------------//
+        let checkedWithJob = []
+        //만약 isUser에 job 조건이 존재하지 않는다면
+        if (isUser.job.length === 0 || !isUser.job[0]) {
+            checkedWithJob = checkedWithScholarship
+        }
+        //만약 isUser에 job 조건이 "취업"으로 존재한다면
+        else if (isUser.job[0] === "취업") {
+            for (let j = 0; j < checkedWithScholarship.length; j++) {
+                if (checkedWithScholarship[j].job === undefined) {
+                    checkedWithJob.push(checkedWithScholarship[j])
+                }
+            }
+        }
+        //만약 isUser에 job 조건이 "미취업"으로 존재한다면
+        else if (isUser.job[0] === "미취업") {
+            for (let j = 0; j < checkedWithScholarship.length; j++) {
+                if (checkedWithScholarship[j].job === isUser.job[0] || checkedWithScholarship[j].job === undefined) {
+                    checkedWithJob.push(checkedWithScholarship[j])
+                }
+            }
+        } // console.log(checkedWithJob)
+        //-----------------------------------------------------------marriage 조건 검사-----------------------------------------------------------------//
+        let checkedWithMarriage = []
+        //만약 isUser에 marriage 조건이 존재하지 않는다면
+        if (isUser.marriage.length === 0 || !isUser.marriage[0]) {
+            checkedWithMarriage = checkedWithJob
+        }
+        //만약 isUser에 marriage 조건이 존재한다면
+        else {
+            for (let j = 0; j < checkedWithJob.length; j++) {
+                if (checkedWithJob[j].marriage.includes(isUser.marriage[0]) === true || checkedWithJob[j].marriage[0] === undefined) {
+                    checkedWithMarriage.push(checkedWithJob[j])
+                }
+            }
+        } // console.log(checkedWithMarriage)
+        //-----------------------------------------------------------target 조건 검사-----------------------------------------------------------------//
+        let checkedWithTarget = []
+        //만약 isUser에 target 조건이 존재하지 않는다면
+        if (isUser.target.length === 0 || !isUser.target[0]) {
+            checkedWithTarget = checkedWithMarriage
+        }
+        //만약 isUser에 target 조건이 한 개 존재한다면
+        else if (isUser.target.length === 1) {
+            for (let j = 0; j < checkedWithMarriage.length; j++) {
+                if (checkedWithMarriage[j].target.includes(isUser.target[0]) === true || checkedWithMarriage[j].target[0] === undefined) {
+                    checkedWithTarget.push(checkedWithMarriage[j])
+                }
+            }
+        }
+        //만약 isUser에 target 조건이 여러 개 존재한다면
+        else {
+            for (let j = 0; j < checkedWithMarriage.length; j++) {
+                for (let i = 0; i < checkedWithMarriage.length; i++) {
+                    if (checkedWithMarriage[j].target.includes(isUser.target[i]) === true || checkedWithMarriage[j].target[0] === undefined) {
+                        checkedWithTarget.push(checkedWithMarriage[j])
+                    }
+                }
+            }
+        } // console.log(checkedWithTarget)
         //----------------------------------------------------------------------------------------------------------------------------//
-        let result = checkedWithRegion.filter((v, i) => checkedWithRegion.indexOf(v).name === i.name)
+        let result = checkedWithTarget.filter((v, i) => checkedWithTarget.indexOf(v).name === i.name)
         let checkedData = result
         //----------------------------------------------------------------------------------------------------------------------------//
         let work = []
