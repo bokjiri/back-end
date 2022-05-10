@@ -23,6 +23,9 @@ const dataSchema = mongoose.Schema({
         type: String,
     },
     marriage: {
+        type: [String],
+    },
+    gender: {
         type: String,
     },
     children: {

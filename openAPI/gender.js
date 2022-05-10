@@ -114,7 +114,7 @@ async function load3(servList, zxc) {
                     summary = summary
                     support = support
                     let gender = "여성"
-                    // await Data.create({ lifeCycle, gender, desire, target, obstacle, name, link, institution, summary, support })
+                    // await Data.updateOne({ name }, { $set: { gender } })
                 } else if (/남성/.test(summary) && !/여성/.test(summary)) {
                     desire = desire
                     target = target
@@ -126,7 +126,7 @@ async function load3(servList, zxc) {
                     summary = summary
                     support = support
                     let gender = "남성"
-                    // await Data.create({ lifeCycle, gender, desire, target, obstacle, name, link, institution, summary, support })
+                    // await Data.updateOne({ name }, { $set: { gender } })
                 } else {
                     desire = desire
                     target = target
@@ -137,8 +137,8 @@ async function load3(servList, zxc) {
                     institution = institution
                     summary = summary
                     support = support
-                    let gender = ""
-                    // await Data.create({ lifeCycle, gender, desire, target, obstacle, name, link, institution, summary, support })
+                    let gender
+                    // await Data.updateOne({ name }, { $set: { gender } })
                 }
             }
         )
