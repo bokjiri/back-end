@@ -126,7 +126,7 @@ exports.getMain = async (req, res) => {
         //만약 isUser에 region 조건이 하나만 존재한다면
         else if (isUser.region.length === 1) {
             for (let j = 0; j < checkedWithGender.length; j++) {
-                if (checkedWithGender[j].region.includes(isUser.region[0]) === true || !checkedWithGender[j].region[0]) {
+                if (checkedWithGender[j].region.includes(isUser.region[0]) === true || checkedWithGender[j].region[0] === undefined) {
                     checkedWithRegion.push(checkedWithGender[j])
                 }
             }
@@ -134,15 +134,18 @@ exports.getMain = async (req, res) => {
         //만약 isUser에 region 조건이 모두 존재한다면
         else if (isUser.region.length === 2) {
             for (let j = 0; j < checkedWithGender.length; j++) {
-                if (checkedWithGender[j].region[0] === isUser.region[0]) {
-                    if (checkedWithGender[j].region.includes(isUser.region[1]) === true || !checkedWithGender[j].region[0]) {
-                        checkedWithRegion.push(checkedWithGender[j])
-                    }
+                //지역 무관 정책
+                if (checkedWithGender[j].region[0] === undefined) {
+                    checkedWithRegion.push(checkedWithGender[j])
+                }
+                //지역 맞춤 정책
+                else if (checkedWithGender[j].region[0] === isUser.region[0] && checkedWithGender[j].region.includes(isUser.region[1]) === true) {
+                    checkedWithRegion.push(checkedWithGender[j])
                 }
             }
         } // console.log(checkedWithRegion)
         //----------------------------------------------------------------------------------------------------------------------------//
-        let result = checkedWithGender.filter((v, i) => checkedWithGender.indexOf(v).name === i.name)
+        let result = checkedWithRegion.filter((v, i) => checkedWithRegion.indexOf(v).name === i.name)
         let checkedData = result
         //----------------------------------------------------------------------------------------------------------------------------//
         let work = []
