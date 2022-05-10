@@ -118,7 +118,7 @@ async function load3(servList, zxc) {
                     summary = summary
                     support = support
                     let scholarship = ["고등학교 졸업 미만", "대학(원) 재학"]
-                    await Data.updateOne({ name }, { $set: { scholarship } })
+                    // await Data.updateOne({ name }, { $set: { scholarship } })
                 } else if (/대학/.test(name) || (/대학/.test(summary) && !/자녀|일용|근로자/.test(summary))) {
                     desire = desire
                     target = target
@@ -130,7 +130,7 @@ async function load3(servList, zxc) {
                     summary = summary
                     support = support
                     let scholarship = "대학(원) 재학"
-                    await Data.updateOne({ name }, { $set: { scholarship } })
+                    // await Data.updateOne({ name }, { $set: { scholarship } })
                 } else if (/중등|고등/.test(name) || (/중등|고등/.test(summary) && !/자녀|학부모|국가유공자|근로자/.test(summary) && !/중장년|노년/.test(lifeCycle))) {
                     desire = desire
                     target = target
@@ -142,7 +142,7 @@ async function load3(servList, zxc) {
                     summary = summary
                     support = support
                     let scholarship = "고등학교 졸업 미만"
-                    await Data.updateOne({ name }, { $set: { scholarship } })
+                    // await Data.updateOne({ name }, { $set: { scholarship } })
                 } else {
                     desire = desire
                     target = target
@@ -153,8 +153,8 @@ async function load3(servList, zxc) {
                     institution = institution
                     summary = summary
                     support = support
-                    let scholarship = ""
-                    await Data.updateOne({ name }, { $set: { scholarship } })
+                    let scholarship
+                    // await Data.updateOne({ name }, { $set: { scholarship } })
                 }
             }
         )
