@@ -1,8 +1,8 @@
-const { checkUserData, checkUserId, checkBokjiApi } = require("../services/main.service")
+const { checkUser, checkData } = require("../services/main.service")
 exports.searchService = async (userId, searchKey, type) => {
     try {
-        const isUser = await checkUserId(userId)
-        const allData = await checkBokjiApi()
+        const isUser = await checkUser(userId)
+        const allData = await checkData()
 
         let isData = []
         allData.forEach((data) => {
@@ -10,7 +10,7 @@ exports.searchService = async (userId, searchKey, type) => {
                 isData.push(data)
             }
         })
-        let checkedData = await checkUserData(isUser, isData)
+        let checkedData = await checkData(isUser, isData)
 
         let work = []
         let houseLife = []
