@@ -37,7 +37,7 @@ exports.getMain = async (req, res) => {
         =====================================================================================*/
             return res.status(404).json({ result: "FAIL", code: -11, message: "데이터베이스 조회 실패" })
         }
-        console.log(isUser)
+        // console.log(isUser)
         //-----------------------------------------------------------age/lifeCycle 조건 검사-----------------------------------------------------------------//
         let checkedWithAge = []
         //만약 isUser에 age가 존재하지 않는다면
@@ -218,9 +218,14 @@ exports.getMain = async (req, res) => {
                 }
             }
         } // console.log(checkedWithTarget)
-        //----------------------------------------------------------------------------------------------------------------------------//
-        let result = checkedWithTarget.filter((v, i) => checkedWithTarget.indexOf(v).name === i.name)
-        let checkedData = result
+        //-----------------------------------------------------------중복 제거-----------------------------------------------------------------//
+        let checkedData = checkedWithTarget.filter((v, i) => {
+            return (
+                checkedWithTarget.findIndex((v2, j) => {
+                    return v.name === v2.name
+                }) === i
+            )
+        })
         //----------------------------------------------------------------------------------------------------------------------------//
         let work = []
         let houseLife = []
