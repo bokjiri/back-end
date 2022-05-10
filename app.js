@@ -9,6 +9,7 @@ const connect = require("./schemas")
 const passport = require("passport")
 const passportConfig = require("./kakao/index")
 const { newsData } = require("./services/news.service")
+const updateYouthApi = require("./openAPI/index.youth")
 
 connect()
 
@@ -34,7 +35,7 @@ const swaggerFile = require("./swagger-output")
 app.use("/swagger", swaggerUi.serve, swaggerUi.setup(swaggerFile))
 
 const corsOptions = {
-    origin: ["http://localhost:3000"],
+    origin: ["http://localhost:3000", "https://boksei.com"],
     credentials: true,
 }
 
@@ -67,6 +68,7 @@ app.use(passport.session())
 const Router = require("./routes")
 app.use("/api", Router)
 
+updateYouthApi()
 newsData()
 
 app.use((req, res, next) => {

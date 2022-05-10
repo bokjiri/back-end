@@ -4,25 +4,37 @@ const convert = require("xml-js")
 const Data = require("../schemas/data")
 const connect = require("../schemas")
 const moment = require("moment")
+const schedule = require("node-schedule")
 const { regionCode, regionName } = require("./area")
-
+const newYouthApiDataDate = moment().format("YYYY-MM-DD")
 connect()
 const fs = require("fs")
-fs.truncate("./openAPI/sample.txt", () => {
+fs.truncate(`./openAPI/${newYouthApiDataDate}.txt`, () => {
     console.log("File Content Deleted")
 })
-const myConsole = new console.Console(fs.createWriteStream("./openAPI/sample.txt"))
-
-updateData()
+const myConsole = new console.Console(fs.createWriteStream(`./openAPI/${newYouthApiDataDate}.txt`))
+module.exports = () => {
+    const rule = new schedule.RecurrenceRule()
+    rule.dayOfWeek = [0, new schedule.Range(0, 6)]
+    rule.hour = 10
+    // rule.minute = 30
+    // rule.second = 15
+    rule.tz = "Asia/Seoul"
+    schedule.scheduleJob(rule, () => {
+        updateData()
+    })
+}
 
 async function updateData() {
+    myConsole.log("load start")
     await load()
-    // await findPastData()
+    myConsole.log("load done")
+    await findPastData()
+    myConsole.log("findPastData done")
 }
 async function load() {
     for (let i = 1; i < 3; i++) {
         for (let j = 0; j < regionCode.length; j++) {
-            console.log(j)
             await load2(i, regionCode[j], regionName[j])
         }
     }
@@ -46,7 +58,7 @@ async function load2(page, regionCode, regionName) {
                 space: 4,
             })
             const jsonParse = JSON.parse(xmlToJson)
-            console.log(regionCode)
+
             // let total = jsonParse.empsInfo.totalCnt._text
             // let pageIndex = jsonParse.empsInfo.pageIndex._text
             const empsInfo = jsonParse.empsInfo.emp
@@ -99,9 +111,9 @@ async function load2(page, regionCode, regionName) {
                             console.log("else", i.ageInfo._cdata)
                         }
 
-                        let target
+                        let gender
                         if (i.polyBizSjnm._cdata.search(/여성|출산/) !== -1) {
-                            target = "여성"
+                            gender = "여성"
                         }
 
                         let desire //i.plcyTpNm._cdata = 정책유형
@@ -143,7 +155,7 @@ async function load2(page, regionCode, regionName) {
                         myConsole.log({ region })
                         myConsole.log({ link })
                         myConsole.log({ support })
-                        myConsole.log({ target })
+                        myConsole.log({ gender })
                         myConsole.log({ period })
                         myConsole.log({ 심사발표: i.jdgnPresCn._cdata })
                         myConsole.log({ process })
@@ -160,7 +172,7 @@ async function load2(page, regionCode, regionName) {
                             region,
                             link,
                             support,
-                            target,
+                            gender,
                             period,
                             process,
                         })
@@ -174,11 +186,10 @@ async function load2(page, regionCode, regionName) {
 }
 async function findPastData() {
     const data = await Data.find()
-
     for (checkPastData of data) {
         if (checkPastData.period !== undefined) {
             const checkPeriod = await classifyPeriod(checkPastData.period)
-            if (checkPeriod === undefined || checkPeriod === false) {
+            if (!checkPeriod) {
                 const checkRemove = await Data.deleteOne({ dataId: checkPastData.dataId })
                 myConsole.log("checkRemove", checkRemove)
                 myConsole.log("removeData", checkPastData)
