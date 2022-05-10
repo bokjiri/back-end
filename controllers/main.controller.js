@@ -1,4 +1,4 @@
-const { checkUserData, checkUserId, checkBokjiApi } = require("../services/main.service")
+const { checkUser, checkData } = require("../services/main.service")
 
 exports.getMain = async (req, res) => {
     /*========================================================================================================
@@ -17,7 +17,7 @@ exports.getMain = async (req, res) => {
             return res.status(400).json({ result: "Fail", code: -10, message: "필수 입력값 조회 실패" })
         }
         const { userId } = req.params
-        const isUser = await checkUserId(userId)
+        const isUser = await checkUser(userId)
         if (!isUser) {
             /*=====================================================================================
         #swagger.responses[404] = {
@@ -27,68 +27,122 @@ exports.getMain = async (req, res) => {
         =====================================================================================*/
             return res.status(404).json({ result: "FAIL", code: -11, message: "데이터베이스 조회 실패" })
         }
-        const allData = await checkBokjiApi()
-        if (!allData) {
+        const isData = await checkData()
+        if (!isData) {
             /*=====================================================================================
         #swagger.responses[404] = {
-            description: 'BokjiApi가 DB에 존재하지 않을 때, 아래 예제와 같은 형태로 응답받습니다.',
+            description: 'data가 DB에 존재하지 않을 때, 아래 예제와 같은 형태로 응답받습니다.',
             schema: { result: "FAIL", code: -11, message: "데이터베이스 조회 실패" }
         }
         =====================================================================================*/
             return res.status(404).json({ result: "FAIL", code: -11, message: "데이터베이스 조회 실패" })
         }
-        const isData = allData
-        //-----------------------------------------------------------추천 로직-----------------------------------------------------------------//
-        let checkedWithLifeCycle = []
-        //만약 isUser에 lifecycle이 존재한다면
-        if (isUser.lifeCycle.length !== 0) {
-            for (let i = 0; i < isUser.lifeCycle.length; i++) {
-                for (let j = 0; j < isData.length; j++) {
-                    if (isData[j].lifeCycle.includes(isUser.lifeCycle[i]) === true || isData[j].lifeCycle[0] === undefined) {
-                        checkedWithLifeCycle.push(isData[j])
+        console.log(isUser)
+        //-----------------------------------------------------------age/lifeCycle 조건 검사-----------------------------------------------------------------//
+        let checkedWithAge = []
+        //만약 isUser에 age가 존재하지 않는다면
+        if (isUser.age.length === 0 || !isUser.age || !isUser.lifeCycle[0]) {
+            throw new Error()
+        }
+        //만약 isUser에 age가 존재한다면
+        for (let j = 0; j < isData.length; j++) {
+            //isData에 age 기준이 존재할 때
+            if (isData[j].age.length === 2 && isData[j].age[0] <= isUser.age && isData[j].age[1] > isUser.age) {
+                checkedWithAge.push(isData[j])
+            }
+            //isData에 lifeCycle 기준이 존재할 때
+            else if (isUser.lifeCycle.length === 1) {
+                if (isData[j].lifeCycle.includes(isUser.lifeCycle[0]) === true) {
+                    checkedWithAge.push(isData[j])
+                }
+            }
+            //isData에 age와 lifeCycle 기준이 존재하지 않을 때
+            else if (isData[j].age.length === 0 && isData[j].lifeCycle.length === 0) {
+                checkedWithAge.push(isData[j])
+            }
+        } //console.log(checkedWithAge)
+        //-----------------------------------------------------------disability/obstacle 조건 검사-----------------------------------------------------------------//
+        let checkedWithDisability = []
+        //만약 isUser에 disability가 존재하지 않는다면
+        if (isUser.disability.length === 0 || !isUser.disability[0]) {
+            throw new Error()
+        }
+        //만약 isUser에 disability가 '있음'으로 존재한다면
+        if (isUser.disability[0] === "있음") {
+            for (let j = 0; j < checkedWithAge.length; j++) {
+                //장애 여부 상관 없는 정책
+                if (checkedWithAge[j].target[0] === undefined) {
+                    checkedWithDisability.push(checkedWithAge[j])
+                }
+                //장애인 대상 정책
+                else if (checkedWithAge[j].target.includes("장애인") === true) {
+                    for (let i = 0; i < isUser.obstacle.length; i++) {
+                        if (checkedWithAge[j].obstacle.includes(isUser.obstacle[i]) === true) {
+                            checkedWithDisability.push(checkedWithAge[j])
+                        }
+                    }
+                    if (checkedWithAge[j].obstacle[0] === undefined) {
+                        checkedWithDisability.push(checkedWithAge[j])
                     }
                 }
             }
         }
-        //만약 isUser에 lifecycle이 존재하지 않는다면
-        else {
-            checkedWithLifeCycle = isData
-        } // console.log(checkedWithLifeCycle)
-
-        let checkedWithTarget = []
-        //만약 isUser에 target이 존재한다면
-        if (isUser.target.length !== 0) {
-            for (let i = 0; i < isUser.target.length; i++) {
-                for (let j = 0; j < checkedWithLifeCycle.length; j++) {
-                    if (checkedWithLifeCycle[j].target.includes(isUser.target[i]) === true || checkedWithLifeCycle[j].target[0] === undefined) {
-                        checkedWithTarget.push(checkedWithLifeCycle[j])
-                    }
+        //만약 isUser에 disability이 '없음'으로 존재한다면
+        else if (isUser.disability[0] === "없음") {
+            for (let j = 0; j < checkedWithAge.length; j++) {
+                if (checkedWithAge[j].target.includes("장애인") === false) {
+                    checkedWithDisability.push(checkedWithAge[j])
+                }
+            }
+        } // console.log(checkedWithDisability)
+        //-----------------------------------------------------------gender 조건 검사-----------------------------------------------------------------//
+        let checkedWithGender = []
+        //만약 isUser에 gender 조건이 존재하지 않는다면
+        if (isUser.gender.length === 0 || !isUser.gender[0]) {
+            checkedWithGender = checkedWithDisability
+        }
+        //만약 isUser에 gender 조건이 '여성'으로 존재한다면
+        else if (isUser.gender[0] === "여성") {
+            for (let j = 0; j < checkedWithDisability.length; j++) {
+                if (checkedWithDisability[j].gender === isUser.gender[0] || !checkedWithDisability[j].gender) {
+                    checkedWithGender.push(checkedWithDisability[j])
                 }
             }
         }
-        //만약 isUser에 target이 존재하지 않는다면
-        else {
-            checkedWithTarget = checkedWithLifeCycle
-        } // console.log(checkedWithTarget)
-
-        //만약 isUser에 obstacle이 존재한다면
-        let checkedWithObstacle = []
-        if (isUser.obstacle.length !== 0) {
-            for (let i = 0; i < isUser.obstacle.length; i++) {
-                for (let j = 0; j < checkedWithTarget.length; j++) {
-                    if (checkedWithTarget[j].obstacle.includes(isUser.target[i]) === true || checkedWithTarget[j].obstacle[0] === undefined) {
-                        checkedWithObstacle.push(checkedWithTarget[j])
-                    }
+        //만약 isUser에 gender 조건이 '남성'으로 존재한다면
+        else if (isUser.gender[0] === "남성") {
+            for (let j = 0; j < checkedWithDisability.length; j++) {
+                if (checkedWithDisability[j].gender === isUser.gender[0] || !checkedWithDisability[j].gender) {
+                    checkedWithGender.push(checkedWithDisability[j])
+                }
+            }
+        } // console.log(checkedWithGender)
+        //-----------------------------------------------------------region 조건 검사-----------------------------------------------------------------//
+        let checkedWithRegion = []
+        //만약 isUser에 region 조건이 존재하지 않는다면
+        if (isUser.region.length === 0 || !isUser.region[0]) {
+            checkedWithRegion = checkedWithGender
+        }
+        //만약 isUser에 region 조건이 하나만 존재한다면
+        else if (isUser.region.length === 1) {
+            for (let j = 0; j < checkedWithGender.length; j++) {
+                if (checkedWithGender[j].region.includes(isUser.region[0]) === true || !checkedWithGender[j].region[0]) {
+                    checkedWithRegion.push(checkedWithGender[j])
                 }
             }
         }
-        //만약 isUser에 obstacle이 존재하지 않는다면
-        else {
-            checkedWithObstacle = checkedWithTarget
-        } // console.log(checkedWithObstacle)
-
-        // let checkedData = await checkUserData(isUser, isData)   -> DB를 탄다면 사용
-        let result = checkedWithObstacle.filter((v, i) => checkedWithObstacle.indexOf(v).name === i.name)
+        //만약 isUser에 region 조건이 모두 존재한다면
+        else if (isUser.region.length === 2) {
+            for (let j = 0; j < checkedWithGender.length; j++) {
+                if (checkedWithGender[j].region[0] === isUser.region[0]) {
+                    if (checkedWithGender[j].region.includes(isUser.region[1]) === true || !checkedWithGender[j].region[0]) {
+                        checkedWithRegion.push(checkedWithGender[j])
+                    }
+                }
+            }
+        } // console.log(checkedWithRegion)
+        //----------------------------------------------------------------------------------------------------------------------------//
+        let result = checkedWithGender.filter((v, i) => checkedWithGender.indexOf(v).name === i.name)
         let checkedData = result
         //----------------------------------------------------------------------------------------------------------------------------//
         let work = []
