@@ -8,15 +8,15 @@ exports.getDetail = async (req, res) => {
     ========================================================================================================*/
     try {
         const dataId = parseInt(req.params.dataId)
-        const { name, link, summary, support, lifeCycle } = await findData(dataId)
-        const data = { name, lifeCycle, summary, support, link }
+        const data = await findData(dataId)
+        if (!data) throw new Error()
         /*=====================================================================================
         #swagger.responses[200] = {
             description: '정상적으로 값을 받았을 때, 아래 예제와 같은 형태로 응답받습니다.',
             schema: { 
             result: "SUCCESS",
             message: "상세페이지 조회 성공",
-            data = { name, lifeCycle, summary, support, link }
+            
             }
         }
         =====================================================================================*/

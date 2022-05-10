@@ -2,9 +2,7 @@ const Data = require("../schemas/data")
 
 exports.findData = async (dataId) => {
     try {
-        const data = await Data.findOne({ dataId }, { _id: false, __v: false })
-        if (!data) throw new Error()
-        return data
+        return await Data.findOne({ dataId }, { _id: false, __v: false })
     } catch (error) {
         console.error(error)
     }
