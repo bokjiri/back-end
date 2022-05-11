@@ -7,6 +7,7 @@ const fs = require("fs")
 const Data = require("../schemas/data")
 const { findPastData, classifyPeriod, deletePastPeriod } = require("../openAPI/index.youth")
 const { regionCode, regionName } = require("../openAPI/area")
+const dir = process.env.UPDATE_DATA_LOG
 
 module.exports = () => {
     const rule = new schedule.RecurrenceRule()
@@ -15,11 +16,12 @@ module.exports = () => {
     // rule.minute = 56
     // rule.second = 15
     rule.tz = "Asia/Seoul"
+
     schedule.scheduleJob(rule, async () => {
-        fs.truncate(`/var/log/boksei/updatedata/${newYouthApiDataDate}.txt`, () => {
+        fs.truncate(`${dir}/${newYouthApiDataDate}.txt` || `./${newYouthApiDataDate}.txt`, () => {
             console.log("File Content Deleted")
         })
-        const myConsole = new console.Console(fs.createWriteStream(`/var/log/boksei/updatedata/${newYouthApiDataDate}.txt`))
+        const myConsole = new console.Console(fs.createWriteStream(`${dir}/${newYouthApiDataDate}.txt` || `./${newYouthApiDataDate}.txt`))
         console.log("load start")
         myConsole.log("load start")
         await load()
