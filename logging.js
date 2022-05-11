@@ -3,7 +3,7 @@ const WinstonDaily = require("winston-daily-rotate-file")
 const path = require("path")
 const { combine, timestamp, printf, colorize } = winston.format
 
-const logDir = "logs"
+const logDir = process.env.LOGDIR || "logs"
 
 const levels = {
     error: 0,
