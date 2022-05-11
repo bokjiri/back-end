@@ -37,7 +37,7 @@ exports.getMain = async (req, res) => {
         =====================================================================================*/
             return res.status(404).json({ result: "FAIL", code: -11, message: "데이터베이스 조회 실패" })
         }
-        // console.log(isUser)
+        console.log(isUser)
         //-----------------------------------------------------------age/lifeCycle 조건 검사-----------------------------------------------------------------//
         let checkedWithAge = []
         //만약 isUser에 age가 존재하지 않는다면
@@ -218,10 +218,61 @@ exports.getMain = async (req, res) => {
                 }
             }
         } // console.log(checkedWithTarget)
+        //-----------------------------------------------------------salary/family 조건 검사-----------------------------------------------------------------//
+        let checkedWithSalary = []
+        //만약 isUser에 salary와 family 조건이 존재하지 않는다면
+        if (isUser.salary === undefined || isUser.family === undefined) {
+            checkedWithSalary = checkedWithTarget
+        }
+        //만약 isUser에 salary와 family 조건이 존재한다면
+        else if (isUser.salary && isUser.family) {
+            //기준 중위 소득 60% 미만인 경우 저소득 정책 추가
+            if (isUser.family === 1 && isUser.salary <= 116) {
+                for (let j = 0; j < checkedWithTarget.length; j++) {
+                    checkedWithSalary.push(checkedWithTarget[j])
+                }
+            } else if (isUser.family === 2 && isUser.salary <= 195) {
+                for (let j = 0; j < checkedWithTarget.length; j++) {
+                    checkedWithSalary.push(checkedWithTarget[j])
+                }
+            } else if (isUser.family === 3 && isUser.salary <= 251) {
+                for (let j = 0; j < checkedWithTarget.length; j++) {
+                    checkedWithSalary.push(checkedWithTarget[j])
+                }
+            } else if (isUser.family === 4 && isUser.salary <= 307) {
+                for (let j = 0; j < checkedWithTarget.length; j++) {
+                    checkedWithSalary.push(checkedWithTarget[j])
+                }
+            } else if (isUser.family === 5 && isUser.salary <= 361) {
+                for (let j = 0; j < checkedWithTarget.length; j++) {
+                    checkedWithSalary.push(checkedWithTarget[j])
+                }
+            } else if (isUser.family === 6 && isUser.salary <= 414) {
+                for (let j = 0; j < checkedWithTarget.length; j++) {
+                    checkedWithSalary.push(checkedWithTarget[j])
+                }
+            } else if (isUser.family === 7 && isUser.salary <= 466) {
+                for (let j = 0; j < checkedWithTarget.length; j++) {
+                    checkedWithSalary.push(checkedWithTarget[j])
+                }
+            } else if (isUser.family === 8 && isUser.salary <= 519) {
+                for (let j = 0; j < checkedWithTarget.length; j++) {
+                    checkedWithSalary.push(checkedWithTarget[j])
+                }
+            }
+            //기준 중위 소득 60% 이상인 경우 저소득 정책 제외
+            else {
+                for (let j = 0; j < checkedWithTarget.length; j++) {
+                    if (checkedWithTarget[j].target.includes("저소득") === false) {
+                        checkedWithSalary.push(checkedWithTarget[j])
+                    }
+                }
+            }
+        } // console.log(checkedWithSalary)
         //-----------------------------------------------------------중복 제거-----------------------------------------------------------------//
-        let checkedData = checkedWithTarget.filter((v, i) => {
+        let checkedData = checkedWithSalary.filter((v, i) => {
             return (
-                checkedWithTarget.findIndex((v2, j) => {
+                checkedWithSalary.findIndex((v2, j) => {
                     return v.name === v2.name
                 }) === i
             )
