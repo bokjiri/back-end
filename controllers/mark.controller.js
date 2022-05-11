@@ -1,6 +1,6 @@
 const { showMark, pushMark, deleteMark, topMark, likemark, showMarkRedis, pushMarkRedis, deleteMarkRedis, topLikesMarkRedis } = require("../services/mark.service")
 
-exports.getMarks = async (req, res) => {
+exports.getMarks = async (req, res, next) => {
     /*========================================================================================================
     #swagger.tags = ['Mark']
     #swagger.summary = '북마크 조회'
@@ -25,11 +25,15 @@ exports.getMarks = async (req, res) => {
             schema: { result: "FAIL", message: "북마크 조회 실패" }
         }
         =====================================================================================*/
-        res.status(400).json({ result: "FAIL", message: "북마크 조회 실패" })
+        // res.status(400).json({ result: "FAIL", message: "북마크 조회 실패" })
+        return next({
+            message: "북마크 조회 실패",
+            stack: err,
+        })
     }
 }
 
-exports.postMarks = async (req, res) => {
+exports.postMarks = async (req, res, next) => {
     /*========================================================================================================
     #swagger.tags = ['Mark']
     #swagger.summary = '북마크 추가'
@@ -55,7 +59,8 @@ exports.postMarks = async (req, res) => {
             schema: { result: "FAIL", message: "북마크 추가 실패" }
         }
         =====================================================================================*/
-        res.status(400).json({ result: "FAIL", message: "북마크 추가 실패" })
+        // res.status(400).json({ result: "FAIL", message: "북마크 추가 실패" })
+        next()
     }
 }
 
@@ -70,13 +75,13 @@ exports.deleteMarks = async (req, res) => {
         const { userId } = res.locals
         const check = await deleteMark(userId, dataId)
         if (!check) {
-        /*=====================================================================================
+            /*=====================================================================================
         #swagger.responses[404] = {
             description: '입력 받은 userId와 dataId에 해당하는 북마크 데이터가 DB에 존재하지 않을 때, 아래 예제와 같은 형태로 응답받습니다.',
             schema: { result: "FAIL", code: -11, 'message': "데이터베이스 조회 실패" }
         }
         =====================================================================================*/
-        return res.status(404).json({ result: "FAIL", code: -11, message: "데이터베이스 조회 실패" })
+            return res.status(404).json({ result: "FAIL", code: -11, message: "데이터베이스 조회 실패" })
         }
         deleteMarkRedis(userId)
         /*=====================================================================================
