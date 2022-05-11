@@ -8,40 +8,43 @@ const schedule = require("node-schedule")
 const { regionCode, regionName } = require("./area")
 const newYouthApiDataDate = moment().format("YYYY-MM-DD")
 connect()
-const fs = require("fs")
-fs.truncate(`./openAPI/${newYouthApiDataDate}.txt`, () => {
-    console.log("File Content Deleted")
-})
-const myConsole = new console.Console(fs.createWriteStream(`./openAPI/${newYouthApiDataDate}.txt`))
-module.exports = () => {
-    const rule = new schedule.RecurrenceRule()
-    rule.dayOfWeek = [0, new schedule.Range(0, 6)]
-    rule.hour = 10
-    // rule.minute = 30
-    // rule.second = 15
-    rule.tz = "Asia/Seoul"
-    schedule.scheduleJob(rule, () => {})
-}
-updateData()
 
-async function updateData() {
+const fs = require("fs")
+const myConsole = new console.Console(fs.createWriteStream(`./openAPI/${newYouthApiDataDate}.txt`))
+// module.exports = () => {
+//     const rule = new schedule.RecurrenceRule()
+//     rule.dayOfWeek = [0, new schedule.Range(0, 6)]
+//     rule.hour = 10
+//     // rule.minute = 30
+//     // rule.second = 15
+//     rule.tz = "Asia/Seoul"
+//     schedule.scheduleJob(rule, () => {
+//         fs.truncate(`./openAPI/${newYouthApiDataDate}.txt`, () => {
+//             console.log("File Content Deleted")
+//         })
+
+//         updateData()
+//     })
+// }
+
+exports.updateData = async () => {
     myConsole.log("load start")
     console.log("load start")
-    await load()
+    await this.load()
     myConsole.log("load done")
     console.log("load done")
-    await findPastData()
+    await this.findPastData()
     myConsole.log("findPastData done")
     console.log("findPastData done")
 }
-async function load() {
+exports.load = async () => {
     for (let i = 1; i < 3; i++) {
         for (let j = 0; j < regionCode.length; j++) {
-            await load2(i, regionCode[j], regionName[j])
+            await this.load2(i, regionCode[j], regionName[j])
         }
     }
 }
-async function load2(page, regionCode, regionName) {
+exports.load2 = async (page, regionCode, regionName) => {
     let url = "https://www.youthcenter.go.kr/opi/empList.do"
     let queryParams = "?" + encodeURIComponent("openApiVlak") + "=" + process.env.CHUNG_KEY /* Service Key*/
     queryParams += "&" + encodeURIComponent("pageIndex") + "=" + encodeURIComponent(page) /* */
@@ -87,7 +90,7 @@ async function load2(page, regionCode, regionName) {
                         // myConsole.log("신청절차", i.rqutProcCn._cdata)
                         // myConsole.log("심사발표", i.jdgnPresCn._cdata)
                         // myConsole.log("지원규모", i.sporScvl._cdata)
-                        const resultPeriod = await classifyPeriod(i.rqutPrdCn._cdata)
+                        const resultPeriod = await this.classifyPeriod(i.rqutPrdCn._cdata)
 
                         if (resultPeriod === false || resultPeriod === undefined) continue
 
@@ -187,11 +190,11 @@ async function load2(page, regionCode, regionName) {
         }
     )
 }
-async function findPastData() {
+exports.findPastData = async () => {
     const data = await Data.find()
     for (checkPastData of data) {
         if (checkPastData.period !== undefined) {
-            const checkPeriod = await classifyPeriod(checkPastData.period)
+            const checkPeriod = await this.classifyPeriod(checkPastData.period)
             if (!checkPeriod) {
                 const checkRemove = await Data.deleteOne({ dataId: checkPastData.dataId })
                 myConsole.log("checkRemove", checkRemove)
@@ -200,19 +203,19 @@ async function findPastData() {
         }
     }
 }
-async function classifyPeriod(period3) {
+exports.classifyPeriod = async (period3) => {
     let period1
     let period2 = []
     let resultPeriod
     if (/~/.test(period3)) {
         period1 = period3.split("~")
-        resultPeriod = await deletePastPeriod(period1, period2)
+        resultPeriod = await this.deletePastPeriod(period1, period2)
     } else if (/-/.test(period3) && period3 !== 1) {
         period1 = period3.split("-")
-        resultPeriod = await deletePastPeriod(period1, period2)
+        resultPeriod = await this.deletePastPeriod(period1, period2)
     } else if (/\//.test(period3)) {
         period1 = period3.split("/")
-        resultPeriod = await deletePastPeriod(period1, period2)
+        resultPeriod = await this.deletePastPeriod(period1, period2)
     } else if (/수시/.test(period3)) {
         resultPeriod = period3
     } else if (/상시/.test(period3)) {
@@ -248,7 +251,7 @@ async function classifyPeriod(period3) {
     return resultPeriod
 }
 
-async function deletePastPeriod(period1, period2) {
+exports.deletePastPeriod = async (period1, period2) => {
     const date = moment().format("YYMMDD")
     const dateNum = Number(date)
     period2[0] = period1[0].split(/\D/).filter(Boolean)

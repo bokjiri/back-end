@@ -2,6 +2,7 @@
     "apps": [
         {
             "name": "BACK-END",
+            "script": "server.js",
             "watch": true
         }
     ]
