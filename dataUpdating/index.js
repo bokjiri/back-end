@@ -4,7 +4,7 @@ const schedule = require("node-schedule")
 const moment = require("moment")
 const newYouthApiDataDate = moment().format("YYYY-MM-DD")
 const fs = require("fs")
-const myConsole = new console.Console(fs.createWriteStream(`./dataUpdating/${newYouthApiDataDate}.txt`))
+const myConsole = new console.Console(fs.createWriteStream(`/var/log/boksei/updatedata/${newYouthApiDataDate}.txt`))
 const Data = require("../schemas/data")
 const { findPastData, classifyPeriod, deletePastPeriod } = require("../openAPI/index.youth")
 const { regionCode, regionName } = require("../openAPI/area")
@@ -17,7 +17,7 @@ module.exports = () => {
     // rule.second = 15
     rule.tz = "Asia/Seoul"
     schedule.scheduleJob(rule, async () => {
-        fs.truncate(`./dataUpdating/${newYouthApiDataDate}.txt`, () => {
+        fs.truncate(`/var/log/boksei/updatedata/${newYouthApiDataDate}.txt`, () => {
             console.log("File Content Deleted")
         })
         console.log("load start")
