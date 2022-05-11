@@ -70,8 +70,8 @@ const parsingGet = async () => {
     // const data = $(
     //     "div.cl-control div.cl-layout div.cl-layout-content div.cl-layout-wrap div.cl-control div.cl-layout div.cl-layout-content div.cl-last-row div.cl-control div.cl-layout-content div.cl-first-row div.cl-control div.cl-layout div.cl-layout-content div.cl-first-row div.cl-control div.cl-layout div.cl-layout-content div.cl-first-row div.card div.cl-layout div.cl-layout-content div.cl-last-row div.cl-control div.cl-layout div.cl-layout-content div.cl-control div.cl-layout div.cl-layout-content div.cl-control div.cl-layout div.cl-layout-content div.cl-layout-wrap div.card-circle div.cl-layout div.cl-layout-content div.cl-last-row div.card-subtit div div.cl-text"
     // ).html()
-    const data = $("html body")
-    console.log(data)
+    const data = $("html head")
+    console.log(data.html())
     // let result = []
     // data.each((idx, node) => {
     //     result.push({

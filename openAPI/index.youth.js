@@ -20,17 +20,19 @@ module.exports = () => {
     // rule.minute = 30
     // rule.second = 15
     rule.tz = "Asia/Seoul"
-    schedule.scheduleJob(rule, () => {
-        updateData()
-    })
+    schedule.scheduleJob(rule, () => {})
 }
+updateData()
 
 async function updateData() {
     myConsole.log("load start")
+    console.log("load start")
     await load()
     myConsole.log("load done")
+    console.log("load done")
     await findPastData()
     myConsole.log("findPastData done")
+    console.log("findPastData done")
 }
 async function load() {
     for (let i = 1; i < 3; i++) {
@@ -66,12 +68,13 @@ async function load2(page, regionCode, regionName) {
                 for (i of empsInfo) {
                     let name = i.polyBizSjnm._cdata //정책명
                     const check = await Data.findOne({ name })
-                    if (check) continue
+
                     if (
+                        !check &&
                         i.accrRqisCn._cdata.search(/제한없음/) !== -1 && //학력
                         i.majrRqisCn._cdata === "제한없음" && //전공
                         /^http/.test(i.rqutUrla._cdata) && // 링크
-                        i.polyBizSjnm._cdata.search(/2021|2020/) === -1 && //정책명
+                        name.search(/2021|2020/) === -1 && //정책명
                         i.rqutPrdCn._cdata.search(/2021|2020/) === -1 && //신청날짜
                         i.sporCn._cdata.search(/2021|2020/) === -1 && //내용
                         i.rqutProcCn._cdata.search(/2021|2020/) === -1 && //신청절차

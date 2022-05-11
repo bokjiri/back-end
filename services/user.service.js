@@ -1,10 +1,10 @@
 const User = require("../schemas/user")
 
-exports.updateUserInfo = async (userId, age, gender, region, disability, obstacle, job, marriage, target, salary, scholarship) => {
+exports.updateUserInfo = async (userId, age, gender, region, disability, obstacle, job, marriage, target, salary, scholarship, family) => {
     try {
         const check = await this.checkById(userId)
         if (!check) throw new Error()
-        return await User.updateOne({ userId }, { $set: { age, gender, region, disability, obstacle, job, marriage, target, salary, scholarship } })
+        return await User.updateOne({ userId }, { $set: { age, gender, region, disability, obstacle, job, marriage, target, salary, scholarship, family } })
     } catch (error) {
         console.error(error)
     }

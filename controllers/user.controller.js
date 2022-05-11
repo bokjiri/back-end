@@ -26,13 +26,15 @@ exports.getUsers = async (req, res) => {
 
 exports.patchUsers = async (req, res) => {
     try {
-        const { age, gender, region, disability, obstacle, job, marriage, target, salary, scholarship } = req.body
-        const arrRegion = region.split(" ")
+        let { age, gender, region, disability, obstacle, job, marriage, target, salary, scholarship, family } = req.body
+        let arrRegion = region.split(" ")
+        if (job === "미취업") job = "미취업자"
+        if (arrRegion.length === 4) arrRegion = arrRegion[0]
         const userId = parseInt(req.params.userId)
         const tokenUserId = res.locals.userId
         if (tokenUserId !== userId) throw new Error()
 
-        const result = await userService.updateUserInfo(userId, age, gender, arrRegion, disability, obstacle, job, marriage, target, salary, scholarship)
+        const result = await userService.updateUserInfo(userId, age, gender, arrRegion, disability, obstacle, job, marriage, target, salary, scholarship, family)
         if (!result) throw new Error()
         res.status(201).json({
             result: true,
