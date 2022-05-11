@@ -12,22 +12,22 @@ const { regionCode, regionName } = require("../openAPI/area")
 module.exports = () => {
     const rule = new schedule.RecurrenceRule()
     rule.dayOfWeek = [0, new schedule.Range(0, 6)]
-    // rule.hour = 10
-    rule.minute = 48
+    rule.hour = 10
+    // rule.minute = 56
     // rule.second = 15
     rule.tz = "Asia/Seoul"
     schedule.scheduleJob(rule, async () => {
         fs.truncate(`./dataUpdating/${newYouthApiDataDate}.txt`, () => {
             console.log("File Content Deleted")
         })
-        myConsole.log("load start")
         console.log("load start")
+        myConsole.log("load start")
         await load()
-        myConsole.log("load done")
         console.log("load done")
+        myConsole.log("load done")
         await findPastData()
-        myConsole.log("findPastData done")
         console.log("findPastData done")
+        myConsole.log("findPastData done")
     })
 
     async function load() {
@@ -160,21 +160,21 @@ module.exports = () => {
                             myConsole.log({ process })
                             myConsole.log("-------------------")
 
-                            // await Data.create({
-                            //     age,
-                            //     name,
-                            //     summary,
-                            //     desire,
-                            //     job,
-                            //     scholarship,
-                            //     institution,
-                            //     region,
-                            //     link,
-                            //     support,
-                            //     gender,
-                            //     period,
-                            //     process,
-                            // })
+                            await Data.create({
+                                age,
+                                name,
+                                summary,
+                                desire,
+                                job,
+                                scholarship,
+                                institution,
+                                region,
+                                link,
+                                support,
+                                gender,
+                                period,
+                                process,
+                            })
                         } else {
                             continue
                         }
