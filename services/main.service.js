@@ -4,14 +4,14 @@ const today = new Date()
 
 exports.checkUser = async (userId) => {
     const [userData] = await User.find({ userId }, { _id: false, __v: false, mark: false, likeMark: false, email: false, nickname: false, profileUrl: false, topLikeMarkList: false })
-
+    // 만 나이 계산
     let birthDate = new Date(+String(userData.age).slice(0, 4), +String(userData.age).slice(4, 6) - 1, +String(userData.age).slice(6, 8) + 1)
     userData.age = today.getFullYear() - birthDate.getFullYear()
     const m = today.getMonth() - birthDate.getMonth()
     if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
         userData.age--
     }
-
+    // 계산된 만 나이에 맞는 lifeCycle 추가
     if (userData.age >= 0 && userData.age < 5) {
         userData.lifeCycle.push("영유아")
     }
