@@ -2,9 +2,6 @@
     "apps": [
         {
             "name": "BACK-END",
-            "script": "./server.js",
-            "error_file": "./logs/error",
-            "out_file": "./logs/all",
             "watch": true
         }
     ]

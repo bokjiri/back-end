@@ -10,7 +10,7 @@ const connect = require("./schemas")
 const passport = require("passport")
 const passportConfig = require("./kakao/index")
 const { newsData } = require("./services/news.service")
-// const updateYouthApi = require("./openAPI/index.youth")
+const updateYouthApi = require("./dataUpdating/index")
 
 connect()
 
@@ -66,7 +66,8 @@ passportConfig()
 app.use(passport.initialize())
 app.use(passport.session())
 
-// updateYouthApi()
+
+updateYouthApi()
 newsData()
 
 const Router = require("./routes")
