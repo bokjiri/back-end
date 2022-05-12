@@ -1,6 +1,7 @@
 const { body, validationResult } = require("express-validator")
 const moment = require("moment")
 const ageValidate = moment().format("YYYYMMDD")
+const { regionValidate } = require("./region")
 
 const error = (req, res, next) => {
     const errors = validationResult(req)
@@ -26,7 +27,7 @@ const userValidation = [
         })
         .withMessage("미래에 태어난 사람은 안됨"),
     body("gender").isArray({ max: 1 }).withMessage("성별은 하나만 선택하세요").isIn(["여성", "남성", ""]).withMessage("성별은 빈값 또는 남성 또는 여성만"),
-    body("region").isString(),
+    body("region").isString().isIn(regionValidate).withMessage("한국만"),
     body("disability").isArray({ max: 1 }).withMessage("하나만 선택하세요").isIn(["있음", "없음"]),
     body("obstacle").isArray(),
     body("job").isArray({ max: 1 }).withMessage("하나만 선택하세요").isIn(["미취업", "취업", ""]),

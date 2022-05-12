@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken")
 // const moment = require("moment")
 // const ageValidate = moment().format("YYYYMMDD")
 
-exports.getUsers = async (req, res) => {
+exports.getUsers = async (req, res, next) => {
     try {
         const userId = parseInt(req.params.userId)
         const tokenUserId = res.locals.userId
@@ -19,14 +19,14 @@ exports.getUsers = async (req, res) => {
         })
     } catch (error) {
         console.error(error)
-        res.status(400).json({
+        return next({
             result: false,
             message: "회원정보 조회 중 오류가 발생했습니다.",
         })
     }
 }
 
-exports.patchUsers = async (req, res) => {
+exports.patchUsers = async (req, res, next) => {
     try {
         const userId = parseInt(req.params.userId)
         const tokenUserId = res.locals.userId
@@ -49,13 +49,13 @@ exports.patchUsers = async (req, res) => {
         })
     } catch (error) {
         console.error(error)
-        res.status(400).json({
+        return next({
             result: false,
             message: "회원정보 수정 중 오류가 발생했습니다.",
         })
     }
 }
-exports.deleteUsers = async (req, res) => {
+exports.deleteUsers = async (req, res, next) => {
     try {
         const userId = parseInt(req.params.userId)
         const tokenUserId = res.locals.userId
@@ -69,7 +69,7 @@ exports.deleteUsers = async (req, res) => {
         })
     } catch (error) {
         console.error(error)
-        res.status(400).json({
+        return next({
             result: false,
             message: "회원정보 삭제 중 오류가 발생했습니다.",
         })
