@@ -11,6 +11,7 @@ exports.checkUser = async (userId) => {
     if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
         userData.age--
     }
+
     // 계산된 만 나이에 맞는 lifeCycle 추가
     if (userData.age >= 0 && userData.age < 5) {
         userData.lifeCycle.push("영유아")

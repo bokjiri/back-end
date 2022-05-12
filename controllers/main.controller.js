@@ -95,7 +95,7 @@ exports.getMain = async (req, res) => {
             etc,
         })
     } catch (error) {
-        console.error(error)
+        console.error("메인 페이지 추천 정책 조회 실패", error)
         /*=====================================================================================
         #swagger.responses[400] = {
             description: '정상적으로 값을 받지 못했을 때, 아래 예제와 같은 형태로 응답받습니다.',
@@ -114,7 +114,7 @@ exports.logic = async (isUser, isData) => {
         //-----------------------------------------------------------age/lifeCycle 조건 검사-----------------------------------------------------------------//
         let checkedWithAge = []
         //만약 isUser에 age가 존재하지 않는다면
-        if (isUser.age.length === 0 || !isUser.age || !isUser.lifeCycle[0]) {
+        if (typeof isUser.age !== Number || isUser.age < 0 || !isUser.lifeCycle[0]) {
             throw new Error()
         }
         //만약 isUser에 age가 존재한다면
@@ -352,5 +352,7 @@ exports.logic = async (isUser, isData) => {
         })
         //----------------------------------------------------------------------------------------------------------------------------//
         return checkedData
-    } catch (error) {}
+    } catch (error) {
+        console.error("정책 추천 실패", error)
+    }
 }
