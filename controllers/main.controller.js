@@ -342,7 +342,7 @@ exports.logic = async (isUser, isData) => {
                 }
             }
         } //
-        console.log(checkedWithSalary)
+        // console.log(checkedWithSalary)
         //-----------------------------------------------------------중복 제거-----------------------------------------------------------------//
         let checkedData = checkedWithSalary.filter((v, i) => {
             return (
