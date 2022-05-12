@@ -60,7 +60,10 @@ exports.postMarks = async (req, res, next) => {
         }
         =====================================================================================*/
         // res.status(400).json({ result: "FAIL", message: "북마크 추가 실패" })
-        next()
+        return next({
+            message: "북마크 추가 실패",
+            stack: err,
+        })
     }
 }
 
