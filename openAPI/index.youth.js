@@ -1,19 +1,6 @@
 const Data = require("../schemas/data")
 const moment = require("moment")
 
-exports.findPastData = async () => {
-    const data = await Data.find()
-    for (checkPastData of data) {
-        if (checkPastData.period !== undefined) {
-            const checkPeriod = await this.classifyPeriod(checkPastData.period)
-            if (!checkPeriod) {
-                const checkRemove = await Data.deleteOne({ dataId: checkPastData.dataId })
-                myConsole.log("checkRemove", checkRemove)
-                myConsole.log("removeData", checkPastData)
-            }
-        }
-    }
-}
 exports.classifyPeriod = async (period3) => {
     let period1
     let period2 = []

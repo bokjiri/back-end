@@ -5,5 +5,4 @@ sudo chmod -R 777 /home/ubuntu/build
 cd /home/ubuntu/build
 
 #start node server
-sudo su
-pm2 start server.js
+sudo pm2 start server.js

@@ -5,5 +5,4 @@ sudo chmod -R 777 /home/ubuntu/build
 cd /home/ubuntu/build
 
 #Stopping existing node servers
-sudo su
-pm2 kill
+sudo pm2 kill
