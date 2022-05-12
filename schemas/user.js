@@ -54,6 +54,9 @@ const userSchema = mongoose.Schema({
     profileUrl: {
         type: String,
     },
+    dismatchData: {
+        type: [Number],
+    },
 })
 autoIdSetter(userSchema, mongoose, "userSchema", "userId")
 module.exports = mongoose.model("User", userSchema)
