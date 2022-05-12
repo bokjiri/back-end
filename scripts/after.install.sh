@@ -5,5 +5,7 @@ sudo chmod -R 777 /home/ubuntu/build
 cd /home/ubuntu/build
 
 #install node modules & update swagger
+sudo pm2 kill
 sudo npm install
 node swagger.js
+sudo pm2 start server.js --watch
