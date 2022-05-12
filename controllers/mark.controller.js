@@ -10,7 +10,7 @@ exports.getMarks = async (req, res, next) => {
         const localsUserId = res.locals.userId
         const paramsUserId = res.params.userId
 
-        if (localsUserId === paramsUserId) throw new Error()
+        if (localsUserId !== parseInt(paramsUserId)) throw new Error()
 
         const userMark = await showMark(userId)
         await showMarkRedis(userId)
