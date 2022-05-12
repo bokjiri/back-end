@@ -7,6 +7,7 @@ exports.updateUserInfo = async (userId, age, gender, region, disability, obstacl
         return await User.updateOne({ userId }, { $set: { age, gender, region, disability, obstacle, job, marriage, target, salary, scholarship, family } })
     } catch (error) {
         console.error(error)
+        return error
     }
 }
 exports.deleteUserInfo = async (userId) => {
@@ -16,6 +17,7 @@ exports.deleteUserInfo = async (userId) => {
         return await User.deleteOne({ userId })
     } catch (error) {
         console.error(error)
+        return error
     }
 }
 exports.checkByEmail = async (email) => {
@@ -23,6 +25,7 @@ exports.checkByEmail = async (email) => {
         return await User.findOne({ email }, { _id: false, __v: false })
     } catch (error) {
         console.error(error)
+        return error
     }
 }
 exports.checkById = async (userId) => {
@@ -30,6 +33,7 @@ exports.checkById = async (userId) => {
         return await User.findOne({ userId }, { _id: false, __v: false })
     } catch (error) {
         console.error(error)
+        return error
     }
 }
 exports.createUser = async (email, nickname, profileUrl) => {
@@ -37,5 +41,6 @@ exports.createUser = async (email, nickname, profileUrl) => {
         return await User.create({ email, nickname, profileUrl })
     } catch (error) {
         console.error(error)
+        return error
     }
 }

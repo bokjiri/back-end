@@ -5,5 +5,6 @@ exports.findData = async (dataId) => {
         return await Data.findOne({ dataId }, { _id: false, __v: false })
     } catch (error) {
         console.error(error)
+        return error
     }
 }
