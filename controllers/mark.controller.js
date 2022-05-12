@@ -7,7 +7,7 @@ exports.getMarks = async (req, res, next) => {
     #swagger.description = '내가 북마크한 모든 정책을 조회한다.'
     ========================================================================================================*/
     try {
-        const { userId } = req.params
+        const { userId } = res.locals
         const userMark = await showMark(userId)
         await showMarkRedis(userId)
         if (!userMark) throw new Error()
@@ -40,7 +40,7 @@ exports.postMarks = async (req, res, next) => {
     #swagger.description = '정책을 내 북마크 목록에 추가한다.'
     ========================================================================================================*/
     try {
-        const { userId } = req.params
+        const { userId } = res.locals
         const { dataId } = req.body
         const checkMark = await pushMark(userId, dataId)
         await pushMarkRedis(userId)
@@ -67,7 +67,7 @@ exports.postMarks = async (req, res, next) => {
     }
 }
 
-exports.deleteMarks = async (req, res) => {
+exports.deleteMarks = async (req, res, next) => {
     /*========================================================================================================
     #swagger.tags = ['Mark']
     #swagger.summary = '북마크 삭제'
@@ -102,7 +102,10 @@ exports.deleteMarks = async (req, res) => {
             schema: { result: "FAIL", message: "북마크 삭제 실패" }
         }
         =====================================================================================*/
-        res.status(400).json({ result: "FAIL", message: "북마크 삭제 실패" })
+        return next({
+            message: "북마크 삭제 실패",
+            stack: err,
+        })
     }
 }
 
