@@ -1,5 +1,7 @@
 const userService = require("../services/user.service")
 const jwt = require("jsonwebtoken")
+// const moment = require("moment")
+// const ageValidate = moment().format("YYYYMMDD")
 
 exports.getUsers = async (req, res) => {
     try {
@@ -26,13 +28,18 @@ exports.getUsers = async (req, res) => {
 
 exports.patchUsers = async (req, res) => {
     try {
-        let { age, gender, region, disability, obstacle, job, marriage, target, salary, scholarship, family } = req.body
-        let arrRegion = region.split(" ")
-        if (job === "미취업") job = "미취업자"
-        if (arrRegion.length === 4) arrRegion = arrRegion[0]
         const userId = parseInt(req.params.userId)
         const tokenUserId = res.locals.userId
         if (tokenUserId !== userId) throw new Error()
+
+        const { age, gender, region, disability, obstacle, marriage, target, salary, scholarship, family } = req.body
+        // if (age > ageValidate) throw new Error()
+
+        let job = req.body.job
+        if (job === "미취업") job = "미취업자"
+
+        let arrRegion = region.split(" ")
+        if (arrRegion.length === 4) arrRegion = arrRegion[0]
 
         const result = await userService.updateUserInfo(userId, age, gender, arrRegion, disability, obstacle, job, marriage, target, salary, scholarship, family)
         if (!result) throw new Error()
