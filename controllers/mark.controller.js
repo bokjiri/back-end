@@ -7,7 +7,11 @@ exports.getMarks = async (req, res, next) => {
     #swagger.description = '내가 북마크한 모든 정책을 조회한다.'
     ========================================================================================================*/
     try {
-        const { userId } = res.locals
+        const localsUserId = res.locals.userId
+        const paramsUserId = res.params.userId
+
+        if (localsUserId === paramsUserId) throw new Error()
+
         const userMark = await showMark(userId)
         await showMarkRedis(userId)
         if (!userMark) throw new Error()
