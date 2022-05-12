@@ -114,7 +114,7 @@ exports.logic = async (isUser, isData) => {
         //-----------------------------------------------------------age/lifeCycle 조건 검사-----------------------------------------------------------------//
         let checkedWithAge = []
         //만약 isUser에 age가 존재하지 않는다면
-        if (typeof isUser.age !== Number || isUser.age < 0 || !isUser.lifeCycle[0]) {
+        if (!isUser.age || isUser.age < 0 || !isUser.lifeCycle[0]) {
             throw new Error()
         }
         //만약 isUser에 age가 존재한다면
@@ -133,7 +133,7 @@ exports.logic = async (isUser, isData) => {
             else if (isData[j].age.length === 0 && isData[j].lifeCycle.length === 0) {
                 checkedWithAge.push(isData[j])
             }
-        } //console.log(checkedWithAge)
+        } // console.log(checkedWithAge)
         //-----------------------------------------------------------disability/obstacle 조건 검사-----------------------------------------------------------------//
         let checkedWithDisability = []
         //만약 isUser에 disability가 존재하지 않는다면
@@ -240,7 +240,7 @@ exports.logic = async (isUser, isData) => {
         //만약 isUser에 job 조건이 "취업"으로 존재한다면
         else if (isUser.job[0] === "취업") {
             for (let j = 0; j < checkedWithScholarship.length; j++) {
-                if (checkedWithScholarship[j].job === undefined) {
+                if (!checkedWithScholarship[j].job) {
                     checkedWithJob.push(checkedWithScholarship[j])
                 }
             }
@@ -248,7 +248,7 @@ exports.logic = async (isUser, isData) => {
         //만약 isUser에 job 조건이 "미취업"으로 존재한다면
         else if (isUser.job[0] === "미취업") {
             for (let j = 0; j < checkedWithScholarship.length; j++) {
-                if (checkedWithScholarship[j].job === isUser.job[0] || checkedWithScholarship[j].job === undefined) {
+                if (checkedWithScholarship[j].job === isUser.job[0] || !checkedWithScholarship[j].job) {
                     checkedWithJob.push(checkedWithScholarship[j])
                 }
             }
@@ -294,7 +294,7 @@ exports.logic = async (isUser, isData) => {
         //-----------------------------------------------------------salary/family 조건 검사-----------------------------------------------------------------//
         let checkedWithSalary = []
         //만약 isUser에 salary와 family 조건이 존재하지 않는다면
-        if (isUser.salary === undefined || isUser.family === undefined) {
+        if (!isUser.salary || !isUser.family) {
             checkedWithSalary = checkedWithTarget
         }
         //만약 isUser에 salary와 family 조건이 존재한다면
@@ -341,7 +341,8 @@ exports.logic = async (isUser, isData) => {
                     }
                 }
             }
-        } // console.log(checkedWithSalary)
+        } //
+        console.log(checkedWithSalary)
         //-----------------------------------------------------------중복 제거-----------------------------------------------------------------//
         let checkedData = checkedWithSalary.filter((v, i) => {
             return (
