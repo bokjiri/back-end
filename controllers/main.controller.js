@@ -38,6 +38,79 @@ exports.getMain = async (req, res) => {
             return res.status(404).json({ result: "FAIL", code: -11, message: "데이터베이스 조회 실패" })
         }
         console.log(isUser)
+        // 정책 추천 로직
+        const checkedData = await this.logic(isUser, isData)
+        // 카테고리 분류
+        let work = []
+        let houseLife = []
+        let health = []
+        let eduCare = []
+        let safetyRight = []
+        let etc = []
+        for (let i = 0; i < checkedData.length; i++) {
+            if (checkedData[i].desire === "일자리") {
+                work.push(checkedData[i])
+            }
+            if (checkedData[i].desire === "주거 및 일상생활") {
+                houseLife.push(checkedData[i])
+            }
+            if (checkedData[i].desire === "건강") {
+                health.push(checkedData[i])
+            }
+            if (checkedData[i].desire === "교육 및 돌봄") {
+                eduCare.push(checkedData[i])
+            }
+            if (checkedData[i].desire === "안전 및 권익보장") {
+                safetyRight.push(checkedData[i])
+            }
+            if (checkedData[i].desire === "기타") {
+                etc.push(checkedData[i])
+            }
+        }
+        //checkedData는 배열 안에 오브젝트(정책 하나)가 들어가있어야 한다.
+
+        /*=====================================================================================
+        #swagger.responses[200] = {
+            description: '정상적으로 값을 받았을 때, 아래 예제와 같은 형태로 응답받습니다.',
+            schema: { result: "SUCCESS", 
+            message: "메인 페이지 추천 정책 조회 성공", 
+            checkedData, 
+            work,
+            houseLife,
+            health,
+            eduCare,
+            safetyRight,
+            etc }
+        }
+        =====================================================================================*/
+        return res.status(200).json({
+            result: "SUCCESS",
+            message: "메인 페이지 추천 정책 조회 성공",
+            checkedData,
+            work,
+            houseLife,
+            health,
+            eduCare,
+            safetyRight,
+            etc,
+        })
+    } catch (error) {
+        console.error(error)
+        /*=====================================================================================
+        #swagger.responses[400] = {
+            description: '정상적으로 값을 받지 못했을 때, 아래 예제와 같은 형태로 응답받습니다.',
+            schema: { result: "FAIL", message: "메인 페이지 추천 정책 조회 실패" }
+        }
+        =====================================================================================*/
+        return res.status(400).json({
+            result: "FAIL",
+            message: "메인 페이지 추천 정책 조회 실패",
+        })
+    }
+}
+
+exports.logic = async (isUser, isData) => {
+    try {
         //-----------------------------------------------------------age/lifeCycle 조건 검사-----------------------------------------------------------------//
         let checkedWithAge = []
         //만약 isUser에 age가 존재하지 않는다면
@@ -278,70 +351,6 @@ exports.getMain = async (req, res) => {
             )
         })
         //----------------------------------------------------------------------------------------------------------------------------//
-        let work = []
-        let houseLife = []
-        let health = []
-        let eduCare = []
-        let safetyRight = []
-        let etc = []
-        for (let i = 0; i < checkedData.length; i++) {
-            if (checkedData[i].desire === "일자리") {
-                work.push(checkedData[i])
-            }
-            if (checkedData[i].desire === "주거 및 일상생활") {
-                houseLife.push(checkedData[i])
-            }
-            if (checkedData[i].desire === "건강") {
-                health.push(checkedData[i])
-            }
-            if (checkedData[i].desire === "교육 및 돌봄") {
-                eduCare.push(checkedData[i])
-            }
-            if (checkedData[i].desire === "안전 및 권익보장") {
-                safetyRight.push(checkedData[i])
-            }
-            if (checkedData[i].desire === "기타") {
-                etc.push(checkedData[i])
-            }
-        }
-        //checkedData는 배열 안에 오브젝트(정책 하나)가 들어가있어야 한다.
-
-        /*=====================================================================================
-        #swagger.responses[200] = {
-            description: '정상적으로 값을 받았을 때, 아래 예제와 같은 형태로 응답받습니다.',
-            schema: { result: "SUCCESS", 
-            message: "메인 페이지 추천 정책 조회 성공", 
-            checkedData, 
-            work,
-            houseLife,
-            health,
-            eduCare,
-            safetyRight,
-            etc }
-        }
-        =====================================================================================*/
-        return res.status(200).json({
-            result: "SUCCESS",
-            message: "메인 페이지 추천 정책 조회 성공",
-            checkedData,
-            work,
-            houseLife,
-            health,
-            eduCare,
-            safetyRight,
-            etc,
-        })
-    } catch (error) {
-        console.error(error)
-        /*=====================================================================================
-        #swagger.responses[400] = {
-            description: '정상적으로 값을 받지 못했을 때, 아래 예제와 같은 형태로 응답받습니다.',
-            schema: { result: "FAIL", message: "메인 페이지 추천 정책 조회 실패" }
-        }
-        =====================================================================================*/
-        return res.status(400).json({
-            result: "FAIL",
-            message: "메인 페이지 추천 정책 조회 실패",
-        })
-    }
+        return checkedData
+    } catch (error) {}
 }
