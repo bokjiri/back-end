@@ -256,5 +256,34 @@ const regionValidate = [
     ["제주특별자치도 시·군을 선택해 주세요"],
     ["세종특별자치시 시·군을 선택해 주세요"],
 ]
-
-module.exports = { regionValidate }
+const targetValidate = ["다북화·탈북민", "다자녀", "보훈대상자", "임신·출산", "한부모·조손"]
+const scholarshipValidate = ["고등학교 졸업 미만", "고등학교 졸업", "대학(원) 재학", "대학(원) 휴학", "대학(원) 졸업"]
+const obstacleValidate = [
+    "지체(전환대상)",
+    "지체(상지절단)",
+    "지체(하지절단)",
+    "지체(상지관절)",
+    "지체(하지관절)",
+    "지체(상지기능)",
+    "지체(하지기능)",
+    "지체(척추)",
+    "지체(변형)",
+    "시각",
+    "청각(전환대상)",
+    "청각(청력)",
+    "청각(평형기능)",
+    "언어",
+    "지적장애",
+    "뇌병변",
+    "자폐성장애",
+    "정신",
+    "신장",
+    "심장",
+    "호흡기",
+    "간",
+    "안면",
+    "장루·요루",
+    "뇌전증",
+    "기타",
+]
+module.exports = { regionValidate, targetValidate, scholarshipValidate, obstacleValidate }
