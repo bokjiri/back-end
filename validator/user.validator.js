@@ -27,14 +27,23 @@ const userValidation = [
         })
         .withMessage("미래에 태어난 사람은 안됨"),
     body("gender").isArray({ max: 1 }).withMessage("성별은 하나만 선택하세요").isIn(["여성", "남성", ""]).withMessage("성별은 빈값 또는 남성 또는 여성만"),
-    body("region").isString().isIn(regionValidate).withMessage("한국만"),
+    body("region")
+        .isString()
+        .isIn([...regionValidate, ""])
+        .withMessage("한국만"),
     body("disability").isArray({ max: 1 }).withMessage("하나만 선택하세요").isIn(["있음", "없음"]),
-    body("obstacle").isArray().isIn(obstacleValidate),
+    body("obstacle")
+        .isArray()
+        .isIn([...obstacleValidate, ""]),
     body("job").isArray({ max: 1 }).withMessage("하나만 선택하세요").isIn(["미취업", "취업", ""]),
     body("marriage").isArray({ max: 1 }).withMessage("하나만 선택하세요"),
-    body("target").isArray({ max: 5 }).isIn(targetValidate),
-    body("salary").isInt({ max: 9999999999 }).withMessage("너무 많아"),
-    body("scholarship").isArray().isIn(scholarshipValidate),
+    body("target")
+        .isArray({ max: 5 })
+        .isIn([...targetValidate, ""]),
+    // body("salary").isInt({ max: 9999999999 }).withMessage("너무 많아"),
+    body("scholarship")
+        .isArray()
+        .isIn([...scholarshipValidate, ""]),
     // body("family").isInt(),
     error,
 ]
