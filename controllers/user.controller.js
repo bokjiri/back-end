@@ -10,6 +10,7 @@ exports.getUsers = async (req, res, next) => {
         if (tokenUserId !== userId) throw new Error()
 
         const data = await userService.checkById(userId)
+        if (data.region.length === 1) data.region[1] = "시·군을 선택해 주세요"
         data.region = data.region.join(" ")
         if (!data) throw new Error()
         res.status(201).json({
@@ -42,6 +43,7 @@ exports.patchUsers = async (req, res, next) => {
         if (arrRegion.length === 4) arrRegion = arrRegion[0]
 
         const result = await userService.updateUserInfo(userId, age, gender, arrRegion, disability, obstacle, job, marriage, target, salary, scholarship, family)
+
         if (!result) throw new Error()
         res.status(201).json({
             result: true,
