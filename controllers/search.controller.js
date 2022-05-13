@@ -7,10 +7,9 @@ exports.postSearch = async (req, res, next) => {
 
         if (!userId | !searchKey | !type) throw new Error()
         const isUser = await checkUser(userId)
-        const isData = await checkData()
+        const isData = await checkData(isUser)
         const UserData = await logic(isUser, isData)
         let dataList = []
-
         dataList.push(...UserData)
 
         const search = new RegExp(searchKey)

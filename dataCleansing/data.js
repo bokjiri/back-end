@@ -105,9 +105,9 @@ async function load3(servList, zxc) {
 
                 let institution = jsonParse.wantedDtl.jurMnofNm._text
 
-                await marriageData(name, summary)
-                await genderData(name, summary)
-                await scholarshipData(name, summary, lifeCycle)
+                // await genderData(lifeCycle, institution, support, link, obstacle, target, desire, name, summary)
+                // await marriageData(name, summary)
+                // await scholarshipData(name, summary, lifeCycle)
             }
         )
     }
