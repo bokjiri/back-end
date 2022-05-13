@@ -12,7 +12,7 @@ exports.getUsers = async (req, res, next) => {
         const data = await userService.checkById(userId)
         if (data.region.length === 1) data.region[1] = "시·군을 선택해 주세요"
         if (data.region.length === 0) {
-            data.region[0] = "-------"
+            data.region[0] = "시·도를 선택해 주세요"
             data.region[1] = "시·군을 선택해 주세요"
         }
         if (!data) throw new Error()
