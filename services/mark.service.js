@@ -5,11 +5,7 @@ const Client = require("../schemas/redis")
 redisSet = async (userId) => {
     const markInfo = await User.findOne({ userId }, { _id: false, mark: true })
     const checkMark = await BokjiApi.find({ dataId: markInfo.mark }, { _id: false, dataId: true, name: true, desire: true })
-    let data = []
-    for (let i of checkMark) {
-        data.push({ desire: i.desire, name: i.name, dataId: i.dataId, status: "true" })
-    }
-    const redisInsertMark = JSON.stringify(data)
+    const redisInsertMark = JSON.stringify(checkMark)
     await Client.set(userId, redisInsertMark)
     await Client.expire(userId, 7200)
 }
