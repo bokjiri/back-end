@@ -4,6 +4,11 @@ const jwt = require("jsonwebtoken")
 // const ageValidate = moment().format("YYYYMMDD")
 
 exports.getUsers = async (req, res, next) => {
+    /*========================================================================================================
+    #swagger.tags = ['User']
+    #swagger.summary = '회원정보 조회'
+    #swagger.description = '회원정보를 조회한다.'
+    ========================================================================================================*/
     try {
         const userId = parseInt(req.params.userId)
         const tokenUserId = res.locals.userId
@@ -16,12 +21,28 @@ exports.getUsers = async (req, res, next) => {
             data.region[1] = "시·군을 선택해 주세요"
         }
         if (!data) throw new Error()
+        /*=====================================================================================
+        #swagger.responses[201] = {
+            description: '정상적으로 값을 받았을 때, 아래 예제와 같은 형태로 응답받습니다.',
+            schema: {
+            result: true,
+            message: "회원정보 조회 완료",
+            data,
+        }
+        }
+        =====================================================================================*/
         res.status(201).json({
             result: true,
             message: "회원정보 조회 완료",
             data,
         })
     } catch (error) {
+        /*=====================================================================================
+        #swagger.responses[400] = {
+            description: '정상적으로 값을 받지 못했을 때, 아래 예제와 같은 형태로 응답받습니다.',
+            schema: { result: "FAIL", message: "회원정보 조회 중 오류가 발생했습니다." }
+        }
+        =====================================================================================*/
         console.error(error)
         return next({
             message: "회원정보 조회 중 오류가 발생했습니다.",
@@ -31,6 +52,11 @@ exports.getUsers = async (req, res, next) => {
 }
 
 exports.patchUsers = async (req, res, next) => {
+    /*========================================================================================================
+    #swagger.tags = ['User']
+    #swagger.summary = '회원정보 수정'
+    #swagger.description = '회원정보를 수정한다.'
+    ========================================================================================================*/
     try {
         const userId = parseInt(req.params.userId)
         const tokenUserId = res.locals.userId
@@ -53,11 +79,27 @@ exports.patchUsers = async (req, res, next) => {
         const result = await userService.updateUserInfo(userId, age, gender, arrRegion, disability, obstacle, job, marriage, target, salary, scholarship, family)
 
         if (!result) throw new Error()
+        /*=====================================================================================
+        #swagger.responses[201] = {
+            description: '정상적으로 값을 받았을 때, 아래 예제와 같은 형태로 응답받습니다.',
+            schema: {
+            result: true,
+            message: "회원정보 수정 완료",
+            data,
+        }
+        }
+        =====================================================================================*/
         res.status(201).json({
             result: true,
             message: "회원정보 수정 완료",
         })
     } catch (error) {
+        /*=====================================================================================
+        #swagger.responses[400] = {
+            description: '정상적으로 값을 받지 못했을 때, 아래 예제와 같은 형태로 응답받습니다.',
+            schema: { result: "FAIL", message: "회원정보 수정 중 오류가 발생했습니다." }
+        }
+        =====================================================================================*/
         console.error(error)
         return next({
             message: "회원정보 수정 중 오류가 발생했습니다.",
@@ -66,6 +108,11 @@ exports.patchUsers = async (req, res, next) => {
     }
 }
 exports.deleteUsers = async (req, res, next) => {
+    /*========================================================================================================
+    #swagger.tags = ['User']
+    #swagger.summary = '회원정보 삭제'
+    #swagger.description = '회원정보를 삭제한다.'
+    ========================================================================================================*/
     try {
         const userId = parseInt(req.params.userId)
         const tokenUserId = res.locals.userId
@@ -73,11 +120,27 @@ exports.deleteUsers = async (req, res, next) => {
 
         const result = await userService.deleteUserInfo(userId)
         if (!result) throw new Error()
-        res.status(201).json({
+        /*=====================================================================================
+        #swagger.responses[204] = {
+            description: '정상적으로 값을 받았을 때, 아래 예제와 같은 형태로 응답받습니다.',
+            schema: {
+            result: true,
+            message: "회원정보 삭제 완료",
+            data,
+        }
+        }
+        =====================================================================================*/
+        res.status(204).json({
             result: true,
             message: "회원정보 삭제 완료",
         })
     } catch (error) {
+        /*=====================================================================================
+        #swagger.responses[400] = {
+            description: '정상적으로 값을 받지 못했을 때, 아래 예제와 같은 형태로 응답받습니다.',
+            schema: { result: "FAIL", message: "회원정보 삭제 중 오류가 발생했습니다." }
+        }
+        =====================================================================================*/
         console.error(error)
         return next({
             message: "회원정보 삭제 중 오류가 발생했습니다.",
