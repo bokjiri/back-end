@@ -41,6 +41,7 @@ exports.patchUsers = async (req, res, next) => {
 
         if (arrRegion.length === 4) {
             arrRegion = arrRegion[0]
+            if (arrRegion === "-------") arrRegion = []
         } else if (arrRegion.length > 4) {
             arrRegion = []
         }
