@@ -1,4 +1,5 @@
 require("dotenv").config()
+const { Logger, stream } = require("./logging")
 const express = require("express")
 const app = express()
 const session = require("express-session")
@@ -9,7 +10,7 @@ const connect = require("./schemas")
 const passport = require("passport")
 const passportConfig = require("./kakao/index")
 const { newsData } = require("./services/news.service")
-// const updateYouthApi = require("./openAPI/index.youth")
+const updateYouthApi = require("./dataUpdating/index")
 
 connect()
 
@@ -40,7 +41,7 @@ const corsOptions = {
 }
 
 app.use(cors(corsOptions))
-app.use(morgan("dev"))
+app.use(morgan("common", { stream }))
 app.use(express.json())
 app.use(express.static("public"))
 app.use(express.urlencoded({ extended: false }))
@@ -65,18 +66,19 @@ passportConfig()
 app.use(passport.initialize())
 app.use(passport.session())
 
+updateYouthApi()
+newsData()
+
 const Router = require("./routes")
 app.use("/api", Router)
-
-// updateYouthApi()
-newsData()
 
 app.use((req, res, next) => {
     res.status(404).send("요청하신 페이지를 찾을 수 없습니다.")
 })
 
 app.use((err, req, res, next) => {
-    res.json({ result: false, message: err.message })
+    Logger.error(`${err.message} \n ${err.stack ? err.stack : ""} `)
+    res.status(400).json({ result: "FAIL", message: err.message })
 })
 
 module.exports = app

@@ -1,17 +1,15 @@
-const swaggerAutogen = require("swagger-autogen")();
+const swaggerAutogen = require("swagger-autogen")()
 
 const doc = {
-  info: {
-    title: "My API",
-    description: "Description",
-  },
-  host: "pooreum.shop",
-  schemes: ["https"],
-};
+    info: {
+        title: "My API",
+        description: "Description",
+    },
+    host: "jwprac.shop",
+    schemes: ["https"],
+}
 
-const outputFile = "./swagger-output.json";
-const endpointsFiles = [
-  "./app.js"
-];
+const outputFile = "./swagger-output.json"
+const endpointsFiles = ["./app.js"]
 
-swaggerAutogen(outputFile, endpointsFiles, doc);
+swaggerAutogen(outputFile, endpointsFiles, doc)

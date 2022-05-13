@@ -1,6 +1,6 @@
 const { newsDataList } = require("../services/news.service")
 
-exports.getNews = async (req, res) => {
+exports.getNews = async (req, res, next) => {
     /*========================================================================================================
     #swagger.tags = ['News']
     #swagger.summary = '뉴스 데이터 조회'
@@ -22,6 +22,9 @@ exports.getNews = async (req, res) => {
             schema: { result: "FAIL", message: "뉴스 데이터 조회 실패" }
         }
         =====================================================================================*/
-        res.status(400).json({ result: "FAIL", message: "뉴스 데이터 조회 실패" })
+        return next({
+            message: "뉴스 데이터 조회 실패",
+            stack: err,
+        })
     }
 }

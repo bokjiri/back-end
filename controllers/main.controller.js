@@ -1,6 +1,6 @@
 const { checkUser, checkData } = require("../services/main.service")
 
-exports.getMain = async (req, res) => {
+exports.getMain = async (req, res, next) => {
     /*========================================================================================================
     #swagger.tags = ['Main']
     #swagger.summary = '추천 정책 카테고리별 조회'
@@ -37,11 +37,91 @@ exports.getMain = async (req, res) => {
         =====================================================================================*/
             return res.status(404).json({ result: "FAIL", code: -11, message: "데이터베이스 조회 실패" })
         }
-        // console.log(isUser)
+        console.log(isUser)
+        // 정책 추천 로직
+        const checkedData = await this.logic(isUser, isData)
+        if (!checkedData) {
+            throw new Error()
+        }
+        // 카테고리 분류
+        let work = []
+        let houseLife = []
+        let health = []
+        let eduCare = []
+        let safetyRight = []
+        let etc = []
+        for (let i = 0; i < checkedData.length; i++) {
+            if (checkedData[i].desire === "일자리") {
+                work.push(checkedData[i])
+            }
+            if (checkedData[i].desire === "주거 및 일상생활") {
+                houseLife.push(checkedData[i])
+            }
+            if (checkedData[i].desire === "건강") {
+                health.push(checkedData[i])
+            }
+            if (checkedData[i].desire === "교육 및 돌봄") {
+                eduCare.push(checkedData[i])
+            }
+            if (checkedData[i].desire === "안전 및 권익보장") {
+                safetyRight.push(checkedData[i])
+            }
+            if (checkedData[i].desire === "기타") {
+                etc.push(checkedData[i])
+            }
+        }
+        //checkedData는 배열 안에 오브젝트(정책 하나)가 들어가있어야 한다.
+
+        /*=====================================================================================
+        #swagger.responses[200] = {
+            description: '정상적으로 값을 받았을 때, 아래 예제와 같은 형태로 응답받습니다.',
+            schema: { result: "SUCCESS", 
+            message: "메인 페이지 추천 정책 조회 성공", 
+            checkedData, 
+            work,
+            houseLife,
+            health,
+            eduCare,
+            safetyRight,
+            etc }
+        }
+        =====================================================================================*/
+        return res.status(200).json({
+            result: "SUCCESS",
+            message: "메인 페이지 추천 정책 조회 성공",
+            checkedData,
+            work,
+            houseLife,
+            health,
+            eduCare,
+            safetyRight,
+            etc,
+        })
+    } catch (error) {
+        console.error("메인 페이지 추천 정책 조회 실패", error)
+        /*=====================================================================================
+        #swagger.responses[400] = {
+            description: '정상적으로 값을 받지 못했을 때, 아래 예제와 같은 형태로 응답받습니다.',
+            schema: { result: "FAIL", message: "메인 페이지 추천 정책 조회 실패" }
+        }
+        =====================================================================================*/
+        // return res.status(400).json({
+        //     result: "FAIL",
+        //     message: "메인 페이지 추천 정책 조회 실패",
+        // })
+        return next({
+            message: "메인 페이지 추천 정책 조회 실패",
+            stack: error,
+        })
+    }
+}
+
+exports.logic = async (isUser, isData) => {
+    try {
         //-----------------------------------------------------------age/lifeCycle 조건 검사-----------------------------------------------------------------//
         let checkedWithAge = []
         //만약 isUser에 age가 존재하지 않는다면
-        if (isUser.age.length === 0 || !isUser.age || !isUser.lifeCycle[0]) {
+        if (!isUser.age || isUser.age < 0 || !isUser.lifeCycle[0]) {
             throw new Error()
         }
         //만약 isUser에 age가 존재한다면
@@ -60,7 +140,7 @@ exports.getMain = async (req, res) => {
             else if (isData[j].age.length === 0 && isData[j].lifeCycle.length === 0) {
                 checkedWithAge.push(isData[j])
             }
-        } //console.log(checkedWithAge)
+        } // console.log(checkedWithAge)
         //-----------------------------------------------------------disability/obstacle 조건 검사-----------------------------------------------------------------//
         let checkedWithDisability = []
         //만약 isUser에 disability가 존재하지 않는다면
@@ -167,7 +247,7 @@ exports.getMain = async (req, res) => {
         //만약 isUser에 job 조건이 "취업"으로 존재한다면
         else if (isUser.job[0] === "취업") {
             for (let j = 0; j < checkedWithScholarship.length; j++) {
-                if (checkedWithScholarship[j].job === undefined) {
+                if (!checkedWithScholarship[j].job) {
                     checkedWithJob.push(checkedWithScholarship[j])
                 }
             }
@@ -175,7 +255,7 @@ exports.getMain = async (req, res) => {
         //만약 isUser에 job 조건이 "미취업"으로 존재한다면
         else if (isUser.job[0] === "미취업") {
             for (let j = 0; j < checkedWithScholarship.length; j++) {
-                if (checkedWithScholarship[j].job === isUser.job[0] || checkedWithScholarship[j].job === undefined) {
+                if (checkedWithScholarship[j].job === isUser.job[0] || !checkedWithScholarship[j].job) {
                     checkedWithJob.push(checkedWithScholarship[j])
                 }
             }
@@ -218,79 +298,69 @@ exports.getMain = async (req, res) => {
                 }
             }
         } // console.log(checkedWithTarget)
+        //-----------------------------------------------------------salary/family 조건 검사-----------------------------------------------------------------//
+        let checkedWithSalary = []
+        //만약 isUser에 salary와 family 조건이 존재하지 않는다면
+        if (!isUser.salary || !isUser.family) {
+            checkedWithSalary = checkedWithTarget
+        }
+        //만약 isUser에 salary와 family 조건이 존재한다면
+        else if (isUser.salary && isUser.family) {
+            //기준 중위 소득 60% 미만인 경우 저소득 정책 추가
+            if (isUser.family === 1 && isUser.salary <= 116) {
+                for (let j = 0; j < checkedWithTarget.length; j++) {
+                    checkedWithSalary.push(checkedWithTarget[j])
+                }
+            } else if (isUser.family === 2 && isUser.salary <= 195) {
+                for (let j = 0; j < checkedWithTarget.length; j++) {
+                    checkedWithSalary.push(checkedWithTarget[j])
+                }
+            } else if (isUser.family === 3 && isUser.salary <= 251) {
+                for (let j = 0; j < checkedWithTarget.length; j++) {
+                    checkedWithSalary.push(checkedWithTarget[j])
+                }
+            } else if (isUser.family === 4 && isUser.salary <= 307) {
+                for (let j = 0; j < checkedWithTarget.length; j++) {
+                    checkedWithSalary.push(checkedWithTarget[j])
+                }
+            } else if (isUser.family === 5 && isUser.salary <= 361) {
+                for (let j = 0; j < checkedWithTarget.length; j++) {
+                    checkedWithSalary.push(checkedWithTarget[j])
+                }
+            } else if (isUser.family === 6 && isUser.salary <= 414) {
+                for (let j = 0; j < checkedWithTarget.length; j++) {
+                    checkedWithSalary.push(checkedWithTarget[j])
+                }
+            } else if (isUser.family === 7 && isUser.salary <= 466) {
+                for (let j = 0; j < checkedWithTarget.length; j++) {
+                    checkedWithSalary.push(checkedWithTarget[j])
+                }
+            } else if (isUser.family === 8 && isUser.salary <= 519) {
+                for (let j = 0; j < checkedWithTarget.length; j++) {
+                    checkedWithSalary.push(checkedWithTarget[j])
+                }
+            }
+            //기준 중위 소득 60% 이상인 경우 저소득 정책 제외
+            else {
+                for (let j = 0; j < checkedWithTarget.length; j++) {
+                    if (checkedWithTarget[j].target.includes("저소득") === false) {
+                        checkedWithSalary.push(checkedWithTarget[j])
+                    }
+                }
+            }
+        } //
+        // console.log(checkedWithSalary)
         //-----------------------------------------------------------중복 제거-----------------------------------------------------------------//
-        let checkedData = checkedWithTarget.filter((v, i) => {
+        let checkedData = checkedWithSalary.filter((v, i) => {
             return (
-                checkedWithTarget.findIndex((v2, j) => {
+                checkedWithSalary.findIndex((v2, j) => {
                     return v.name === v2.name
                 }) === i
             )
         })
         //----------------------------------------------------------------------------------------------------------------------------//
-        let work = []
-        let houseLife = []
-        let health = []
-        let eduCare = []
-        let safetyRight = []
-        let etc = []
-        for (let i = 0; i < checkedData.length; i++) {
-            if (checkedData[i].desire === "일자리") {
-                work.push(checkedData[i])
-            }
-            if (checkedData[i].desire === "주거 및 일상생활") {
-                houseLife.push(checkedData[i])
-            }
-            if (checkedData[i].desire === "건강") {
-                health.push(checkedData[i])
-            }
-            if (checkedData[i].desire === "교육 및 돌봄") {
-                eduCare.push(checkedData[i])
-            }
-            if (checkedData[i].desire === "안전 및 권익보장") {
-                safetyRight.push(checkedData[i])
-            }
-            if (checkedData[i].desire === "기타") {
-                etc.push(checkedData[i])
-            }
-        }
-        //checkedData는 배열 안에 오브젝트(정책 하나)가 들어가있어야 한다.
-
-        /*=====================================================================================
-        #swagger.responses[200] = {
-            description: '정상적으로 값을 받았을 때, 아래 예제와 같은 형태로 응답받습니다.',
-            schema: { result: "SUCCESS", 
-            message: "메인 페이지 추천 정책 조회 성공", 
-            checkedData, 
-            work,
-            houseLife,
-            health,
-            eduCare,
-            safetyRight,
-            etc }
-        }
-        =====================================================================================*/
-        return res.status(200).json({
-            result: "SUCCESS",
-            message: "메인 페이지 추천 정책 조회 성공",
-            checkedData,
-            work,
-            houseLife,
-            health,
-            eduCare,
-            safetyRight,
-            etc,
-        })
+        return checkedData
     } catch (error) {
-        console.error(error)
-        /*=====================================================================================
-        #swagger.responses[400] = {
-            description: '정상적으로 값을 받지 못했을 때, 아래 예제와 같은 형태로 응답받습니다.',
-            schema: { result: "FAIL", message: "메인 페이지 추천 정책 조회 실패" }
-        }
-        =====================================================================================*/
-        return res.status(400).json({
-            result: "FAIL",
-            message: "메인 페이지 추천 정책 조회 실패",
-        })
+        console.error("정책 추천 실패", error)
     }
 }
