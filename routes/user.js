@@ -5,9 +5,6 @@ const userValidation = require("../validator/user.validator")
 
 const { kakaoCallback, getUsers, patchUsers, deleteUsers } = require("../controllers/user.controller")
 
-router.get("/me", authMiddleware, (req, res) => {
-    res.send({})
-})
 router.get("/kakao", passport.authenticate("kakao"))
 
 router.get(
