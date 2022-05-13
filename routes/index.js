@@ -7,6 +7,7 @@ const mainRouter = require("./main")
 const newsRouter = require("./news")
 const detailRouter = require("./detail")
 const searchRouter = require("./search")
+const mailRouter = require("./mail")
 
 router.use("/users", userRouter)
 router.use("/marks", markRouter)
@@ -15,5 +16,6 @@ router.use("/main", mainRouter)
 router.use("/news", newsRouter)
 router.use("/detail", detailRouter)
 router.use("/search", searchRouter)
+router.use("/mail", mailRouter)
 
 module.exports = router

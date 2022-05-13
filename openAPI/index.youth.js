@@ -54,8 +54,8 @@ exports.deletePastPeriod = async (period1, period2) => {
     const dateNum = Number(date)
     period2[0] = period1[0].split(/\D/).filter(Boolean)
     period2[1] = period1[1].split(/\D/).filter(Boolean)
-    if (period2[0][0] === "2022") period2[0][0] = period2[0][0].replace("2022", "22")
-    if (period2[1][0] === "2022") period2[1][0] = period2[1][0].replace("2022", "22")
+    if (/^20/.test(period2[0][0])) period2[0][0] = period2[0][0].substring(2)
+    if (/^20/.test(period2[1][0])) period2[1][0] = period2[1][0].substring(2)
     if (period2[0].length !== period2[1].length) {
         period2[1].unshift(period2[0][0])
     } else if (period2[0][0] > period2[1][0]) {
