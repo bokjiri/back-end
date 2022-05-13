@@ -50,7 +50,7 @@ exports.postMarks = async (req, res, next) => {
         const { dataId } = req.body
         const checkMark = await pushMark(userId, dataId)
         await pushMarkRedis(userId)
-        if (!checkMark) throw new Error()
+        if (!checkMark) return next({ message: "데이터ID를 확인 하시오.(dataID 중복 , DB dataID 확인!)" })
         /*=====================================================================================
         #swagger.responses[201] = {
             description: '정상적으로 값을 받았을 때, 아래 예제와 같은 형태로 응답받습니다.',
