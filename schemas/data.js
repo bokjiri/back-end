@@ -61,6 +61,10 @@ const dataSchema = mongoose.Schema({
     link: {
         type: String,
     },
+    bookmarkState: {
+        type: Boolean,
+        default: false,
+    },
 })
 autoIdSetter(dataSchema, mongoose, "dataSchema", "dataId")
 module.exports = mongoose.model("Data", dataSchema)
