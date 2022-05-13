@@ -3,7 +3,7 @@ const BokjiApi = require("../schemas/data")
 const today = new Date()
 
 exports.checkUser = async (userId) => {
-    const [userData] = await User.find({ userId }, { _id: false, __v: false, mark: false, likeMark: false, email: false, nickname: false, profileUrl: false, topLikeMarkList: false })
+    const [userData] = await User.find({ userId }, { _id: false, __v: false, likeMark: false, email: false, nickname: false, profileUrl: false, topLikeMarkList: false })
     // 만 나이 계산
     let birthDate = new Date(+String(userData.age).slice(0, 4), +String(userData.age).slice(4, 6) - 1, +String(userData.age).slice(6, 8) + 1)
     userData.age = today.getFullYear() - birthDate.getFullYear()
@@ -35,6 +35,12 @@ exports.checkUser = async (userId) => {
     return userData
 }
 
-exports.checkData = () => {
-    return BokjiApi.find({})
+exports.checkData = async (isUser) => {
+    const data = await BokjiApi.find({})
+    for (let i = 0; i < isUser.mark.length; i++) {
+        if (isUser.mark.includes(data[i].dataId) === true) {
+            data[i].bookmarkState = true
+        }
+    }
+    return data
 }
