@@ -36,6 +36,12 @@ exports.showMark = async (userId) => {
 
 exports.pushMark = async (userId, dataId) => {
     try {
+        const data = await BokjiApi.findOne({ dataId }, { _id: false, dataId: true })
+        if (!data) throw new Error()
+
+        const { mark } = await User.findOne({ userId }, { _id: false, mark: true })
+        if (mark.includes(dataId)) throw new Error()
+
         return User.updateOne(
             { userId },
             {
