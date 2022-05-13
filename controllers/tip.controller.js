@@ -10,7 +10,18 @@ exports.postTips = async (req, res, next) => {
         const { dataId } = req.body
         const { userId } = res.locals
         if (!userId || !dataId) throw new Error()
+
         await postipService(userId, dataId)
+
+        const date = new Date(+new Date() + 3240 * 10000).toISOString().split("T")[0]
+        const time = new Date().toTimeString().split(" ")[0]
+        const data = "\nuserId: " + userId.toString() + " dataId: " + dataId.toString() + " ||" + " Date: " + date + " Time: " + time
+        fs.writeFile(process.env.TIPLOG || `./tip_log.txt`, data, { flag: "a+" }, (err) => {
+            if (err) {
+                console.error(err)
+                throw new Error()
+            }
+        })
         /*=====================================================================================
         #swagger.responses[201] = {
             description: '정상적으로 값을 받았을 때, 아래 예제와 같은 형태로 응답받습니다.',
@@ -27,27 +38,6 @@ exports.postTips = async (req, res, next) => {
         =====================================================================================*/
         return next({
             message: "정책 숨기기 실패",
-            stack: err,
-        })
-    }
-}
-exports.tipLog = async (req, res, next) => {
-    try {
-        const { dataId } = req.body
-        const { userId } = res.locals
-        if (!userId || !dataId) throw new Error()
-        const date = new Date(+new Date() + 3240 * 10000).toISOString().split("T")[0]
-        const time = new Date().toTimeString().split(" ")[0]
-        const data = "\nuserId: " + userId.toString() + " dataId: " + dataId.toString() + " ||" + " Date: " + date + " Time: " + time
-        fs.writeFile(process.env.TIPLOG || `./tip_log.txt`, data, { flag: "a+" }, (err) => {
-            if (err) {
-                console.error(err)
-                return
-            }
-        })
-    } catch (err) {
-        return next({
-            message: "버그 리포트 실패",
             stack: err,
         })
     }
