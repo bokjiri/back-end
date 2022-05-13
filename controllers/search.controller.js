@@ -1,6 +1,11 @@
 const { logic } = require("../controllers/main.controller")
 const { checkUser, checkData } = require("../services/main.service")
 exports.postSearch = async (req, res, next) => {
+    /*========================================================================================================
+    #swagger.tags = ['Search']
+    #swagger.summary = '데이터 검색'
+    #swagger.description = '데이터를 searchKey로 검색한다.'
+    ========================================================================================================*/
     try {
         const { searchKey, type } = req.body
         const { userId } = res.locals
@@ -32,12 +37,29 @@ exports.postSearch = async (req, res, next) => {
             }
         }
 
+        /*=====================================================================================
+        #swagger.responses[400] = {
+            description: '정상적으로 값을 받지 못했을 때, 아래 예제와 같은 형태로 응답받습니다.',
+            schema: { result: "FAIL", message: "정책 키워드를 확인해 주세요" }
+        }
+        =====================================================================================*/
         if (!searchList.length) return res.status(400).json({ message: "정책 키워드를 확인해 주세요" })
-
+        /*=====================================================================================
+        #swagger.responses[200] = {
+            description: '정상적으로 값을 받았을 때, 아래 예제와 같은 형태로 응답받습니다.',
+            schema: { searchList }
+        }
+        =====================================================================================*/
         res.status(200).json({ searchList })
     } catch (err) {
+        /*=====================================================================================
+        #swagger.responses[400] = {
+            description: '정상적으로 값을 받지 못했을 때, 아래 예제와 같은 형태로 응답받습니다.',
+            schema: { result: "FAIL", message: "정책 검색 실패" }
+        }
+        =====================================================================================*/
         return next({
-            message: "정책 검색이 실패하였습니다.",
+            message: "정책 검색 실패",
             stack: err,
         })
     }

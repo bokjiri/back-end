@@ -119,8 +119,8 @@ exports.deleteMarks = async (req, res, next) => {
 exports.likeMarks = async (req, res) => {
     /*========================================================================================================
     #swagger.tags = ['Mark']
-    #swagger.summary = '북마크 ??'
-    #swagger.description = '정책을 내 북마크 목록에서 ??한다.'
+    #swagger.summary = '좋아요 - 사용 x'
+    #swagger.description = '정책을 좋아요한다.'
     ========================================================================================================*/
     try {
         const { userId } = req.params
@@ -129,18 +129,18 @@ exports.likeMarks = async (req, res) => {
         /*=====================================================================================
         #swagger.responses[201] = {
             description: '정상적으로 값을 받았을 때, 아래 예제와 같은 형태로 응답받습니다.',
-            schema: { result: "SUCCESS", message: "북마크 ?? 성공" }
+            schema: { result: "SUCCESS", message: "좋아요 성공" }
         }
         =====================================================================================*/
-        res.status(201).json({ result: "SUCCESS", message: "북마크 ?? 성공" })
+        res.status(201).json({ result: "SUCCESS", message: "좋아요 성공" })
     } catch (err) {
         /*=====================================================================================
         #swagger.responses[400] = {
             description: '정상적으로 값을 받지 못했을 때, 아래 예제와 같은 형태로 응답받습니다.',
-            schema: { result: "FAIL", message: "북마크 ?? 실패" }
+            schema: { result: "FAIL", message: "좋아요 실패" }
         }
         =====================================================================================*/
-        res.status(400).json({ result: "FAIL", message: "북마크 ?? 실패" })
+        res.status(400).json({ result: "FAIL", message: "좋아요 실패" })
     }
 }
 

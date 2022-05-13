@@ -16,7 +16,7 @@ exports.getDetail = async (req, res, next) => {
             schema: { 
             result: "SUCCESS",
             message: "상세페이지 조회 성공",
-            
+            data,
             }
         }
         =====================================================================================*/
