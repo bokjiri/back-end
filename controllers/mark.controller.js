@@ -21,7 +21,7 @@ exports.getMarks = async (req, res, next) => {
             schema: { result: "SUCCESS", message: "북마크 조회 성공", userMark }
         }
         =====================================================================================*/
-        res.status(200).json({ result: "SUCCESS", message: "북마크 조회 성공", userMark })
+        res.status(200).json({ result: "SUCCESS", message: "북마크 조회 성공", status: "True", userMark })
     } catch (err) {
         console.error(err)
         /*=====================================================================================
