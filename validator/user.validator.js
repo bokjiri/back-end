@@ -40,7 +40,7 @@ const userValidation = [
     body("target")
         .isArray({ max: 5 })
         .isIn([...targetValidate, ""]),
-    body("salary").isInt({ max: 9999999999 }).withMessage("너무 많아"),
+    // body("salary").isInt({ max: 9999999999 }).withMessage("너무 많아"),
     body("scholarship")
         .isArray()
         .isIn([...scholarshipValidate, ""]),
