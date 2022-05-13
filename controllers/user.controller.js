@@ -22,6 +22,7 @@ exports.getUsers = async (req, res, next) => {
         return next({
             result: false,
             message: "회원정보 조회 중 오류가 발생했습니다.",
+            stack: error,
         })
     }
 }
@@ -52,6 +53,7 @@ exports.patchUsers = async (req, res, next) => {
         return next({
             result: false,
             message: "회원정보 수정 중 오류가 발생했습니다.",
+            stack: error,
         })
     }
 }
@@ -72,6 +74,7 @@ exports.deleteUsers = async (req, res, next) => {
         return next({
             result: false,
             message: "회원정보 삭제 중 오류가 발생했습니다.",
+            stack: error,
         })
     }
 }

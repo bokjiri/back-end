@@ -36,6 +36,7 @@ exports.getDetail = async (req, res, next) => {
         return next({
             result: "FAIL",
             message: "상세페이지 조회 실패",
+            stack: error,
         })
     }
 }

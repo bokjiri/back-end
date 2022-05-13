@@ -19,6 +19,7 @@ exports.sendMail = async (req, res, next) => {
         return next({
             result: false,
             message: "메일전송실패",
+            stack: error,
         })
     }
 }
