@@ -8,12 +8,14 @@ exports.getMarks = async (req, res, next) => {
     ========================================================================================================*/
     try {
         const localsUserId = res.locals.userId
-        const paramsUserId = res.params.userId
-
+        const paramsUserId = req.params.userId
         if (localsUserId !== parseInt(paramsUserId)) throw new Error()
-
-        const userMark = await showMark(userId)
-        await showMarkRedis(userId)
+        let data = []
+        const userMark = await showMark(localsUserId)
+        for (let i of userMark) {
+            data.push({ desire: i.desire, name: i.name, dataId: i.dataId, status: "true" })
+        }
+        await showMarkRedis(localsUserId)
         if (!userMark) throw new Error()
         /*=====================================================================================
         #swagger.responses[200] = {
@@ -21,7 +23,13 @@ exports.getMarks = async (req, res, next) => {
             schema: { result: "SUCCESS", message: "북마크 조회 성공", userMark }
         }
         =====================================================================================*/
-        res.status(200).json({ result: "SUCCESS", message: "북마크 조회 성공", userMark })
+        res.status(200).json({
+            result: "SUCCESS",
+            message: "북마크 조회 성공",
+            userMark: {
+                data,
+            },
+        })
     } catch (err) {
         console.error(err)
         /*=====================================================================================
