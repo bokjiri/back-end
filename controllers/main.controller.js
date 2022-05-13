@@ -1,6 +1,6 @@
 const { checkUser, checkData } = require("../services/main.service")
 
-exports.getMain = async (req, res) => {
+exports.getMain = async (req, res, next) => {
     /*========================================================================================================
     #swagger.tags = ['Main']
     #swagger.summary = '추천 정책 카테고리별 조회'
@@ -40,6 +40,9 @@ exports.getMain = async (req, res) => {
         console.log(isUser)
         // 정책 추천 로직
         const checkedData = await this.logic(isUser, isData)
+        if (!checkedData) {
+            throw new Error()
+        }
         // 카테고리 분류
         let work = []
         let houseLife = []
@@ -102,9 +105,13 @@ exports.getMain = async (req, res) => {
             schema: { result: "FAIL", message: "메인 페이지 추천 정책 조회 실패" }
         }
         =====================================================================================*/
-        return res.status(400).json({
-            result: "FAIL",
+        // return res.status(400).json({
+        //     result: "FAIL",
+        //     message: "메인 페이지 추천 정책 조회 실패",
+        // })
+        return next({
             message: "메인 페이지 추천 정책 조회 실패",
+            stack: error,
         })
     }
 }
