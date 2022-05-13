@@ -27,7 +27,7 @@ exports.getMain = async (req, res, next) => {
         =====================================================================================*/
             return res.status(404).json({ result: "FAIL", code: -11, message: "데이터베이스 조회 실패" })
         }
-        const isData = await checkData()
+        const isData = await checkData(isUser)
         if (!isData) {
             /*=====================================================================================
         #swagger.responses[404] = {
@@ -37,7 +37,7 @@ exports.getMain = async (req, res, next) => {
         =====================================================================================*/
             return res.status(404).json({ result: "FAIL", code: -11, message: "데이터베이스 조회 실패" })
         }
-        console.log(isUser)
+        // console.log(isUser)
         // 정책 추천 로직
         const checkedData = await this.logic(isUser, isData)
         if (!checkedData) {

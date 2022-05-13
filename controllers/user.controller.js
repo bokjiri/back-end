@@ -11,6 +11,10 @@ exports.getUsers = async (req, res, next) => {
 
         const data = await userService.checkById(userId)
         if (data.region.length === 1) data.region[1] = "시·군을 선택해 주세요"
+        if (data.region.length === 0) {
+            data.region[0] = "-------"
+            data.region[1] = "시·군을 선택해 주세요"
+        }
         if (!data) throw new Error()
         res.status(201).json({
             result: true,
@@ -41,6 +45,7 @@ exports.patchUsers = async (req, res, next) => {
 
         if (arrRegion.length === 4) {
             arrRegion = arrRegion[0]
+            if (arrRegion === "-------") arrRegion = []
         } else if (arrRegion.length > 4) {
             arrRegion = []
         }
