@@ -10,13 +10,8 @@ exports.getMarks = async (req, res, next) => {
         const localsUserId = res.locals.userId
         const paramsUserId = req.params.userId
         if (localsUserId !== parseInt(paramsUserId)) throw new Error()
-        let data = []
         const userMark = await showMark(localsUserId)
-        for (let i of userMark) {
-            data.push({ desire: i.desire, name: i.name, dataId: i.dataId, status: "true" })
-        }
         await showMarkRedis(localsUserId)
-        if (!userMark) throw new Error()
         /*=====================================================================================
         #swagger.responses[200] = {
             description: '정상적으로 값을 받았을 때, 아래 예제와 같은 형태로 응답받습니다.',
@@ -26,9 +21,7 @@ exports.getMarks = async (req, res, next) => {
         res.status(200).json({
             result: "SUCCESS",
             message: "북마크 조회 성공",
-            userMark: {
-                data,
-            },
+            userMark,
         })
     } catch (err) {
         console.error(err)

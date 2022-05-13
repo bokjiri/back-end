@@ -2,19 +2,19 @@ const Data = require("../schemas/data")
 const connect = require("../schemas")
 connect()
 
-exports.genderData = async (name, summary) => {
+exports.genderData = async (lifeCycle, institution, support, link, obstacle, target, desire, name, summary) => {
     if (/여성/.test(name)) {
         name = name
         let gender = "여성"
-        await Data.updateOne({ name }, { $set: { gender } })
+        await Data.create({ lifeCycle, institution, support, link, obstacle, target, desire, name, summary, gender })
     } else if (/남성/.test(summary) && !/여성/.test(summary)) {
         name = name
         let gender = "남성"
-        await Data.updateOne({ name }, { $set: { gender } })
+        await Data.create({ lifeCycle, institution, support, link, obstacle, target, desire, name, summary, gender })
     } else {
         name = name
         let gender
-        await Data.updateOne({ name }, { $set: { gender } })
+        await Data.create({ lifeCycle, institution, support, link, obstacle, target, desire, name, summary, gender })
     }
 }
 
@@ -39,6 +39,7 @@ exports.marriageData = async (name, summary) => {
         name = name
         let marriage
         await Data.updateOne({ name }, { $set: { marriage } })
+        console.log("결혼 업데이트")
     }
 }
 
