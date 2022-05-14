@@ -1,7 +1,5 @@
 const userService = require("../services/user.service")
 const jwt = require("jsonwebtoken")
-// const moment = require("moment")
-// const ageValidate = moment().format("YYYYMMDD")
 
 exports.getUsers = async (req, res, next) => {
     /*========================================================================================================
@@ -12,15 +10,16 @@ exports.getUsers = async (req, res, next) => {
     try {
         const userId = parseInt(req.params.userId)
         const tokenUserId = res.locals.userId
-        if (tokenUserId !== userId) throw new Error()
+        if (tokenUserId !== userId) throw new Error("토큰하고 유저아이디가 다름")
 
         const data = await userService.checkById(userId)
+        if (!data) throw new Error()
+
         if (data.region.length === 1) data.region[1] = "시·군을 선택해 주세요"
         if (data.region.length === 0) {
             data.region[0] = "시·도를 선택해 주세요"
             data.region[1] = "시·군을 선택해 주세요"
         }
-        if (!data) throw new Error()
         /*=====================================================================================
         #swagger.responses[201] = {
             description: '정상적으로 값을 받았을 때, 아래 예제와 같은 형태로 응답받습니다.',
@@ -43,11 +42,17 @@ exports.getUsers = async (req, res, next) => {
             schema: { result: "FAIL", message: "회원정보 조회 중 오류가 발생했습니다." }
         }
         =====================================================================================*/
-        console.error(error)
-        return next({
-            message: "회원정보 조회 중 오류가 발생했습니다.",
-            stack: error,
-        })
+        if (error.message) {
+            return next({
+                message: error.message,
+                stack: error,
+            })
+        } else {
+            return next({
+                message: "회원정보 조회 중 오류가 발생했습니다.",
+                stack: error,
+            })
+        }
     }
 }
 
@@ -60,7 +65,7 @@ exports.patchUsers = async (req, res, next) => {
     try {
         const userId = parseInt(req.params.userId)
         const tokenUserId = res.locals.userId
-        if (tokenUserId !== userId) throw new Error()
+        if (tokenUserId !== userId) throw new Error("토큰하고 유저아이디가 다름")
 
         const { age, gender, region, disability, obstacle, marriage, target, salary, scholarship, family } = req.body
 
@@ -85,7 +90,6 @@ exports.patchUsers = async (req, res, next) => {
             schema: {
             result: true,
             message: "회원정보 수정 완료",
-            data,
         }
         }
         =====================================================================================*/
@@ -100,11 +104,17 @@ exports.patchUsers = async (req, res, next) => {
             schema: { result: "FAIL", message: "회원정보 수정 중 오류가 발생했습니다." }
         }
         =====================================================================================*/
-        console.error(error)
-        return next({
-            message: "회원정보 수정 중 오류가 발생했습니다.",
-            stack: error,
-        })
+        if (error.message) {
+            return next({
+                message: error.message,
+                stack: error,
+            })
+        } else {
+            return next({
+                message: "회원정보 수정 중 오류가 발생했습니다.",
+                stack: error,
+            })
+        }
     }
 }
 exports.deleteUsers = async (req, res, next) => {
@@ -116,7 +126,7 @@ exports.deleteUsers = async (req, res, next) => {
     try {
         const userId = parseInt(req.params.userId)
         const tokenUserId = res.locals.userId
-        if (tokenUserId !== userId) throw new Error()
+        if (tokenUserId !== userId) throw new Error("토큰하고 유저아이디가 다름")
 
         const result = await userService.deleteUserInfo(userId)
         if (!result) throw new Error()
@@ -141,11 +151,17 @@ exports.deleteUsers = async (req, res, next) => {
             schema: { result: "FAIL", message: "회원정보 삭제 중 오류가 발생했습니다." }
         }
         =====================================================================================*/
-        console.error(error)
-        return next({
-            message: "회원정보 삭제 중 오류가 발생했습니다.",
-            stack: error,
-        })
+        if (error.message) {
+            return next({
+                message: error.message,
+                stack: error,
+            })
+        } else {
+            return next({
+                message: "회원정보 삭제 중 오류가 발생했습니다.",
+                stack: error,
+            })
+        }
     }
 }
 exports.kakaoCallback = async (req, res) => {
