@@ -37,7 +37,7 @@ exports.getMain = async (req, res, next) => {
         =====================================================================================*/
             return res.status(404).json({ result: "FAIL", code: -11, message: "데이터베이스 조회 실패" })
         }
-        // console.log(isUser)
+        console.log(isUser)
         // 정책 추천 로직
         const checkedData = await this.logic(isUser, isData)
         if (!checkedData) {
@@ -179,7 +179,11 @@ exports.logic = async (isUser, isData) => {
         let checkedWithGender = []
         //만약 isUser에 gender 조건이 존재하지 않는다면
         if (isUser.gender.length === 0 || !isUser.gender[0]) {
-            checkedWithGender = checkedWithDisability
+            for (let j = 0; j < checkedWithDisability.length; j++) {
+                if (!checkedWithDisability[j].gender) {
+                    checkedWithGender.push(checkedWithDisability[j])
+                }
+            }
         }
         //만약 isUser에 gender 조건이 '여성'으로 존재한다면
         else if (isUser.gender[0] === "여성") {
@@ -201,7 +205,11 @@ exports.logic = async (isUser, isData) => {
         let checkedWithRegion = []
         //만약 isUser에 region 조건이 존재하지 않는다면
         if (isUser.region.length === 0 || !isUser.region[0]) {
-            checkedWithRegion = checkedWithGender
+            for (let j = 0; j < checkedWithGender.length; j++) {
+                if (checkedWithGender[j].region[0] === undefined) {
+                    checkedWithRegion.push(checkedWithGender[j])
+                }
+            }
         }
         //만약 isUser에 region 조건이 하나만 존재한다면
         else if (isUser.region.length === 1) {
@@ -228,7 +236,11 @@ exports.logic = async (isUser, isData) => {
         let checkedWithScholarship = []
         //만약 isUser에 scholarship 조건이 존재하지 않는다면
         if (isUser.scholarship.length === 0 || !isUser.scholarship[0]) {
-            checkedWithScholarship = checkedWithRegion
+            for (let j = 0; j < checkedWithRegion.length; j++) {
+                if (checkedWithRegion[j].scholarship[0] === undefined) {
+                    checkedWithScholarship.push(checkedWithRegion[j])
+                }
+            }
         }
         //만약 isUser에 scholarship 조건이 존재한다면
         else {
@@ -242,7 +254,11 @@ exports.logic = async (isUser, isData) => {
         let checkedWithJob = []
         //만약 isUser에 job 조건이 존재하지 않는다면
         if (isUser.job.length === 0 || !isUser.job[0]) {
-            checkedWithJob = checkedWithScholarship
+            for (let j = 0; j < checkedWithScholarship.length; j++) {
+                if (!checkedWithScholarship[j].job) {
+                    checkedWithJob.push(checkedWithScholarship[j])
+                }
+            }
         }
         //만약 isUser에 job 조건이 "취업"으로 존재한다면
         else if (isUser.job[0] === "취업") {
@@ -264,7 +280,11 @@ exports.logic = async (isUser, isData) => {
         let checkedWithMarriage = []
         //만약 isUser에 marriage 조건이 존재하지 않는다면
         if (isUser.marriage.length === 0 || !isUser.marriage[0]) {
-            checkedWithMarriage = checkedWithJob
+            for (let j = 0; j < checkedWithJob.length; j++) {
+                if (checkedWithJob[j].marriage[0] === undefined) {
+                    checkedWithMarriage.push(checkedWithJob[j])
+                }
+            }
         }
         //만약 isUser에 marriage 조건이 존재한다면
         else {
@@ -278,20 +298,16 @@ exports.logic = async (isUser, isData) => {
         let checkedWithTarget = []
         //만약 isUser에 target 조건이 존재하지 않는다면
         if (isUser.target.length === 0 || !isUser.target[0]) {
-            checkedWithTarget = checkedWithMarriage
-        }
-        //만약 isUser에 target 조건이 한 개 존재한다면
-        else if (isUser.target.length === 1) {
             for (let j = 0; j < checkedWithMarriage.length; j++) {
-                if (checkedWithMarriage[j].target.includes(isUser.target[0]) === true || checkedWithMarriage[j].target[0] === undefined) {
+                if (checkedWithMarriage[j].target[0] === undefined) {
                     checkedWithTarget.push(checkedWithMarriage[j])
                 }
             }
         }
-        //만약 isUser에 target 조건이 여러 개 존재한다면
+        //만약 isUser에 target 조건이 존재한다면
         else {
             for (let j = 0; j < checkedWithMarriage.length; j++) {
-                for (let i = 0; i < checkedWithMarriage.length; i++) {
+                for (let i = 0; i < isUser.target.length; i++) {
                     if (checkedWithMarriage[j].target.includes(isUser.target[i]) === true || checkedWithMarriage[j].target[0] === undefined) {
                         checkedWithTarget.push(checkedWithMarriage[j])
                     }
@@ -302,7 +318,11 @@ exports.logic = async (isUser, isData) => {
         let checkedWithSalary = []
         //만약 isUser에 salary와 family 조건이 존재하지 않는다면
         if (!isUser.salary || !isUser.family) {
-            checkedWithSalary = checkedWithTarget
+            for (let j = 0; j < checkedWithTarget.length; j++) {
+                if (checkedWithTarget[j].target.includes("저소득") === false) {
+                    checkedWithSalary.push(checkedWithTarget[j])
+                }
+            }
         }
         //만약 isUser에 salary와 family 조건이 존재한다면
         else if (isUser.salary && isUser.family) {
