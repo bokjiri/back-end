@@ -179,21 +179,21 @@ async function load(myConsole) {
                         myConsole.log({ process })
                         myConsole.log("-------------------")
 
-                        // await Data.create({
-                        //     age,
-                        //     name,
-                        //     summary,
-                        //     desire,
-                        //     job,
-                        //     scholarship,
-                        //     institution,
-                        //     region,
-                        //     link,
-                        //     support,
-                        //     gender,
-                        //     period,
-                        //     process,
-                        // })
+                        await Data.create({
+                            age,
+                            name,
+                            summary,
+                            desire,
+                            job,
+                            scholarship,
+                            institution,
+                            region,
+                            link,
+                            support,
+                            gender,
+                            period,
+                            process,
+                        })
                     } else {
                         continue
                     }
