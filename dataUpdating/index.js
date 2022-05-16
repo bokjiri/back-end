@@ -1,4 +1,4 @@
-const request = require("request-promise-native")
+const axios = require("axios")
 const convert = require("xml-js")
 const schedule = require("node-schedule")
 const moment = require("moment")
@@ -9,6 +9,7 @@ const { regionCode, regionName } = require("../openAPI/area")
 const dirrr = process.env.UPDATE_DATA_LOG || "./dataUpdating/"
 const fs = require("fs")
 const dir = `${dirrr}${newYouthApiDataDate}.txt`
+
 module.exports = () => {
     const rule = new schedule.RecurrenceRule()
     rule.dayOfWeek = [0, new schedule.Range(0, 6)]
@@ -47,37 +48,25 @@ async function findPastData(myConsole) {
         }
     }
 }
+
 async function load(myConsole) {
     for (let i = 1; i < 3; i++) {
         for (let j = 0; j < regionCode.length; j++) {
-            await load2(i, regionCode[j], regionName[j], myConsole)
-        }
-    }
-}
-async function load2(page, regionCode, regionName, myConsole) {
-    let url = "https://www.youthcenter.go.kr/opi/empList.do"
-    let queryParams = "?" + encodeURIComponent("openApiVlak") + "=" + process.env.CHUNG_KEY /* Service Key*/
-    queryParams += "&" + encodeURIComponent("pageIndex") + "=" + encodeURIComponent(page) /* */
-    queryParams += "&" + encodeURIComponent("display") + "=" + encodeURIComponent("100") /* */
-    queryParams += "&" + encodeURIComponent("srchPolyBizSecd") + "=" + encodeURIComponent(regionCode) /* */
+            // let url = `https://www.youthcenter.go.kr/opi/empList.do?openApiVlak=${apiKey}&pageIndex=${i}&display=100&srchPolyBizSecd=${regionCode[j]}`
+            let url = "https://www.youthcenter.go.kr/opi/empList.do"
+            let queryParams = "?" + encodeURIComponent("openApiVlak") + "=" + process.env.CHUNG_KEY /* Service Key*/
+            queryParams += "&" + encodeURIComponent("pageIndex") + "=" + encodeURIComponent(i) /* */
+            queryParams += "&" + encodeURIComponent("display") + "=" + encodeURIComponent("100") /* */
+            queryParams += "&" + encodeURIComponent("srchPolyBizSecd") + "=" + encodeURIComponent(regionCode[j]) /* */
 
-    await request(
-        {
-            url: url + queryParams,
-            method: "get",
-        },
-        async function (error, response, body) {
-            const result = body
-            const xmlToJson = convert.xml2json(result, {
+            const response = await axios.get(url + queryParams)
+            const data = response.data
+            const xmlToJson = convert.xml2json(data, {
                 compact: true,
                 space: 4,
             })
             const jsonParse = JSON.parse(xmlToJson)
-
-            // let total = jsonParse.empsInfo.totalCnt._text
-            // let pageIndex = jsonParse.empsInfo.pageIndex._text
             const empsInfo = jsonParse.empsInfo.emp
-
             if (Array.isArray(empsInfo)) {
                 for (let k of empsInfo) {
                     const name = k.polyBizSjnm._cdata //정책명
@@ -103,7 +92,7 @@ async function load2(page, regionCode, regionName, myConsole) {
                         // myConsole.log("심사발표", k.jdgnPresCn._cdata)
                         // myConsole.log("지원규모", k.sporScvl._cdata)
                         console.log("지역 ID", k.polyBizSecd._text)
-                        console.log("regioncode", regionCode)
+                        console.log("regioncode", regionCode[j])
                         const resultPeriod = await classifyPeriod(k.rqutPrdCn._cdata)
 
                         if (resultPeriod === false || resultPeriod === undefined) continue
@@ -159,7 +148,7 @@ async function load2(page, regionCode, regionName, myConsole) {
                         let institution = k.cnsgNmor._cdata // 신청기관명
                         let link = k.rqutUrla._cdata // 사이트 링크 주소
                         let support = k.sporCn._cdata // 지원내용
-                        let region = regionName // 지역
+                        let region = regionName[j] // 지역
                         let process = k.rqutProcCn._cdata
                         let period = k.rqutPrdCn._cdata
                         myConsole.log("기관 및 지자체 구분", k.polyBizTy._cdata)
@@ -170,10 +159,10 @@ async function load2(page, regionCode, regionName, myConsole) {
                         myConsole.log("지원규모", k.sporScvl._cdata)
                         myConsole.log("정책 ID", k.bizId._text)
                         myConsole.log("지역 ID", k.polyBizSecd._text)
-                        myConsole.log("regioncode", regionCode)
+                        myConsole.log("regioncode", regionCode[j])
                         // myConsole.log({ total })
                         // myConsole.log({ pageIndex })
-                        myConsole.log({ page })
+                        myConsole.log({ page: i })
                         myConsole.log({ name })
                         myConsole.log({ age })
                         myConsole.log({ summary })
@@ -211,5 +200,5 @@ async function load2(page, regionCode, regionName, myConsole) {
                 }
             }
         }
-    )
+    }
 }
