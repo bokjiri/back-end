@@ -144,7 +144,7 @@ exports.logic = async (isUser, isData) => {
         //-----------------------------------------------------------disability/obstacle 조건 검사-----------------------------------------------------------------//
         let checkedWithDisability = []
         //만약 isUser에 disability가 존재하지 않는다면
-        if (isUser.disability.length === 0 || !isUser.disability[0]) {
+        if (!isUser.disability[0]) {
             throw new Error()
         }
         //만약 isUser에 disability가 '있음'으로 존재한다면
@@ -157,12 +157,9 @@ exports.logic = async (isUser, isData) => {
                 //장애인 대상 정책
                 else if (checkedWithAge[j].target.includes("장애인") === true) {
                     for (let i = 0; i < isUser.obstacle.length; i++) {
-                        if (checkedWithAge[j].obstacle.includes(isUser.obstacle[i]) === true) {
+                        if (checkedWithAge[j].obstacle.includes(isUser.obstacle[i]) === true || checkedWithAge[j].obstacle[0] === undefined) {
                             checkedWithDisability.push(checkedWithAge[j])
                         }
-                    }
-                    if (checkedWithAge[j].obstacle[0] === undefined) {
-                        checkedWithDisability.push(checkedWithAge[j])
                     }
                 }
             }
@@ -178,7 +175,7 @@ exports.logic = async (isUser, isData) => {
         //-----------------------------------------------------------gender 조건 검사-----------------------------------------------------------------//
         let checkedWithGender = []
         //만약 isUser에 gender 조건이 존재하지 않는다면
-        if (isUser.gender.length === 0 || !isUser.gender[0]) {
+        if (!isUser.gender[0]) {
             for (let j = 0; j < checkedWithDisability.length; j++) {
                 if (!checkedWithDisability[j].gender) {
                     checkedWithGender.push(checkedWithDisability[j])
@@ -204,7 +201,7 @@ exports.logic = async (isUser, isData) => {
         //-----------------------------------------------------------region 조건 검사-----------------------------------------------------------------//
         let checkedWithRegion = []
         //만약 isUser에 region 조건이 존재하지 않는다면
-        if (isUser.region.length === 0 || !isUser.region[0]) {
+        if (!isUser.region[0]) {
             for (let j = 0; j < checkedWithGender.length; j++) {
                 if (checkedWithGender[j].region[0] === undefined) {
                     checkedWithRegion.push(checkedWithGender[j])
@@ -235,7 +232,7 @@ exports.logic = async (isUser, isData) => {
         //-----------------------------------------------------------scholarship 조건 검사-----------------------------------------------------------------//
         let checkedWithScholarship = []
         //만약 isUser에 scholarship 조건이 존재하지 않는다면
-        if (isUser.scholarship.length === 0 || !isUser.scholarship[0]) {
+        if (!isUser.scholarship[0]) {
             for (let j = 0; j < checkedWithRegion.length; j++) {
                 if (checkedWithRegion[j].scholarship[0] === undefined) {
                     checkedWithScholarship.push(checkedWithRegion[j])
@@ -253,7 +250,7 @@ exports.logic = async (isUser, isData) => {
         //-----------------------------------------------------------job 조건 검사-----------------------------------------------------------------//
         let checkedWithJob = []
         //만약 isUser에 job 조건이 존재하지 않는다면
-        if (isUser.job.length === 0 || !isUser.job[0]) {
+        if (!isUser.job[0]) {
             for (let j = 0; j < checkedWithScholarship.length; j++) {
                 if (!checkedWithScholarship[j].job) {
                     checkedWithJob.push(checkedWithScholarship[j])
@@ -279,7 +276,7 @@ exports.logic = async (isUser, isData) => {
         //-----------------------------------------------------------marriage 조건 검사-----------------------------------------------------------------//
         let checkedWithMarriage = []
         //만약 isUser에 marriage 조건이 존재하지 않는다면
-        if (isUser.marriage.length === 0 || !isUser.marriage[0]) {
+        if (!isUser.marriage[0]) {
             for (let j = 0; j < checkedWithJob.length; j++) {
                 if (checkedWithJob[j].marriage[0] === undefined) {
                     checkedWithMarriage.push(checkedWithJob[j])
@@ -297,7 +294,7 @@ exports.logic = async (isUser, isData) => {
         //-----------------------------------------------------------target 조건 검사-----------------------------------------------------------------//
         let checkedWithTarget = []
         //만약 isUser에 target 조건이 존재하지 않는다면
-        if (isUser.target.length === 0 || !isUser.target[0]) {
+        if (!isUser.target[0]) {
             for (let j = 0; j < checkedWithMarriage.length; j++) {
                 if (checkedWithMarriage[j].target[0] === undefined) {
                     checkedWithTarget.push(checkedWithMarriage[j])
