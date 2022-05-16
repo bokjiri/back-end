@@ -6,6 +6,12 @@ const connect = require("../schemas")
 
 connect()
 
+const fs = require("fs")
+fs.truncate("./openAPI/index.txt", () => {
+    console.log("File Content Deleted")
+})
+const myConsole = new console.Console(fs.createWriteStream("./openAPI/index.txt"))
+
 const desireCode = [100, 110, 120, 130, 140, 150, 160, 170, 180]
 const desireName = ["일자리", "주거 및 일상생활", "주거 및 일상생활", "건강", "건강", "교육 및 돌봄", "교육 및 돌봄", "기타", "안전 및 권익보장"]
 
@@ -67,7 +73,7 @@ async function getDetail(servList, desireName) {
         qqueryParams += "&" + encodeURIComponent("callTp") + "=" + encodeURIComponent("D") /* */
         qqueryParams += "&" + encodeURIComponent("servId") + "=" + encodeURIComponent(`${servId}`) /* */
 
-        const response = await axios.get(detailUrl + queryParams)
+        const response = await axios.get(detailUrl + qqueryParams)
         const data = response.data
         const xmlToJson = convert.xml2json(data, {
             compact: true,
@@ -85,7 +91,7 @@ async function getDetail(servList, desireName) {
         }
 
         const institution = jsonParse.wantedDtl.jurMnofNm._text
-
-        await Data.create({ desire, name, target, obstacle, lifeCycle, link, institution, summary, support })
+        myConsole.log({ desire, name, target, obstacle, lifeCycle, link, institution, summary, support })
+        // await Data.create({ desire, name, target, obstacle, lifeCycle, link, institution, summary, support })
     }
 }
