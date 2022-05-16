@@ -258,7 +258,7 @@ const regionValidate = [
     ["시·도를 선택해 주세요 시·군을 선택해 주세요"],
     ["------- 시·군을 선택해 주세요"],
 ]
-const targetValidate = ["다북화·탈북민", "다자녀", "보훈대상자", "임신·출산", "한부모·조손"]
+const targetValidate = ["다문화·탈북민", "다자녀", "보훈대상자", "임신·출산", "한부모·조손"]
 const scholarshipValidate = ["고등학교 졸업 미만", "고등학교 졸업", "대학(원) 재학", "대학(원) 휴학", "대학(원) 졸업"]
 const obstacleValidate = [
     "지체(전환대상)",
