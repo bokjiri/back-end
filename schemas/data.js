@@ -52,6 +52,9 @@ const dataSchema = mongoose.Schema({
     summary: {
         type: String,
     },
+    criteria: {
+        type: String,
+    },
     support: {
         type: String,
     },
