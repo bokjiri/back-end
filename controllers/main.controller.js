@@ -120,6 +120,7 @@ exports.logic = async (isUser, isData) => {
     try {
         //-----------------------------------------------------------age/lifeCycle 조건 검사-----------------------------------------------------------------//
         let checkedWithAge = []
+
         //만약 isUser에 age가 존재하지 않는다면
         if (!isUser.age || isUser.age < 0 || !isUser.lifeCycle[0]) {
             throw new Error()
@@ -127,17 +128,17 @@ exports.logic = async (isUser, isData) => {
         //만약 isUser에 age가 존재한다면
         for (let j = 0; j < isData.length; j++) {
             //isData에 age 기준이 존재할 때
-            if (isData[j].age.length === 2 && isData[j].age[0] <= isUser.age && isData[j].age[1] > isUser.age) {
+            if (isData[j].age[0] && isData[j].age[0] <= isUser.age && isData[j].age[1] > isUser.age) {
                 checkedWithAge.push(isData[j])
             }
             //isData에 lifeCycle 기준이 존재할 때
-            else if (isUser.lifeCycle.length === 1) {
+            else if (!isData[j].age[0] && isUser.lifeCycle[0]) {
                 if (isData[j].lifeCycle.includes(isUser.lifeCycle[0]) === true) {
                     checkedWithAge.push(isData[j])
                 }
             }
             //isData에 age와 lifeCycle 기준이 존재하지 않을 때
-            else if (isData[j].age.length === 0 && isData[j].lifeCycle.length === 0) {
+            else if (!isData[j].age[0] && !isData[j].lifeCycle[0]) {
                 checkedWithAge.push(isData[j])
             }
         } // console.log(checkedWithAge)
