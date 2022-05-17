@@ -1,8 +1,8 @@
 require("dotenv").config()
-const request = require("request-promise-native")
+const axios = require("axios")
 const convert = require("xml-js")
 const connect = require("../schemas")
-const { genderData, marriageData, scholarshipData } = require("./cleansing")
+const { genderData, marriageData, scholarshipData, workTypeData } = require("./cleansing")
 connect()
 // const fs = require("fs")
 // fs.truncate("./openAPI/gender.txt", () => {
@@ -46,21 +46,18 @@ async function getDetail(servList, desireName) {
         let target
         if (i.trgterIndvdlArray !== undefined) {
             let a = i.trgterIndvdlArray._text.split(", ")
-            console.log(a)
             target = a
         } else {
         }
         let obstacle
         if (i.obstKiArray !== undefined) {
             let b = i.obstKiArray._text.split(", ")
-            console.log(b)
             obstacle = b
         } else {
         }
         let lifeCycle
         if (i.lifeArray !== undefined) {
             let c = i.lifeArray._text.split(", ")
-            console.log(c)
             lifeCycle = c
         } else {
         }
@@ -91,7 +88,8 @@ async function getDetail(servList, desireName) {
         const institution = jsonParse.wantedDtl.jurMnofNm._text
 
         // await genderData(lifeCycle, institution, support, link, obstacle, target, desire, name, summary)
-        // await marriageData(name, summary)
-        // await scholarshipData(name, summary, lifeCycle)
+        // await marriageData(lifeCycle, institution, support, link, obstacle, target, desire, name, summary)
+        // await scholarshipData(lifeCycle, institution, support, link, obstacle, target, desire, name, summary)
+        // await workTypeData(lifeCycle, institution, support, link, obstacle, target, desire, name, summary)
     }
 }
