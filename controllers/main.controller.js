@@ -314,60 +314,23 @@ exports.logic = async (isUser, isData) => {
         } // console.log(checkedWithTarget)
         //-----------------------------------------------------------salary/family 조건 검사-----------------------------------------------------------------//
         let checkedWithSalary = []
-        //만약 isUser에 salary와 family 조건이 존재하지 않는다면
-        if (!isUser.salary || !isUser.family) {
+        //만약 isUser에 family 조건이 존재하지 않는다면 salary가 상관 없는 정책만 추가
+        if (!isUser.family) {
             for (let j = 0; j < checkedWithTarget.length; j++) {
-                if (checkedWithTarget[j].target.includes("저소득") === false) {
+                if (!checkedWithTarget[j].salary) {
                     checkedWithSalary.push(checkedWithTarget[j])
                 }
             }
         }
         //만약 isUser에 salary와 family 조건이 존재한다면
-        else if (isUser.salary && isUser.family) {
-            //기준 중위 소득 60% 미만인 경우 저소득 정책 추가
-            if (isUser.family === 1 && isUser.salary <= 116) {
-                for (let j = 0; j < checkedWithTarget.length; j++) {
-                    checkedWithSalary.push(checkedWithTarget[j])
-                }
-            } else if (isUser.family === 2 && isUser.salary <= 195) {
-                for (let j = 0; j < checkedWithTarget.length; j++) {
-                    checkedWithSalary.push(checkedWithTarget[j])
-                }
-            } else if (isUser.family === 3 && isUser.salary <= 251) {
-                for (let j = 0; j < checkedWithTarget.length; j++) {
-                    checkedWithSalary.push(checkedWithTarget[j])
-                }
-            } else if (isUser.family === 4 && isUser.salary <= 307) {
-                for (let j = 0; j < checkedWithTarget.length; j++) {
-                    checkedWithSalary.push(checkedWithTarget[j])
-                }
-            } else if (isUser.family === 5 && isUser.salary <= 361) {
-                for (let j = 0; j < checkedWithTarget.length; j++) {
-                    checkedWithSalary.push(checkedWithTarget[j])
-                }
-            } else if (isUser.family === 6 && isUser.salary <= 414) {
-                for (let j = 0; j < checkedWithTarget.length; j++) {
-                    checkedWithSalary.push(checkedWithTarget[j])
-                }
-            } else if (isUser.family === 7 && isUser.salary <= 466) {
-                for (let j = 0; j < checkedWithTarget.length; j++) {
-                    checkedWithSalary.push(checkedWithTarget[j])
-                }
-            } else if (isUser.family === 8 && isUser.salary <= 519) {
-                for (let j = 0; j < checkedWithTarget.length; j++) {
+        else {
+            //salary가 상관 없는 정책 추가
+            for (let j = 0; j < checkedWithTarget.length; j++) {
+                if (!checkedWithTarget[j].salary || checkedWithTarget[j].salary > isUser.salary) {
                     checkedWithSalary.push(checkedWithTarget[j])
                 }
             }
-            //기준 중위 소득 60% 이상인 경우 저소득 정책 제외
-            else {
-                for (let j = 0; j < checkedWithTarget.length; j++) {
-                    if (checkedWithTarget[j].target.includes("저소득") === false) {
-                        checkedWithSalary.push(checkedWithTarget[j])
-                    }
-                }
-            }
-        } //
-        // console.log(checkedWithSalary)
+        } // console.log(checkedWithSalary)
         //-----------------------------------------------------------중복 제거-----------------------------------------------------------------//
         let checkedData = checkedWithSalary.filter((v, i) => {
             return (
