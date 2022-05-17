@@ -36,13 +36,13 @@ exports.checkUser = async (userId) => {
 }
 
 exports.checkData = async (isUser) => {
-    const data = await BokjiApi.find({})
+    const newData = await BokjiApi.find({})
 
-    for (let j = 0; j < data.length; j++) {
-        if (isUser.mark.includes(data[j].dataId) === true) {
-            data[j].bookmarkState = true
+    for (let j = 0; j < newData.length; j++) {
+        if (isUser.mark.includes(newData[j].dataId) === true) {
+            newData[j].bookmarkState = true
         }
     }
-
+    const data = newData.filter((item) => isUser.dismatchData.includes(item.dataId) === false)
     return data
 }
