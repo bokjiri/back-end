@@ -1,3 +1,4 @@
+require("dotenv").config()
 const axios = require("axios")
 const convert = require("xml-js")
 const moment = require("moment")
@@ -31,14 +32,14 @@ async function load(i, regionCode, regionName) {
     queryParams += "&" + encodeURIComponent("srchPolyBizSecd") + "=" + encodeURIComponent(regionCode) /* */
 
     const response = await axios.get(url + queryParams)
-    console.log(response)
+    // console.log(response)
     const data = response.data
     const xmlToJson = convert.xml2json(data, {
         compact: true,
         space: 4,
     })
     const jsonParse = JSON.parse(xmlToJson)
-    console.log(jsonParse)
+    // console.log(jsonParse)
     const empsInfo = jsonParse.empsInfo.emp
     if (Array.isArray(empsInfo)) {
         for (let k of empsInfo) {
@@ -47,7 +48,7 @@ async function load(i, regionCode, regionName) {
             // console.log(!check)
             const re = /2021|2020|2019|2018/
             if (
-                !check &&
+                // !check &&
                 k.accrRqisCn._cdata.search(/제한없음/) !== -1 && //학력
                 k.majrRqisCn._cdata === "제한없음" && //전공
                 /^http/.test(k.rqutUrla._cdata) && // 링크
@@ -79,7 +80,7 @@ async function load(i, regionCode, regionName) {
                     if (!age[1]) age[1] = "999"
                     // console.log("~.test", age, k.ageInfo._cdata)
                 } else if (/제한없음/.test(k.ageInfo._cdata)) {
-                    // console.log("제한없음", k.ageInfo._cdata)
+                    console.log("제한없음", k.ageInfo._cdata)
                 } else if (/이상/.test(k.ageInfo._cdata) && /[^이하]/.test(k.ageInfo._cdata)) {
                     age[0] = k.ageInfo._cdata.replace(/[^0-9]/g, "")
                     age[1] = "999"
