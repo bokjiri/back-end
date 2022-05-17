@@ -2,18 +2,24 @@ require("dotenv").config()
 const axios = require("axios")
 const convert = require("xml-js")
 const connect = require("../schemas")
+const schedule = require("node-schedule")
 const { genderData, marriageData, scholarshipData, workTypeData } = require("./cleansing")
 connect()
-// const fs = require("fs")
-// fs.truncate("./openAPI/gender.txt", () => {
-//     console.log("File Content Deleted")
-// })
-// const myConsole = new console.Console(fs.createWriteStream("./openAPI/gender.txt"))
+
+module.exports = () => {
+    const rule = new schedule.RecurrenceRule()
+    rule.dayOfWeek = [0, new schedule.Range(0, 6)]
+    rule.hour = 11
+    rule.minute = 11
+    rule.second = 11
+    rule.tz = "Asia/Seoul"
+    schedule.scheduleJob(rule, async () => {
+        await loadOpenApi()
+    })
+}
 
 const desireCode = [100, 110, 120, 130, 140, 150, 160, 170, 180]
 const desireName = ["일자리", "주거 및 일상생활", "주거 및 일상생활", "건강", "건강", "교육 및 돌봄", "교육 및 돌봄", "기타", "안전 및 권익보장"]
-
-loadOpenApi()
 
 async function loadOpenApi() {
     for (let i = 0; i < desireCode.length; i++) {
@@ -86,10 +92,10 @@ async function getDetail(servList, desireName) {
         }
 
         const institution = jsonParse.wantedDtl.jurMnofNm._text
-
-        // await genderData(lifeCycle, institution, support, link, obstacle, target, desire, name, summary)
-        // await marriageData(lifeCycle, institution, support, link, obstacle, target, desire, name, summary)
-        // await scholarshipData(lifeCycle, institution, support, link, obstacle, target, desire, name, summary)
-        // await workTypeData(lifeCycle, institution, support, link, obstacle, target, desire, name, summary)
+        const promise1 = genderData(lifeCycle, institution, support, link, obstacle, target, desire, name, summary)
+        const promise2 = marriageData(lifeCycle, institution, support, link, obstacle, target, desire, name, summary)
+        const promise3 = scholarshipData(lifeCycle, institution, support, link, obstacle, target, desire, name, summary)
+        const promise4 = workTypeData(lifeCycle, institution, support, link, obstacle, target, desire, name, summary)
+        Promise.all([promise1, promise2, promise3, promise4])
     }
 }
