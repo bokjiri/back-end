@@ -1,4 +1,4 @@
-const { showMark, pushMark, deleteMark, topMark, likemark, showMarkRedis, pushMarkRedis, dataCheck } = require("../services/mark.service")
+const { showMark, pushMark, showMarkRedis, pushMarkRedis, dataCheck } = require("../services/mark.service")
 const { checkBookmark } = require("../services/detail.service")
 
 exports.getMarks = async (req, res, next) => {
@@ -13,6 +13,7 @@ exports.getMarks = async (req, res, next) => {
         if (localsUserId !== parseInt(paramsUserId)) throw new Error("누구니???")
         const userMark = await showMark(localsUserId)
         await showMarkRedis(localsUserId)
+
         /*=====================================================================================
         #swagger.responses[200] = {
             description: '정상적으로 값을 받았을 때, 아래 예제와 같은 형태로 응답받습니다.',
@@ -56,15 +57,15 @@ exports.postMarks = async (req, res, next) => {
     try {
         const { userId } = res.locals
         const { dataId } = req.body
-        const checkMark = await pushMark(userId, dataId)
-        if (!checkMark) throw new Error()
-        let data = await dataCheck(dataId)
-        if (!data) throw new Error()
+        if (!userId || !dataId) throw new Error("userId , dataId를 확인 해주세요")
+        await pushMark(userId, dataId)
+        const data = await dataCheck(dataId)
         const { mark } = await checkBookmark(userId)
         for (i of mark) {
             if (i === dataId) data.bookmarkState = true
         }
         await pushMarkRedis(userId)
+
         /*=====================================================================================
         #swagger.responses[201] = {
             description: '정상적으로 값을 받았을 때, 아래 예제와 같은 형태로 응답받습니다.',

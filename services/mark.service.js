@@ -35,7 +35,6 @@ exports.showMark = async (userId) => {
 exports.pushMark = async (userId, dataId) => {
     try {
         const { mark } = await User.findOne({ userId }, { _id: false, mark: true })
-
         if (!mark.includes(dataId)) {
             return User.updateOne(
                 { userId },
@@ -53,13 +52,14 @@ exports.pushMark = async (userId, dataId) => {
         }
     } catch (err) {
         console.log(err)
+        return error
     }
 }
 exports.dataCheck = async (dataId) => {
     try {
         return await BokjiApi.findOne({ dataId }, { _id: false, dataId: true, bookmarkState: true })
     } catch (error) {
-        console.error(error)
+        console.log(error)
         return error
     }
 }
