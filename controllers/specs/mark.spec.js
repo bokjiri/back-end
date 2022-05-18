@@ -8,12 +8,11 @@ const User = require("../../schemas/user")
 const BokjiApi = require("../../schemas/data")
 const redis = require("../../schemas/redis")
 const userId = { userId: 1 }
+const paramsUserId = { userId: "1" }
 const localsUserId = userId
-const paramsUserId = userId
 const falseParamsUserId = { userId: 2 }
 const mark = [3, 5, 8, 9]
 const dataId = 1
-const updateMarks = [4, 8, 9, 5]
 
 let req, res, next, err
 beforeEach(() => {

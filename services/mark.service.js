@@ -16,14 +16,14 @@ exports.showMarkRedis = async (userId) => {
 exports.pushMarkRedis = async (userId) => {
     await redisSet(userId)
 }
-exports.deleteMarkRedis = async (userId) => {
-    await redisSet(userId)
-}
-exports.topLikesMarkRedis = async (userId) => {
-    const markInfo = await User.findOne({ userId }, { _id: false, topLikeMarkList: true })
-    const topLikesMarkList = JSON.stringify(markInfo)
-    await Client.set("topMarkList", topLikesMarkList)
-}
+// exports.deleteMarkRedis = async (userId) => {
+//     await redisSet(userId)
+// }
+// exports.topLikesMarkRedis = async (userId) => {
+//     const markInfo = await User.findOne({ userId }, { _id: false, topLikeMarkList: true })
+//     const topLikesMarkList = JSON.stringify(markInfo)
+//     await Client.set("topMarkList", topLikesMarkList)
+// }
 
 exports.showMark = async (userId) => {
     try {
