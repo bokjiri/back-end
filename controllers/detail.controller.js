@@ -10,7 +10,7 @@ exports.getDetail = async (req, res, next) => {
         const dataId = parseInt(req.params.dataId)
         const { userId } = res.locals
 
-        let data = await findData(dataId)
+        const data = await findData(dataId)
         if (!data) throw new Error()
 
         const { mark } = await checkBookmark(userId)

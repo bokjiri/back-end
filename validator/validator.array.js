@@ -288,4 +288,5 @@ const obstacleValidate = [
     "뇌전증",
     "기타",
 ]
-module.exports = { regionValidate, targetValidate, scholarshipValidate, obstacleValidate }
+const workTypeValidate = ["농업", "임업", "축산업", "어업", "광업"]
+module.exports = { regionValidate, targetValidate, scholarshipValidate, obstacleValidate, workTypeValidate }
