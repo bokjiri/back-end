@@ -49,7 +49,7 @@ async function loadOpenApi() {
             qqueryParams += "&" + encodeURIComponent("callTp") + "=" + encodeURIComponent("D") /* */
             qqueryParams += "&" + encodeURIComponent("servId") + "=" + encodeURIComponent(servId) /* */
             console.log("beforedetail")
-            const response = await axios.get(detailUrl)
+            const response = await axios.get(detailUrl + qqueryParams)
             console.log("afterdetail")
             const data = response.data
             const xmlToJson = convert.xml2json(data, {
@@ -57,15 +57,15 @@ async function loadOpenApi() {
                 space: 4,
             })
             const jsonParse = JSON.parse(xmlToJson)
-            console.log(jsonParse.OpenAPI_ServiceResponse.cmmMsgHeader)
-            console.log(jsonParse.OpenAPI_ServiceResponse.cmmMsgHeader.errMsg)
-            // if (jsonParse.wantedDtl.slctCritCn !== undefined) {
-            //     const criteria = jsonParse.wantedDtl.slctCritCn._text.trim()
-            //     myConsole.log({ name, criteria })
-            //     console.log("beforeDB")
-            //     await Data.updateOne({ name }, { $set: { criteria } })
-            //     console.log("afterDB")
-            // }
+            // console.log(jsonParse.OpenAPI_ServiceResponse.cmmMsgHeader)
+            // console.log(jsonParse.OpenAPI_ServiceResponse.cmmMsgHeader.errMsg)
+            if (jsonParse.wantedDtl.slctCritCn !== undefined) {
+                const criteria = jsonParse.wantedDtl.slctCritCn._text.trim()
+                myConsole.log({ name, criteria })
+                console.log("beforeDB")
+                await Data.updateOne({ name }, { $set: { criteria } })
+                console.log("afterDB")
+            }
         }
         // }
         console.log("done")
