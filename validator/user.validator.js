@@ -45,7 +45,7 @@ const userValidation = [
         .isIn([...scholarshipValidate, ""]),
     body("workType")
         .isArray()
-        .inIn([...workTypeValidate, ""]),
+        .isIn([...workTypeValidate, ""]),
     // body("salary").isInt({ max: 9999999999 }).withMessage("너무 많아"),
     // body("family").isInt(),
     error,
