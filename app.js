@@ -53,11 +53,7 @@ app.use(
         resave: false,
         saveUninitialized: true,
         secret: process.env.SESSION_SECRET,
-        sameSite: "None",
-        httpOnly: true,
-        secure: true,
         cookie: {
-            sameSite: "None",
             httpOnly: true,
             secure: true,
         },

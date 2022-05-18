@@ -1,8 +1,8 @@
-const request = require("supertest")
-const app = require("../../app")
-const userId = 68
-let dataId = [23, 24]
-const agent = request.agent(app)
+// const request = require("supertest")
+// const app = require("../../app")
+// const userId = 68
+// let dataId = [23, 24]
+// const agent = request.agent(app)
 
 // describe("북마크 통합 테스트", () => {
 //     let token = ""

@@ -28,11 +28,13 @@ describe("user 통합 테스트", () => {
         })
     })
     describe("post /api/users/auth", () => {
-
-        const email = "email@email.com"
-        const password = "asdf"
-        const res = await request(app).post(`/api/users/auth`).send({ email, password })
-        console.log(res)
+        beforeEach(async () => {
+            const email = "email@email.com"
+            const password = "asdf"
+            const res = await request(app).post(`/api/users/auth`).send({ email, password })
+            const aToken = res.body.accessToken
+            const rToken = res.body.accessToken
+        })
 
         it("post /api/users/auth 로그인 잘됨?", async () => {
             // expect(res.statusCode).toBe(200)
