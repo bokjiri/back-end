@@ -98,7 +98,7 @@ exports.getMain = async (req, res, next) => {
             etc,
         })
     } catch (error) {
-        console.error("메인 페이지 추천 정책 조회 실패", error)
+        console.log("메인 페이지 추천 정책 조회 실패", error)
         /*=====================================================================================
         #swagger.responses[400] = {
             description: '정상적으로 값을 받지 못했을 때, 아래 예제와 같은 형태로 응답받습니다.',
@@ -331,10 +331,30 @@ exports.logic = async (isUser, isData) => {
                 }
             }
         } // console.log(checkedWithSalary)
+        //-----------------------------------------------------------workType 조건 검사-----------------------------------------------------------------//
+        let checkedWithWorkType = []
+        //만약 isUser에 workType 조건이 존재하지 않는다면
+        if (!isUser.workType[0]) {
+            for (let j = 0; j < checkedWithSalary.length; j++) {
+                if (checkedWithSalary[j].workType[0] === undefined) {
+                    checkedWithWorkType.push(checkedWithSalary[j])
+                }
+            }
+        }
+        //만약 isUser에 workType 조건이 존재한다면
+        else {
+            for (let j = 0; j < checkedWithSalary.length; j++) {
+                for (let i = 0; i < isUser.workType.length; i++) {
+                    if (checkedWithSalary[j].workType.includes(isUser.workType[i]) === true || checkedWithSalary[j].workType[0] === undefined) {
+                        checkedWithWorkType.push(checkedWithSalary[j])
+                    }
+                }
+            }
+        } // console.log(checkedWithWorkType)
         //-----------------------------------------------------------중복 제거-----------------------------------------------------------------//
-        let checkedData = checkedWithSalary.filter((v, i) => {
+        let checkedData = checkedWithWorkType.filter((v, i) => {
             return (
-                checkedWithSalary.findIndex((v2, j) => {
+                checkedWithWorkType.findIndex((v2, j) => {
                     return v.name === v2.name
                 }) === i
             )
@@ -342,6 +362,6 @@ exports.logic = async (isUser, isData) => {
         //----------------------------------------------------------------------------------------------------------------------------//
         return checkedData
     } catch (error) {
-        console.error("정책 추천 실패", error)
+        console.log("정책 추천 실패", error)
     }
 }
