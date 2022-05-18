@@ -4,6 +4,10 @@
 // let dataId = [23, 24]
 // const agent = request.agent(app)
 
+test("This is a sample", () => {
+    expect(true).toBe(true)
+})
+
 // describe("북마크 통합 테스트", () => {
 //     let token = ""
 //     beforeAll(async () => {
