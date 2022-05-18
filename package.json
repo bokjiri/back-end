@@ -5,8 +5,8 @@
     "main": "server.js",
     "scripts": {
         "test": "cross-env NODE_ENV=test jest",
-        "test:watch": "jest --watch",
-        "test:cov": "jest --coverage"
+        "test:watch": "cross-env NODE_ENV=test jest --watch",
+        "test:cov": "cross-env NODE_ENV=test jest --coverage"
     },
     "repository": {
         "type": "git",
