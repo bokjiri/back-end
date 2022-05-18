@@ -1,5 +1,54 @@
 const userService = require("../services/user.service")
 const jwt = require("jsonwebtoken")
+const bcrypt = require("bcrypt")
+
+exports.createUser = async (req, res, next) => {
+    try {
+        const { email, nickname, password } = req.body
+        const exEmail = await userService.checkByEmail(email)
+        if (exEmail) throw new Error()
+        const hashPassword = await bcrypt.hash(password, 12)
+        await userService.createItselfUser(email, nickname, hashPassword)
+        res.status(201).json({
+            result: true,
+            message: "회원가입완료",
+        })
+    } catch (error) {
+        return next({
+            message: "회원정보 조회 중 오류가 발생했습니다.",
+            stack: error,
+        })
+    }
+}
+exports.authUser = async (req, res, next) => {
+    try {
+        const { email, password } = req.body
+        const user = await userService.checkByEmail(email)
+        if (!user) throw new Error()
+        if (!user.password) throw new Error()
+        if (bcrypt.compareSync(password, user.password)) {
+            const { userId, nickname, profileUrl, email } = user
+            const payload = { userId, nickname, profileUrl, email }
+            const accessToken = jwt.sign(payload, process.env.ACCESSKEY, {
+                expiresIn: process.env.ATOKENEXPIRE,
+            })
+            const refreshToken = jwt.sign({ userId }, process.env.REFRESHKEY, {
+                expiresIn: process.env.RTOKENEXPIRE,
+            })
+            return res.status(200).json({
+                result: true,
+                message: "로그인완료",
+                accessToken,
+                refreshToken,
+            })
+        }
+    } catch (error) {
+        return next({
+            message: "회원정보 조회 중 오류가 발생했습니다.",
+            stack: error,
+        })
+    }
+}
 
 exports.getUsers = async (req, res, next) => {
     /*========================================================================================================
@@ -67,7 +116,7 @@ exports.patchUsers = async (req, res, next) => {
         const tokenUserId = res.locals.userId
         if (tokenUserId !== userId) throw new Error("토큰하고 유저아이디가 다름")
 
-        const { age, gender, region, disability, obstacle, marriage, target, salary, scholarship, family } = req.body
+        const { age, gender, region, disability, obstacle, marriage, target, salary, scholarship, family, workType } = req.body
 
         let job = req.body.job
         if (job === "미취업") job = "미취업자"
@@ -81,7 +130,7 @@ exports.patchUsers = async (req, res, next) => {
             arrRegion = []
         }
 
-        const result = await userService.updateUserInfo(userId, age, gender, arrRegion, disability, obstacle, job, marriage, target, salary, scholarship, family)
+        const result = await userService.updateUserInfo(userId, age, gender, arrRegion, disability, obstacle, job, marriage, target, salary, scholarship, family, workType)
 
         if (!result) throw new Error()
         /*=====================================================================================

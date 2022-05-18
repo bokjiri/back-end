@@ -2,7 +2,7 @@ const httpMocks = require("node-mocks-http")
 const userController = require("../user.controller")
 jest.mock("../../services/user.service")
 const userService = require("../../services/user.service")
-
+const paramsUserId = "1"
 let req, res, next, error
 beforeEach(() => {
     req = httpMocks.createRequest()
@@ -16,7 +16,7 @@ beforeEach(() => {
 describe("유저 컨트롤러 테스트", () => {
     describe("getUsers 테스트", () => {
         it("tokenUserId !== userId인 경우 '토큰하고 유저아이디가 다름'라는 메세지를 보내는가", async () => {
-            req.params.userId = 1
+            req.params.userId = paramsUserId
             res.locals.userId = 2
             error = new Error("토큰하고 유저아이디가 다름")
 
@@ -28,7 +28,7 @@ describe("유저 컨트롤러 테스트", () => {
             expect(next).toBeCalledWith(errorMessage)
         })
         it("회원정보 조회가 되지 않으면 '회원정보 조회 중 오류가 발생했습니다.'라는 메세지를 보내는가", async () => {
-            req.params.userId = 1
+            req.params.userId = paramsUserId
             res.locals.userId = 1
             error = new Error()
             const errorMessage = {
@@ -40,7 +40,7 @@ describe("유저 컨트롤러 테스트", () => {
             expect(next).toBeCalledWith(errorMessage)
         })
         it("회원정보 조회가 되면 '회원정보 조회 완료'라는 메세지를 보내는가", async () => {
-            req.params.userId = 1
+            req.params.userId = paramsUserId
             res.locals.userId = 1
 
             userService.checkById.mockReturnValue({
@@ -58,7 +58,7 @@ describe("유저 컨트롤러 테스트", () => {
             })
         })
         it("시·군을 선택하지 않았다면 시·군을 선택해 주세요로 바뀌어서 보내주는 가?", async () => {
-            req.params.userId = 1
+            req.params.userId = paramsUserId
             res.locals.userId = 1
 
             userService.checkById.mockReturnValue({
@@ -76,7 +76,7 @@ describe("유저 컨트롤러 테스트", () => {
             })
         })
         it("시·도 과 시·군을 선택하지 않았다면 시·도를 선택해 주세요와 시·군을 선택해 주세요로 바뀌어서 보내주는 가?", async () => {
-            req.params.userId = 1
+            req.params.userId = paramsUserId
             res.locals.userId = 1
 
             userService.checkById.mockReturnValue({
@@ -96,7 +96,7 @@ describe("유저 컨트롤러 테스트", () => {
     })
     describe("patchUsers 테스트", () => {
         it("tokenUserId !== userId인 경우 '회원정보 수정 중 오류가 발생했습니다.'라는 메세지를 보내는가", async () => {
-            req.params.userId = 1
+            req.params.userId = paramsUserId
             res.locals.userId = 2
 
             error = new Error("토큰하고 유저아이디가 다름")
@@ -109,7 +109,7 @@ describe("유저 컨트롤러 테스트", () => {
             expect(next).toBeCalledWith(errorMessage)
         })
         it("회원정보 수정이 되지 않으면 '회원정보 수정 중 오류가 발생했습니다.'라는 메세지를 보내는가", async () => {
-            req.params.userId = 1
+            req.params.userId = paramsUserId
             res.locals.userId = 1
 
             error = new Error()
@@ -130,63 +130,77 @@ describe("유저 컨트롤러 테스트", () => {
             expect(next).toBeCalledWith(errorMessage)
         })
         it("job이 미취업일 때 미취업자로 잘 바뀌는가", async () => {
-            req.params.userId = 1
+            req.params.userId = paramsUserId
             res.locals.userId = 1
             const age = 20201010
             const gender = []
             const region = "경기도 고양시"
             const disability = ["없음"]
-            let obstacle, marriage, target, salary, scholarship, family
+            let obstacle, marriage, target, salary, scholarship, family, workType
             let job = "미취업"
-            req.body = { age, gender, region, disability, marriage, target, salary, scholarship, family, job, obstacle }
+            req.body = { age, gender, region, disability, marriage, target, salary, scholarship, family, job, obstacle, workType }
 
             await userController.patchUsers(req, res, next)
-            expect(userService.updateUserInfo).toHaveBeenCalledWith(1, 20201010, [], ["경기도", "고양시"], ["없음"], undefined, "미취업자", undefined, undefined, undefined, undefined, undefined)
+            expect(userService.updateUserInfo).toHaveBeenCalledWith(
+                1,
+                20201010,
+                [],
+                ["경기도", "고양시"],
+                ["없음"],
+                undefined,
+                "미취업자",
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined
+            )
         })
         it("시·군을 선택해주세요로 들어왔을 때 빈값으로 바뀌는가", async () => {
-            req.params.userId = 1
+            req.params.userId = paramsUserId
             res.locals.userId = 1
             const age = 20201010
             const gender = []
             const region = "경기도 시·군을 선택해 주세요"
             const disability = ["없음"]
-            let obstacle, marriage, target, salary, scholarship, family
+            let obstacle, marriage, target, salary, scholarship, family, workType
             let job = "미취업"
-            req.body = { age, gender, region, disability, marriage, target, salary, scholarship, family, job, obstacle }
+            req.body = { age, gender, region, disability, marriage, target, salary, scholarship, family, job, obstacle, workType }
 
             await userController.patchUsers(req, res, next)
-            expect(userService.updateUserInfo).toHaveBeenCalledWith(1, 20201010, [], "경기도", ["없음"], undefined, "미취업자", undefined, undefined, undefined, undefined, undefined)
+            expect(userService.updateUserInfo).toHaveBeenCalledWith(1, 20201010, [], "경기도", ["없음"], undefined, "미취업자", undefined, undefined, undefined, undefined, undefined, undefined)
         })
         it("------- 시·군을 선택해주세요로 들어왔을 때 빈값으로 바뀌는가", async () => {
-            req.params.userId = 1
+            req.params.userId = paramsUserId
             res.locals.userId = 1
             const age = 20201010
             const gender = []
             const region = "------- 시·군을 선택해 주세요"
             const disability = ["없음"]
-            let obstacle, marriage, target, salary, scholarship, family
+            let obstacle, marriage, target, salary, scholarship, family, workType
             let job = "미취업"
-            req.body = { age, gender, region, disability, marriage, target, salary, scholarship, family, job, obstacle }
+            req.body = { age, gender, region, disability, marriage, target, salary, scholarship, family, job, obstacle, workType }
 
             await userController.patchUsers(req, res, next)
-            expect(userService.updateUserInfo).toHaveBeenCalledWith(1, 20201010, [], [], ["없음"], undefined, "미취업자", undefined, undefined, undefined, undefined, undefined)
+            expect(userService.updateUserInfo).toHaveBeenCalledWith(1, 20201010, [], [], ["없음"], undefined, "미취업자", undefined, undefined, undefined, undefined, undefined, undefined)
         })
         it("시·도를 선택해 주세요 시·군을 선택해주세요로 들어왔을 때 빈값으로 바뀌는가", async () => {
-            req.params.userId = 1
+            req.params.userId = paramsUserId
             res.locals.userId = 1
             const age = 20201010
             const gender = []
             const region = "시·도를 선택해 주세요 시·군을 선택해 주세요"
             const disability = ["없음"]
-            let obstacle, marriage, target, salary, scholarship, family
+            let obstacle, marriage, target, salary, scholarship, family, workType
             let job = "미취업"
-            req.body = { age, gender, region, disability, marriage, target, salary, scholarship, family, job, obstacle }
+            req.body = { age, gender, region, disability, marriage, target, salary, scholarship, family, job, obstacle, workType }
 
             await userController.patchUsers(req, res, next)
-            expect(userService.updateUserInfo).toHaveBeenCalledWith(1, 20201010, [], [], ["없음"], undefined, "미취업자", undefined, undefined, undefined, undefined, undefined)
+            expect(userService.updateUserInfo).toHaveBeenCalledWith(1, 20201010, [], [], ["없음"], undefined, "미취업자", undefined, undefined, undefined, undefined, undefined, undefined)
         })
         it("회원정보 수정이 되면 '회원정보 수정 완료'라는 메세지를 보내는가", async () => {
-            req.params.userId = 1
+            req.params.userId = paramsUserId
             res.locals.userId = 1
             const age = 20201010
             const gender = []
@@ -202,7 +216,7 @@ describe("유저 컨트롤러 테스트", () => {
     })
     describe("deleteUsers 테스트", () => {
         it("tokenUserId !== userId인 경우 '회원정보 삭제 중 오류가 발생했습니다.'라는 메세지를 보내는가", async () => {
-            req.params.userId = 1
+            req.params.userId = paramsUserId
             res.locals.userId = 2
 
             error = new Error("토큰하고 유저아이디가 다름")
@@ -215,7 +229,7 @@ describe("유저 컨트롤러 테스트", () => {
             expect(next).toBeCalledWith(errorMessage)
         })
         it("회원정보 삭제가 되지 않으면 '회원정보 삭제 중 오류가 발생했습니다.'라는 메세지를 보내는가", async () => {
-            req.params.userId = 1
+            req.params.userId = paramsUserId
             res.locals.userId = 1
 
             error = new Error()
@@ -229,7 +243,7 @@ describe("유저 컨트롤러 테스트", () => {
             expect(next).toBeCalledWith(errorMessage)
         })
         it("회원정보 삭제가 되면 '회원정보 삭제 완료'라는 메세지를 보내는가", async () => {
-            req.params.userId = 1
+            req.params.userId = paramsUserId
             res.locals.userId = 1
             userService.deleteUserInfo.mockReturnValue({ sadf: "asdf" })
             await userController.deleteUsers(req, res, next)

@@ -16,9 +16,13 @@ exports.postSearch = async (req, res, next) => {
         const UserData = await logic(isUser, isData)
         let dataList = []
         dataList.push(...UserData)
+        let searchList = []
+
+        if (/[`/\s/~!@#$%^&*|()_\\\'\";:+\/=?]/.test(searchKey)) {
+            return res.status(200).json({ message: "특문-공백" })
+        }
 
         const search = new RegExp(searchKey)
-        let searchList = []
 
         for (let i of dataList) {
             if (type === "전체") {
@@ -43,7 +47,7 @@ exports.postSearch = async (req, res, next) => {
             schema: { result: "FAIL", message: "정책 키워드를 확인해 주세요" }
         }
         =====================================================================================*/
-        if (!searchList.length) return res.status(400).json({ message: "정책 키워드를 확인해 주세요" })
+        if (!searchList.length) return res.status(200).json({ message: "정책 키워드를 확인해 주세요" })
         /*=====================================================================================
         #swagger.responses[200] = {
             description: '정상적으로 값을 받았을 때, 아래 예제와 같은 형태로 응답받습니다.',

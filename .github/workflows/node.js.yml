@@ -31,4 +31,5 @@ jobs:
     - name: test
       env:
         KAKAO_ID: ${{ secrets.KAKAO_ID }}
+        REDISURL: ${{ secrets.REDISURL }}
       run: npm test

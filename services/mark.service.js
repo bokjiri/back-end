@@ -16,130 +16,143 @@ exports.showMarkRedis = async (userId) => {
 exports.pushMarkRedis = async (userId) => {
     await redisSet(userId)
 }
-exports.deleteMarkRedis = async (userId) => {
-    await redisSet(userId)
-}
-exports.topLikesMarkRedis = async (userId) => {
-    const markInfo = await User.findOne({ userId }, { _id: false, topLikeMarkList: true })
-    const topLikesMarkList = JSON.stringify(markInfo)
-    await Client.set("topMarkList", topLikesMarkList)
-}
+// exports.deleteMarkRedis = async (userId) => {
+//     await redisSet(userId)
+// }
+// exports.topLikesMarkRedis = async (userId) => {
+//     const markInfo = await User.findOne({ userId }, { _id: false, topLikeMarkList: true })
+//     const topLikesMarkList = JSON.stringify(markInfo)
+//     await Client.set("topMarkList", topLikesMarkList)
+// }
 
 exports.showMark = async (userId) => {
     try {
         const markInfo = await User.findOne({ userId }, { _id: false, mark: true })
-        const data = await BokjiApi.find({ dataId: markInfo.mark }, { _id: false, dataId: true, name: true, desire: true })
-        console.log(data)
         return await BokjiApi.find({ dataId: markInfo.mark }, { _id: false, dataId: true, name: true, desire: true })
     } catch (err) {}
 }
 
 exports.pushMark = async (userId, dataId) => {
     try {
-        const data = await BokjiApi.findOne({ dataId }, { _id: false, dataId: true })
-        if (!data) throw new Error()
-
         const { mark } = await User.findOne({ userId }, { _id: false, mark: true })
-        if (mark.includes(dataId)) throw new Error()
-
-        return User.updateOne(
-            { userId },
-            {
-                $push: { mark: [dataId] },
-            }
-        )
-    } catch (err) {}
-}
-
-exports.deleteMark = async (userId, dataId) => {
-    try {
-        const checkId = await User.findOne({ userId }, { mark: true })
-        if (checkId.mark.indexOf(dataId) !== -1)
-            return await User.updateOne(
+        if (!mark.includes(dataId)) {
+            return User.updateOne(
+                { userId },
+                {
+                    $push: { mark: [dataId] },
+                }
+            )
+        } else if (mark.includes(dataId)) {
+            return User.updateOne(
                 { userId },
                 {
                     $pullAll: { mark: [dataId] },
                 }
             )
+        }
     } catch (err) {
-        console.log(err)
+        // console.log(err)
+        return error
+    }
+}
+exports.dataCheck = async (dataId) => {
+    try {
+        return await BokjiApi.findOne({ dataId }, { _id: false, dataId: true, bookmarkState: true })
+    } catch (error) {
+        // console.log(error)
+        return error
     }
 }
 
-exports.topMark = async (userId) => {
-    const userMarkList = await User.find({}, { _id: false, likeMark: true })
-    let arr1 = []
-    let result = {}
-    userMarkList.map((value) => {
-        arr1.push(...value.likeMark)
-    })
-    arr1.forEach((x) => {
-        result[x] = (result[x] || 0) + 1
-    })
-    // console.log({ result })
+// exports.deleteMark = async (userId, dataId) => {
+//     try {
+//         const checkId = await User.findOne({ userId }, { _id: false, mark: true })
+//         if (checkId.mark.includes(dataId))
+//             return await User.updateOne(
+//                 { userId },
+//                 {
+//                     $pullAll: { mark: [dataId] },
+//                 }
+//             )
+//     } catch (err) {
+//         console.log(err)
+//     }
+// }
 
-    let sortable = []
-    for (let i in result) {
-        sortable.push([i, result[i]])
-    }
-    sortable.sort(function (a, b) {
-        return b[1] - a[1]
-    })
-    // console.log({ sortable })
+// exports.topMark = async (userId) => {
+//     const userMarkList = await User.find({}, { _id: false, likeMark: true })
+//     let arr1 = []
+//     let result = {}
+//     userMarkList.map((value) => {
+//         arr1.push(...value.likeMark)
+//     })
+//     arr1.forEach((x) => {
+//         result[x] = (result[x] || 0) + 1
+//     })
+//     // console.log({ result })
 
-    a = sortable.slice(0, 5)
-    let arr2 = []
-    a.map((value) => {
-        arr2.push(...value)
-    })
-    let topMarkArr = []
-    for (let i = 0; i < arr2.length; i++) {
-        if (i % 2 === 0) {
-            topMarkArr.push(arr2[i])
-        }
-    }
-    // console.log("topMarkArr: " + topMarkArr)
+//     let sortable = []
+//     for (let i in result) {
+//         sortable.push([i, result[i]])
+//     }
+//     sortable.sort(function (a, b) {
+//         return b[1] - a[1]
+//     })
+//     // console.log({ sortable })
 
-    let topMarkList = []
-    for (let i = 0; i < topMarkArr.length; i++) {
-        const markData = await BokjiApi.find({ dataId: topMarkArr[i] }, { _id: false, dataId: true, name: true, desire: true })
-        topMarkList.push(markData)
-    }
-    // console.log("topMarkList: " + topMarkList)
+//     a = sortable.slice(0, 5)
+//     let arr2 = []
+//     a.map((value) => {
+//         arr2.push(...value)
+//     })
+//     let topMarkArr = []
+//     for (let i = 0; i < arr2.length; i++) {
+//         if (i % 2 === 0) {
+//             topMarkArr.push(arr2[i])
+//         }
+//     }
+//     // console.log("topMarkArr: " + topMarkArr)
 
-    const markListCleansing = []
-    topMarkList.map((value) => {
-        markListCleansing.push(...value)
-    })
-    // console.log("markListCleansing: " + markListCleansing)
-    await User.updateOne(
-        { userId },
-        {
-            $set: { topLikeMarkList: markListCleansing },
-        },
-        {
-            $unset: { topLikeMarkList: markListCleansing },
-        }
-    )
-    return markListCleansing
-}
+//     let topMarkList = []
+//     for (let i = 0; i < topMarkArr.length; i++) {
+//         const markData = await BokjiApi.find({ dataId: topMarkArr[i] }, { _id: false, dataId: true, name: true, desire: true })
+//         topMarkList.push(markData)
+//     }
+//     // console.log("topMarkList: " + topMarkList)
 
-exports.likemark = async (userId, dataId) => {
-    const findLikeMark = await User.findOne({ userId }, { _id: false, likeMark: true })
+//     const markListCleansing = []
+//     topMarkList.map((value) => {
+//         markListCleansing.push(...value)
+//     })
+//     // console.log("markListCleansing: " + markListCleansing)
+//     await User.updateOne(
+//         { userId },
+//         {
+//             $set: { topLikeMarkList: markListCleansing },
+//         },
+//         {
+//             $unset: { topLikeMarkList: markListCleansing },
+//         }
+//     )
+//     return markListCleansing
+// }
 
-    if (findLikeMark.likeMark.includes(dataId)) {
-        return await User.updateOne(
-            { userId },
-            {
-                $pullAll: { likeMark: dataId },
-            }
-        )
-    } else {
-        return await User.updateOne(
-            { userId },
-            {
-                $push: { likeMark: dataId },
-            }
-        )
-    }
-}
+// exports.likemark = async (userId, dataId) => {
+//     const findLikeMark = await User.findOne({ userId }, { _id: false, likeMark: true })
+
+//     if (findLikeMark.likeMark.includes(dataId)) {
+//         return await User.updateOne(
+//             { userId },
+//             {
+//                 $pullAll: { likeMark: dataId },
+//             }
+//         )
+//     } else {
+//         return await User.updateOne(
+//             { userId },
+//             {
+//                 $push: { likeMark: dataId },
+//             }
+//         )
+//     }
+// }

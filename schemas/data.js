@@ -25,6 +25,9 @@ const dataSchema = mongoose.Schema({
     marriage: {
         type: [String],
     },
+    workType: {
+        type: [String],
+    },
     gender: {
         type: String,
     },
@@ -47,6 +50,9 @@ const dataSchema = mongoose.Schema({
         type: String,
     },
     summary: {
+        type: String,
+    },
+    criteria: {
         type: String,
     },
     support: {

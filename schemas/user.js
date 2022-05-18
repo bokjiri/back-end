@@ -28,6 +28,9 @@ const userSchema = mongoose.Schema({
     job: {
         type: [String],
     },
+    workType: {
+        type: [String],
+    },
     family: {
         type: Number,
     },
@@ -53,9 +56,16 @@ const userSchema = mongoose.Schema({
     },
     profileUrl: {
         type: String,
+        default: '"http://k.kakaocdn.net/dn/dpk9l1/btqmGhA2lKL/Oz0wDuJn1YV2DIn92f6DVK/img_640x640.jpg"',
     },
     dismatchData: {
         type: [Number],
+    },
+    password: {
+        type: String,
+    },
+    kakao: {
+        type: String,
     },
 })
 autoIdSetter(userSchema, mongoose, "userSchema", "userId")

@@ -1,7 +1,7 @@
 const { body, validationResult } = require("express-validator")
 const moment = require("moment")
 const ageValidate = moment().format("YYYYMMDD")
-const { regionValidate, targetValidate, obstacleValidate, scholarshipValidate } = require("./validator.array")
+const { regionValidate, targetValidate, obstacleValidate, scholarshipValidate, workTypeValidate } = require("./validator.array")
 
 const error = (req, res, next) => {
     const errors = validationResult(req)
@@ -40,10 +40,13 @@ const userValidation = [
     body("target")
         .isArray({ max: 5 })
         .isIn([...targetValidate, ""]),
-    // body("salary").isInt({ max: 9999999999 }).withMessage("너무 많아"),
     body("scholarship")
         .isArray()
         .isIn([...scholarshipValidate, ""]),
+    body("workType")
+        .isArray()
+        .isIn([...workTypeValidate, ""]),
+    // body("salary").isInt({ max: 9999999999 }).withMessage("너무 많아"),
     // body("family").isInt(),
     error,
 ]

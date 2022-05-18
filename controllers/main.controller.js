@@ -37,7 +37,7 @@ exports.getMain = async (req, res, next) => {
         =====================================================================================*/
             return res.status(404).json({ result: "FAIL", code: -11, message: "데이터베이스 조회 실패" })
         }
-        console.log(isUser)
+        // console.log(isUser)
         // 정책 추천 로직
         const checkedData = await this.logic(isUser, isData)
         if (!checkedData) {
@@ -98,7 +98,7 @@ exports.getMain = async (req, res, next) => {
             etc,
         })
     } catch (error) {
-        console.error("메인 페이지 추천 정책 조회 실패", error)
+        // console.log("메인 페이지 추천 정책 조회 실패", error)
         /*=====================================================================================
         #swagger.responses[400] = {
             description: '정상적으로 값을 받지 못했을 때, 아래 예제와 같은 형태로 응답받습니다.',
@@ -314,64 +314,47 @@ exports.logic = async (isUser, isData) => {
         } // console.log(checkedWithTarget)
         //-----------------------------------------------------------salary/family 조건 검사-----------------------------------------------------------------//
         let checkedWithSalary = []
-        //만약 isUser에 salary와 family 조건이 존재하지 않는다면
-        if (!isUser.salary || !isUser.family) {
+        //만약 isUser에 family 조건이 존재하지 않는다면 salary가 상관 없는 정책만 추가
+        if (!isUser.family) {
             for (let j = 0; j < checkedWithTarget.length; j++) {
-                if (checkedWithTarget[j].target.includes("저소득") === false) {
+                if (!checkedWithTarget[j].salary) {
                     checkedWithSalary.push(checkedWithTarget[j])
                 }
             }
         }
         //만약 isUser에 salary와 family 조건이 존재한다면
-        else if (isUser.salary && isUser.family) {
-            //기준 중위 소득 60% 미만인 경우 저소득 정책 추가
-            if (isUser.family === 1 && isUser.salary <= 116) {
-                for (let j = 0; j < checkedWithTarget.length; j++) {
-                    checkedWithSalary.push(checkedWithTarget[j])
-                }
-            } else if (isUser.family === 2 && isUser.salary <= 195) {
-                for (let j = 0; j < checkedWithTarget.length; j++) {
-                    checkedWithSalary.push(checkedWithTarget[j])
-                }
-            } else if (isUser.family === 3 && isUser.salary <= 251) {
-                for (let j = 0; j < checkedWithTarget.length; j++) {
-                    checkedWithSalary.push(checkedWithTarget[j])
-                }
-            } else if (isUser.family === 4 && isUser.salary <= 307) {
-                for (let j = 0; j < checkedWithTarget.length; j++) {
-                    checkedWithSalary.push(checkedWithTarget[j])
-                }
-            } else if (isUser.family === 5 && isUser.salary <= 361) {
-                for (let j = 0; j < checkedWithTarget.length; j++) {
-                    checkedWithSalary.push(checkedWithTarget[j])
-                }
-            } else if (isUser.family === 6 && isUser.salary <= 414) {
-                for (let j = 0; j < checkedWithTarget.length; j++) {
-                    checkedWithSalary.push(checkedWithTarget[j])
-                }
-            } else if (isUser.family === 7 && isUser.salary <= 466) {
-                for (let j = 0; j < checkedWithTarget.length; j++) {
-                    checkedWithSalary.push(checkedWithTarget[j])
-                }
-            } else if (isUser.family === 8 && isUser.salary <= 519) {
-                for (let j = 0; j < checkedWithTarget.length; j++) {
+        else {
+            //salary가 상관 없는 정책 추가
+            for (let j = 0; j < checkedWithTarget.length; j++) {
+                if (!checkedWithTarget[j].salary || checkedWithTarget[j].salary > isUser.salary) {
                     checkedWithSalary.push(checkedWithTarget[j])
                 }
             }
-            //기준 중위 소득 60% 이상인 경우 저소득 정책 제외
-            else {
-                for (let j = 0; j < checkedWithTarget.length; j++) {
-                    if (checkedWithTarget[j].target.includes("저소득") === false) {
-                        checkedWithSalary.push(checkedWithTarget[j])
+        } // console.log(checkedWithSalary)
+        //-----------------------------------------------------------workType 조건 검사-----------------------------------------------------------------//
+        let checkedWithWorkType = []
+        //만약 isUser에 workType 조건이 존재하지 않는다면
+        if (!isUser.workType[0]) {
+            for (let j = 0; j < checkedWithSalary.length; j++) {
+                if (checkedWithSalary[j].workType[0] === undefined) {
+                    checkedWithWorkType.push(checkedWithSalary[j])
+                }
+            }
+        }
+        //만약 isUser에 workType 조건이 존재한다면
+        else {
+            for (let j = 0; j < checkedWithSalary.length; j++) {
+                for (let i = 0; i < isUser.workType.length; i++) {
+                    if (checkedWithSalary[j].workType.includes(isUser.workType[i]) === true || checkedWithSalary[j].workType[0] === undefined) {
+                        checkedWithWorkType.push(checkedWithSalary[j])
                     }
                 }
             }
-        } //
-        // console.log(checkedWithSalary)
+        } // console.log(checkedWithWorkType)
         //-----------------------------------------------------------중복 제거-----------------------------------------------------------------//
-        let checkedData = checkedWithSalary.filter((v, i) => {
+        let checkedData = checkedWithWorkType.filter((v, i) => {
             return (
-                checkedWithSalary.findIndex((v2, j) => {
+                checkedWithWorkType.findIndex((v2, j) => {
                     return v.name === v2.name
                 }) === i
             )
@@ -379,6 +362,6 @@ exports.logic = async (isUser, isData) => {
         //----------------------------------------------------------------------------------------------------------------------------//
         return checkedData
     } catch (error) {
-        console.error("정책 추천 실패", error)
+        // console.log("정책 추천 실패", error)
     }
 }

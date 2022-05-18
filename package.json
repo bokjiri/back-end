@@ -4,9 +4,9 @@
     "description": "",
     "main": "server.js",
     "scripts": {
-        "test": "jest",
-        "test:watch": "jest --watch",
-        "test:cov": "jest --coverage"
+        "test": "cross-env NODE_ENV=test jest",
+        "test:watch": "cross-env NODE_ENV=test jest --watch",
+        "test:cov": "cross-env NODE_ENV=test jest --coverage"
     },
     "repository": {
         "type": "git",
@@ -49,6 +49,7 @@
         "xml-js": "^1.6.11"
     },
     "devDependencies": {
+        "cross-env": "^7.0.3",
         "jest": "^27.5.1",
         "node-mocks-http": "^1.11.0",
         "nodemon": "^2.0.16",
