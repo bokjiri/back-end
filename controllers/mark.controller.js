@@ -59,11 +59,13 @@ exports.postMarks = async (req, res, next) => {
         const { dataId } = req.body
         if (!userId || !dataId) throw new Error("userId , dataId를 확인 해주세요")
         await pushMark(userId, dataId)
-        const data = await dataCheck(dataId)
+        let data = await dataCheck(dataId)
         const { mark } = await checkBookmark(userId)
+
         for (i of mark) {
-            if (i === dataId) data.bookmarkState = true
+            if (i === parseInt(dataId)) data.bookmarkState = true
         }
+
         await pushMarkRedis(userId)
 
         /*=====================================================================================
