@@ -101,18 +101,20 @@ async function load(myConsole) {
                         if (/~/.test(k.ageInfo._cdata)) {
                             age = k.ageInfo._cdata.split("~")
                             age[0] = age[0].replace(/[^0-9]/g, "")
-                            if (!age[0]) age[0] = "0"
+                            if (!age[0]) age[0] = "20"
                             age[1] = age[1].replace(/[^0-9]/g, "")
-                            if (!age[1]) age[1] = "999"
+                            if (!age[1]) age[1] = "39"
                             // console.log("~.test", age, k.ageInfo._cdata)
                         } else if (/제한없음/.test(k.ageInfo._cdata)) {
+                            age[0] = "20"
+                            age[1] = "39"
                             // console.log("제한없음", k.ageInfo._cdata)
                         } else if (/이상/.test(k.ageInfo._cdata) && /[^이하]/.test(k.ageInfo._cdata)) {
                             age[0] = k.ageInfo._cdata.replace(/[^0-9]/g, "")
-                            age[1] = "999"
+                            age[1] = "39"
                             // console.log("이상", k.ageInfo._cdata, age)
                         } else if (/[^이상]/.test(k.ageInfo._cdata) && /이하/.test(k.ageInfo._cdata)) {
-                            age[0] = "0"
+                            age[0] = "20"
                             age[1] = k.ageInfo._cdata.replace(/[^0-9]/g, "")
                             // console.log("이하", k.ageInfo._cdata, age)
                         } else {
