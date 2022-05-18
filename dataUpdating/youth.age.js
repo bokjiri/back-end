@@ -1,9 +1,11 @@
 require("dotenv").config()
+const connect = require("../schemas")
+connect()
 const axios = require("axios")
 const convert = require("xml-js")
 const moment = require("moment")
 const newYouthApiDataDate = moment().format("YYYY-MM-DD")
-// const Data = require("../schemas/data")
+const Data = require("../schemas/data")
 const { classifyPeriod } = require("../openAPI/index.youth")
 const { regionCode, regionName } = require("../openAPI/area")
 const apiKey = process.env.CHUNG_KEY
@@ -65,8 +67,8 @@ async function load(i, regionCode, regionName) {
                 // myConsole.log("신청절차", k.rqutProcCn._cdata)
                 // myConsole.log("심사발표", k.jdgnPresCn._cdata)
                 // myConsole.log("지원규모", k.sporScvl._cdata)
-                console.log("지역 ID", k.polyBizSecd._text)
-                console.log("regioncode", regionCode)
+                // console.log("지역 ID", k.polyBizSecd._text)
+                // console.log("regioncode", regionCode)
                 const resultPeriod = await classifyPeriod(k.rqutPrdCn._cdata)
 
                 if (resultPeriod === false || resultPeriod === undefined) continue
@@ -75,18 +77,20 @@ async function load(i, regionCode, regionName) {
                 if (/~/.test(k.ageInfo._cdata)) {
                     age = k.ageInfo._cdata.split("~")
                     age[0] = age[0].replace(/[^0-9]/g, "")
-                    if (!age[0]) age[0] = "0"
+                    if (!age[0]) age[0] = "20"
                     age[1] = age[1].replace(/[^0-9]/g, "")
-                    if (!age[1]) age[1] = "999"
+                    if (!age[1]) age[1] = "39"
                     // console.log("~.test", age, k.ageInfo._cdata)
                 } else if (/제한없음/.test(k.ageInfo._cdata)) {
+                    age[0] = "20"
+                    age[1] = "39"
                     console.log("제한없음", k.ageInfo._cdata)
                 } else if (/이상/.test(k.ageInfo._cdata) && /[^이하]/.test(k.ageInfo._cdata)) {
                     age[0] = k.ageInfo._cdata.replace(/[^0-9]/g, "")
-                    age[1] = "999"
+                    age[1] = "39"
                     // console.log("이상", k.ageInfo._cdata, age)
                 } else if (/[^이상]/.test(k.ageInfo._cdata) && /이하/.test(k.ageInfo._cdata)) {
-                    age[0] = "0"
+                    age[0] = "20"
                     age[1] = k.ageInfo._cdata.replace(/[^0-9]/g, "")
                     // console.log("이하", k.ageInfo._cdata, age)
                 } else {
@@ -125,34 +129,34 @@ async function load(i, regionCode, regionName) {
                 let region = regionName // 지역
                 let process = k.rqutProcCn._cdata
                 let period = k.rqutPrdCn._cdata
-                myConsole.log("기관 및 지자체 구분", k.polyBizTy._cdata)
-                myConsole.log("참여요건 - 전공", k.majrRqisCn._cdata)
-                myConsole.log("참여요건 - 특화분야", k.cnsgNmor._cdata)
-                myConsole.log("신청절차", k.rqutProcCn._cdata)
-                myConsole.log("심사발표", k.jdgnPresCn._cdata)
-                myConsole.log("지원규모", k.sporScvl._cdata)
-                myConsole.log("정책 ID", k.bizId._text)
-                myConsole.log("지역 ID", k.polyBizSecd._text)
-                myConsole.log("regioncode", regionCode)
+                // myConsole.log("기관 및 지자체 구분", k.polyBizTy._cdata)
+                // myConsole.log("참여요건 - 전공", k.majrRqisCn._cdata)
+                // myConsole.log("참여요건 - 특화분야", k.cnsgNmor._cdata)
+                // myConsole.log("신청절차", k.rqutProcCn._cdata)
+                // myConsole.log("심사발표", k.jdgnPresCn._cdata)
+                // myConsole.log("지원규모", k.sporScvl._cdata)
+                // myConsole.log("정책 ID", k.bizId._text)
+                // myConsole.log("지역 ID", k.polyBizSecd._text)
+                // myConsole.log("regioncode", regionCode)
                 // myConsole.log({ total })
                 // myConsole.log({ pageIndex })
-                myConsole.log({ page: i })
+                // myConsole.log({ page: i })
                 myConsole.log({ name })
                 myConsole.log({ age })
-                myConsole.log({ summary })
-                myConsole.log({ desire })
-                myConsole.log({ job })
-                myConsole.log({ scholarship })
-                myConsole.log({ institution })
-                myConsole.log({ region })
-                myConsole.log({ link })
-                myConsole.log({ support })
-                myConsole.log({ gender })
-                myConsole.log({ period })
-                myConsole.log({ 심사발표: k.jdgnPresCn._cdata })
-                myConsole.log({ process })
+                // myConsole.log({ summary })
+                // myConsole.log({ desire })
+                // myConsole.log({ job })
+                // myConsole.log({ scholarship })
+                // myConsole.log({ institution })
+                // myConsole.log({ region })
+                // myConsole.log({ link })
+                // myConsole.log({ support })
+                // myConsole.log({ gender })
+                // myConsole.log({ period })
+                // myConsole.log({ 심사발표: k.jdgnPresCn._cdata })
+                // myConsole.log({ process })
                 myConsole.log("-------------------")
-
+                await Data.updateMany({ name }, { $set: { age } })
                 // await Data.create({
                 //     age,
                 //     name,
