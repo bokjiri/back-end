@@ -242,3 +242,14 @@ async function afterData() {
     }
     console.log("done")
 }
+checkAgeData()
+async function checkAgeData() {
+    console.log("start")
+    const ageData = await Data.find({}, { _id: false })
+    for (i of ageData) {
+        if ((i.age === undefined || i.age.length === 0) && (i.region !== undefined || i.region.length !== 0)) {
+            myConsole.log(i)
+        }
+    }
+    console.log("end")
+}

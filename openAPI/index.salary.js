@@ -14,32 +14,10 @@ const myConsole = new console.Console(fs.createWriteStream("./openAPI/index.sala
 
 const desireCode = [100, 110, 120, 130, 140, 150, 160, 170, 180]
 const desireName = ["일자리", "주거 및 일상생활", "주거 및 일상생활", "건강", "건강", "교육 및 돌봄", "교육 및 돌봄", "기타", "안전 및 권익보장"]
-const keyword = [
-    "차상위",
-    "중위소득 30",
-    "중위소득 50",
-    "중위소득 60",
-    "중위소득 70",
-    "중위소득 80",
-    "중위소득 90",
-    "중위소득 100",
-    "중위소득 110",
-    "중위소득 120",
-    "중위소득 130",
-    "중위소득 140",
-    "중위소득 150",
-    "중위소득 160",
-    "중위소득 170",
-    "중위소득 180",
-    "중위소득 190",
-    "중위소득 200",
-    "중위소득 200 초과",
-]
 
-loadOpenApi()
+// loadOpenApi()
 async function loadOpenApi() {
     try {
-        // for (let x = 0; x < keyword.length; x++) {
         for (let i = 0; i < desireCode.length; i++) {
             console.log(desireName[i])
             let url = "http://apis.data.go.kr/B554287/NationalWelfareInformations/NationalWelfarelist"
@@ -49,7 +27,6 @@ async function loadOpenApi() {
             queryParams += "&" + encodeURIComponent("numOfRows") + "=" + encodeURIComponent("500") /* */
             queryParams += "&" + encodeURIComponent("srchKeyCode") + "=" + encodeURIComponent("003") /* */
             queryParams += "&" + encodeURIComponent("desireArray") + "=" + encodeURIComponent(desireCode[i]) /* */
-            // queryParams += "&" + encodeURIComponent("searchWrd") + "=" + encodeURIComponent(keyword[x]) /* */
 
             const response = await axios.get(url + queryParams)
             const data = response.data
@@ -178,7 +155,7 @@ async function loadOpenApi() {
                 console.log(servList)
             }
         }
-        // }
+
         console.log("done")
     } catch (error) {
         console.error(error)
@@ -196,3 +173,49 @@ async function checkData() {
     }
 }
 // checkData()
+salaryData()
+async function salaryData() {
+    console.log("start")
+    const checkSalary = await Data.find({}, { _id: false })
+    for (i of checkSalary) {
+        if (!i.salary && i.criteria) {
+            const name = i.name
+            const support = i.support.replace(/\n/g, "").replace(/ /g, "")
+            const summary = i.summary.replace(/\n/g, "").replace(/ /g, "")
+            const criteria = i.criteria.replace(/\n/g, "").replace(/ /g, "")
+            const checkSummaryThree = summary.search(/중위소득\d\d\d%/)
+            const checkSummaryThreeDot = summary.search(/중위소득.\d\d\d%/)
+            const checkSummaryTwo = summary.search(/중위소득\d\d%/)
+            const checkSummaryTwoDot = summary.search(/중위소득.\d\d%/)
+            let salary
+            if (checkSummaryThree !== -1) {
+                salary = summary[checkSummaryThree + 4] + summary[checkSummaryThree + 5] + summary[checkSummaryThree + 6]
+                myConsole.log({ name, support, summary, criteria, salary })
+            } else if (checkSummaryThreeDot !== -1) {
+                salary = summary[checkSummaryThreeDot + 5] + summary[checkSummaryThreeDot + 6] + summary[checkSummaryThreeDot + 7]
+                myConsole.log({ name, support, summary, criteria, salary })
+            } else if (checkSummaryTwoDot !== -1) {
+                salary = summary[checkSummaryTwoDot + 5] + summary[checkSummaryTwoDot + 6]
+                myConsole.log({ name, support, summary, criteria, salary })
+            } else if (checkSummaryTwo !== -1) {
+                salary = summary[checkSummaryTwo + 4] + summary[checkSummaryTwo + 5]
+                myConsole.log({ name, support, summary, criteria, salary })
+            }
+            // const checkSummary = summary.search(/\d%/)
+            // let salary
+            // if (checkSummary !== -1) {
+            //     if (!isNaN(summary[checkSummary - 2]) && !isNaN(summary[checkSummary - 1])) {
+            //         salary = summary[checkSummary - 2] + summary[checkSummary - 1] + summary[checkSummary]
+            //         console.log(summary, salary)
+            //     } else if (!isNaN(summary[checkSummary - 1])) {
+            //         salary = summary[checkSummary - 1] + summary[checkSummary]
+            //         console.log(summary, salary)
+            //     }
+            // }
+            // if (salary) {
+            //     myConsole.log({ name, support, summary, criteria, salary })
+            // }
+        }
+    }
+    console.log("done")
+}
