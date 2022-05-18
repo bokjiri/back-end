@@ -1,5 +1,54 @@
 const userService = require("../services/user.service")
 const jwt = require("jsonwebtoken")
+const bcrypt = require("bcrypt")
+
+exports.createUser = async (req, res, next) => {
+    try {
+        const { email, nickname, password } = req.body
+        const exEmail = await userService.checkByEmail(email)
+        if (exEmail) throw new Error()
+        const hashPassword = await bcrypt.hash(password, 12)
+        await userService.createItselfUser(email, nickname, hashPassword)
+        res.status(201).json({
+            result: true,
+            message: "회원가입완료",
+        })
+    } catch (error) {
+        return next({
+            message: "회원정보 조회 중 오류가 발생했습니다.",
+            stack: error,
+        })
+    }
+}
+exports.authUser = async (req, res, next) => {
+    try {
+        const { email, password } = req.body
+        const user = await userService.checkByEmail(email)
+        if (!user) throw new Error()
+        if (!user.password) throw new Error()
+        if (bcrypt.compareSync(password, user.password)) {
+            const { userId, nickname, profileUrl, email } = user
+            const payload = { userId, nickname, profileUrl, email }
+            const accessToken = jwt.sign(payload, process.env.ACCESSKEY, {
+                expiresIn: process.env.ATOKENEXPIRE,
+            })
+            const refreshToken = jwt.sign({ userId }, process.env.REFRESHKEY, {
+                expiresIn: process.env.RTOKENEXPIRE,
+            })
+            return res.status(200).json({
+                result: true,
+                message: "로그인완료",
+                accessToken,
+                refreshToken,
+            })
+        }
+    } catch (error) {
+        return next({
+            message: "회원정보 조회 중 오류가 발생했습니다.",
+            stack: error,
+        })
+    }
+}
 
 exports.getUsers = async (req, res, next) => {
     /*========================================================================================================
