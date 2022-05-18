@@ -6,17 +6,6 @@ name: Node.js CI
 on:
   pull_request:
     branches: [ main, dev ]
-env:
-  KAKAO_ID: ${{ secrets.KAKAO_ID }}
-  REDISURL: ${{ secrets.REDISURL }}
-  ACCESSKEY: ${{ secrets.ACCESSKEY }}
-  REFRESHKEY: ${{ secrets.REFRESHKEY }}
-  SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
-  COOKIE_SECRET: ${{ secrets.COOKIE_SECRET }}
-  DBID: ${{ secrets.DBID }}
-  DBPW: ${{ secrets.DBPW }}
-  MAIL_ID: ${{ secrets.MAIL_ID }}
-  MAIL_PW: ${{ secrets.MAIL_PW }}
 
 jobs:
   build:
@@ -44,7 +33,16 @@ jobs:
 
     - run: npm ci
     - run: npm run build --if-present
-    - run: npm test
-
-
-
+    - name:
+      env:
+        KAKAO_ID: ${{ secrets.KAKAO_ID }}
+        REDISURL: ${{ secrets.REDISURL }}
+        ACCESSKEY: ${{ secrets.ACCESSKEY }}
+        REFRESHKEY: ${{ secrets.REFRESHKEY }}
+        SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
+        COOKIE_SECRET: ${{ secrets.COOKIE_SECRET }}
+        DBID: ${{ secrets.DBID }}
+        DBPW: ${{ secrets.DBPW }}
+        MAIL_ID: ${{ secrets.MAIL_ID }}
+        MAIL_PW: ${{ secrets.MAIL_PW }}
+      run: npm test
