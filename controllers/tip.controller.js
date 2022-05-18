@@ -18,7 +18,9 @@ exports.postTips = async (req, res, next) => {
         const time = new Date().toTimeString().split(" ")[0]
         const data = "\nuserId: " + userId.toString() + " dataId: " + dataId.toString() + " ||" + " Date: " + date + " Time: " + time
 
-        fs.writeFile(process.env.TIPLOG || `./tip_log.txt`, data, { flag: "a+" }, (err) => {})
+        fs.writeFile(process.env.TIPLOG || `./tip_log.txt`, data, { flag: "a+" }, (err) => {
+            console.log(err)
+        })
         /*=====================================================================================
         #swagger.responses[201] = {
             description: '정상적으로 값을 받았을 때, 아래 예제와 같은 형태로 응답받습니다.',

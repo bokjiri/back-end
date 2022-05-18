@@ -5,6 +5,7 @@ jest.mock("../../schemas/user")
 jest.mock("../../schemas/data")
 const User = require("../../schemas/user")
 const BokjiApi = require("../../schemas/data")
+const fs = require("fs")
 
 let req, res, next, err, dataId, userId, dismatchData
 beforeEach(() => {
@@ -76,6 +77,18 @@ describe("버그제보 테스트 코드", () => {
             await tipController.postTips(req, res, next)
             expect(res.statusCode).toEqual(200)
             expect(res._getJSONData()).toStrictEqual(result)
+        })
+        it("postTips이 성공 했을때 writeFile이 잘 실행되는가?", async () => {
+            req.body.dataId = dataId
+            res.locals.userId = userId
+            dismatchData = { dismatchData: [2, 3, 4] }
+            BokjiApi.findOne.mockReturnValue(dataId)
+            User.findOne.mockReturnValue(dismatchData)
+            User.updateOne.mockReturnValue(dataId)
+            fs.writeFile = jest.fn()
+            await tipController.postTips(req, res, next)
+            expect(fs.writeFile).toHaveBeenCalledTimes(1)
+            fs.writeFile.mockClear()
         })
     })
 })
