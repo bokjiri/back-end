@@ -37,7 +37,7 @@ exports.getMain = async (req, res, next) => {
         =====================================================================================*/
             return res.status(404).json({ result: "FAIL", code: -11, message: "데이터베이스 조회 실패" })
         }
-        console.log(isUser)
+        // console.log(isUser)
         // 정책 추천 로직
         const checkedData = await this.logic(isUser, isData)
         if (!checkedData) {
@@ -98,7 +98,7 @@ exports.getMain = async (req, res, next) => {
             etc,
         })
     } catch (error) {
-        console.log("메인 페이지 추천 정책 조회 실패", error)
+        // console.log("메인 페이지 추천 정책 조회 실패", error)
         /*=====================================================================================
         #swagger.responses[400] = {
             description: '정상적으로 값을 받지 못했을 때, 아래 예제와 같은 형태로 응답받습니다.',
@@ -362,6 +362,6 @@ exports.logic = async (isUser, isData) => {
         //----------------------------------------------------------------------------------------------------------------------------//
         return checkedData
     } catch (error) {
-        console.log("정책 추천 실패", error)
+        // console.log("정책 추천 실패", error)
     }
 }
