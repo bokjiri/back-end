@@ -133,35 +133,17 @@ describe("북마크 테스트 코드", () => {
         it("postMarks가 200과 응답값을 잘 리턴하는가?", async () => {
             res.locals.userId = userId
             req.body.dataId = dataId
-            dataList = [1, 2, 3, 4, 5]
-            markList = { mark: [6, 7, 8] }
-            BokjiApi.findOne.mockReturnValue(dataList)
-            User.findOne.mockReturnValue(markList)
-            User.updateOne.mockReturnValue(updateMarks)
+            markList = { mark: [1, 2, 3, 4] }
+            User.findOne.mockReturnValue(markList) //pushMark에 관한 함수
+            User.updateOne.mockReturnValue(dataId) //pushMark에 관한 함수
+            const bookmarkState = { dataId, bookmarkState: false }
+            const data = { dataId, bookmarkState: true }
+            BokjiApi.findOne.mockReturnValue(bookmarkState) //status가 false
+            User.findOne.mockReturnValue(markList) //markList에 dataId가 포함되므로 bookmarkState는 true로 변경 되야 함
             redis.set.mockReturnValue(userId, markData)
             await markController.postMarks(req, res, next)
             expect(res.statusCode).toBe(201)
-            expect(res._getJSONData()).toStrictEqual({ result: "SUCCESS", message: "북마크 추가 성공" })
-        })
-        it("Data findOne이  에러를 잘 리턴하는가?", async () => {
-            res.locals.userId = userId
-            req.body.dataId = dataId
-            err = new Error("데이터ID를 확인 하시오.(DB dataID 확인!)")
-            const errMessage = { message: "데이터ID를 확인 하시오.(DB dataID 확인!)", stack: err }
-            BokjiApi.findOne.mockReturnValue(undefined)
-            await markController.postMarks(req, res, next)
-            expect(next).toBeCalledWith(errMessage)
-        })
-        it("User.findOne이  에러를 잘 리턴하는가?", async () => {
-            res.locals.userId = userId
-            req.body.dataId = dataId
-            err = new Error("데이터ID를 확인 하시오.(DB dataID 확인!)")
-            const errMessage = { message: "데이터ID를 확인 하시오.(DB dataID 확인!)", stack: err }
-            dataList = [11, 22, 33, 44, 55]
-            BokjiApi.findOne.mockReturnValue(dataList)
-            User.findOne.mockReturnValue(null)
-            await markController.postMarks(req, res, next)
-            expect(next).toBeCalledWith(errMessage)
+            expect(res._getJSONData()).toStrictEqual({ result: "SUCCESS", message: "북마크 추가 삭제 성공", data })
         })
     })
 
