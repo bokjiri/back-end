@@ -16,9 +16,13 @@ exports.postSearch = async (req, res, next) => {
         const UserData = await logic(isUser, isData)
         let dataList = []
         dataList.push(...UserData)
+        let searchList = []
+
+        if (/[`/\s/~!@#$%^&*|\\\'\";:+\/?]/.test(searchKey)) {
+            return res.status(200).json({ message: "특문-공백" })
+        }
 
         const search = new RegExp(searchKey)
-        let searchList = []
 
         for (let i of dataList) {
             if (type === "전체") {
