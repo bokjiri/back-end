@@ -112,9 +112,6 @@ config
 #public
 public
 
-#swagger-output.json
-swagger-output.json
-
 #orm.js
 orm.js
 
