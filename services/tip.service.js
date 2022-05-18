@@ -18,6 +18,6 @@ exports.postipService = async (userId, dataId) => {
             }
         )
     } catch (err) {
-        console.log(err)
+        // console.log(err)
     }
 }

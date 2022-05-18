@@ -51,7 +51,7 @@ exports.pushMark = async (userId, dataId) => {
             )
         }
     } catch (err) {
-        console.log(err)
+        // console.log(err)
         return error
     }
 }
@@ -59,7 +59,7 @@ exports.dataCheck = async (dataId) => {
     try {
         return await BokjiApi.findOne({ dataId }, { _id: false, dataId: true, bookmarkState: true })
     } catch (error) {
-        console.log(error)
+        // console.log(error)
         return error
     }
 }
