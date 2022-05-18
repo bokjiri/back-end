@@ -28,6 +28,9 @@ const userSchema = mongoose.Schema({
     job: {
         type: [String],
     },
+    workType: {
+        type: [String],
+    },
     family: {
         type: Number,
     },
