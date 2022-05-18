@@ -1,3 +1,4 @@
+require("dotenv").config()
 const markController = require("../mark.controller")
 const httpMocks = require("node-mocks-http")
 const markData = require("../../test/data/new-mark.json")

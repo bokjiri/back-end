@@ -34,28 +34,28 @@ exports.checkUser = async (userId) => {
 
     if (userData.family === 1 && userData.salary >= 0) {
         userData.salary = Math.floor((userData.salary * 100) / 194)
-        console.log(userData.salary)
+        // console.log(userData.salary)
     } else if (userData.family === 2 && userData.salary >= 0) {
         userData.salary = Math.floor((userData.salary * 100) / 326)
-        console.log(userData.salary)
+        // console.log(userData.salary)
     } else if (userData.family === 3 && userData.salary >= 0) {
         userData.salary = Math.floor((userData.salary * 100) / 419)
-        console.log(userData.salary)
+        // console.log(userData.salary)
     } else if (userData.family === 4 && userData.salary >= 0) {
         userData.salary = Math.floor((userData.salary * 100) / 512)
-        console.log(userData.salary)
+        // console.log(userData.salary)
     } else if (userData.family === 5 && userData.salary >= 0) {
         userData.salary = Math.floor((userData.salary * 100) / 602)
-        console.log(userData.salary)
+        // console.log(userData.salary)
     } else if (userData.family === 6 && userData.salary >= 0) {
         userData.salary = Math.floor((userData.salary * 100) / 690)
-        console.log(userData.salary)
+        // console.log(userData.salary)
     } else if (userData.family === 7 && userData.salary >= 0) {
         userData.salary = Math.floor((userData.salary * 100) / 778)
-        console.log(userData.salary)
+        // console.log(userData.salary)
     } else if (userData.family === 8 && userData.salary >= 0) {
         userData.salary = Math.floor((userData.salary * 100) / 865)
-        console.log(userData.salary)
+        // console.log(userData.salary)
     } else {
         userData.salary = undefined
     }
