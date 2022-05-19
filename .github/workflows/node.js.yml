@@ -20,6 +20,7 @@ jobs:
       DBPW: ${{ secrets.DBPW }}
       MAIL_ID: ${{ secrets.MAIL_ID }}
       MAIL_PW: ${{ secrets.MAIL_PW }}
+      TEST: ${{ secrets.TEST }}
     runs-on: ubuntu-latest
 
     strategy:
