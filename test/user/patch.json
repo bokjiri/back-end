@@ -1,0 +1,14 @@
+{
+    "age": 20201010,
+    "gender": [],
+    "region": "------- 시·군을 선택해 주세요",
+    "disability": ["없음"],
+    "obstacle": [],
+    "marriage": [],
+    "target": [],
+    "salary": 0,
+    "scholarship": [],
+    "family": 0,
+    "workType": [],
+    "job": []
+}
