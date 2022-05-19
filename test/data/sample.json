@@ -1,0 +1,16 @@
+{
+    "lifeCycle": ["중장년", "노년"],
+    "age": ["40", "120"],
+    "region": [],
+    "obstacle": [],
+    "scholarship": [],
+    "target": [],
+    "marriage": [],
+    "desire": "일자리",
+    "name": "중장년 기술창업센터 지원",
+    "summary": "만 40세 이상 (예비)창업자를 지원합니다.",
+    "support": "중장년 기술창업센터 지원 주관기관 운영비, 창업공간, 상담 및 자원, 커뮤니티 운영, 기술창업교육을 제공합니다.",
+    "institution": "중소벤처기업부 창업생태계조성과",
+    "link": "https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003205&wlfareInfoReldBztpCd=01",
+    "criteria": "만 40세 이상으로서 기술창업 분야의 (예비)창업자 및 (예비)퇴직자입니다."
+}
