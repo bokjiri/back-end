@@ -1,5 +1,6 @@
 const User = require("../schemas/user")
 const BokjiAPI = require("../schemas/user")
+const { pushMarkRedis } = require("../services/mark.service")
 
 exports.postipService = async (userId, dataId) => {
     try {
@@ -8,6 +9,20 @@ exports.postipService = async (userId, dataId) => {
 
         const { dismatchData } = await User.findOne({ userId }, { _id: false, dismatchData: true })
         if (dismatchData.includes(dataId)) throw new Error()
+
+        const { mark } = await User.findOne({ userId }, { _id: false, mark: true })
+
+        if (mark.includes(dataId)) {
+            await User.updateOne(
+                { userId },
+                {
+                    $pullAll: {
+                        mark: [dataId],
+                    },
+                }
+            )
+        }
+        await pushMarkRedis(userId)
 
         return await User.updateOne(
             { userId },

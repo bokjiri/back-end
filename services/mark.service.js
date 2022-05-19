@@ -35,6 +35,7 @@ exports.showMark = async (userId) => {
 exports.pushMark = async (userId, dataId) => {
     try {
         const { mark } = await User.findOne({ userId }, { _id: false, mark: true })
+
         if (!mark.includes(dataId)) {
             return User.updateOne(
                 { userId },
@@ -52,7 +53,7 @@ exports.pushMark = async (userId, dataId) => {
         }
     } catch (err) {
         // console.log(err)
-        return error
+        return err
     }
 }
 exports.dataCheck = async (dataId) => {
