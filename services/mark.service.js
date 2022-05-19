@@ -42,15 +42,14 @@ exports.pushMark = async (userId, dataId) => {
                     $push: { mark: [dataId] },
                 }
             )
+        } else if (mark.includes(dataId)) {
+            return User.updateOne(
+                { userId },
+                {
+                    $pullAll: { mark: [dataId] },
+                }
+            )
         }
-        // } else if (mark.includes(dataId)) {
-        //     return User.updateOne(
-        //         { userId },
-        //         {
-        //             $pullAll: { mark: [dataId] },
-        //         }
-        //     )
-        // }
     } catch (err) {
         // console.log(err)
         return err
@@ -68,7 +67,7 @@ exports.deleteMark = async (userId, dataId) => {
                 }
             )
     } catch (err) {
-        console.log(err)
+        // console.log(err)
     }
 }
 
