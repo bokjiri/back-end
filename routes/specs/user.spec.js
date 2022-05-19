@@ -3,6 +3,7 @@ const app = require("../../app")
 const agent = request.agent(app)
 const mongoose = require("mongoose")
 const User = require("../../schemas/user")
+const redis = require("../../schemas/redis")
 
 describe("user 통합 테스트", () => {
     beforeAll(async () => {
@@ -17,6 +18,8 @@ describe("user 통합 테스트", () => {
     })
     afterAll(async () => {
         await User.deleteMany()
+        await mongoose.connection.close()
+        await redis.quit()
     })
     describe("post /api/users", () => {
         it("post /api/users 회원가입 잘됨?", async () => {

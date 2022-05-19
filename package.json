@@ -55,5 +55,8 @@
         "supertest": "^6.2.3",
         "swagger-autogen": "^2.21.1",
         "swagger-ui-express": "^4.3.0"
+    },
+    "jest": {
+        "testEnvironment": "node"
     }
 }
