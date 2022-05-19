@@ -16,9 +16,9 @@ exports.showMarkRedis = async (userId) => {
 exports.pushMarkRedis = async (userId) => {
     await redisSet(userId)
 }
-// exports.deleteMarkRedis = async (userId) => {
-//     await redisSet(userId)
-// }
+exports.deleteMarkRedis = async (userId) => {
+    await redisSet(userId)
+}
 // exports.topLikesMarkRedis = async (userId) => {
 //     const markInfo = await User.findOne({ userId }, { _id: false, topLikeMarkList: true })
 //     const topLikesMarkList = JSON.stringify(markInfo)
@@ -35,7 +35,6 @@ exports.showMark = async (userId) => {
 exports.pushMark = async (userId, dataId) => {
     try {
         const { mark } = await User.findOne({ userId }, { _id: false, mark: true })
-
         if (!mark.includes(dataId)) {
             return User.updateOne(
                 { userId },
@@ -43,19 +42,36 @@ exports.pushMark = async (userId, dataId) => {
                     $push: { mark: [dataId] },
                 }
             )
-        } else if (mark.includes(dataId)) {
-            return User.updateOne(
-                { userId },
-                {
-                    $pullAll: { mark: [dataId] },
-                }
-            )
         }
+        // } else if (mark.includes(dataId)) {
+        //     return User.updateOne(
+        //         { userId },
+        //         {
+        //             $pullAll: { mark: [dataId] },
+        //         }
+        //     )
+        // }
     } catch (err) {
         // console.log(err)
         return err
     }
 }
+
+exports.deleteMark = async (userId, dataId) => {
+    try {
+        const checkId = await User.findOne({ userId }, { _id: false, mark: true })
+        if (checkId.mark.includes(dataId))
+            return await User.updateOne(
+                { userId },
+                {
+                    $pullAll: { mark: [dataId] },
+                }
+            )
+    } catch (err) {
+        console.log(err)
+    }
+}
+
 exports.dataCheck = async (dataId) => {
     try {
         return await BokjiApi.findOne({ dataId }, { _id: false, dataId: true, bookmarkState: true })
@@ -64,21 +80,6 @@ exports.dataCheck = async (dataId) => {
         return error
     }
 }
-
-// exports.deleteMark = async (userId, dataId) => {
-//     try {
-//         const checkId = await User.findOne({ userId }, { _id: false, mark: true })
-//         if (checkId.mark.includes(dataId))
-//             return await User.updateOne(
-//                 { userId },
-//                 {
-//                     $pullAll: { mark: [dataId] },
-//                 }
-//             )
-//     } catch (err) {
-//         console.log(err)
-//     }
-// }
 
 // exports.topMark = async (userId) => {
 //     const userMarkList = await User.find({}, { _id: false, likeMark: true })

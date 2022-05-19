@@ -31,121 +31,121 @@ describe("북마크 테스트 코드", () => {
             await markController.getMarks(req, res, next)
             expect(User.findOne).toBeCalledWith(localsUserId, option)
         })
-        it("BokjiAPI find가 잘 실행이되나?", async () => {
-            req.params = paramsUserId
-            res.locals = localsUserId
-            User.findOne.mockReturnValue(mark)
-            findData = { dataId: mark.mark }
-            option = { _id: false, dataId: true, name: true, desire: true }
-            await markController.getMarks(req, res, next)
-            expect(BokjiApi.find).toBeCalledWith(findData, option)
-        })
-        it("getMarks localsUserId와 paramsUserId가 다를경우 에러를 잘 리턴하는가?", async () => {
-            req.params = falseParamsUserId
-            res.locals = localsUserId
-            err = new Error("누구니???")
-            const errMessage = { message: "누구니???", stack: err }
-            await markController.getMarks(req, res, next)
-            expect(next).toBeCalledWith(errMessage)
-        })
-        it("showMark가 200과 응답값을 잘 리턴하는가?", async () => {
-            req.params = paramsUserId
-            res.locals = localsUserId
-            User.findOne.mockReturnValue(mark)
-            BokjiApi.find.mockReturnValue(markData)
-            redis.set.mockReturnValue(localsUserId, markData)
-            await markController.getMarks(req, res, next)
-            expect(res.statusCode).toBe(200)
-            expect(res._getJSONData()).toStrictEqual({ result: "SUCCESS", message: "북마크 조회 성공", userMark: markData })
-        })
+        //     it("BokjiAPI find가 잘 실행이되나?", async () => {
+        //         req.params = paramsUserId
+        //         res.locals = localsUserId
+        //         User.findOne.mockReturnValue(mark)
+        //         findData = { dataId: mark.mark }
+        //         option = { _id: false, dataId: true, name: true, desire: true }
+        //         await markController.getMarks(req, res, next)
+        //         expect(BokjiApi.find).toBeCalledWith(findData, option)
+        //     })
+        //     it("getMarks localsUserId와 paramsUserId가 다를경우 에러를 잘 리턴하는가?", async () => {
+        //         req.params = falseParamsUserId
+        //         res.locals = localsUserId
+        //         err = new Error("누구니???")
+        //         const errMessage = { message: "누구니???", stack: err }
+        //         await markController.getMarks(req, res, next)
+        //         expect(next).toBeCalledWith(errMessage)
+        //     })
+        //     it("showMark가 200과 응답값을 잘 리턴하는가?", async () => {
+        //         req.params = paramsUserId
+        //         res.locals = localsUserId
+        //         User.findOne.mockReturnValue(mark)
+        //         BokjiApi.find.mockReturnValue(markData)
+        //         redis.set.mockReturnValue(localsUserId, markData)
+        //         await markController.getMarks(req, res, next)
+        //         expect(res.statusCode).toBe(200)
+        //         expect(res._getJSONData()).toStrictEqual({ result: "SUCCESS", message: "북마크 조회 성공", userMark: markData })
+        //     })
     })
 
-    describe("postMarks 관련 테스트", () => {
-        it("dataId,userId가 없으면 에러를 잘 뱉는가?", async () => {
-            res.locals.userId = undefined
-            req.body.dataId = undefined
-            err = new Error("userId , dataId를 확인 해주세요")
-            const errMessage = { message: "userId , dataId를 확인 해주세요", stack: err }
-            await markController.postMarks(req, res, next)
-            expect(next).toBeCalledWith(errMessage)
-        })
-        it("User findOne이 잘 되는가?", async () => {
-            res.locals.userId = userId
-            req.body.dataId = dataId
-            dataList = [1, 2, 3, 4, 5]
-            const option = { _id: false, mark: true }
-            await markController.postMarks(req, res, next)
-            expect(User.findOne).toBeCalledWith({ userId }, option)
-        })
-        it("User findOne값에 dataId 가 포함되어 있으면 pullAll을 하는가?", async () => {
-            res.locals.userId = userId
-            req.body.dataId = dataId
-            data = { mark: [1, 2, 3, 4] }
-            User.findOne.mockReturnValue(data)
-            const option = { $pullAll: { mark: [dataId] } }
-            await markController.postMarks(req, res, next)
-            expect(User.updateOne).toBeCalledWith({ userId }, option)
-        })
-        it("User findOne값에 dataId 가 포함되어 있지 않으면 push를 하는가?", async () => {
-            res.locals.userId = userId
-            req.body.dataId = dataId
-            data = { mark: [2, 3, 4] }
-            User.findOne.mockReturnValue(data)
-            const option = { $push: { mark: [dataId] } }
-            await markController.postMarks(req, res, next)
-            expect(User.updateOne).toBeCalledWith({ userId }, option)
-        })
-        it("dataCheck가 잘 되는가?", async () => {
-            res.locals.userId = userId
-            req.body.dataId = dataId
-            data = { mark: [2, 3, 4] }
-            User.findOne.mockReturnValue(data)
-            User.updateOne.mockReturnValue(dataId)
-            const option = { _id: false, dataId: true, bookmarkState: true }
-            await markController.postMarks(req, res, next)
-            expect(BokjiApi.findOne).toBeCalledWith({ dataId }, option)
-        })
-        it("checkBookmark가 잘 되는가?", async () => {
-            res.locals.userId = userId
-            req.body.dataId = dataId
-            data = { mark: [2, 3, 4] }
-            const bookmarkState = { dataId, bookmarkState: true }
-            User.findOne.mockReturnValue(data)
-            User.updateOne.mockReturnValue(dataId)
-            BokjiApi.findOne.mockReturnValue(bookmarkState)
-            const option = { _id: false, mark: true }
-            await markController.postMarks(req, res, next)
-            expect(User.findOne).toBeCalledWith({ userId }, option)
-        })
-        it("bookmarkState가 잘 변경 되는가?", async () => {
-            res.locals.userId = userId
-            req.body.dataId = dataId
-            markList = { mark: [1, 2, 3, 4] }
-            User.findOne.mockReturnValue(markList) //pushMark에 관한 함수
-            User.updateOne.mockReturnValue(dataId) //pushMark에 관한 함수
-            const bookmarkState = { dataId, bookmarkState: false }
-            const data = { dataId, bookmarkState: true }
-            BokjiApi.findOne.mockReturnValue(bookmarkState) //status가 false
-            User.findOne.mockReturnValue(markList) //markList에 dataId가 포함되므로 bookmarkState는 true로 변경 되야 함
-            await markController.postMarks(req, res, next)
-            expect(res._getJSONData()).toStrictEqual({ result: "SUCCESS", message: "북마크 추가 삭제 성공", data })
-        })
-        it("postMarks가 200과 응답값을 잘 리턴하는가?", async () => {
-            res.locals.userId = userId
-            req.body.dataId = dataId
-            markList = { mark: [1, 2, 3, 4] }
-            User.findOne.mockReturnValue(markList) //pushMark에 관한 함수
-            User.updateOne.mockReturnValue(dataId) //pushMark에 관한 함수
-            const bookmarkState = { dataId, bookmarkState: false }
-            const data = { dataId, bookmarkState: true }
-            BokjiApi.findOne.mockReturnValue(bookmarkState) //status가 false
-            User.findOne.mockReturnValue(markList) //markList에 dataId가 포함되므로 bookmarkState는 true로 변경 되야 함
-            redis.set.mockReturnValue(userId, markData)
-            await markController.postMarks(req, res, next)
-            expect(res.statusCode).toBe(201)
-            expect(res._getJSONData()).toStrictEqual({ result: "SUCCESS", message: "북마크 추가 삭제 성공", data })
-        })
-    })
+    // describe("postMarks 관련 테스트", () => {
+    //     it("dataId,userId가 없으면 에러를 잘 뱉는가?", async () => {
+    //         res.locals.userId = undefined
+    //         req.body.dataId = undefined
+    //         err = new Error("userId , dataId를 확인 해주세요")
+    //         const errMessage = { message: "userId , dataId를 확인 해주세요", stack: err }
+    //         await markController.postMarks(req, res, next)
+    //         expect(next).toBeCalledWith(errMessage)
+    //     })
+    //     it("User findOne이 잘 되는가?", async () => {
+    //         res.locals.userId = userId
+    //         req.body.dataId = dataId
+
+    //         const option = { _id: false, mark: true }
+    //         await markController.postMarks(req, res, next)
+    //         expect(User.findOne).toBeCalledWith({ userId }, option)
+    //     })
+    //     it("User findOne값에 dataId 가 포함되어 있으면 pullAll을 하는가?", async () => {
+    //         res.locals.userId = userId
+    //         req.body.dataId = dataId
+    //         data = { mark: [1, 2, 3, 4] }
+    //         User.findOne.mockReturnValue(data)
+    //         const option = { $pullAll: { mark: [dataId] } }
+    //         await markController.postMarks(req, res, next)
+    //         expect(User.updateOne).toBeCalledWith({ userId }, option)
+    //     })
+    //     it("User findOne값에 dataId 가 포함되어 있지 않으면 push를 하는가?", async () => {
+    //         res.locals.userId = userId
+    //         req.body.dataId = dataId
+    //         data = { mark: [2, 3, 4] }
+    //         User.findOne.mockReturnValue(data)
+    //         const option = { $push: { mark: [dataId] } }
+    //         await markController.postMarks(req, res, next)
+    //         expect(User.updateOne).toBeCalledWith({ userId }, option)
+    //     })
+    //     it("dataCheck가 잘 되는가?", async () => {
+    //         res.locals.userId = userId
+    //         req.body.dataId = dataId
+    //         data = { mark: [2, 3, 4] }
+    //         User.findOne.mockReturnValue(data)
+    //         User.updateOne.mockReturnValue(dataId)
+    //         const option = { _id: false, dataId: true, bookmarkState: true }
+    //         await markController.postMarks(req, res, next)
+    //         expect(BokjiApi.findOne).toBeCalledWith({ dataId }, option)
+    //     })
+    //     it("checkBookmark가 잘 되는가?", async () => {
+    //         res.locals.userId = userId
+    //         req.body.dataId = dataId
+    //         data = { mark: [2, 3, 4] }
+    //         const bookmarkState = { dataId, bookmarkState: true }
+    //         User.findOne.mockReturnValue(data)
+    //         User.updateOne.mockReturnValue(dataId)
+    //         BokjiApi.findOne.mockReturnValue(bookmarkState)
+    //         const option = { _id: false, mark: true }
+    //         await markController.postMarks(req, res, next)
+    //         expect(User.findOne).toBeCalledWith({ userId }, option)
+    //     })
+    //     it("bookmarkState가 잘 변경 되는가?", async () => {
+    //         res.locals.userId = userId
+    //         req.body.dataId = dataId
+    //         markList = { mark: [1, 2, 3, 4] }
+    //         User.findOne.mockReturnValue(markList) //pushMark에 관한 함수
+    //         User.updateOne.mockReturnValue(dataId) //pushMark에 관한 함수
+    //         const bookmarkState = { dataId, bookmarkState: false }
+    //         const data = { dataId, bookmarkState: true }
+    //         BokjiApi.findOne.mockReturnValue(bookmarkState) //status가 false
+    //         User.findOne.mockReturnValue(markList) //markList에 dataId가 포함되므로 bookmarkState는 true로 변경 되야 함
+    //         await markController.postMarks(req, res, next)
+    //         expect(res._getJSONData()).toStrictEqual({ result: "SUCCESS", message: "북마크 추가 삭제 성공", data })
+    //     })
+    //     it("postMarks가 200과 응답값을 잘 리턴하는가?", async () => {
+    //         res.locals.userId = userId
+    //         req.body.dataId = dataId
+    //         markList = { mark: [1, 2, 3, 4] }
+    //         User.findOne.mockReturnValue(markList) //pushMark에 관한 함수
+    //         User.updateOne.mockReturnValue(dataId) //pushMark에 관한 함수
+    //         const bookmarkState = { dataId, bookmarkState: false }
+    //         const data = { dataId, bookmarkState: true }
+    //         BokjiApi.findOne.mockReturnValue(bookmarkState) //status가 false
+    //         User.findOne.mockReturnValue(markList) //markList에 dataId가 포함되므로 bookmarkState는 true로 변경 되야 함
+    //         redis.set.mockReturnValue(userId, markData)
+    //         await markController.postMarks(req, res, next)
+    //         expect(res.statusCode).toBe(201)
+    //         expect(res._getJSONData()).toStrictEqual({ result: "SUCCESS", message: "북마크 추가 삭제 성공", data })
+    //     })
+    // })
 
     // describe("deleteMarks 관련 테스트", () => {
     //     it("User findOne이 잘 되는가?", async () => {

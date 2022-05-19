@@ -29,7 +29,7 @@ exports.postTips = async (req, res, next) => {
         =====================================================================================*/
         res.status(200).json({ result: "SUCCESS", message: "정책 숨기기 성공" })
     } catch (err) {
-        // console.log(err)
+        console.log(err)
         /*=====================================================================================
         #swagger.responses[400] = {
             description: '정상적으로 값을 받지 못했을 때, 아래 예제와 같은 형태로 응답받습니다.',
