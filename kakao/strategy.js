@@ -1,10 +1,8 @@
-require("dotenv").config()
 const passport = require("passport")
 const KakaoStrategy = require("passport-kakao").Strategy
 const { createUser, checkByEmail } = require("../services/user.service")
 
 module.exports = () => {
-    console.log(process.env.TEST)
     passport.use(
         new KakaoStrategy(
             {
