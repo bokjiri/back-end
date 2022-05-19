@@ -9,18 +9,7 @@ on:
 
 jobs:
   build:
-    env:
-      KAKAO_ID: ${{ secrets.KAKAO_ID }}
-      REDISURL: ${{ secrets.REDISURL }}
-      ACCESSKEY: ${{ secrets.ACCESSKEY }}
-      REFRESHKEY: ${{ secrets.REFRESHKEY }}
-      SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
-      COOKIE_SECRET: ${{ secrets.COOKIE_SECRET }}
-      DBID: ${{ secrets.DBID }}
-      DBPW: ${{ secrets.DBPW }}
-      MAIL_ID: ${{ secrets.MAIL_ID }}
-      MAIL_PW: ${{ secrets.MAIL_PW }}
-      TEST: ${{ secrets.TEST }}
+
     runs-on: ubuntu-latest
 
     strategy:
@@ -44,6 +33,19 @@ jobs:
 
     - run: npm ci
     - name: Create .env file
+      shell: bash
+      env:
+        KAKAO_ID: ${{ secrets.KAKAO_ID }}
+        REDISURL: ${{ secrets.REDISURL }}
+        ACCESSKEY: ${{ secrets.ACCESSKEY }}
+        REFRESHKEY: ${{ secrets.REFRESHKEY }}
+        SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
+        COOKIE_SECRET: ${{ secrets.COOKIE_SECRET }}
+        DBID: ${{ secrets.DBID }}
+        DBPW: ${{ secrets.DBPW }}
+        MAIL_ID: ${{ secrets.MAIL_ID }}
+        MAIL_PW: ${{ secrets.MAIL_PW }}
+        TEST: ${{ secrets.TEST }}
       run: |
           touch .env
           echo KAKAO_ID: ${{ secrets.KAKAO_ID }} >> .env
