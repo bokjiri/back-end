@@ -17,7 +17,7 @@ beforeAll(async () => {
 })
 afterAll(async () => {
     await User.deleteMany()
-    await mongoose.connection.close()
+    await mongoose.disconnect()
     await redis.quit()
 })
 describe("user 통합 테스트", () => {
