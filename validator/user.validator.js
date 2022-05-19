@@ -46,8 +46,8 @@ const userValidation = [
     body("workType")
         .isArray()
         .isIn([...workTypeValidate, ""]),
-    // body("salary").isInt({ max: 9999999999 }).withMessage("너무 많아"),
-    // body("family").isInt(),
+    body("salary").isInt({ min: 0, max: 9999999999 }).withMessage("너무 많아"),
+    body("family").isInt({ min: 0, max: 8 }),
     error,
 ]
 
