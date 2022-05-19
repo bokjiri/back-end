@@ -5,23 +5,22 @@ const mongoose = require("mongoose")
 const User = require("../../schemas/user")
 const redis = require("../../schemas/redis")
 
+beforeAll(async () => {
+    await mongoose
+        .connect(`mongodb://${process.env.DBID}:${process.env.DBPW}@3.36.130.225:27017/test?authSource=admin&authMechanism=SCRAM-SHA-1`, { ignoreUndefined: true })
+        .then(() => {
+            console.log("testdb 연결완료")
+        })
+        .catch((err) => {
+            console.error(err)
+        })
+})
+afterAll(async () => {
+    await User.deleteMany()
+    await mongoose.connection.close()
+    await redis.quit()
+})
 describe("user 통합 테스트", () => {
-    beforeAll(async () => {
-        await mongoose
-            .connect(`mongodb://${process.env.DBID}:${process.env.DBPW}@3.36.130.225:27017/test?authSource=admin&authMechanism=SCRAM-SHA-1`, { ignoreUndefined: true })
-            .then(() => {
-                console.log("testdb 연결완료")
-            })
-            .catch((err) => {
-                console.error(err)
-            })
-    })
-    afterAll(async () => {
-        await User.deleteMany()
-        await mongoose.disconnect()
-        await mongoose.connection.close()
-        await redis.quit()
-    })
     describe("post /api/users", () => {
         it("post /api/users 회원가입 잘됨?", async () => {
             const email = "email@email.com"
