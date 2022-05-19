@@ -47,17 +47,17 @@ jobs:
         TEST: ${{ secrets.TEST }}
       run: |
           touch .env
-          echo "KAKAO_ID=$KAKAO_ID" >> .env
-          echo "REDISURL=$REDISURL" >> .env
-          echo "ACCESSKEY=$ACCESSKEY" >> .env
-          echo "REFRESHKEY=$REFRESHKEY" >> .env
-          echo "SESSION_SECRET=$SESSION_SECRET" >> .env
-          echo "COOKIE_SECRET=$COOKIE_SECRET" >> .env
-          echo "DBID=$DBID" >> .env
-          echo "DBPW=$DBPW" >> .env
-          echo "MAIL_ID=$MAIL_ID" >> .env
-          echo "MAIL_PW=$MAIL_PW" >> .env
-          echo "TEST=$TEST" >> .env
+          echo KAKAO_ID="$KAKAO_ID" >> .env
+          echo REDISURL="$REDISURL" >> .env
+          echo ACCESSKEY="$ACCESSKEY" >> .env
+          echo REFRESHKEY="$REFRESHKEY" >> .env
+          echo SESSION_SECRET="$SESSION_SECRET" >> .env
+          echo COOKIE_SECRET="$COOKIE_SECRET" >> .env
+          echo DBID="$DBID" >> .env
+          echo DBPW="$DBPW" >> .env
+          echo MAIL_ID="$MAIL_ID" >> .env
+          echo MAIL_PW="$MAIL_PW" >> .env
+          echo TEST="$TEST" >> .env
           cat .env
     - run: npm ci
     - run: npm run build --if-present
