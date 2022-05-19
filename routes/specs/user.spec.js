@@ -16,7 +16,7 @@ beforeAll(async () => {
         })
 })
 afterAll(async () => {
-    // await User.deleteMany()
+    await User.deleteMany()
     await mongoose.disconnect()
     await redis.quit()
 })
