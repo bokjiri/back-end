@@ -4,7 +4,7 @@
     "description": "",
     "main": "server.js",
     "scripts": {
-        "test": "cross-env NODE_ENV=test jest",
+        "test": "cross-env NODE_ENV=test jest --detectOpenHandles",
         "test:watch": "cross-env NODE_ENV=test jest --watch",
         "test:cov": "cross-env NODE_ENV=test jest --coverage"
     },
@@ -55,5 +55,8 @@
         "supertest": "^6.2.3",
         "swagger-autogen": "^2.21.1",
         "swagger-ui-express": "^4.3.0"
+    },
+    "jest": {
+        "testEnvironment": "node"
     }
 }
