@@ -48,17 +48,17 @@ jobs:
         TEST: ${{ secrets.TEST }}
       run: |
           touch .env
-          echo KAKAO_ID= ${{ secrets.KAKAO_ID }} >> .env
-          echo REDISURL= ${{ secrets.REDISURL }} >> .env
-          echo ACCESSKEY= ${{ secrets.ACCESSKEY }} >> .env
-          echo REFRESHKEY= ${{ secrets.REFRESHKEY }} >> .env
-          echo SESSION_SECRET= ${{ secrets.SESSION_SECRET }} >> .env
-          echo COOKIE_SECRET= ${{ secrets.COOKIE_SECRET }} >> .env
-          echo DBID= ${{ secrets.DBID }} >> .env
-          echo DBPW= ${{ secrets.DBPW }} >> .env
-          echo MAIL_ID= ${{ secrets.MAIL_ID }} >> .env
-          echo MAIL_PW= ${{ secrets.MAIL_PW }} >> .env
-          echo TEST= ${{ secrets.TEST }} >> .env
+          echo KAKAO_ID="$secrets.KAKAO_ID" >> .env
+          echo REDISURL="$secrets.REDISURL" >> .env
+          echo ACCESSKEY="$secrets.ACCESSKEY" >> .env
+          echo REFRESHKEY="$secrets.REFRESHKEY" >> .env
+          echo SESSION_SECRET="$secrets.SESSION_SECRET" >> .env
+          echo COOKIE_SECRET="$secrets.COOKIE_SECRET" >> .env
+          echo DBID="$secrets.DBID" >> .env
+          echo DBPW="$secrets.DBPW" >> .env
+          echo MAIL_ID="$secrets.MAIL_ID" >> .env
+          echo MAIL_PW="$secrets.MAIL_PW" >> .env
+          echo TEST="$secrets.TEST" >> .env
           cat .env
     - run: npm run build --if-present
     - run: npm test
