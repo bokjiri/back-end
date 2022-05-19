@@ -18,7 +18,7 @@ exports.postSearch = async (req, res, next) => {
         dataList.push(...UserData)
         let searchList = []
 
-        if (/[`/\s/~!@#$%^&*|()_\\\'\";:+\/=?]/.test(searchKey)) {
+        if (/[`~!@#$%^&*|()_\\\'\";:+\/=?]/.test(searchKey)) {
             return res.status(200).json({ message: "특문-공백" })
         }
 
