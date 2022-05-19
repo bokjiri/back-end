@@ -7,9 +7,6 @@ exports.postipService = async (userId, dataId) => {
         const data = await BokjiAPI.findOne({ dataId }, { _id: false, dataId: true })
         if (!data) throw new Error()
 
-        const { dismatchData } = await User.findOne({ userId }, { _id: false, dismatchData: true })
-        if (dismatchData.includes(dataId)) throw new Error()
-
         const { mark } = await User.findOne({ userId }, { _id: false, mark: true })
 
         if (mark.includes(dataId)) {
@@ -23,6 +20,9 @@ exports.postipService = async (userId, dataId) => {
             )
         }
         await pushMarkRedis(userId)
+
+        const { dismatchData } = await User.findOne({ userId }, { _id: false, dismatchData: true })
+        if (dismatchData.includes(dataId)) throw new Error()
 
         return await User.updateOne(
             { userId },
