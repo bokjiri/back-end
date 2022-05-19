@@ -15,6 +15,7 @@ jobs:
     strategy:
       matrix:
         node-version: [16.14.2]
+        redis-version: [4.0.9]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -24,10 +25,29 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+
+    - name: Start Redis
+      uses: supercharge/redis-github-action@1.4.0
+      with:
+        redis-version: ${{ matrix.redis-version }}
+
     - run: npm ci
+    - name: Create .env file
+      run: |
+          touch .env
+          echo KAKAO_ID=${{ secrets.KAKAO_ID }} >> .env
+          echo KAKAO_CALLBACK=${{ secrets.KAKAO_CALLBACK }} >> .env
+          echo REDISURL=${{ secrets.REDISURL }} >> .env
+          echo ACCESSKEY=${{ secrets.ACCESSKEY }} >> .env
+          echo REFRESHKEY=${{ secrets.REFRESHKEY }} >> .env
+          echo SESSION_SECRET=${{ secrets.SESSION_SECRET }} >> .env
+          echo COOKIE_SECRET=${{ secrets.COOKIE_SECRET }} >> .env
+          echo DBID=${{ secrets.DBID }} >> .env
+          echo DBPW=${{ secrets.DBPW }} >> .env
+          echo MAIL_ID=${{ secrets.MAIL_ID }} >> .env
+          echo MAIL_PW=${{ secrets.MAIL_PW }} >> .env
+          echo ATOKENEXPIRE=${{ secrets.ATOKENEXPIRE }} >> .env
+          echo RTOKENEXPIRE=${{ secrets.RTOKENEXPIRE }} >> .env
+          cat .env
     - run: npm run build --if-present
-    - name: test
-      env:
-        KAKAO_ID: ${{ secrets.KAKAO_ID }}
-        REDISURL: ${{ secrets.REDISURL }}
-      run: npm test
+    - run: npm test

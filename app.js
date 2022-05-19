@@ -14,7 +14,6 @@ const updateYouthApi = require("./dataUpdating/index")
 const updateFirstBokjiApi = require("./dataCleansing/data")
 
 connect()
-
 // const whitelist = ["http://localhost:3000"]
 // const corsOptions = {
 //     origin: function (origin, callback) {

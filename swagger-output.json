@@ -1,0 +1,819 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "My API",
+    "description": "Description",
+    "version": "1.0.0"
+  },
+  "host": "jwprac.shop",
+  "basePath": "/",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/api/users/": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "example": "any"
+                },
+                "nickname": {
+                  "example": "any"
+                },
+                "password": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/api/users/auth": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "example": "any"
+                },
+                "password": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/users/kakao": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {}
+      }
+    },
+    "/api/users/kakao/callback": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/users/{userId}": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "회원정보 조회",
+        "description": "회원정보를 조회한다.",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "reauthorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "정상적으로 값을 받았을 때, 아래 예제와 같은 형태로 응답받습니다.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "result": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "message": {
+                  "type": "string",
+                  "example": "회원정보 조회 완료"
+                },
+                "data": {
+                  "type": "string",
+                  "example": "(req, res, next) =>  {    ========================================================================================================   #swagger.tags = ['User']   #swagger.summary = '회원정보 조회'   #swagger.description = '회원정보를 조회한다.'  ========================================================================================================   try {  const userId = parseInt(req.params.userId)  const tokenUserId = res.locals.userId  if (tokenUserId !== userId) throw new Error(\"토큰하고 유저아이디가 다름\")   const data = await userService.checkById(userId)  if (!data) throw new Error()   if (data.region.length === 1) data.region[1] = \"시·군을 선택해 주세요\"  if (data.region.length === 0) {  data.region[0] = \"시·도를 선택해 주세요\"  data.region[1] = \"시·군을 선택해 주세요\"  }   =====================================================================================   #swagger.responses[201] = {  description: '정상적으로 값을 받았을 때, 아래 예제와 같은 형태로 응답받습니다.',  schema: {  result: true,  message: \"회원정보 조회 완료\",  data,  }  }  =====================================================================================   res.status(201).json({  result: true,  message: \"회원정보 조회 완료\",  data,  })  } catch (error) {   =====================================================================================   #swagger.responses[400] = {  description: '정상적으로 값을 받지 못했을 때, 아래 예제와 같은 형태로 응답받습니다.',  schema: { result: \"FAIL\", message: \"회원정보 조회 중 오류가 발생했습니다.\" }  }  =====================================================================================   if (error.message) {  return next({  message: error.message,  stack: error,  })  } else {  return next({  message: \"회원정보 조회 중 오류가 발생했습니다.\",  stack: error,  })  }  } }"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "400": {
+            "description": "정상적으로 값을 받지 못했을 때, 아래 예제와 같은 형태로 응답받습니다.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "result": {
+                  "type": "string",
+                  "example": "FAIL"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "회원정보 조회 중 오류가 발생했습니다."
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "User"
+        ],
+        "summary": "회원정보 수정",
+        "description": "회원정보를 수정한다.",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "reauthorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "job": {
+                  "example": "any"
+                },
+                "age": {
+                  "example": "any"
+                },
+                "gender": {
+                  "example": "any"
+                },
+                "region": {
+                  "example": "any"
+                },
+                "disability": {
+                  "example": "any"
+                },
+                "obstacle": {
+                  "example": "any"
+                },
+                "marriage": {
+                  "example": "any"
+                },
+                "target": {
+                  "example": "any"
+                },
+                "salary": {
+                  "example": "any"
+                },
+                "scholarship": {
+                  "example": "any"
+                },
+                "family": {
+                  "example": "any"
+                },
+                "workType": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "정상적으로 값을 받았을 때, 아래 예제와 같은 형태로 응답받습니다.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "result": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "message": {
+                  "type": "string",
+                  "example": "회원정보 수정 완료"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "400": {
+            "description": "정상적으로 값을 받지 못했을 때, 아래 예제와 같은 형태로 응답받습니다.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "result": {
+                  "type": "string",
+                  "example": "FAIL"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "회원정보 수정 중 오류가 발생했습니다."
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "User"
+        ],
+        "summary": "회원정보 삭제",
+        "description": "회원정보를 삭제한다.",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "reauthorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "정상적으로 값을 받았을 때, 아래 예제와 같은 형태로 응답받습니다.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "result": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "message": {
+                  "type": "string",
+                  "example": "회원정보 삭제 완료"
+                },
+                "data": {
+                  "type": "string",
+                  "example": "(req, res, next) =>  {    ========================================================================================================   #swagger.tags = ['User']   #swagger.summary = '회원정보 삭제'   #swagger.description = '회원정보를 삭제한다.'  ========================================================================================================   try {  const userId = parseInt(req.params.userId)  const tokenUserId = res.locals.userId  if (tokenUserId !== userId) throw new Error(\"토큰하고 유저아이디가 다름\")   const result = await userService.deleteUserInfo(userId)  if (!result) throw new Error()   =====================================================================================   #swagger.responses[204] = {  description: '정상적으로 값을 받았을 때, 아래 예제와 같은 형태로 응답받습니다.',  schema: {  result: true,  message: \"회원정보 삭제 완료\",  data,  }  }  =====================================================================================   res.status(204).json({  result: true,  message: \"회원정보 삭제 완료\",  })  } catch (error) {   =====================================================================================   #swagger.responses[400] = {  description: '정상적으로 값을 받지 못했을 때, 아래 예제와 같은 형태로 응답받습니다.',  schema: { result: \"FAIL\", message: \"회원정보 삭제 중 오류가 발생했습니다.\" }  }  =====================================================================================   if (error.message) {  return next({  message: error.message,  stack: error,  })  } else {  return next({  message: \"회원정보 삭제 중 오류가 발생했습니다.\",  stack: error,  })  }  } }"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "400": {
+            "description": "정상적으로 값을 받지 못했을 때, 아래 예제와 같은 형태로 응답받습니다.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "result": {
+                  "type": "string",
+                  "example": "FAIL"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "회원정보 삭제 중 오류가 발생했습니다."
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/api/marks/{userId}": {
+      "get": {
+        "tags": [
+          "Mark"
+        ],
+        "summary": "북마크 조회",
+        "description": "내가 북마크한 모든 정책을 조회한다.",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "reauthorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/api/marks/": {
+      "put": {
+        "tags": [
+          "Mark"
+        ],
+        "summary": "북마크 추가",
+        "description": "정책을 내 북마크 목록에 추가한다.",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "reauthorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "dataId": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "정상적으로 값을 받았을 때, 아래 예제와 같은 형태로 응답받습니다.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "result": {
+                  "type": "string",
+                  "example": "SUCCESS"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "북마크 추가 성공"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "400": {
+            "description": "정상적으로 값을 받지 못했을 때, 아래 예제와 같은 형태로 응답받습니다.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "result": {
+                  "type": "string",
+                  "example": "FAIL"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "북마크 추가 실패"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/api/tips/": {
+      "post": {
+        "tags": [
+          "Tip"
+        ],
+        "summary": "정책 숨기기",
+        "description": "정책 숨기기",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "reauthorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "정상적으로 값을 받았을 때, 아래 예제와 같은 형태로 응답받습니다.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "result": {
+                  "type": "string",
+                  "example": "SUCCESS"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "상세페이지 조회 성공"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "400": {
+            "description": "정상적으로 값을 받지 못했을 때, 아래 예제와 같은 형태로 응답받습니다.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "result": {
+                  "type": "string",
+                  "example": "FAIL"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "상세페이지 조회 실패"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/api/main/{userId}": {
+      "get": {
+        "tags": [
+          "Main"
+        ],
+        "summary": "추천 정책 카테고리별 조회",
+        "description": "내 정보와 일치하는 정책 목록을 카테고리별로 모두 조회한다.",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "reauthorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "userId가 params로 입력되지 않았을 때, 아래 예제와 같은 형태로 응답받습니다.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "result": {
+                  "type": "string",
+                  "example": "FAIL"
+                },
+                "code": {
+                  "type": "number",
+                  "example": -10
+                },
+                "message": {
+                  "type": "string",
+                  "example": "필수 입력값 조회 실패"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "404": {
+            "description": "data가 DB에 존재하지 않을 때, 아래 예제와 같은 형태로 응답받습니다.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "result": {
+                  "type": "string",
+                  "example": "FAIL"
+                },
+                "code": {
+                  "type": "number",
+                  "example": -11
+                },
+                "message": {
+                  "type": "string",
+                  "example": "데이터베이스 조회 실패"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/news/": {
+      "get": {
+        "tags": [
+          "News"
+        ],
+        "summary": "뉴스 데이터 조회",
+        "description": "뉴스 데이터를 조회한다.",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "reauthorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/api/detail/{dataId}": {
+      "get": {
+        "tags": [
+          "Detail"
+        ],
+        "summary": "정책 상세 조회",
+        "description": "정책 하나의 상세 내용을 조회합니다.",
+        "parameters": [
+          {
+            "name": "dataId",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "reauthorization",
+            "in": "header",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "정상적으로 값을 받았을 때, 아래 예제와 같은 형태로 응답받습니다.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "result": {
+                  "type": "string",
+                  "example": "SUCCESS"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "상세페이지 조회 성공"
+                },
+                "data": {
+                  "type": "string",
+                  "example": "(req, res, next) =>  {     ========================================================================================================   #swagger.tags = ['Detail']   #swagger.summary = '정책 상세 조회'   #swagger.description = '정책 하나의 상세 내용을 조회합니다.'  ========================================================================================================   try {  const dataId = parseInt(req.params.dataId)  const { userId } = res.locals   const data = await findData(dataId)  if (!data) throw new Error()   const { mark } = await checkBookmark(userId)  for (i of mark) {  if (i === dataId) data.bookmarkState = true  }   =====================================================================================   #swagger.responses[200] = {  description: '정상적으로 값을 받았을 때, 아래 예제와 같은 형태로 응답받습니다.',  schema: {   result: \"SUCCESS\",  message: \"상세페이지 조회 성공\",  data,  }  }  =====================================================================================   res.status(200).json({  result: \"SUCCESS\",  message: \"상세페이지 조회 성공\",  data,  })  } catch (error) {   =====================================================================================   #swagger.responses[400] = {  description: '정상적으로 값을 받지 못했을 때, 아래 예제와 같은 형태로 응답받습니다.',  schema: { result: \"FAIL\", message: \"상세페이지 조회 실패\" }  }  =====================================================================================   return next({  message: \"상세페이지 조회 실패\",  stack: error,  })  } }"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "400": {
+            "description": "정상적으로 값을 받지 못했을 때, 아래 예제와 같은 형태로 응답받습니다.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "result": {
+                  "type": "string",
+                  "example": "FAIL"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "상세페이지 조회 실패"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/api/search/": {
+      "post": {
+        "tags": [
+          "Search"
+        ],
+        "summary": "데이터 검색",
+        "description": "데이터를 searchKey로 검색한다.",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "reauthorization",
+            "in": "header",
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "searchKey": {
+                  "example": "any"
+                },
+                "type": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "정상적으로 값을 받지 못했을 때, 아래 예제와 같은 형태로 응답받습니다.",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "result": {
+                  "type": "string",
+                  "example": "FAIL"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "정책 키워드를 확인해 주세요"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/api/mail/": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/mail/cert": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "certCode": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    }
+  }
+}
