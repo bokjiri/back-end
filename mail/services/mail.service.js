@@ -26,7 +26,6 @@ exports.mailSender = async (param) => {
                         console.error(error)
                         reject()
                     } else {
-                        console.log("Email sent: " + info.response)
                         resolve()
                     }
                 })
