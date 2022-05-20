@@ -1,5 +1,5 @@
 const router = require("express").Router()
-const markController = require("../controllers/mark.controller")
+const markController = require("./controllers/mark.controller")
 const redisMiddlewares = require("../middlewares/redis.middleware")
 const authMiddleware = require("../middlewares/auth/auth.middleware")
 

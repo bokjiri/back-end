@@ -1,6 +1,6 @@
-const User = require("../schemas/user")
-const BokjiAPI = require("../schemas/data")
-const { pushMarkRedis } = require("../services/mark.service")
+const User = require("../../schemas/user")
+const BokjiAPI = require("../../schemas/data")
+const { pushMarkRedis } = require("../../mark/services/mark.service")
 
 exports.postipService = async (userId, dataId) => {
     try {

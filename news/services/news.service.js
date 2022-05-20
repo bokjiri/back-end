@@ -1,7 +1,7 @@
 require("dotenv").config()
-const News = require("../schemas/news")
-const User = require("../schemas/user")
-const Client = require("../schemas/redis")
+const News = require("../../schemas/news")
+const User = require("../../schemas/user")
+const Client = require("../../schemas/redis")
 const axios = require("axios")
 const cheerio = require("cheerio")
 
