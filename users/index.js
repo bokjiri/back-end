@@ -1,9 +1,16 @@
 const passport = require("passport")
 const router = require("express").Router()
 const authMiddleware = require("../middlewares/auth/auth.middleware")
-const userValidation = require("../validator/user.validator")
+const userValidation = require("./validators/user.validator")
 
-const { kakaoCallback, getUsers, patchUsers, deleteUsers, createUser, authUser } = require("../controllers/user.controller")
+const {
+    kakaoCallback,
+    getUsers,
+    patchUsers,
+    deleteUsers,
+    createUser,
+    authUser,
+} = require("./controllers/user.controller")
 
 router.post("/", createUser)
 router.post("/auth", authUser)

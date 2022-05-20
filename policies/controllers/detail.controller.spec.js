@@ -1,7 +1,7 @@
 const httpMocks = require("node-mocks-http")
-const detailController = require("../detail.controller")
-jest.mock("../../services/detail.service")
-const detailService = require("../../services/detail.service")
+const detailController = require("../controllers/detail.controller")
+jest.mock("../services/detail.service")
+const detailService = require("../services/detail.service")
 const paramsDataId = "1"
 
 let req, res, next

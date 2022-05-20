@@ -1,13 +1,13 @@
 require("dotenv").config()
-const connect = require("../schemas")
+const connect = require("../../schemas")
 connect()
 const axios = require("axios")
 const convert = require("xml-js")
 const moment = require("moment")
 const newYouthApiDataDate = moment().format("YYYY-MM-DD")
-const Data = require("../schemas/data")
-const { classifyPeriod } = require("../openAPI/index.youth")
-const { regionCode, regionName } = require("../openAPI/area")
+const Data = require("../../schemas/data")
+const { classifyPeriod } = require("./controllers/youth.controller")
+const { regionCode, regionName } = require("../region")
 const apiKey = process.env.CHUNG_KEY
 const fs = require("fs")
 fs.truncate("./dataUpdating/youth.age.txt", () => {

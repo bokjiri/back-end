@@ -116,7 +116,8 @@ exports.patchUsers = async (req, res, next) => {
         const tokenUserId = res.locals.userId
         if (tokenUserId !== userId) throw new Error("토큰하고 유저아이디가 다름")
 
-        const { age, gender, region, disability, obstacle, marriage, target, salary, scholarship, family, workType } = req.body
+        const { age, gender, region, disability, obstacle, marriage, target, salary, scholarship, family, workType } =
+            req.body
 
         let job = req.body.job
         if (job === "미취업") job = "미취업자"
@@ -130,7 +131,21 @@ exports.patchUsers = async (req, res, next) => {
             arrRegion = []
         }
 
-        const result = await userService.updateUserInfo(userId, age, gender, arrRegion, disability, obstacle, job, marriage, target, salary, scholarship, family, workType)
+        const result = await userService.updateUserInfo(
+            userId,
+            age,
+            gender,
+            arrRegion,
+            disability,
+            obstacle,
+            job,
+            marriage,
+            target,
+            salary,
+            scholarship,
+            family,
+            workType
+        )
 
         if (!result) throw new Error()
         /*=====================================================================================

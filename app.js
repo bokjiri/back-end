@@ -10,7 +10,7 @@ const connect = require("./schemas")
 const passport = require("passport")
 const passportConfig = require("./kakao/index")
 const { newsData } = require("./services/news.service")
-const updateYouthApi = require("./dataUpdating/index")
+const updateYouthApi = require("./openAPI/youthAPI/index")
 const updateFirstBokjiApi = require("./dataCleansing/data")
 
 connect()

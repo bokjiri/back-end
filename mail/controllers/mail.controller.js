@@ -1,6 +1,6 @@
 const bcrypt = require("bcrypt")
 const { mailSender } = require("../services/mail.service")
-const { checkByEmail } = require("../services/user.service")
+const { checkByEmail } = require("../../users/services/user.service")
 exports.sendMail = async (req, res, next) => {
     try {
         const { email } = req.body
@@ -15,13 +15,31 @@ exports.sendMail = async (req, res, next) => {
             text: authCode,
         }
         await mailSender(emailParam)
-        res.cookie("hashAuthCode", hashAuthCode, { maxAge: 180000 })
-        res.status(200).json({
-            result: true,
-            message: "메일전송성공",
-        })
+        if (process.env.NODE_ENV === "test") {
+            res.cookie("hashAuthCode", hashAuthCode, {
+                maxAge: 180000,
+                sameSite: "None",
+                secure: true,
+                httpOnly: true,
+            })
+            res.status(200).json({
+                result: true,
+                message: "메일전송성공",
+                authCode,
+            })
+        } else {
+            res.cookie("hashAuthCode", hashAuthCode, {
+                maxAge: 180000,
+                sameSite: "None",
+                secure: true,
+                httpOnly: true,
+            })
+            res.status(200).json({
+                result: true,
+                message: "메일전송성공",
+            })
+        }
     } catch (error) {
-        console.error(error)
         return next({
             message: "메일전송실패",
             stack: error,
@@ -30,9 +48,9 @@ exports.sendMail = async (req, res, next) => {
 }
 exports.certAuth = async (req, res, next) => {
     try {
-        const { certCode } = req.body
+        const { authCode } = req.body
         const { hashAuthCode } = req.cookies
-        if (bcrypt.compareSync(certCode, hashAuthCode)) {
+        if (bcrypt.compareSync(authCode, hashAuthCode)) {
             res.status(201).json({
                 result: true,
                 message: "인증성공",

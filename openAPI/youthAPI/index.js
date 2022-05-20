@@ -3,10 +3,10 @@ const convert = require("xml-js")
 const schedule = require("node-schedule")
 const moment = require("moment")
 const newYouthApiDataDate = moment().format("YYYY-MM-DD")
-const Data = require("../schemas/data")
-const { classifyPeriod, deletePastPeriod } = require("../openAPI/index.youth")
-const { regionCode, regionName } = require("../openAPI/area")
-const dirrr = process.env.UPDATE_DATA_LOG || "./dataUpdating/"
+const Data = require("../../schemas/data")
+const { classifyPeriod, deletePastPeriod } = require("./controllers/youth.controller")
+const { regionCode, regionName } = require("../category/region")
+const dirrr = process.env.UPDATE_DATA_LOG || "./openAPI/dataUpdating/samples"
 const fs = require("fs")
 const dir = `${dirrr}${newYouthApiDataDate}.txt`
 

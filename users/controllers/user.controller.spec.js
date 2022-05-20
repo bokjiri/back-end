@@ -1,7 +1,7 @@
 const httpMocks = require("node-mocks-http")
-const userController = require("../user.controller")
-jest.mock("../../services/user.service")
-const userService = require("../../services/user.service")
+const userController = require("./user.controller")
+jest.mock("../services/user.service")
+const userService = require("../services/user.service")
 const paramsUserId = "1"
 let req, res, next, error
 beforeEach(() => {
@@ -138,7 +138,20 @@ describe("유저 컨트롤러 테스트", () => {
             const disability = ["없음"]
             let obstacle, marriage, target, salary, scholarship, family, workType
             let job = "미취업"
-            req.body = { age, gender, region, disability, marriage, target, salary, scholarship, family, job, obstacle, workType }
+            req.body = {
+                age,
+                gender,
+                region,
+                disability,
+                marriage,
+                target,
+                salary,
+                scholarship,
+                family,
+                job,
+                obstacle,
+                workType,
+            }
 
             await userController.patchUsers(req, res, next)
             expect(userService.updateUserInfo).toHaveBeenCalledWith(
@@ -166,10 +179,37 @@ describe("유저 컨트롤러 테스트", () => {
             const disability = ["없음"]
             let obstacle, marriage, target, salary, scholarship, family, workType
             let job = "미취업"
-            req.body = { age, gender, region, disability, marriage, target, salary, scholarship, family, job, obstacle, workType }
+            req.body = {
+                age,
+                gender,
+                region,
+                disability,
+                marriage,
+                target,
+                salary,
+                scholarship,
+                family,
+                job,
+                obstacle,
+                workType,
+            }
 
             await userController.patchUsers(req, res, next)
-            expect(userService.updateUserInfo).toHaveBeenCalledWith(1, 20201010, [], "경기도", ["없음"], undefined, "미취업자", undefined, undefined, undefined, undefined, undefined, undefined)
+            expect(userService.updateUserInfo).toHaveBeenCalledWith(
+                1,
+                20201010,
+                [],
+                "경기도",
+                ["없음"],
+                undefined,
+                "미취업자",
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined
+            )
         })
         it("------- 시·군을 선택해주세요로 들어왔을 때 빈값으로 바뀌는가", async () => {
             req.params.userId = paramsUserId
@@ -180,10 +220,37 @@ describe("유저 컨트롤러 테스트", () => {
             const disability = ["없음"]
             let obstacle, marriage, target, salary, scholarship, family, workType
             let job = "미취업"
-            req.body = { age, gender, region, disability, marriage, target, salary, scholarship, family, job, obstacle, workType }
+            req.body = {
+                age,
+                gender,
+                region,
+                disability,
+                marriage,
+                target,
+                salary,
+                scholarship,
+                family,
+                job,
+                obstacle,
+                workType,
+            }
 
             await userController.patchUsers(req, res, next)
-            expect(userService.updateUserInfo).toHaveBeenCalledWith(1, 20201010, [], [], ["없음"], undefined, "미취업자", undefined, undefined, undefined, undefined, undefined, undefined)
+            expect(userService.updateUserInfo).toHaveBeenCalledWith(
+                1,
+                20201010,
+                [],
+                [],
+                ["없음"],
+                undefined,
+                "미취업자",
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined
+            )
         })
         it("시·도를 선택해 주세요 시·군을 선택해주세요로 들어왔을 때 빈값으로 바뀌는가", async () => {
             req.params.userId = paramsUserId
@@ -194,10 +261,37 @@ describe("유저 컨트롤러 테스트", () => {
             const disability = ["없음"]
             let obstacle, marriage, target, salary, scholarship, family, workType
             let job = "미취업"
-            req.body = { age, gender, region, disability, marriage, target, salary, scholarship, family, job, obstacle, workType }
+            req.body = {
+                age,
+                gender,
+                region,
+                disability,
+                marriage,
+                target,
+                salary,
+                scholarship,
+                family,
+                job,
+                obstacle,
+                workType,
+            }
 
             await userController.patchUsers(req, res, next)
-            expect(userService.updateUserInfo).toHaveBeenCalledWith(1, 20201010, [], [], ["없음"], undefined, "미취업자", undefined, undefined, undefined, undefined, undefined, undefined)
+            expect(userService.updateUserInfo).toHaveBeenCalledWith(
+                1,
+                20201010,
+                [],
+                [],
+                ["없음"],
+                undefined,
+                "미취업자",
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined,
+                undefined
+            )
         })
         it("회원정보 수정이 되면 '회원정보 수정 완료'라는 메세지를 보내는가", async () => {
             req.params.userId = paramsUserId
