@@ -2,19 +2,12 @@ const mongoose = require("mongoose")
 const autoIdSetter = require("./autoidsetter")
 
 const news = mongoose.Schema({
-    title: {
+    news: { type: [{ title: String, link: String, date: String, desc: String, image: String }] },
+
+    type: {
         type: String,
     },
-    link: {
-        type: String,
-    },
-    desc: {
-        type: String,
-    },
-    date: {
-        type: String,
-    },
-    image: {
+    userId: {
         type: String,
     },
 })
