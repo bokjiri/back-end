@@ -315,7 +315,7 @@ exports.logic = async (isUser, isData) => {
         //-----------------------------------------------------------salary/family 조건 검사-----------------------------------------------------------------//
         let checkedWithSalary = []
         //만약 isUser에 family 조건이 존재하지 않는다면 salary가 상관 없는 정책만 추가
-        if (!isUser.family) {
+        if (!isUser.family || (!isUser.salary && isUser.salary !== 0)) {
             for (let j = 0; j < checkedWithTarget.length; j++) {
                 if (!checkedWithTarget[j].salary) {
                     checkedWithSalary.push(checkedWithTarget[j])

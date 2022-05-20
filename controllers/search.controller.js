@@ -25,7 +25,7 @@ exports.postSearch = async (req, res, next) => {
         const search = new RegExp(searchKey)
 
         for (let i of dataList) {
-            if (type === "전체") {
+            if (type === "통합검색") {
                 if (search.test(i.name) || search.test(i.summary) || search.test(i.desire)) {
                     searchList.push(i)
                 }
