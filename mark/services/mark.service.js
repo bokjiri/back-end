@@ -1,6 +1,6 @@
-const User = require("../schemas/user")
-const BokjiApi = require("../schemas/data")
-const Client = require("../schemas/redis")
+const User = require("../../schemas/user")
+const BokjiApi = require("../../schemas/data")
+const Client = require("../../schemas/redis")
 
 redisSet = async (userId) => {
     const markInfo = await User.findOne({ userId }, { _id: false, mark: true })

@@ -1,7 +1,7 @@
 const router = require("express").Router()
-const tipController = require("../controllers/tip.controller")
+const searchController = require("./controllers/search.controller")
 const authMiddleware = require("../middlewares/auth/auth.middleware")
 
-router.post("/", authMiddleware, tipController.postTips)
+router.post("/", authMiddleware, searchController.postSearch)
 
 module.exports = router

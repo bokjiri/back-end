@@ -1,5 +1,5 @@
 const httpMocks = require("node-mocks-http")
-const tipController = require("../tip.controller")
+const tipController = require("./tip.controller")
 
 jest.mock("../../schemas/user")
 jest.mock("../../schemas/data")

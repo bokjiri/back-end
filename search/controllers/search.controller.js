@@ -1,5 +1,5 @@
-const { logic } = require("../controllers/main.controller")
-const { checkUser, checkData } = require("../services/main.service")
+const { logic } = require("../../controllers/main.controller")
+const { checkUser, checkData } = require("../../services/main.service")
 exports.postSearch = async (req, res, next) => {
     /*========================================================================================================
     #swagger.tags = ['Search']
