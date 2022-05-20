@@ -1,8 +1,9 @@
 const router = require("express").Router()
 const { sendMail, certAuth } = require("./controllers/mail.controller")
-const mailValidation = require("./validator/mail.validatior")
+const mailValidation = require("./validator/mail.validator")
+const certValidation = require("./validator/cert.validator")
 
 router.post("/", mailValidation, sendMail)
-router.post("/cert", certAuth)
+router.post("/cert", certValidation, certAuth)
 
 module.exports = router

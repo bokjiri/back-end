@@ -9,10 +9,7 @@ const patchUserData = require("../test/user/patch.json")
 describe("유저 통합테스트", () => {
     beforeAll(async () => {
         try {
-            await mongoose.connect(
-                `mongodb://${process.env.DBID}:${process.env.DBPW}@3.36.130.225:27017/test_user?authSource=admin&authMechanism=SCRAM-SHA-1`,
-                { ignoreUndefined: true }
-            )
+            await mongoose.connect(`mongodb://${process.env.DBID}:${process.env.DBPW}@3.36.130.225:27017/test_user?authSource=admin&authMechanism=SCRAM-SHA-1`, { ignoreUndefined: true })
         } catch (error) {
             console.error(error)
         }
@@ -47,12 +44,21 @@ describe("유저 통합테스트", () => {
             const res = await request(app).get(`/api/users/${userId}`).set({ Authorization, reAuthorization })
             expect(res.statusCode).toBe(201)
         })
+        it("get /api/users/:userId 토큰없이 유저정보 잘 불러와짐?", async () => {
+            const res = await request(app).get(`/api/users/${userId}`)
+            expect(res.statusCode).toBe(401)
+        })
         it("patch /api/users/:userId 유저정보 잘 수정됨?", async () => {
-            const res = await request(app)
-                .patch(`/api/users/${userId}`)
-                .set({ Authorization, reAuthorization })
-                .send(patchUserData)
+            const res = await request(app).patch(`/api/users/${userId}`).set({ Authorization, reAuthorization }).send(patchUserData)
             expect(res.statusCode).toBe(201)
+        })
+        it("patch /api/users/:userId 토큰없이 유저정보 잘 수정됨?", async () => {
+            const res = await request(app).patch(`/api/users/${userId}`).send(patchUserData)
+            expect(res.statusCode).toBe(401)
+        })
+        it("delete /api/users/:userId 토큰없이 유저정보 잘 지워짐", async () => {
+            const res = await request(app).delete(`/api/users/${userId}`)
+            expect(res.statusCode).toBe(401)
         })
         it("delete /api/users/:userId 유저정보 잘 지워짐", async () => {
             const res = await request(app).delete(`/api/users/${userId}`).set({ Authorization, reAuthorization })
