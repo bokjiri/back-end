@@ -6,13 +6,23 @@ const connect = require("../schemas")
 connect()
 const serviceKey = process.env.SERVICE_KEY
 const fs = require("fs")
-fs.truncate("./openAPI/index.cri.txt", () => {
+fs.truncate("./openAPI/central/samples/index.cri.txt", () => {
     console.log("File Content Deleted")
 })
-const myConsole = new console.Console(fs.createWriteStream("./openAPI/index.cri.txt"))
+const myConsole = new console.Console(fs.createWriteStream("./openAPI/central/samples/index.cri.txt"))
 
 const desireCode = [100, 110, 120, 130, 140, 150, 160, 170, 180]
-const desireName = ["일자리", "주거 및 일상생활", "주거 및 일상생활", "건강", "건강", "교육 및 돌봄", "교육 및 돌봄", "기타", "안전 및 권익보장"]
+const desireName = [
+    "일자리",
+    "주거 및 일상생활",
+    "주거 및 일상생활",
+    "건강",
+    "건강",
+    "교육 및 돌봄",
+    "교육 및 돌봄",
+    "기타",
+    "안전 및 권익보장",
+]
 
 loadOpenApi()
 

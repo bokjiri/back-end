@@ -1,8 +1,8 @@
 require("dotenv").config()
 const axios = require("axios")
 const convert = require("xml-js")
-const Data = require("../schemas/data")
-const connect = require("../schemas")
+const Data = require("../../../schemas/data")
+const connect = require("../../../schemas")
 
 connect()
 
@@ -13,7 +13,17 @@ fs.truncate("./openAPI/index.salary.비교.txt", () => {
 const myConsole = new console.Console(fs.createWriteStream("./openAPI/index.salary.비교.txt"))
 
 const desireCode = [100, 110, 120, 130, 140, 150, 160, 170, 180]
-const desireName = ["일자리", "주거 및 일상생활", "주거 및 일상생활", "건강", "건강", "교육 및 돌봄", "교육 및 돌봄", "기타", "안전 및 권익보장"]
+const desireName = [
+    "일자리",
+    "주거 및 일상생활",
+    "주거 및 일상생활",
+    "건강",
+    "건강",
+    "교육 및 돌봄",
+    "교육 및 돌봄",
+    "기타",
+    "안전 및 권익보장",
+]
 
 // loadOpenApi()
 async function loadOpenApi() {
@@ -92,7 +102,18 @@ async function loadOpenApi() {
                     console.log(jsonParse.wantedDtl)
                     const institution = jsonParse.wantedDtl.jurMnofNm._text
                     // console.log(target)
-                    myConsole.log({ desire, name, target, obstacle, lifeCycle, link, institution, summary, support, salary })
+                    myConsole.log({
+                        desire,
+                        name,
+                        target,
+                        obstacle,
+                        lifeCycle,
+                        link,
+                        institution,
+                        summary,
+                        support,
+                        salary,
+                    })
 
                     // myConsole.log({ target })
                     // if (target.indexOf("저소득") === -1) {
@@ -149,7 +170,18 @@ async function loadOpenApi() {
 
                 const institution = jsonParse.wantedDtl.jurMnofNm._text
                 // console.log(target)
-                myConsole.log({ desire, name, target, obstacle, lifeCycle, link, institution, summary, support, salary })
+                myConsole.log({
+                    desire,
+                    name,
+                    target,
+                    obstacle,
+                    lifeCycle,
+                    link,
+                    institution,
+                    summary,
+                    support,
+                    salary,
+                })
                 // await Data.updateOne({ name }, { $set: { salary } })
             } else {
                 console.log(servList)
@@ -197,10 +229,14 @@ async function salaryData() {
             const checkCriteriaTwo = criteria.search(/중위소득\d\d%/)
             const checkCriteriaTwoDot = criteria.search(/중위소득.\d\d%/)
             if (checkSummaryThreeDot !== -1) {
-                salary = summary[checkSummaryThreeDot + 5] + summary[checkSummaryThreeDot + 6] + summary[checkSummaryThreeDot + 7]
+                salary =
+                    summary[checkSummaryThreeDot + 5] +
+                    summary[checkSummaryThreeDot + 6] +
+                    summary[checkSummaryThreeDot + 7]
                 // myConsole.log({ name, support, summary, criteria, salary })
             } else if (checkSummaryThree !== -1) {
-                salary = summary[checkSummaryThree + 4] + summary[checkSummaryThree + 5] + summary[checkSummaryThree + 6]
+                salary =
+                    summary[checkSummaryThree + 4] + summary[checkSummaryThree + 5] + summary[checkSummaryThree + 6]
                 // myConsole.log({ name, support, summary, criteria, salary })
             } else if (checkSummaryTwoDot !== -1) {
                 salary = summary[checkSummaryTwoDot + 5] + summary[checkSummaryTwoDot + 6]
@@ -209,10 +245,14 @@ async function salaryData() {
                 salary = summary[checkSummaryTwo + 4] + summary[checkSummaryTwo + 5]
                 // myConsole.log({ name, support, summary, criteria, salary })
             } else if (checkSupportThreeDot !== -1) {
-                salary = support[checkSupportThreeDot + 5] + support[checkSupportThreeDot + 6] + support[checkSupportThreeDot + 7]
+                salary =
+                    support[checkSupportThreeDot + 5] +
+                    support[checkSupportThreeDot + 6] +
+                    support[checkSupportThreeDot + 7]
                 // myConsole.log({ name, support, summary, criteria, salary })
             } else if (checkSupportThree !== -1) {
-                salary = support[checkSupportThree + 4] + support[checkSupportThree + 5] + support[checkSupportThree + 6]
+                salary =
+                    support[checkSupportThree + 4] + support[checkSupportThree + 5] + support[checkSupportThree + 6]
                 // myConsole.log({ name, support, summary, criteria, salary })
             } else if (checkSupportTwoDot !== -1) {
                 salary = support[checkSupportTwoDot + 5] + support[checkSupportTwoDot + 6]
@@ -221,10 +261,16 @@ async function salaryData() {
                 salary = support[checkSupportTwo + 4] + support[checkSupportTwo + 5]
                 // myConsole.log({ name, support, summary, criteria, salary })
             } else if (checkCriteriaThreeDot !== -1) {
-                salary = criteria[checkCriteriaThreeDot + 5] + criteria[checkCriteriaThreeDot + 6] + criteria[checkCriteriaThreeDot + 7]
+                salary =
+                    criteria[checkCriteriaThreeDot + 5] +
+                    criteria[checkCriteriaThreeDot + 6] +
+                    criteria[checkCriteriaThreeDot + 7]
                 // myConsole.log({ name, support, summary, criteria, salary })
             } else if (checkCriteriaThree !== -1) {
-                salary = criteria[checkCriteriaThree + 4] + criteria[checkCriteriaThree + 5] + criteria[checkCriteriaThree + 6]
+                salary =
+                    criteria[checkCriteriaThree + 4] +
+                    criteria[checkCriteriaThree + 5] +
+                    criteria[checkCriteriaThree + 6]
                 // myConsole.log({ name, support, summary, criteria, salary })
             } else if (checkCriteriaTwoDot !== -1) {
                 salary = criteria[checkCriteriaTwoDot + 5] + criteria[checkCriteriaTwoDot + 6]

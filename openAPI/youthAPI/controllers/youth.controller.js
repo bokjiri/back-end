@@ -1,4 +1,4 @@
-const Data = require("../schemas/data")
+const Data = require("../../../schemas/data")
 const moment = require("moment")
 
 exports.classifyPeriod = async (period3) => {

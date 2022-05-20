@@ -1,6 +1,6 @@
 const passport = require("passport")
 const kakaoStrategy = require("./strategy")
-const { checkByEmail } = require("../services/user.service")
+const { checkByEmail } = require("../users/services/user.service")
 
 module.exports = () => {
     passport.serializeUser((user, done) => {

@@ -1,5 +1,13 @@
-const { showMark, pushMark, showMarkRedis, pushMarkRedis, dataCheck, deleteMark, deleteMarkRedis } = require("../services/mark.service")
-const { checkBookmark } = require("../services/detail.service")
+const {
+    showMark,
+    pushMark,
+    showMarkRedis,
+    pushMarkRedis,
+    dataCheck,
+    deleteMark,
+    deleteMarkRedis,
+} = require("../services/mark.service")
+const { checkBookmark } = require("../policies/services/detail.service")
 
 exports.getMarks = async (req, res, next) => {
     /*========================================================================================================

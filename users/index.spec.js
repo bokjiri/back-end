@@ -1,21 +1,21 @@
 const request = require("supertest")
-const app = require("../../app")
+const app = require("../app")
 const mongoose = require("mongoose")
-const User = require("../../schemas/user")
-const redis = require("../../schemas/redis")
+const User = require("../schemas/user")
+const redis = require("../schemas/redis")
 const jwt = require("jsonwebtoken")
-const patchUserData = require("../../test/user/patch.json")
+const patchUserData = require("../test/user/patch.json")
 
 describe("유저 통합테스트", () => {
     beforeAll(async () => {
-        await mongoose
-            .connect(`mongodb://${process.env.DBID}:${process.env.DBPW}@3.36.130.225:27017/test_user?authSource=admin&authMechanism=SCRAM-SHA-1`, { ignoreUndefined: true })
-            .then(() => {
-                console.log("testdb 연결완료")
-            })
-            .catch((err) => {
-                console.error(err)
-            })
+        try {
+            await mongoose.connect(
+                `mongodb://${process.env.DBID}:${process.env.DBPW}@3.36.130.225:27017/test_user?authSource=admin&authMechanism=SCRAM-SHA-1`,
+                { ignoreUndefined: true }
+            )
+        } catch (error) {
+            console.error(error)
+        }
     })
     afterAll(async () => {
         await User.deleteMany()
@@ -48,7 +48,10 @@ describe("유저 통합테스트", () => {
             expect(res.statusCode).toBe(201)
         })
         it("patch /api/users/:userId 유저정보 잘 수정됨?", async () => {
-            const res = await request(app).patch(`/api/users/${userId}`).set({ Authorization, reAuthorization }).send(patchUserData)
+            const res = await request(app)
+                .patch(`/api/users/${userId}`)
+                .set({ Authorization, reAuthorization })
+                .send(patchUserData)
             expect(res.statusCode).toBe(201)
         })
         it("delete /api/users/:userId 유저정보 잘 지워짐", async () => {
