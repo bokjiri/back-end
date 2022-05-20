@@ -29,7 +29,8 @@ exports.topMarkRedis = async (req, res, next) => {
     }
 }
 exports.newsData = async (req, res, next) => {
-    const redis = await Client.get("newsData")
+    const { userId } = res.locals
+    const redis = await Client.get(`newsData${userId}`)
     if (!redis) {
         console.log("redis No such news data found ㅠㅠ")
         next()
