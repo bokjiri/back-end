@@ -1,5 +1,5 @@
-const User = require("../schemas/user")
-const BokjiApi = require("../schemas/data")
+const User = require("../../schemas/user")
+const BokjiApi = require("../../schemas/data")
 const today = new Date()
 
 exports.checkUser = async (userId) => {
