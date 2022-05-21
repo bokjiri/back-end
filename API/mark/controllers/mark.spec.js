@@ -1,13 +1,13 @@
 require("dotenv").config()
-const markController = require("../mark.controller")
+const markController = require("./mark.controller")
 const httpMocks = require("node-mocks-http")
-const markData = require("../../test/data/new-mark.json")
-jest.mock("../../schemas/user")
-jest.mock("../../schemas/data")
-jest.mock("../../schemas/redis")
-const User = require("../../schemas/user")
-const BokjiApi = require("../../schemas/data")
-const redis = require("../../schemas/redis")
+const markData = require("../../../test/data/new-mark.json")
+jest.mock("../../../schemas/user")
+jest.mock("../../../schemas/data")
+jest.mock("../../../schemas/redis")
+const User = require("../../../schemas/user")
+const BokjiApi = require("../../../schemas/data")
+const redis = require("../../../schemas/redis")
 const userId = { userId: 1 }
 const paramsUserId = { userId: "1" }
 const localsUserId = userId

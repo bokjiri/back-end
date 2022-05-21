@@ -1,9 +1,15 @@
 require("dotenv").config()
-const News = require("../../schemas/news")
-const User = require("../../schemas/user")
-const Client = require("../../schemas/redis")
+const News = require("../../../schemas/news")
+const User = require("../../../schemas/user")
+const Client = require("../../../schemas/redis")
 const axios = require("axios")
 const cheerio = require("cheerio")
+
+async function redisSet(userId, userNewsList) {
+    const jsonNewsData = JSON.stringify(userNewsList)
+    await Client.set(`newsData${userId}`, jsonNewsData)
+    await Client.expire(`newsData${userId}`, 3600)
+}
 
 async function dataParsing(userId) {
     const getHTML = async (keyword) => {
@@ -57,8 +63,12 @@ async function dataParsing(userId) {
         // console.log(userNewsList)
         if (findNews.length === 0) {
             createNews = await News.create({ news: userNewsList, userId })
+            await redisSet(userId, userNewsList)
+            console.log(userNewsList)
         } else if (findNews.length) {
             updateNews = await News.updateOne({ userId }, { $set: { news: userNewsList } })
+            await redisSet(userId, userNewsList)
+            console.log(userNewsList)
         }
     }
     const userRegion = await User.findOne({ userId }, { _id: false, region: true })
@@ -80,9 +90,6 @@ exports.newsDataList = async (userId) => {
                 newsArr.push({ title: data.title, link: data.link, date: data.date, desc: data.desc, image: data.image })
             })
         })
-        const jsonNewsData = JSON.stringify(newsArr)
-        await Client.set(`newsData${userId}`, jsonNewsData)
-        await Client.expire(`newsData${userId}`, 3600)
         return newsArr
     } catch (err) {
         console.log(err)
