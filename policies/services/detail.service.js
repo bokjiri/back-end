@@ -3,7 +3,11 @@ const User = require("../../schemas/user")
 
 exports.findData = async (dataId) => {
     try {
-        return await Data.findOne({ dataId }, { _id: false, __v: false })
+        detailData = await Data.findOne({ dataId }, { _id: false, __v: false })
+        detailData.summary.replace(/. /g, ". \n")
+        detailData.support.replace(/. /g, ". \n")
+
+        return detailData
     } catch (error) {
         console.error(error)
         return error
