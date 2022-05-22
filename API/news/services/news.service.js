@@ -64,11 +64,11 @@ async function dataParsing(userId) {
         if (findNews.length === 0) {
             createNews = await News.create({ news: userNewsList, userId })
             await redisSet(userId, userNewsList)
-            console.log(userNewsList)
+            // console.log(userNewsList)
         } else if (findNews.length) {
             updateNews = await News.updateOne({ userId }, { $set: { news: userNewsList } })
             await redisSet(userId, userNewsList)
-            console.log(userNewsList)
+            // console.log(userNewsList)
         }
     }
     const userRegion = await User.findOne({ userId }, { _id: false, region: true })
