@@ -3,7 +3,12 @@ const detailController = require("../controllers/detail.controller")
 jest.mock("../services/detail.service")
 const detailService = require("../services/detail.service")
 const paramsDataId = "1"
-
+class ValidationError extends Error {
+    constructor(message) {
+        super(message)
+        this.name = "ValidationError"
+    }
+}
 let req, res, next
 beforeEach(() => {
     req = httpMocks.createRequest()
@@ -15,15 +20,15 @@ describe("detail.controller 테스트", () => {
         it("data가 없을 때 '상세페이지 조회 실패'라는 메세지를 보내는가", async () => {
             req.params.dataId = paramsDataId
             res.locals.userid = 1
-            error = new Error()
+            error = new ValidationError("data가 존재하지 않습니다.")
 
             const errorMessage = {
-                message: "상세페이지 조회 실패",
-                stack: error,
+                message: error.message,
+                stack: error.stack,
             }
             detailService.findData.mockReturnValue(null)
             await detailController.getDetail(req, res, next)
-            expect(next).toBeCalledWith(errorMessage)
+            expect(next).toBeCalledWith(expect.objectContaining({ message: errorMessage.message }))
         })
         it("북마크가 true여야 하는 경우 false 인가", async () => {
             req.params.dataId = paramsDataId

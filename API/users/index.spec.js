@@ -1,10 +1,10 @@
 const request = require("supertest")
-const app = require("../app")
+const app = require("../../app")
 const mongoose = require("mongoose")
-const User = require("../schemas/user")
-const redis = require("../schemas/redis")
+const User = require("../../schemas/user")
+const redis = require("../../schemas/redis")
 const jwt = require("jsonwebtoken")
-const patchUserData = require("../test/user/patch.json")
+const patchUserData = require("../../test/user/patch.json")
 
 describe("유저 통합테스트", () => {
     beforeAll(async () => {
@@ -29,7 +29,7 @@ describe("유저 통합테스트", () => {
 
     describe("유저 통합테스트", () => {
         let aToken, rToken, userId, Authorization, reAuthorization
-        beforeEach(async () => {
+        beforeAll(async () => {
             const email = "user@email.com"
             const password = "user"
             const res = await request(app).post(`/api/users/auth`).send({ email, password })

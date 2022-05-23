@@ -16,6 +16,7 @@ const userId = 1
 const region = { region: ["서울특별시"] }
 const axiosReturn = "html"
 
+
 let req, res, next
 beforeEach(() => {
     req = httpMocks.createRequest() //test코드에서 req, res를 사용하기 위해 httpMocks를 이용한다.

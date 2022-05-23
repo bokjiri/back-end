@@ -1,5 +1,10 @@
 const { findData, checkBookmark } = require("../services/detail.service")
-
+class ValidationError extends Error {
+    constructor(message) {
+        super(message)
+        this.name = "ValidationError"
+    }
+}
 exports.getDetail = async (req, res, next) => {
     /*========================================================================================================
     #swagger.tags = ['Detail']
@@ -11,7 +16,7 @@ exports.getDetail = async (req, res, next) => {
         const { userId } = res.locals
 
         const data = await findData(dataId)
-        if (!data) throw new Error()
+        if (!data) throw new ValidationError("data가 존재하지 않습니다.")
 
         const { mark } = await checkBookmark(userId)
         for (i of mark) {
@@ -39,9 +44,16 @@ exports.getDetail = async (req, res, next) => {
             schema: { result: "FAIL", message: "상세페이지 조회 실패" }
         }
         =====================================================================================*/
-        return next({
-            message: "상세페이지 조회 실패",
-            stack: error,
-        })
+        if (error instanceof ValidationError) {
+            return next({
+                message: error.message,
+                stack: error.stack,
+            })
+        } else {
+            return next({
+                message: "상세페이지 조회 실패",
+                stack: error,
+            })
+        }
     }
 }
