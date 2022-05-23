@@ -52,7 +52,7 @@ exports.getDetail = async (req, res, next) => {
         } else {
             return next({
                 message: "상세페이지 조회 실패",
-                stack: error,
+                stack: error.stack,
             })
         }
     }

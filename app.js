@@ -74,7 +74,7 @@ app.use((req, res, next) => {
 
 app.use((err, req, res, next) => {
     Logger.error(`${err.message} \n ${err.stack ? err.stack : ""} `)
-    res.status(400).json({ result: "FAIL", message: err.message })
+    res.status(err.status || 400).json({ result: "FAIL", message: err.message })
 })
 
 module.exports = app

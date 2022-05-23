@@ -55,7 +55,7 @@ exports.sendMail = async (req, res, next) => {
         } else {
             return next({
                 message: "메일전송중 오류가 발생했습니다.",
-                stack: error,
+                stack: error.stack,
             })
         }
     }
@@ -81,7 +81,7 @@ exports.certAuth = async (req, res, next) => {
         } else {
             return next({
                 message: "메일인증중 오류가 발생했습니다.",
-                stack: error,
+                stack: error.stack,
             })
         }
     }

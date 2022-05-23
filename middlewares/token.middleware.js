@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken")
-const { checkById } = require("../../API/users/services/user.service")
-const { Logger } = require("../../logging")
+const { checkById } = require("../API/users/services/user.service")
+const { Logger } = require("../logging")
 class ValidationError extends Error {
     constructor(message) {
         super(message)
@@ -12,7 +12,7 @@ module.exports = async (req, res, next) => {
     try {
         const { authorization } = req.headers
 
-        if (!authorization) throw new ValidationError("요청 헤더 내 authorization 값이 존재하지 않습니다.")
+        if (!authorization) return next()
 
         if (authorization.split(" ").length !== 2) throw new ValidationError("요청 헤더 내 authorization 값이 올바르지 않습니다.")
 
@@ -29,7 +29,6 @@ module.exports = async (req, res, next) => {
         res.locals.email = confirmUser.email
         res.locals.nickname = confirmUser.nickname
         res.locals.profileUrl = confirmUser.profileUrl
-
         next()
     } catch (error) {
         if (error.name === "TokenExpiredError") {

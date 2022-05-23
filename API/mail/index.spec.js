@@ -16,20 +16,20 @@ describe("유저 통합테스트", () => {
         await mongoose.disconnect()
         await redis.quit()
     })
-    describe("post /api/mail", () => {
+    describe("post /api/mail/send", () => {
         it("메일 잘 보내는가", async () => {
-            const res = await request(app).post("/api/mail").send({ email: "boksei_@naver.com" })
+            const res = await request(app).post("/api/mail/send").send({ email: "boksei_@naver.com" })
             expect(res.statusCode).toBe(200)
         }, 15000)
         it("메일 형식이 아님", async () => {
-            const res = await request(app).post("/api/mail").send({ email: "asdfasdf" })
+            const res = await request(app).post("/api/mail/send").send({ email: "asdfasdf" })
             expect(res.statusCode).toBe(400)
         }, 15000)
     })
     describe("post /api/mail/cert", () => {
         let cookie, authCode
         beforeEach(async () => {
-            const response = await request(app).post("/api/mail").send({ email: "boksei_@naver.com" })
+            const response = await request(app).post("/api/mail/send").send({ email: "boksei_@naver.com" })
             authCode = response.body.authCode
             cookie = response.headers["set-cookie"]
         })

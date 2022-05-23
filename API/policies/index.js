@@ -1,7 +1,7 @@
 const router = require("express").Router()
-const authMiddleware = require("../../middlewares/auth/auth.middleware")
 const { getDetail } = require("./controllers/detail.controller")
+const tokenMiddleware = require("../../middlewares/token.middleware")
 
-router.get("/:dataId", authMiddleware, getDetail)
+router.get("/:dataId", tokenMiddleware, getDetail)
 
 module.exports = router
