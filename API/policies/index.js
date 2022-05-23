@@ -1,6 +1,9 @@
 const router = require("express").Router()
+const { getMain } = require("./controllers/policy.controller")
+const { getDetail } = require("./controllers/policy.controller")
 const authMiddleware = require("../../middlewares/auth/auth.middleware")
-const { getDetail } = require("./controllers/detail.controller")
+
+router.get("/:userId", authMiddleware, getMain)
 
 router.get("/:dataId", authMiddleware, getDetail)
 

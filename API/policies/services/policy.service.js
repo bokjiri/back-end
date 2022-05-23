@@ -1,5 +1,5 @@
-const User = require("../../schemas/user")
-const BokjiApi = require("../../schemas/data")
+const User = require("../../../schemas/user")
+const BokjiApi = require("../../../schemas/data")
 const today = new Date()
 
 exports.checkUser = async (userId) => {
@@ -76,4 +76,81 @@ exports.checkData = async (isUser) => {
     }
     const data = newData.filter((item) => isUser.dismatchData.includes(item.dataId) === false)
     return data
+}
+
+exports.findData = async (dataId) => {
+    try {
+        detailData = await BokjiApi.findOne({ dataId }, { _id: false, __v: false })
+        const newSummary = `${detailData.summary}`
+            //     .replace(
+            //         /\n/gs,
+            //         `
+            // `
+            //     )
+            .replace(
+                /(\.\s)/gs,
+                `.
+        `
+            )
+        // const newSummary = await this.replaceBrTag(`${detailData.summary}`)
+
+        const newSupport = `${detailData.support}`
+            //     .replace(
+            //         /\n/gs,
+            //         `
+            // `
+            //     )
+            .replace(
+                /(\.\s)/gs,
+                `.
+        `
+            )
+        // const newSupport = await this.replaceBrTag(`${detailData.support}`)
+
+        const newCriteria = `${detailData.criteria}`
+            //     .replace(
+            //         /\n/gs,
+            //         `
+            // `
+            //     )
+            .replace(
+                /(\.\s)/gs,
+                `.
+        `
+            )
+        // const newCriteria = await this.replaceBrTag(`${detailData.criteria}`)
+
+        detailData.summary = newSummary
+        detailData.support = newSupport
+        detailData.criteria = newCriteria
+
+        return detailData
+    } catch (error) {
+        console.error(error)
+        return error
+    }
+}
+
+exports.checkBookmark = async (userId) => {
+    try {
+        return await User.findOne({ userId }, { _id: false, mark: true })
+    } catch (error) {
+        console.error(error)
+        return error
+    }
+}
+
+exports.replaceBrTag = async (str) => {
+    try {
+        if (!str) {
+            return ""
+        }
+        str = str.replace(/(\.\s)/g, ". \n")
+        str = str.replace(/\n/gs, "<br>")
+
+        return str
+    } catch (error) {
+        console.error(error)
+        return error
+    }
 }

@@ -1,7 +1,7 @@
 const httpMocks = require("node-mocks-http")
-const detailController = require("../controllers/detail.controller")
-jest.mock("../services/detail.service")
-const detailService = require("../services/detail.service")
+const mainController = require("./policy.controller")
+jest.mock("../services/policy.service")
+const detailService = require("../services/policy.service")
 const paramsDataId = "1"
 class ValidationError extends Error {
     constructor(message) {
