@@ -34,7 +34,7 @@ describe("검색 통합 테스트", () => {
             reAuthorization = `Bearer ${rToken}`
             userId = jwt.decode(aToken).userId
             await request(app).patch(`/api/users/${userId}`).set({ Authorization, reAuthorization }).send(patchUserData)
-        })
+        }, 15000)
         it("GET /api/search 가 잘 되나?", async () => {
             const res = await request(app).post("/api/search").set({ Authorization, reAuthorization }).send({ searchKey: "일자리", type: "정책분야" })
             expect(res.statusCode).toBe(200)
