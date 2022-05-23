@@ -1,8 +1,8 @@
 const httpMocks = require("node-mocks-http")
 const newsController = require("./news.controller")
 
-jest.mock("../../schemas/news")
-const news = require("../../schemas/news")
+jest.mock("../../../schemas/news")
+const news = require("../../../schemas/news")
 
 let req, res, next
 beforeEach(() => {

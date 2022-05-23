@@ -1,8 +1,8 @@
 const request = require("supertest")
-const app = require("../app")
+const app = require("../../app")
 const agent = request.agent(app)
 const mongoose = require("mongoose")
-const redis = require("../schemas/redis")
+const redis = require("../../schemas/redis")
 
 describe("유저 통합테스트", () => {
     beforeAll(async () => {

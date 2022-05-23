@@ -1,13 +1,13 @@
 const router = require("express").Router()
 
-const userRouter = require("../users")
+const userRouter = require("../API/users")
 const markRouter = require("../API/mark")
 const tipRouter = require("../API/tip")
 const mainRouter = require("../main")
 const newsRouter = require("../API/news")
-const policyRouter = require("../policies")
+const policyRouter = require("../API/policies")
 const searchRouter = require("../API/search")
-const mailRouter = require("../mail")
+const mailRouter = require("../API/mail")
 
 router.use("/users", userRouter)
 router.use("/marks", markRouter)
