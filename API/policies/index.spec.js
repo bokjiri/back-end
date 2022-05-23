@@ -15,7 +15,7 @@ describe("detail 통합테스트", () => {
         }
     })
     afterAll(async () => {
-        await mongoose.connection.close()
+        await mongoose.connection.db.dropDatabase()
         await mongoose.disconnect()
         await redis.quit()
     })
@@ -35,14 +35,14 @@ describe("detail 통합테스트", () => {
             await User.deleteMany()
             await Data.deleteMany()
         })
-        it("get /api/detail/:dataId 잘됨?", async () => {
+        it("get /api/policies/:dataId 잘됨?", async () => {
             const { dataId } = await Data.findOne()
-            const res = await request(app).get(`/api/detail/${dataId}`).set({ Authorization, reAuthorization })
+            const res = await request(app).get(`/api/policies/${dataId}`).set({ Authorization, reAuthorization })
             expect(res.statusCode).toBe(200)
         })
-        it("get /api/detail/:dataId 토큰없이 잘됨?", async () => {
+        it("get /api/policies/:dataId 토큰없이 잘됨?", async () => {
             const { dataId } = await Data.findOne()
-            const res = await request(app).get(`/api/detail/${dataId}`)
+            const res = await request(app).get(`/api/policies/${dataId}`)
             expect(res.statusCode).toBe(200)
         })
     })

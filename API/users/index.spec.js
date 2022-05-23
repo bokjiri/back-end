@@ -16,6 +16,7 @@ describe("유저 통합테스트", () => {
     })
     afterAll(async () => {
         await User.deleteMany()
+        await mongoose.connection.db.dropDatabase()
         await mongoose.disconnect()
         await redis.quit()
     })
@@ -39,7 +40,6 @@ describe("유저 통합테스트", () => {
             reAuthorization = `Bearer ${rToken}`
             userId = jwt.decode(aToken).userId
         })
-
         it("get /api/users/:userId 유저정보 잘 불러와짐?", async () => {
             const res = await request(app).get(`/api/users/${userId}`).set({ Authorization, reAuthorization })
             expect(res.statusCode).toBe(201)

@@ -1,8 +1,8 @@
-const mainController = require("./controllers/main.controller")
+const mainController = require("./main.controller")
 const httpMocks = require("node-mocks-http")
 // const mainData = require("../../test/data/new-main.json")
-const mainService = require("./services/main.service")
-jest.mock("./services/main.service")
+const mainService = require("../services/main.service")
+jest.mock("../services/main.service")
 // jest.mock("../../schemas/user")
 // jest.mock("../../schemas/data")
 // const User = require("../../schemas/user")
@@ -20,18 +20,18 @@ beforeEach(() => {
 
 describe("메인 페이지 테스트", () => {
     describe("getMain API 테스트", () => {
-        describe("필수 입력값 조회 테스트", () => {
-            it("userId가 false로 들어오면 400과 응답값을 잘 리턴하는가?", async () => {
-                userIdResult = { result: "Fail", code: -10, message: "필수 입력값 조회 실패" }
+        // describe("필수 입력값 조회 테스트", () => {
+        //     it("userId가 false로 들어오면 400과 응답값을 잘 리턴하는가?", async () => {
+        //         userIdResult = { result: "Fail", code: -10, message: "필수 입력값 조회 실패" }
 
-                await mainController.getMain(req, res, next)
-                expect(res.statusCode).toBe(400)
-                expect(res._getJSONData()).toStrictEqual(userIdResult)
-            })
-        })
+        //         await mainController.getMain(req, res, next)
+        //         expect(res.statusCode).toBe(404)
+        //         expect(res._getJSONData()).toStrictEqual(userIdResult)
+        //     })
+        // })
         describe("데이터베이스 조회 테스트", () => {
             it("UserId가 DB에 존재하지 않는다면 404과 응답값을 잘 리턴하는가?", async () => {
-                req.params = userId
+                res.locals = userId
                 isUserResult = { result: "FAIL", code: -11, message: "데이터베이스 조회 실패" }
 
                 await mainController.getMain(req, res, next)

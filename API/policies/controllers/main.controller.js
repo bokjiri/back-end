@@ -7,16 +7,16 @@ exports.getMain = async (req, res, next) => {
     #swagger.description = '내 정보와 일치하는 정책 목록을 카테고리별로 모두 조회한다.'
     ========================================================================================================*/
     try {
-        if (!req.params.userId) {
-            /*=====================================================================================
-        #swagger.responses[400] = {
-            description: 'userId가 params로 입력되지 않았을 때, 아래 예제와 같은 형태로 응답받습니다.',
-            schema: { result: "FAIL", code: -10, message: "필수 입력값 조회 실패" }
-        }
-        =====================================================================================*/
-            return res.status(400).json({ result: "Fail", code: -10, message: "필수 입력값 조회 실패" })
-        }
-        const { userId } = req.params
+        // if (!req.params.userId) {
+        //     /*=====================================================================================
+        // #swagger.responses[400] = {
+        //     description: 'userId가 params로 입력되지 않았을 때, 아래 예제와 같은 형태로 응답받습니다.',
+        //     schema: { result: "FAIL", code: -10, message: "필수 입력값 조회 실패" }
+        // }
+        // =====================================================================================*/
+        //     return res.status(400).json({ result: "Fail", code: -10, message: "필수 입력값 조회 실패" })
+        // }
+        const { userId } = res.locals
         const isUser = await checkUser(userId)
         if (!isUser) {
             /*=====================================================================================
