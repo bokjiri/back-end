@@ -13,6 +13,7 @@ describe("유저 통합테스트", () => {
         }
     })
     afterAll(async () => {
+        await mongoose.connection.db.dropDatabase()
         await mongoose.disconnect()
         await redis.quit()
     })
