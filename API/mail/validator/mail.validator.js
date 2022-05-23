@@ -1,13 +1,20 @@
 const { body, validationResult } = require("express-validator")
-const { Logger } = require("../../../logging")
-
+class ValidationError extends Error {
+    constructor(message) {
+        super(message)
+        this.name = "ValidationError"
+    }
+}
 const error = (req, res, next) => {
     const errors = validationResult(req)
     if (errors.isEmpty()) {
         return next()
     } else {
-        Logger.error(`${errors.array()[0].msg} \n ${JSON.stringify(errors.errors[0])}`)
-        return res.status(400).json({ result: "fail", errorMessage: errors.array()[0].msg })
+        const error = new ValidationError(errors.array()[0].msg)
+        return next({
+            message: error.message,
+            stack: error.stack,
+        })
     }
 }
 

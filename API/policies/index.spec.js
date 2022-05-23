@@ -4,7 +4,6 @@ const mongoose = require("mongoose")
 const User = require("../../schemas/user")
 const Data = require("../../schemas/data")
 const redis = require("../../schemas/redis")
-const jwt = require("jsonwebtoken")
 const sampleData = require("../../test/data/sample.json")
 
 describe("detail 통합테스트", () => {
@@ -41,10 +40,10 @@ describe("detail 통합테스트", () => {
             const res = await request(app).get(`/api/detail/${dataId}`).set({ Authorization, reAuthorization })
             expect(res.statusCode).toBe(200)
         })
-        it("get /api/detail/:dataId 토큰없이 안됨?", async () => {
+        it("get /api/detail/:dataId 토큰없이 잘됨?", async () => {
             const { dataId } = await Data.findOne()
             const res = await request(app).get(`/api/detail/${dataId}`)
-            expect(res.statusCode).toBe(401)
+            expect(res.statusCode).toBe(200)
         })
     })
 })
