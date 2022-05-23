@@ -23,7 +23,7 @@ module.exports = async (req, res, next) => {
         const aToken = jwt.verify(tokenValue, process.env.ACCESSKEY)
 
         const confirmUser = await checkById(aToken.userId)
-        if (!confirmUser) throw new ValidationError()
+        if (!confirmUser) throw new ValidationError("만료되었거나, 유효하지 않은 토큰입니다.")
 
         res.locals.userId = confirmUser.userId
         res.locals.email = confirmUser.email
@@ -41,10 +41,10 @@ module.exports = async (req, res, next) => {
 
                 const rToken = jwt.verify(rTokenValue, process.env.REFRESHKEY)
                 const aTokenDecode = jwt.decode(tokenValue)
-                if (aTokenDecode.userId !== rToken.userId) throw new ValidationError()
+                if (aTokenDecode.userId !== rToken.userId) throw new ValidationError("만료되었거나, 유효하지 않은 토큰입니다.")
 
                 const confirmUser = await checkById(aTokenDecode.userId)
-                if (!confirmUser) throw new ValidationError()
+                if (!confirmUser) throw new ValidationError("만료되었거나, 유효하지 않은 토큰입니다.")
 
                 const { userId, nickname, profileUrl, email } = confirmUser
                 const payload = { userId, nickname, profileUrl, email }
