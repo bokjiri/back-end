@@ -1,6 +1,6 @@
 const passport = require("passport")
 const KakaoStrategy = require("passport-kakao").Strategy
-const { createUser, checkByEmail } = require("../users/services/user.service")
+const { createUser, checkByEmail } = require("../API/users/services/user.service")
 
 module.exports = () => {
     passport.use(

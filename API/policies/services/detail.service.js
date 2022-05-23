@@ -1,5 +1,5 @@
-const Data = require("../../schemas/data")
-const User = require("../../schemas/user")
+const Data = require("../../../schemas/data")
+const User = require("../../../schemas/user")
 
 exports.findData = async (dataId) => {
     try {

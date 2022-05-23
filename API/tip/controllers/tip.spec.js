@@ -1,10 +1,10 @@
 const httpMocks = require("node-mocks-http")
 const tipController = require("./tip.controller")
 
-jest.mock("../../schemas/user")
-jest.mock("../../schemas/data")
-const User = require("../../schemas/user")
-const BokjiAPI = require("../../schemas/data")
+jest.mock("../../../schemas/user")
+jest.mock("../../../schemas/data")
+const User = require("../../../schemas/user")
+const BokjiAPI = require("../../../schemas/data")
 
 const dataId = 1
 const userId = 1

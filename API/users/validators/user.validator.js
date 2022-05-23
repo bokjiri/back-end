@@ -2,13 +2,16 @@ const { body, validationResult } = require("express-validator")
 const moment = require("moment")
 const ageValidate = moment().format("YYYYMMDD")
 const { regionValidate, targetValidate, obstacleValidate, scholarshipValidate, workTypeValidate } = require("./validator.array")
+const { Logger } = require("../../../logging")
 
 const error = (req, res, next) => {
     const errors = validationResult(req)
     if (errors.isEmpty()) {
         return next()
+    } else {
+        Logger.error(`${errors.array()[0].msg} \n ${JSON.stringify(errors.errors[0])}`)
+        return res.status(400).json({ result: "fail", errorMessage: errors.array()[0].msg })
     }
-    return res.status(400).json({ result: "fail", errorMessage: errors.array()[0].msg })
 }
 
 const userValidation = [

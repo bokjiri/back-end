@@ -6,7 +6,7 @@ const incorrectAuth = require("../../test/user/incorrect.json")
 const notBearerAuth = require("../../test/user/bearer.json")
 const invalidAuth = require("../../test/user/invalid.json")
 const expiredAccessToken = require("../../test/user/expieredaccess.json")
-jest.mock("../../users/services/user.service")
+jest.mock("../../API/users/services/user.service")
 jest.mock("jsonwebtoken")
 const jwt = require("jsonwebtoken")
 

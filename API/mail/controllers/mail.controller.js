@@ -1,11 +1,18 @@
 const bcrypt = require("bcrypt")
 const { mailSender } = require("../services/mail.service")
 const { checkByEmail } = require("../../users/services/user.service")
+class ValidationError extends Error {
+    constructor(message) {
+        super(message)
+        this.name = "ValidationError"
+    }
+}
+
 exports.sendMail = async (req, res, next) => {
     try {
         const { email } = req.body
         const exEmail = await checkByEmail(email)
-        if (exEmail) throw new Error()
+        if (exEmail) throw new ValidationError("중복된 이메일입니다.")
         const authCode = Math.random().toString().substring(2, 6)
         const hashAuthCode = await bcrypt.hash(authCode, 12)
 
@@ -40,10 +47,17 @@ exports.sendMail = async (req, res, next) => {
             })
         }
     } catch (error) {
-        return next({
-            message: "메일전송실패",
-            stack: error,
-        })
+        if (error instanceof ValidationError) {
+            return next({
+                message: error.message,
+                stack: error.stack,
+            })
+        } else {
+            return next({
+                message: "메일전송중 오류가 발생했습니다.",
+                stack: error,
+            })
+        }
     }
 }
 exports.certAuth = async (req, res, next) => {
@@ -56,12 +70,19 @@ exports.certAuth = async (req, res, next) => {
                 message: "인증성공",
             })
         } else {
-            throw new Error()
+            throw new ValidationError("인증실패. 잘못된 authCode")
         }
     } catch (error) {
-        return next({
-            message: "메일인증실패",
-            stack: error,
-        })
+        if (error instanceof ValidationError) {
+            return next({
+                message: error.message,
+                stack: error.stack,
+            })
+        } else {
+            return next({
+                message: "메일인증중 오류가 발생했습니다.",
+                stack: error,
+            })
+        }
     }
 }
