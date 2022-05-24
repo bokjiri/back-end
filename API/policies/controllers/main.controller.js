@@ -89,13 +89,7 @@ exports.getMain = async (req, res, next) => {
         return res.status(200).json({
             result: "SUCCESS",
             message: "메인 페이지 추천 정책 조회 성공",
-            checkedData,
-            work,
-            houseLife,
-            health,
-            eduCare,
-            safetyRight,
-            etc,
+            dataList: { checkedData, work, houseLife, health, eduCare, safetyRight, etc },
         })
     } catch (error) {
         // console.log("메인 페이지 추천 정책 조회 실패", error)
