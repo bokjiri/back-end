@@ -3,6 +3,12 @@ const WinstonDaily = require("winston-daily-rotate-file")
 const path = require("path")
 const { combine, timestamp, printf, colorize } = winston.format
 
+const moment = require("moment-timezone")
+moment.tz.setDefault("Asia/Seoul")
+const timezone = () => {
+    return moment().format("YYYY-MM-DD HH:mm:ss:ms")
+}
+
 const logDir = process.env.LOGDIR || "logs"
 
 const levels = {
@@ -30,19 +36,19 @@ const level = () => {
 }
 
 const logFormat = combine(
-    timestamp({ format: "YYYY-MM-DD HH:mm:ss:ms" }),
+    timestamp({ format: timezone() }),
     printf((info) => {
         if (info.stack) {
             return `${info.timestamp} ${info.level}: ${info.message} \n Error Stack: ${info.stack}`
         }
-        return `${info.timestamp} ${info.level}: ${info.message}`
+        return `${timezone(info.timestamp)} ${info.level}: ${info.message}`
     })
 )
 
 const consoleOpts = {
     handleExceptions: true,
     level: process.env.NODE_ENV === "production" ? "error" : "debug",
-    format: combine(colorize({ all: true }), timestamp({ format: "YYYY-MM-DD HH:mm:ss:ms" })),
+    format: combine(colorize({ all: true }), timestamp({ format: timezone() })),
 }
 
 const transports = [

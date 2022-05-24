@@ -125,3 +125,6 @@ chung6.txt
 #samples
 openAPI/samples/
 openAPI/*/samples/
+
+#cloudwatch
+cloudwatch.js

@@ -1,10 +1,10 @@
 require("dotenv").config()
 const axios = require("axios")
 const convert = require("xml-js")
-const connect = require("../schemas")
 const schedule = require("node-schedule")
 const { genderData, marriageData, scholarshipData, workTypeData } = require("./cleansing")
-connect()
+// const connect = require("../schemas")
+// connect()
 
 module.exports = () => {
     const rule = new schedule.RecurrenceRule()

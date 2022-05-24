@@ -1,6 +1,6 @@
 const Data = require("../schemas/data")
-const connect = require("../schemas")
-connect()
+// const connect = require("../schemas")
+// connect()
 // const fs = require("fs")
 // fs.truncate("./dataCleansing/agriculture.txt", () => {
 //     console.log("File Content Deleted")
