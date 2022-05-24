@@ -1,5 +1,5 @@
 const { checkUser, checkData } = require("../services/main.service")
-
+const { redisSet } = require("../../users/services/user.service")
 exports.getMain = async (req, res, next) => {
     /*========================================================================================================
     #swagger.tags = ['Main']
@@ -71,7 +71,7 @@ exports.getMain = async (req, res, next) => {
             }
         }
         //checkedData는 배열 안에 오브젝트(정책 하나)가 들어가있어야 한다.
-
+        await redisSet(userId, checkedData, work, houseLife, health, eduCare, safetyRight, etc)
         /*=====================================================================================
         #swagger.responses[200] = {
             description: '정상적으로 값을 받았을 때, 아래 예제와 같은 형태로 응답받습니다.',

@@ -1,4 +1,11 @@
 const User = require("../../../schemas/user")
+const Client = require("../../../schemas/redis")
+
+exports.redisSet = async (userId, checkedData, work, houseLife, health, eduCare, safetyRight, etc) => {
+    const redisInsertMain = JSON.stringify({ checkedData, work, houseLife, health, eduCare, safetyRight, etc })
+    await Client.set(`main${userId}`, redisInsertMain)
+    await Client.expire(`main${userId}`, 3600)
+}
 
 exports.updateUserInfo = async (userId, age, gender, region, disability, obstacle, job, marriage, target, salary, scholarship, family, workType) => {
     try {
