@@ -49,10 +49,10 @@ exports.mainData = async (req, res, next) => {
         console.log("redis No such main data found ㅠㅠ")
         next()
     } else {
-        const stringToJsonData = JSON.parse(redis)
+        const dataList = JSON.parse(redis)
         console.log("redis have main data!!!")
         res.status(200).json({
-            stringToJsonData,
+            dataList,
         })
     }
 }
