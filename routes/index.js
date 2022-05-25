@@ -7,6 +7,7 @@ const newsRouter = require("../API/news")
 const policyRouter = require("../API/policies")
 const searchRouter = require("../API/search")
 const mailRouter = require("../API/mail")
+const guestbook = require("../API/guestbook")
 
 router.use("/users", userRouter)
 router.use("/marks", markRouter)
@@ -15,5 +16,6 @@ router.use("/news", newsRouter)
 router.use("/policies", policyRouter)
 router.use("/search", searchRouter)
 router.use("/mail", mailRouter)
+router.use("/guestbooks", guestbook)
 
 module.exports = router
