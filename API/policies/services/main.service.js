@@ -19,19 +19,19 @@ exports.checkUser = async (userId) => {
     }
 
     // 계산된 만 나이에 맞는 lifeCycle 추가
-    if (userData.age >= 0 && userData.age < 5) {
+    if (userData.age >= 0 && userData.age < 6) {
         userData.lifeCycle.push("영유아")
     }
-    if (userData.age >= 6 && userData.age < 12) {
+    if (userData.age >= 6 && userData.age < 13) {
         userData.lifeCycle.push("아동")
     }
-    if (userData.age >= 13 && userData.age < 18) {
+    if (userData.age >= 13 && userData.age < 19) {
         userData.lifeCycle.push("청소년")
     }
-    if (userData.age >= 19 && userData.age < 39) {
+    if (userData.age >= 19 && userData.age < 40) {
         userData.lifeCycle.push("청년")
     }
-    if (userData.age >= 40 && userData.age < 64) {
+    if (userData.age >= 40 && userData.age < 65) {
         userData.lifeCycle.push("중장년")
     }
     if (userData.age >= 65) {
