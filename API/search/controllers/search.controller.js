@@ -1,5 +1,5 @@
-const { logic } = require("../../../main/controllers/main.controller")
-const { checkUser, checkData } = require("../../../main/services/main.service")
+const { logic } = require("../../policies/controllers/main.controller")
+const { checkUser, checkData } = require("../../policies/services/main.service")
 exports.postSearch = async (req, res, next) => {
     /*========================================================================================================
     #swagger.tags = ['Search']
@@ -56,6 +56,7 @@ exports.postSearch = async (req, res, next) => {
         =====================================================================================*/
         res.status(200).json({ searchList })
     } catch (err) {
+        // console.log(err)
         /*=====================================================================================
         #swagger.responses[400] = {
             description: '정상적으로 값을 받지 못했을 때, 아래 예제와 같은 형태로 응답받습니다.',

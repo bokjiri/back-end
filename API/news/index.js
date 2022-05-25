@@ -3,6 +3,6 @@ const newsController = require("./controllers/news.controller")
 const redisController = require("../../middlewares/redis.middleware")
 const authMiddleware = require("../../middlewares/auth/auth.middleware")
 
-router.get("/", authMiddleware, newsController.getNews)
+router.get("/", authMiddleware, redisController.newsData, newsController.getNews)
 
 module.exports = router

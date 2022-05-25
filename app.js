@@ -6,6 +6,11 @@ const session = require("express-session")
 const cookieParser = require("cookie-parser")
 const cors = require("cors")
 const morgan = require("morgan")
+const moment = require("moment-timezone")
+moment.tz.setDefault("Asia/Seoul")
+morgan.token("date", () => {
+    return moment().format("YYYY-MM-DD HH:mm:ss:ms")
+})
 const connect = require("./schemas")
 const passport = require("passport")
 const passportConfig = require("./kakao/index")
@@ -74,7 +79,7 @@ app.use((req, res, next) => {
 
 app.use((err, req, res, next) => {
     Logger.error(`${err.message} \n ${err.stack ? err.stack : ""} `)
-    res.status(400).json({ result: "FAIL", message: err.message })
+    res.status(err.status || 400).json({ result: "FAIL", message: err.message })
 })
 
 module.exports = app

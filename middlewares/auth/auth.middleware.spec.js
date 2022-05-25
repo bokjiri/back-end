@@ -6,7 +6,7 @@ const incorrectAuth = require("../../test/user/incorrect.json")
 const notBearerAuth = require("../../test/user/bearer.json")
 const invalidAuth = require("../../test/user/invalid.json")
 const expiredAccessToken = require("../../test/user/expieredaccess.json")
-jest.mock("../../users/services/user.service")
+jest.mock("../../API/users/services/user.service")
 jest.mock("jsonwebtoken")
 const jwt = require("jsonwebtoken")
 
@@ -20,27 +20,27 @@ describe("auth.middleware test", () => {
     it("요청 헤더 내 authorization 값이 존재하지 않을 때 '요청 헤더 내 authorization 값이 존재하지 않습니다.'라는 메세지를 보내는가", async () => {
         req.headers = emptyAuth
         authController(req, res, next)
-        expect(res.statusCode).toBe(401)
-        expect(res._getJSONData().message).toStrictEqual("요청 헤더 내 authorization 값이 존재하지 않습니다.")
+        expect(next).toBeCalledWith(expect.objectContaining({ status: 401 }))
+        expect(next).toBeCalledWith(expect.objectContaining({ message: "요청 헤더 내 authorization 값이 존재하지 않습니다." }))
     })
 
     it("요청 헤더 내 authorization 값이 올바르지 않을 때 '요청 헤더 내 authorization 값이 올바르지 않습니다.'라는 메세지를 보내는가", async () => {
         req.headers = incorrectAuth
         authController(req, res, next)
-        expect(res.statusCode).toBe(401)
-        expect(res._getJSONData().message).toStrictEqual("요청 헤더 내 authorization 값이 올바르지 않습니다.")
+        expect(next).toBeCalledWith(expect.objectContaining({ status: 401 }))
+        expect(next).toBeCalledWith(expect.objectContaining({ message: "요청 헤더 내 authorization 값이 올바르지 않습니다." }))
     })
     it("토큰이 Bearer가 아닐 때 '토큰이 Bearer가 아니에요.'라는 메세지를 보내는가", async () => {
         req.headers = notBearerAuth
         authController(req, res, next)
-        expect(res.statusCode).toBe(401)
-        expect(res._getJSONData().message).toStrictEqual("토큰이 Bearer가 아니에요.")
+        expect(next).toBeCalledWith(expect.objectContaining({ status: 401 }))
+        expect(next).toBeCalledWith(expect.objectContaining({ message: "토큰이 Bearer가 아니에요." }))
     })
     it("만료되었거나, 유효하지 않은 토큰일 경우 '만료되었거나, 유효하지 않은 토큰입니다.'라는 메세지를 보내는가", async () => {
         req.headers = invalidAuth
         authController(req, res, next)
-        expect(res.statusCode).toBe(401)
-        expect(res._getJSONData().message).toStrictEqual("만료되었거나, 유효하지 않은 토큰입니다.")
+        expect(next).toBeCalledWith(expect.objectContaining({ status: 401 }))
+        expect(next).toBeCalledWith(expect.objectContaining({ message: "만료되었거나, 유효하지 않은 토큰입니다." }))
     })
     // it("액세스 토큰이 만료된 토큰이고 리프레시 토큰이 유효한 경우 '액세스 토큰 재발행'이라는 메세지를 보내는가", async () => {
     //     const error = { name: "TokenExpiredError", message: "jwt expired" }

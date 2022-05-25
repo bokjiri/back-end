@@ -11,7 +11,7 @@ async function redisSet(userId, userNewsList) {
     await Client.expire(`newsData${userId}`, 3600)
 }
 
-async function dataParsing(userId) {
+exports.dataParsing = async (userId) => {
     const getHTML = async (keyword) => {
         try {
             // if (type === "관련도순") {
@@ -24,15 +24,15 @@ async function dataParsing(userId) {
             //     )
             // }
         } catch (err) {
-            console.log(err)
+            // console.log(err)
         }
     }
-    const parsing = async (keyword) => {
+    exports.parsing = async (keyword) => {
         // if (type === "관련도순") {
         const html = await getHTML(keyword)
         const $ = cheerio.load(html.data)
         const newsList = $(".news_wrap")
-
+        // console.log("newsList: " + newsList)
         let news = []
 
         let createNews
@@ -48,8 +48,10 @@ async function dataParsing(userId) {
                 image: $(node).find(".dsc_thumb .thumb").attr("src"),
             })
         })
+        // console.log("news: " + news)
 
         let sliceNews = news.sort().slice(0, 8)
+        // console.log("sliceNews: " + sliceNews)
         let userNewsList = []
         for (let i = 0; i < sliceNews.length; i++) {
             let title = sliceNews[i].title
@@ -60,29 +62,30 @@ async function dataParsing(userId) {
             userNewsList.push({ title, link, desc, date, image })
             // console.log(title, desc, link, date, image)
         }
+        // console.log("userNewsList: " + userNewsList)
         // console.log(userNewsList)
         if (findNews.length === 0) {
             createNews = await News.create({ news: userNewsList, userId })
             await redisSet(userId, userNewsList)
-            console.log(userNewsList)
+            // console.log(userNewsList)
         } else if (findNews.length) {
             updateNews = await News.updateOne({ userId }, { $set: { news: userNewsList } })
             await redisSet(userId, userNewsList)
-            console.log(userNewsList)
+            // console.log(userNewsList)
         }
     }
     const userRegion = await User.findOne({ userId }, { _id: false, region: true })
     if (userRegion.region.length === 0) {
-        await parsing("복지정책")
+        await this.parsing("복지정책")
     } else {
         const region = userRegion.region[0]
-        await parsing(`${region} 복지정책`)
+        await this.parsing(`${region} 복지정책`)
     }
 }
 
 exports.newsDataList = async (userId) => {
     try {
-        await dataParsing(userId)
+        await this.dataParsing(userId)
         const newsData = await News.find({ userId }, { _id: false, newsId: false, __v: false })
         const newsArr = []
         newsData.map((value) => {
@@ -92,7 +95,6 @@ exports.newsDataList = async (userId) => {
         })
         return newsArr
     } catch (err) {
-        console.log(err)
-        throw new Error()
+        // console.log(err)
     }
 }
