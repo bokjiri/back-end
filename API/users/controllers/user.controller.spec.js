@@ -1,7 +1,11 @@
 const httpMocks = require("node-mocks-http")
 const userController = require("./user.controller")
 jest.mock("../services/user.service")
+jest.mock("../../policies/services/main.service")
+jest.mock("../../policies/controllers/main.controller")
 const userService = require("../services/user.service")
+const mainService = require("../../policies/services/main.service")
+const mainController = require("../../policies/controllers/main.controller")
 const paramsUserId = "1"
 class ValidationError extends Error {
     constructor(message) {
@@ -268,6 +272,9 @@ describe("유저 컨트롤러 테스트", () => {
             let job
             req.body = { age, gender, region, disability, job }
             userService.updateUserInfo.mockReturnValue(true)
+            userService.redisSetUser.mockReturnValue(true)
+            mainService.redisSet.mockReturnValue(true)
+            mainController.categorize.mockReturnValue(true)
             await userController.patchUsers(req, res, next)
             expect(res.statusCode).toBe(201)
             expect(res._getJSONData().message).toStrictEqual("회원정보 수정 완료")
