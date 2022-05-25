@@ -157,11 +157,12 @@ exports.patchUsers = async (req, res, next) => {
         const result = await userService.updateUserInfo(userId, age, gender, arrRegion, disability, obstacle, job, marriage, target, salary, scholarship, family, workType)
         if (!result) throw new ValidationError("db에서 update 실패")
 
-        const isUser = await mainService.checkUser(userId)
-        const isData = await mainService.checkData(isUser)
-        const checkedData = await mainController.logic(isUser, isData)
-        const { work, health, houseLife, eduCare, etc, safetyRight } = await mainController.categorize(checkedData)
-        await mainService.redisSet(userId, checkedData, work, houseLife, health, eduCare, safetyRight, etc)
+        // const isUser = await mainService.checkUser(userId)
+        // const isData = await mainService.checkData(isUser)
+        // const checkedData = await mainController.logic(isUser, isData)
+        // const { work, health, houseLife, eduCare, etc, safetyRight } = await mainController.categorize(checkedData)
+        // await mainService.redisSet(userId, checkedData, work, houseLife, health, eduCare, safetyRight, etc)
+        await userService.redisRemoveMain(userId)
         await userService.redisSetUser(userId)
         /*=====================================================================================
         #swagger.responses[201] = {
