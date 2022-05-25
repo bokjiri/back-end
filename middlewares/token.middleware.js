@@ -1,6 +1,5 @@
 const jwt = require("jsonwebtoken")
 const { checkById } = require("../API/users/services/user.service")
-const { Logger } = require("../logging")
 class ValidationError extends Error {
     constructor(message) {
         super(message)

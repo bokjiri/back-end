@@ -1,8 +1,8 @@
 const userService = require("../services/user.service")
 const jwt = require("jsonwebtoken")
 const bcrypt = require("bcrypt")
-const { checkData, checkUser } = require("../../policies/services/main.service")
-const { logic } = require("../../policies/controllers/main.controller")
+const mainService = require("../../policies/services/main.service")
+const mainController = require("../../policies/controllers/main.controller")
 
 class ValidationError extends Error {
     constructor(message) {
@@ -87,12 +87,12 @@ exports.getUsers = async (req, res, next) => {
 
         const data = await userService.checkById(userId)
         if (!data) throw new ValidationError("회원정보가 없음")
-
         if (data.region.length === 1) data.region[1] = "시·군을 선택해 주세요"
         if (data.region.length === 0) {
             data.region[0] = "시·도를 선택해 주세요"
             data.region[1] = "시·군을 선택해 주세요"
         }
+        await userService.redisSetUser(userId, data)
         /*=====================================================================================
         #swagger.responses[201] = {
             description: '정상적으로 값을 받았을 때, 아래 예제와 같은 형태로 응답받습니다.',
@@ -155,41 +155,14 @@ exports.patchUsers = async (req, res, next) => {
         }
 
         const result = await userService.updateUserInfo(userId, age, gender, arrRegion, disability, obstacle, job, marriage, target, salary, scholarship, family, workType)
-
         if (!result) throw new ValidationError("db에서 update 실패")
-        const isUser = await checkUser(userId)
-        const isData = await checkData(isUser)
-        const checkedData = await logic(isUser, isData)
-        if (!checkedData) {
-            throw new Error()
-        }
-        let work = []
-        let houseLife = []
-        let health = []
-        let eduCare = []
-        let safetyRight = []
-        let etc = []
-        for (let i = 0; i < checkedData.length; i++) {
-            if (checkedData[i].desire === "일자리") {
-                work.push(checkedData[i])
-            }
-            if (checkedData[i].desire === "주거 및 일상생활") {
-                houseLife.push(checkedData[i])
-            }
-            if (checkedData[i].desire === "건강") {
-                health.push(checkedData[i])
-            }
-            if (checkedData[i].desire === "교육 및 돌봄") {
-                eduCare.push(checkedData[i])
-            }
-            if (checkedData[i].desire === "안전 및 권익보장") {
-                safetyRight.push(checkedData[i])
-            }
-            if (checkedData[i].desire === "기타") {
-                etc.push(checkedData[i])
-            }
-        }
-        userService.redisSet(userId, checkedData, work, houseLife, health, eduCare, safetyRight, etc)
+
+        const isUser = await mainService.checkUser(userId)
+        const isData = await mainService.checkData(isUser)
+        const checkedData = await mainController.logic(isUser, isData)
+        const { work, health, houseLife, eduCare, etc, safetyRight } = await mainController.categorize(checkedData)
+        await mainService.redisSet(userId, checkedData, work, houseLife, health, eduCare, safetyRight, etc)
+        await userService.redisSetUser(userId)
         /*=====================================================================================
         #swagger.responses[201] = {
             description: '정상적으로 값을 받았을 때, 아래 예제와 같은 형태로 응답받습니다.',

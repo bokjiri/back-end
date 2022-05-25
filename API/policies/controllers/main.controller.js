@@ -1,5 +1,4 @@
-const { checkUser, checkData } = require("../services/main.service")
-const { redisSet } = require("../../users/services/user.service")
+const { checkUser, checkData, redisSet } = require("../services/main.service")
 exports.getMain = async (req, res, next) => {
     /*========================================================================================================
     #swagger.tags = ['Main']
@@ -43,33 +42,10 @@ exports.getMain = async (req, res, next) => {
         if (!checkedData) {
             throw new Error()
         }
+
         // 카테고리 분류
-        let work = []
-        let houseLife = []
-        let health = []
-        let eduCare = []
-        let safetyRight = []
-        let etc = []
-        for (let i = 0; i < checkedData.length; i++) {
-            if (checkedData[i].desire === "일자리") {
-                work.push(checkedData[i])
-            }
-            if (checkedData[i].desire === "주거 및 일상생활") {
-                houseLife.push(checkedData[i])
-            }
-            if (checkedData[i].desire === "건강") {
-                health.push(checkedData[i])
-            }
-            if (checkedData[i].desire === "교육 및 돌봄") {
-                eduCare.push(checkedData[i])
-            }
-            if (checkedData[i].desire === "안전 및 권익보장") {
-                safetyRight.push(checkedData[i])
-            }
-            if (checkedData[i].desire === "기타") {
-                etc.push(checkedData[i])
-            }
-        }
+        const { work, houseLife, health, eduCare, safetyRight, etc } = await this.categorize(checkedData)
+
         //checkedData는 배열 안에 오브젝트(정책 하나)가 들어가있어야 한다.
         await redisSet(userId, checkedData, work, houseLife, health, eduCare, safetyRight, etc)
         /*=====================================================================================
@@ -358,4 +334,34 @@ exports.logic = async (isUser, isData) => {
     } catch (error) {
         // console.log("정책 추천 실패", error)
     }
+}
+
+exports.categorize = async (checkedData) => {
+    let work = []
+    let houseLife = []
+    let health = []
+    let eduCare = []
+    let safetyRight = []
+    let etc = []
+    for (let i = 0; i < checkedData.length; i++) {
+        if (checkedData[i].desire === "일자리") {
+            work.push(checkedData[i])
+        }
+        if (checkedData[i].desire === "주거 및 일상생활") {
+            houseLife.push(checkedData[i])
+        }
+        if (checkedData[i].desire === "건강") {
+            health.push(checkedData[i])
+        }
+        if (checkedData[i].desire === "교육 및 돌봄") {
+            eduCare.push(checkedData[i])
+        }
+        if (checkedData[i].desire === "안전 및 권익보장") {
+            safetyRight.push(checkedData[i])
+        }
+        if (checkedData[i].desire === "기타") {
+            etc.push(checkedData[i])
+        }
+    }
+    return { work, houseLife, health, eduCare, safetyRight, etc }
 }

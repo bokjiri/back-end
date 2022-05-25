@@ -1,10 +1,18 @@
 const User = require("../../../schemas/user")
 const Client = require("../../../schemas/redis")
 
-exports.redisSet = async (userId, checkedData, work, houseLife, health, eduCare, safetyRight, etc) => {
-    const redisInsertMain = JSON.stringify({ checkedData, work, houseLife, health, eduCare, safetyRight, etc })
-    await Client.set(`main${userId}`, redisInsertMain)
-    await Client.expire(`main${userId}`, 3600)
+exports.redisSetUser = async (userId, data) => {
+    console.log(data)
+    if (data) {
+        const redisInsertUser = JSON.stringify(data)
+        await Client.set(`user${userId}`, redisInsertUser)
+        await Client.expire(`user${userId}`, 3600)
+    } else {
+        const userData = await this.checkById(userId)
+        const redisInsertUser = JSON.stringify(userData)
+        await Client.set(`user${userId}`, redisInsertUser)
+        await Client.expire(`user${userId}`, 3600)
+    }
 }
 
 exports.updateUserInfo = async (userId, age, gender, region, disability, obstacle, job, marriage, target, salary, scholarship, family, workType) => {
