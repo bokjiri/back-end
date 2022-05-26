@@ -1,4 +1,5 @@
 const User = require("../../../schemas/user")
+const Geustbook = require("../../../schemas/guestbook")
 const Client = require("../../../schemas/redis")
 const mainController = require("../../policies/controllers/main.controller")
 const mainService = require("../../policies/services/main.service")
@@ -62,6 +63,7 @@ exports.deleteUserInfo = async (userId) => {
     try {
         const check = await this.checkById(userId)
         if (!check) throw new Error()
+        await Geustbook.deleteMany({ userId })
         return await User.deleteOne({ userId })
     } catch (error) {
         return error
