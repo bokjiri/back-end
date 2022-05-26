@@ -3,7 +3,6 @@ const jwt = require("jsonwebtoken")
 const bcrypt = require("bcrypt")
 const newsService = require("../../news/services/news.service")
 
-
 class ValidationError extends Error {
     constructor(message) {
         super(message)
@@ -156,7 +155,6 @@ exports.patchUsers = async (req, res, next) => {
 
         const result = await userService.updateUserInfo(userId, age, gender, arrRegion, disability, obstacle, job, marriage, target, salary, scholarship, family, workType)
         if (!result) throw new ValidationError("db에서 update 실패")
-
 
         userService.redisSetUser(userId)
         userService.redisSetMain(userId)
