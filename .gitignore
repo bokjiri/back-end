@@ -134,3 +134,5 @@ myReport
 myReport.html
 myReport[0-9]
 myReport[0-9].html
+myReport[0-9].json
+myReport[0-9].json.html

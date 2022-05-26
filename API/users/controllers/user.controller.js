@@ -1,8 +1,6 @@
 const userService = require("../services/user.service")
 const jwt = require("jsonwebtoken")
 const bcrypt = require("bcrypt")
-const mainService = require("../../policies/services/main.service")
-const mainController = require("../../policies/controllers/main.controller")
 
 class ValidationError extends Error {
     constructor(message) {
@@ -92,7 +90,8 @@ exports.getUsers = async (req, res, next) => {
             data.region[0] = "시·도를 선택해 주세요"
             data.region[1] = "시·군을 선택해 주세요"
         }
-        // await userService.redisSetUser(userId, data)
+        if (data.job[0] === "미취업자") data.job[0] = "미취업"
+        userService.redisSetUser(userId, data)
         /*=====================================================================================
         #swagger.responses[201] = {
             description: '정상적으로 값을 받았을 때, 아래 예제와 같은 형태로 응답받습니다.',
@@ -140,10 +139,9 @@ exports.patchUsers = async (req, res, next) => {
         const tokenUserId = res.locals.userId
         if (tokenUserId !== userId) throw new ValidationError("토큰하고 유저아이디가 다름 비정상적인 접근")
 
-        const { age, gender, region, disability, obstacle, marriage, target, salary, scholarship, family, workType } = req.body
+        const { age, gender, region, disability, obstacle, job, marriage, target, salary, scholarship, family, workType } = req.body
 
-        let job = req.body.job
-        if (job === "미취업") job = "미취업자"
+        if (job[0] === "미취업") job[0] = "미취업자"
 
         let arrRegion = region.split(" ")
 
@@ -157,13 +155,8 @@ exports.patchUsers = async (req, res, next) => {
         const result = await userService.updateUserInfo(userId, age, gender, arrRegion, disability, obstacle, job, marriage, target, salary, scholarship, family, workType)
         if (!result) throw new ValidationError("db에서 update 실패")
 
-        // const isUser = await mainService.checkUser(userId)
-        // const isData = await mainService.checkData(isUser)
-        // const checkedData = await mainController.logic(isUser, isData)
-        // const { work, health, houseLife, eduCare, etc, safetyRight } = await mainController.categorize(checkedData)
-        // await mainService.redisSet(userId, checkedData, work, houseLife, health, eduCare, safetyRight, etc)
-        await userService.redisRemoveMain(userId)
-        await userService.redisSetUser(userId)
+        userService.redisSetUser(userId)
+        userService.redisSetMain(userId)
         /*=====================================================================================
         #swagger.responses[201] = {
             description: '정상적으로 값을 받았을 때, 아래 예제와 같은 형태로 응답받습니다.',
