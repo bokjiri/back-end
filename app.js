@@ -6,6 +6,7 @@ const session = require("express-session")
 const cookieParser = require("cookie-parser")
 const cors = require("cors")
 const morgan = require("morgan")
+const helmet = require("helmet")
 const moment = require("moment-timezone")
 moment.tz.setDefault("Asia/Seoul")
 morgan.token("date", () => {
@@ -16,7 +17,6 @@ const passport = require("passport")
 const passportConfig = require("./kakao/index")
 const updateYouthApi = require("./openAPI/youthAPI/index")
 const updateFirstBokjiApi = require("./dataCleansing/data")
-
 connect()
 // const whitelist = ["http://localhost:3000"]
 // const corsOptions = {
@@ -45,6 +45,7 @@ const corsOptions = {
 }
 
 app.use(cors(corsOptions))
+app.use(helmet())
 app.use(morgan("common", { stream }))
 app.use(express.json())
 app.use(express.static("public"))
