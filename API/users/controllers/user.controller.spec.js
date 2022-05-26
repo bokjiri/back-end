@@ -4,6 +4,10 @@ jest.mock("../services/user.service")
 jest.mock("../../policies/services/main.service")
 const userService = require("../services/user.service")
 const mainService = require("../../policies/services/main.service")
+jest.mock("../../news/services/news.service")
+const newsService = require("../../news/services/news.service")
+
+
 const paramsUserId = "1"
 class ValidationError extends Error {
     constructor(message) {
@@ -275,10 +279,12 @@ describe("유저 컨트롤러 테스트", () => {
         //     userService.redisSetUser.mockReturnValue(true)
         //     mainService.redisSet.mockReturnValue(true)
         //     mainController.categorize.mockReturnValue(true)
+        //     newsService.dataParsing.mockReturnValue(true)
         //     await userController.patchUsers(req, res, next)
         //     expect(res.statusCode).toBe(201)
         //     expect(res._getJSONData().message).toStrictEqual("회원정보 수정 완료")
         // })
+
     })
     describe("deleteUsers 테스트", () => {
         it("tokenUserId !== userId인 경우 '토큰하고 유저아이디가 다름 비정상적인 접근'라는 메세지를 보내는가", async () => {

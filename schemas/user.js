@@ -46,8 +46,6 @@ const userSchema = mongoose.Schema({
     likeMark: {
         type: [Number],
     },
-    topLikeMarkList: [{ desire: String, name: String, dataId: Number }],
-
     email: {
         type: String,
     },
