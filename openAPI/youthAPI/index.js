@@ -39,7 +39,6 @@ async function findPastData(myConsole) {
     for (checkPastData of data) {
         if (checkPastData.period !== undefined) {
             const checkPeriod = await classifyPeriod(checkPastData.period)
-            myConsole.log(checkPeriod)
             if (!checkPeriod) {
                 const checkRemove = await Data.deleteOne({ dataId: checkPastData.dataId })
                 myConsole.log("checkRemove", checkRemove)

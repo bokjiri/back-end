@@ -33,7 +33,7 @@ describe("유저 통합테스트", () => {
             const response = await request(app).post("/api/mail/send").send({ email: "boksei_@naver.com" })
             authCode = response.body.authCode
             cookie = response.headers["set-cookie"]
-        })
+        }, 15000)
         it("본인인증 잘함?", async () => {
             const res = await request(app).post("/api/mail/cert").set("Cookie", cookie).send({ authCode })
             expect(res.statusCode).toBe(201)
