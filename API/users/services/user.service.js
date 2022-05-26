@@ -1,5 +1,7 @@
 const User = require("../../../schemas/user")
 const Client = require("../../../schemas/redis")
+const mainController = require("../../policies/controllers/main.controller")
+const mainService = require("../../policies/services/main.service")
 
 exports.redisSetUser = async (userId, data) => {
     if (data) {
@@ -8,13 +10,26 @@ exports.redisSetUser = async (userId, data) => {
         await Client.expire(`user${userId}`, 3600)
     } else {
         const userData = await this.checkById(userId)
+        if (!userData) throw new ValidationError("회원정보가 없음")
+        if (userData.region.length === 1) userData.region[1] = "시·군을 선택해 주세요"
+        if (userData.region.length === 0) {
+            userData.region[0] = "시·도를 선택해 주세요"
+            userData.region[1] = "시·군을 선택해 주세요"
+        }
+        if (userData.job[0] === "미취업자") userData.job[0] = "미취업"
         const redisInsertUser = JSON.stringify(userData)
         await Client.set(`user${userId}`, redisInsertUser)
         await Client.expire(`user${userId}`, 3600)
     }
 }
-exports.redisRemoveMain = async (userId) => {
-    await Client.del(`main${userId}`)
+exports.redisSetMain = async (userId) => {
+    const isUser = await mainService.checkUser(userId)
+    const isData = await mainService.checkData(isUser)
+    const checkedData = await mainController.logic(isUser, isData)
+    const { work, health, houseLife, eduCare, etc, safetyRight } = await mainController.categorize(checkedData)
+    const redisInsertMain = JSON.stringify({ checkedData, work, houseLife, health, eduCare, safetyRight, etc })
+    await Client.set(`main${userId}`, redisInsertMain)
+    await Client.expire(`main${userId}`, 3600)
 }
 exports.updateUserInfo = async (userId, age, gender, region, disability, obstacle, job, marriage, target, salary, scholarship, family, workType) => {
     try {

@@ -37,7 +37,6 @@ jobs:
           touch .env
           echo KAKAO_ID=${{ secrets.KAKAO_ID }} >> .env
           echo KAKAO_CALLBACK=${{ secrets.KAKAO_CALLBACK }} >> .env
-          echo REDISURL=${{ secrets.REDISURL }} >> .env
           echo ACCESSKEY=${{ secrets.ACCESSKEY }} >> .env
           echo REFRESHKEY=${{ secrets.REFRESHKEY }} >> .env
           echo SESSION_SECRET=${{ secrets.SESSION_SECRET }} >> .env
