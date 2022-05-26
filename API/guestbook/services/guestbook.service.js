@@ -9,23 +9,31 @@ async function findFeed(feedId) {
 }
 
 exports.userInfo = async (userId) => {
-    const checkUser = await User.findOne({ userId }, { _id: false, profileUrl: true, nickname: true, userId: true })
-    if (!checkUser) await Guestbook.deleteMany({ userId })
+    const checkUser = await User.findOne({ userId }, { profileUrl: true, nickname: true, userId: true })
+    if (!checkUser) throw new Error("누구니???")
     return checkUser
 }
 exports.getGuestbook = async () => {
-    return await Guestbook.find({})
+    const guestbook = []
+    const checkGuestbook = await Guestbook.find({})
+    for (let i of checkGuestbook) {
+        guestbook.push({ nickname: i.nickname, profileUrl: i.profileUrl, date: i.date, content: i.content, feedId: i.feedId })
+    }
+    return guestbook
 }
 exports.createFeed = async (content, user) => {
     const date = moment().format("YYYY-MM-DD")
     const userId = user.userId
     const nickname = user.nickname
     const profileUrl = user.profileUrl
-    return await Guestbook.create({ userId, nickname, profileUrl, date, content })
+    const createFeed = await Guestbook.create({ userId, nickname, profileUrl, date, content })
+    return { nickname: createFeed.nickname, profileUrl: createFeed.profileUrl, date: createFeed.date, content: createFeed.content, feedId: createFeed.feedId }
 }
-exports.updateFeed = async (feedId, content, user) => {
+exports.updateFeed = async (feedId, content) => {
     const date = moment().format("YYYY-MM-DD")
-    return await Guestbook.updateOne({ feedId }, { $set: { date, content } }), date
+    await Guestbook.updateOne({ feedId }, { $set: { date, content } })
+    const updateFeed = await Guestbook.findOne({ feedId })
+    return { nickname: updateFeed.nickname, profileUrl: updateFeed.profileUrl, date: updateFeed.date, content: updateFeed.content, feedId: updateFeed.feedId }
 }
 exports.destroyFeed = async (feedId) => {
     return await Guestbook.deleteOne({ feedId })
