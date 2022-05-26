@@ -6,7 +6,7 @@ exports.getGuestbook = async (req, res, next) => {
         const guestbook = []
         const checkGuestbook = await getGuestbook()
         for (let i of checkGuestbook) {
-            guestbook.push({ nickname: i.nickname, profileUrl: i.profileUrl, date: i.date, content: i.content })
+            guestbook.push({ nickname: i.nickname, profileUrl: i.profileUrl, date: i.date, content: i.content, feedId: i.feedId })
         }
         res.status(200).json({
             result: "SUCCESS",
