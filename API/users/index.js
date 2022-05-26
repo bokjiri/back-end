@@ -16,7 +16,7 @@ router.get(
     }),
     kakaoCallback
 )
-router.get("/:userId", authMiddleware, getUsers)
+router.get("/:userId", authMiddleware, userData, getUsers)
 router.patch("/:userId", authMiddleware, userValidation, patchUsers)
 router.delete("/:userId", authMiddleware, deleteUsers)
 
