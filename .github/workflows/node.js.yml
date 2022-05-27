@@ -10,12 +10,12 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
 
     strategy:
       matrix:
         node-version: [16.14.2]
-        redis-version: [4.0.9]
+        redis-version: [6.2.5]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
