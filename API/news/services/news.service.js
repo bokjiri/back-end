@@ -60,13 +60,12 @@ exports.dataParsing = async (userId) => {
             link = sliceNews[i].link
             date = sliceNews[i].date
             image = sliceNews[i].image
-            userNewsList.push({ title, link, desc, date, image })
-            // if (!image) {
-            //     image = "https://ifh.cc/g/L6w8gt.jpg"
-            //     userNewsList.push({ title, link, desc, date, image })
-            // } else {
-            //     userNewsList.push({ title, link, desc, date, image })
-            // }
+            if (!image) {
+                image = "https://ifh.cc/g/tJvQ9s.png"
+                userNewsList.push({ title, link, desc, date, image })
+            } else {
+                userNewsList.push({ title, link, desc, date, image })
+            }
         }
         // console.log("userNewsList: " + userNewsList)
         // console.log(userNewsList)
