@@ -61,7 +61,7 @@ exports.dataParsing = async (userId) => {
             date = sliceNews[i].date
             image = sliceNews[i].image
             if (!image) {
-                image = "https://ifh.cc/v-6a68Sc"
+                image = "https://ifh.cc/g/6a68Sc.png"
                 userNewsList.push({ title, link, desc, date, image })
             } else {
                 userNewsList.push({ title, link, desc, date, image })
