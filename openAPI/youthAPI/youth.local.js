@@ -7,13 +7,13 @@ const moment = require("moment")
 const newYouthApiDataDate = moment().format("YYYY-MM-DD")
 const Data = require("../../schemas/data")
 const { classifyPeriod } = require("./controllers/youth.controller")
-const { regionCode, regionName } = require("../region")
+const { regionCode, regionName } = require("../category/region")
 const apiKey = process.env.CHUNG_KEY
 const fs = require("fs")
-fs.truncate("./dataUpdating/youth.age.txt", () => {
+fs.truncate("./openAPI/youthAPI/youth.txt", () => {
     console.log("File Content Deleted")
 })
-const myConsole = new console.Console(fs.createWriteStream("./dataUpdating/youth.age.txt"))
+const myConsole = new console.Console(fs.createWriteStream("./openAPI/youthAPI/youth.txt"))
 start()
 async function start() {
     console.log("start")
@@ -69,8 +69,17 @@ async function load(i, regionCode, regionName) {
                 // myConsole.log("지원규모", k.sporScvl._cdata)
                 // console.log("지역 ID", k.polyBizSecd._text)
                 // console.log("regioncode", regionCode)
-                const resultPeriod = await classifyPeriod(k.rqutPrdCn._cdata)
 
+                const date = moment().format("YYMMDD")
+                const dateNum = Number(date)
+                const resultPeriod = await classifyPeriod(k.rqutPrdCn._cdata)
+                let dDay
+                if (Array.isArray(resultPeriod)) {
+                    console.log("periodDate: " + resultPeriod[1])
+                    console.log("date:" + date)
+                    dDay = resultPeriod[1] - dateNum
+                }
+                // console.log(endDate)
                 if (resultPeriod === false || resultPeriod === undefined) continue
 
                 let age = []
@@ -84,7 +93,7 @@ async function load(i, regionCode, regionName) {
                 } else if (/제한없음/.test(k.ageInfo._cdata)) {
                     age[0] = "20"
                     age[1] = "39"
-                    console.log("제한없음", k.ageInfo._cdata)
+                    // console.log("제한없음", k.ageInfo._cdata)
                 } else if (/이상/.test(k.ageInfo._cdata) && /[^이하]/.test(k.ageInfo._cdata)) {
                     age[0] = k.ageInfo._cdata.replace(/[^0-9]/g, "")
                     age[1] = "39"
@@ -95,7 +104,7 @@ async function load(i, regionCode, regionName) {
                     // console.log("이하", k.ageInfo._cdata, age)
                 } else {
                     age = k.ageInfo._cdata
-                    console.log("else", k.ageInfo._cdata)
+                    // console.log("else", k.ageInfo._cdata)
                 }
 
                 let gender
@@ -141,8 +150,17 @@ async function load(i, regionCode, regionName) {
                 // myConsole.log({ total })
                 // myConsole.log({ pageIndex })
                 // myConsole.log({ page: i })
-                myConsole.log({ name })
-                myConsole.log({ age })
+                // if (dDay) {
+                //     myConsole.log({ name })
+                //     myConsole.log({ summary })
+                //     myConsole.log({ period: dDay })
+                // } else if (!dDay) {
+                //     myConsole.log({ name })
+                //     myConsole.log({ summary })
+                //     myConsole.log({ period })
+                // }
+                // myConsole.log({ name })
+                // myConsole.log({ age })
                 // myConsole.log({ summary })
                 // myConsole.log({ desire })
                 // myConsole.log({ job })
@@ -155,23 +173,41 @@ async function load(i, regionCode, regionName) {
                 // myConsole.log({ period })
                 // myConsole.log({ 심사발표: k.jdgnPresCn._cdata })
                 // myConsole.log({ process })
-                myConsole.log("-------------------")
-                await Data.updateMany({ name }, { $set: { age } })
-                // await Data.create({
-                //     age,
-                //     name,
-                //     summary,
-                //     desire,
-                //     job,
-                //     scholarship,
-                //     institution,
-                //     region,
-                //     link,
-                //     support,
-                //     gender,
-                //     period,
-                //     process,
-                // })
+                // myConsole.log("-------------------")
+                // await Data.updateMany({ name }, { $set: { age } })
+                // if (dDay) {
+                //     await Data.create({
+                //         age,
+                //         name,
+                //         summary,
+                //         desire,
+                //         job,
+                //         scholarship,
+                //         institution,
+                //         region,
+                //         link,
+                //         support,
+                //         gender,
+                //         period: dDay,
+                //         process,
+                //     })
+                // } else if (!dDay) {
+                //     await Data.create({
+                //         age,
+                //         name,
+                //         summary,
+                //         desire,
+                //         job,
+                //         scholarship,
+                //         institution,
+                //         region,
+                //         link,
+                //         support,
+                //         gender,
+                //         period,
+                //         process,
+                //     })
+                // }
             } else {
                 continue
             }

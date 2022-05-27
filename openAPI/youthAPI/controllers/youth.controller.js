@@ -40,11 +40,11 @@ exports.classifyPeriod = async (period3) => {
         if (String(period1[2]).length === 1) {
             period1[2] = "0" + String(period1[2])
         }
-
         period1 = Number(period1.join(""))
         const date = moment().format("YYMMDD")
         const dateNum = Number(date)
-        if (dateNum < period1) resultPeriod = period1 - dateNum
+
+        if (dateNum < period1) resultPeriod = period1
     }
     return resultPeriod
 }
