@@ -13,3 +13,4 @@ module.exports = () => {
     }
 }
 // MONGOURI
+// `mongodb://${process.env.DBID}:${process.env.DBPW}@3.36.130.225:27017/dev?authSource=admin&authMechanism=SCRAM-SHA-1`

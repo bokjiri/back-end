@@ -13,7 +13,6 @@ exports.getMarks = async (req, res, next) => {
         if (localsUserId !== parseInt(paramsUserId)) throw new Error("누구니???")
         const userMark = await showMark(localsUserId)
         await showMarkRedis(localsUserId)
-        // await markPush()
 
         /*=====================================================================================
         #swagger.responses[200] = {
