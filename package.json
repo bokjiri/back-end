@@ -50,7 +50,6 @@
         "xml-js": "^1.6.11"
     },
     "devDependencies": {
-        "artillery": "^2.0.0-16",
         "cross-env": "^7.0.3",
         "jest": "^27.5.1",
         "node-mocks-http": "^1.11.0",
