@@ -129,10 +129,11 @@ openAPI/*/samples/
 #cloudwatch
 cloudwatch.js
 
-#myReport
-myReport
-myReport.html
-myReport[0-9]
-myReport[0-9].html
-myReport[0-9].json
-myReport[0-9].json.html
+#myreports
+myreports/
+
+#loadtest
+loadtest.csv
+
+#svg
+*.svg
