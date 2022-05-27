@@ -3,8 +3,10 @@ const tipController = require("./tip.controller")
 
 jest.mock("../../../schemas/user")
 jest.mock("../../../schemas/data")
+jest.mock("../../users/services/user.service")
 const User = require("../../../schemas/user")
 const BokjiAPI = require("../../../schemas/data")
+const userService = require("../../users/services/user.service")
 
 const dataId = 1
 const userId = 1
@@ -101,6 +103,7 @@ describe("버그제보 테스트 코드", () => {
             User.updateOne.mockReturnValue(dataId)
             User.findOne.mockReturnValue(dismatchData)
             User.updateOne.mockReturnValue(dataId)
+            userService.redisSetMain(true)
             const result = { result: "SUCCESS", message: "정책 숨기기 성공" }
             await tipController.postTips(req, res, next)
             expect(res.statusCode).toEqual(200)
