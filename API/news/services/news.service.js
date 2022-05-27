@@ -53,14 +53,20 @@ exports.dataParsing = async (userId) => {
         let sliceNews = news.sort().slice(0, 8)
         // console.log("sliceNews: " + sliceNews)
         let userNewsList = []
+        let title, desc, link, date, image
         for (let i = 0; i < sliceNews.length; i++) {
-            let title = sliceNews[i].title
-            let desc = sliceNews[i].desc
-            let link = sliceNews[i].link
-            let date = sliceNews[i].date
-            let image = sliceNews[i].image
+            title = sliceNews[i].title
+            desc = sliceNews[i].desc
+            link = sliceNews[i].link
+            date = sliceNews[i].date
+            image = sliceNews[i].image
             userNewsList.push({ title, link, desc, date, image })
-            // console.log(title, desc, link, date, image)
+            // if (!image) {
+            //     image = "https://ifh.cc/g/L6w8gt.jpg"
+            //     userNewsList.push({ title, link, desc, date, image })
+            // } else {
+            //     userNewsList.push({ title, link, desc, date, image })
+            // }
         }
         // console.log("userNewsList: " + userNewsList)
         // console.log(userNewsList)

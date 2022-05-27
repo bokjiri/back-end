@@ -1,4 +1,5 @@
 const { postipService } = require("../services/tip.service")
+const userService = require("../../users/services/user.service")
 // const fs = require("fs")
 exports.postTips = async (req, res, next) => {
     /*========================================================================================================
@@ -13,7 +14,7 @@ exports.postTips = async (req, res, next) => {
 
         const checkTip = await postipService(userId, dataId)
         if (!checkTip) throw new Error("DB에 dataID가 없거나 이미 버그제보한 데이터입니다.")
-
+        await userService.redisSetMain(userId)
         // const date = new Date(+new Date() + 3240 * 10000).toISOString().split("T")[0]
         // const time = new Date().toTimeString().split(" ")[0]
         // const data = "\nuserId: " + userId.toString() + " dataId: " + dataId.toString() + " ||" + " Date: " + date + " Time: " + time

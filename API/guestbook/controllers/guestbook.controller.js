@@ -2,12 +2,11 @@ const { userInfo, getGuestbook, topMark, createFeed, updateFeed, destroyFeed, re
 exports.getGuestbook = async (req, res, next) => {
     try {
         const { userId } = res.locals
+        await userInfo(userId)
         const markRanking = await topMark(userId)
-        const guestbook = []
-        const checkGuestbook = await getGuestbook()
-        for (let i of checkGuestbook) {
-            guestbook.push({ nickname: i.nickname, profileUrl: i.profileUrl, date: i.date, content: i.content, feedId: i.feedId })
-        }
+
+        const guestbook = await getGuestbook()
+
         res.status(200).json({
             result: "SUCCESS",
             message: "방명록 피드 조회 성공",
@@ -34,11 +33,11 @@ exports.postFeed = async (req, res, next) => {
         const { content } = req.body
         if (!content) throw new Error("내용을 입력해 주세요")
         const user = await userInfo(userId)
-        const checkFeed = await createFeed(content, user)
+        const guestbook = await createFeed(content, user)
         res.status(200).json({
             result: "SUCCESS",
             message: "방명록 피드 작성 성공",
-            dateNow: checkFeed.date,
+            guestbook,
         })
     } catch (err) {
         if (err.message) {
@@ -60,13 +59,13 @@ exports.putFeed = async (req, res, next) => {
         const feedId = parseInt(req.params.feedId)
         const { content } = req.body
 
-        const user = await userInfo(userId)
-        const updateDate = await updateFeed(feedId, content, user)
+        await userInfo(userId)
+        const guestbook = await updateFeed(feedId, content)
 
         res.status(200).json({
             result: "SUCCESS",
             message: "방명록 피드 수정 성공",
-            updateDate,
+            guestbook,
         })
     } catch (err) {
         if (err.message) {

@@ -1,5 +1,5 @@
 const winston = require("winston")
-const WinstonDaily = require("winston-daily-rotate-file")
+const WinstonDaily = require("winston-daily-rotate-file") //날짜별로 로그 저장
 const path = require("path")
 const { combine, timestamp, printf, colorize } = winston.format
 
