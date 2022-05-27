@@ -80,6 +80,18 @@ exports.dataCheck = async (dataId) => {
     }
 }
 
+// exports.markPush = async () => {
+//     try {
+//         const allMark = await User.find({}, { _id: false, mark: true, email: true, nickname: true })
+//         markList = []
+//         markList.push(allMark)
+//         for (let i of markList) {
+//         }
+//         const dataList = await BokjiApi.find({})
+//         console.log(allMark)
+//     } catch (err) {}
+// }
+
 // exports.likemark = async (userId, dataId) => {
 //     const findLikeMark = await User.findOne({ userId }, { _id: false, likeMark: true })
 

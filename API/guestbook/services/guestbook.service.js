@@ -15,7 +15,7 @@ exports.userInfo = async (userId) => {
 }
 exports.getGuestbook = async () => {
     const guestbook = []
-    const checkGuestbook = await Guestbook.find({})
+    const checkGuestbook = await Guestbook.find({}).sort({ feedId: -1 })
     for (let i of checkGuestbook) {
         guestbook.push({ nickname: i.nickname, profileUrl: i.profileUrl, date: i.date, content: i.content, feedId: i.feedId })
     }

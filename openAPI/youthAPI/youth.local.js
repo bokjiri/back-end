@@ -175,39 +175,22 @@ async function load(i, regionCode, regionName) {
                 // myConsole.log({ process })
                 // myConsole.log("-------------------")
                 // await Data.updateMany({ name }, { $set: { age } })
-                // if (dDay) {
-                //     await Data.create({
-                //         age,
-                //         name,
-                //         summary,
-                //         desire,
-                //         job,
-                //         scholarship,
-                //         institution,
-                //         region,
-                //         link,
-                //         support,
-                //         gender,
-                //         period: dDay,
-                //         process,
-                //     })
-                // } else if (!dDay) {
-                //     await Data.create({
-                //         age,
-                //         name,
-                //         summary,
-                //         desire,
-                //         job,
-                //         scholarship,
-                //         institution,
-                //         region,
-                //         link,
-                //         support,
-                //         gender,
-                //         period,
-                //         process,
-                //     })
-                // }
+
+                // await Data.create({
+                //     age,
+                //     name,
+                //     summary,
+                //     desire,
+                //     job,
+                //     scholarship,
+                //     institution,
+                //     region,
+                //     link,
+                //     support,
+                //     gender,
+                //     period,
+                //     process,
+                // })
             } else {
                 continue
             }

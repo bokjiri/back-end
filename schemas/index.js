@@ -1,5 +1,5 @@
 const mongoose = require("mongoose")
-
+const MONGOURI = process.env.MONGOURI
 module.exports = () => {
     if (process.env.NODE_ENV !== "test") {
         mongoose
@@ -12,3 +12,4 @@ module.exports = () => {
             })
     }
 }
+// MONGOURI
