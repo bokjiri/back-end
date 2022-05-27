@@ -44,7 +44,7 @@ exports.classifyPeriod = async (period3) => {
         period1 = Number(period1.join(""))
         const date = moment().format("YYMMDD")
         const dateNum = Number(date)
-        if (dateNum < period1) resultPeriod = period1
+        if (dateNum < period1) resultPeriod = period1 - dateNum
     }
     return resultPeriod
 }
