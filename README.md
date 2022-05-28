@@ -1,6 +1,6 @@
 ![image](https://user-images.githubusercontent.com/100919074/170826832-8ea156fe-5c2c-49c4-8811-98a07c17636c.png)
 
-# 🤔[복세편살][boksei-link]
+# 😃[복세편살][boksei-link]
 
 [boksei-link]: https://boksei.com 'go boksei'
 
@@ -8,20 +8,23 @@
 
 ---
 
-<hr/>
 ## 프로젝트 소개
+
 ### Architecture
+
+![image](https://user-images.githubusercontent.com/100919074/170829479-24c494c4-2aaa-4d6e-bb09-08b80281ef50.png)
 
 <hr/>
 
 ### 프로젝트 기간
-- 4월 22일 ~ 6월 3일 (43일)
+
+- 4월 22일 ~ 6월 3일 (6주)
 
 <hr/>
 
 ### 기능
 
-#### 간단하고 안전한 회원가입
+#### 😃 간단하고 안전한 회원가입
 
 - 카카오를 통한 소셜 로그인으로 간단하고 안전하게 회원가입 할 수 있어요!
 
@@ -56,7 +59,7 @@
 
 ## 🛠 Tools
 
-#### 디자인
+#### design
 
 <p>
   <img src="https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=Figma&logoColor=white"/>
@@ -64,7 +67,7 @@
 <br>
 </p>
 
-####백엔드
+#### back-end
 
 <p>
 <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
@@ -78,7 +81,7 @@
 <br>
 </p>
 
-####frontEnd
+#### front-end
 
 <p>
   <img src="https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
@@ -93,7 +96,7 @@
   <img src="https://img.shields.io/badge/Amazon S3-569A31?style=for-the-badge&logo=Amazon S3&logoColor=white">
 </p>
 
-####Dev tools
+#### Dev tools
 
 <p> 
   <img src="https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white">
