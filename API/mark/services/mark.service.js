@@ -82,15 +82,15 @@ exports.dataCheck = async (dataId) => {
     }
 }
 
-exports.markPush = async () => {
+exports.markPushMail = async () => {
     try {
         let period
         let datePeriod
         let endDate
         const dataList = await BokjiApi.find({})
         const today = new Date()
-        let dataName = []
-        let targetUserList = []
+        let info = []
+        let checkDataId = []
         for (let i of dataList) {
             const dataPeriod = await classifyPeriod(i.period)
             if (Array.isArray(dataPeriod)) {
@@ -99,15 +99,23 @@ exports.markPush = async () => {
                 endDate = new Date(datePeriod)
                 const result = endDate - today
                 const dDay = Math.floor(result / (1000 * 60 * 60 * 24))
-                if (dDay <= 7) {
-                    dataName.push(i.name)
-                    const targetUser = await User.find({ mark: i.dataId }, { _id: false, nickname: true, email: true })
-                    targetUserList.push(...targetUser)
+                if (dDay === 7) {
+                    info.push({ dataName: i.name, dataId: i.dataId })
+                    checkDataId.push(i.dataId)
                 }
             }
         }
-        for (let v of targetUserList) {
-            return new Promise((resolve, reject) => {
+        const targetUsers = await User.find({ mark: { $in: checkDataId } })
+
+        for (let v of targetUsers) {
+            let text = []
+            for (let markDataId of info) {
+                if (v.mark.indexOf(markDataId.dataId) !== -1) {
+                    text.push(markDataId.dataName)
+                }
+            }
+            text = text.join(", ")
+            new Promise((resolve, reject) => {
                 const mailConfig = {
                     service: "naver", // 메일 보내는 곳
                     prot: 587,
@@ -123,7 +131,7 @@ exports.markPush = async () => {
                     from: process.env.MAIL_ID, // 보내는 메일의 주소
                     to: v.email, // 수신할 이메일
                     subject: "(복세편살)북마크 한 정책에 신청기간이 D-7 남았습니다!", // 메일 제목
-                    text: `신청기간 D-7 정책리스트: ${dataName} \n복세편살 사이트 바로가기:https://boksei.com/`, // 메일 내용
+                    text: `${v.nickname}님이 추가하신 북마크의 신청기간이 7일 남았습니다. \n신청기간 D-7 정책리스트: ${text}\n복세편살 사이트 바로가기:https://boksei.com/`, // 메일 내용
                 }
                 const transporter = nodemailer.createTransport(mailConfig)
                 transporter.sendMail(mailOptions, (error, info) => {
