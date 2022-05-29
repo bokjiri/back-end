@@ -57,20 +57,18 @@ exports.mainData = async (req, res, next) => {
     }
 }
 exports.userData = async (req, res, next) => {
-    try {
-        const { userId } = res.locals
-        const redis = await Client.get(`user${userId}`)
-        if (!redis) {
-            console.log("redis No such user data found ㅠㅠ")
-            next()
-        } else {
-            const data = JSON.parse(redis)
-            console.log("redis have user data!!!")
-            res.status(201).json({
-                result: true,
-                message: "회원정보 조회 완료",
-                data,
-            })
-        }
-    } catch (error) {}
+    const { userId } = res.locals
+    const redis = await Client.get(`user${userId}`)
+    if (!redis) {
+        console.log("redis No such user data found ㅠㅠ")
+        next()
+    } else {
+        const data = JSON.parse(redis)
+        console.log("redis have user data!!!")
+        res.status(201).json({
+            result: true,
+            message: "회원정보 조회 완료",
+            data,
+        })
+    }
 }

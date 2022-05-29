@@ -1,0 +1,104 @@
+config:
+  target: 
+  payload:
+    path: "./loadtest.csv"
+    fields:
+      - "email"
+      - "password"
+  http:
+    timeout: 20
+  phases:
+    # - duration: 10
+    #   arrivalRate: 10
+    - duration: 1000
+      arrivalRate: 1
+    # - duration: 10
+    #   arrivalRate: 10
+
+before:
+  flow:
+    - log: "auth"
+    - post:
+        url: "/api/users/auth"
+        json:
+          email: "{{ email }}"
+          password: "{{ password }}"
+        capture:
+          - json: $.accessToken
+            as: token
+
+scenarios:
+  # - name: "get main"
+  #   flow:
+  #   - get:
+  #       url: "/api/policies"
+  #       headers:
+  #         User-Agent: "Artillery"
+  #         Authorization: "Bearer {{ token }}"
+  # - name: "get detail"
+  #   flow:
+  #   - get:
+  #       url: "/api/policies/9227"
+  #       headers:
+  #         User-Agent: "Artillery"
+  #         Authorization: "Bearer {{ token }}"
+  # - name: "put mark"
+  #   flow:
+  #   - put:
+  #       url: "/api/marks"
+  #       headers:
+  #         User-Agent: "Artillery"
+  #         Authorization: "Bearer {{ token }}"
+  #       json:
+  #         dataId: "9227"
+  # - name: "get mark"
+  #   flow:
+  #   - get:
+  #       url: "/api/marks/344"
+  #       headers:
+  #         User-Agent: "Artillery"
+  #         Authorization: "Bearer {{ token }}"
+  # - name: "search"
+  #   flow:
+  #   - post:
+  #       url: "/api/search"
+  #       headers:
+  #         User-Agent: "Artillery"
+  #         Authorization: "Bearer {{ token }}"
+  #       json: 
+  #         searchKey: "청년"
+  #         type: "통합검색"
+  # - name: "get user"
+  #   flow:
+  #   - get:
+  #       url: "/api/users/344"
+  #       headers:
+  #         User-Agent: "Artillery"
+  #         Authorization: "Bearer {{ token }}"
+  # - name: "patch user"
+  #   flow:
+  #   - patch:
+  #       url: "/api/users/344"
+  #       headers:
+  #         User-Agent: "Artillery"
+  #         Authorization: "Bearer {{ token }}"
+  #       json:
+  #         age: 19991012
+  #         gender: ["남성"]
+  #         region: "------- 시·군을 선택해 주세요"
+  #         disability: ["없음"]
+  #         obstacle: []
+  #         job: []
+  #         marriage: []
+  #         target: []
+  #         salary: 0
+  #         scholarship: []
+  #         family: 0
+  #         workType: []
+  - name: "get news"
+    flow:
+    - get:
+        url: "/api/news"
+        headers:
+          User-Agent: "Artillery"
+          Authorization: "Bearer {{ token }}"

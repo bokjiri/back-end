@@ -181,7 +181,7 @@ describe("유저 컨트롤러 테스트", () => {
                 ["경기도", "고양시"],
                 ["없음"],
                 undefined,
-                ["미취업자"],
+                ["미취업"],
                 undefined,
                 undefined,
                 undefined,
@@ -215,7 +215,7 @@ describe("유저 컨트롤러 테스트", () => {
             }
 
             await userController.patchUsers(req, res, next)
-            expect(userService.updateUserInfo).toHaveBeenCalledWith(1, 20201010, [], "경기도", ["없음"], undefined, ["미취업자"], undefined, undefined, undefined, undefined, undefined, undefined)
+            expect(userService.updateUserInfo).toHaveBeenCalledWith(1, 20201010, [], "경기도", ["없음"], undefined, ["미취업"], undefined, undefined, undefined, undefined, undefined, undefined)
         })
         it("------- 시·군을 선택해주세요로 들어왔을 때 빈값으로 바뀌는가", async () => {
             req.params.userId = paramsUserId
@@ -242,7 +242,7 @@ describe("유저 컨트롤러 테스트", () => {
             }
 
             await userController.patchUsers(req, res, next)
-            expect(userService.updateUserInfo).toHaveBeenCalledWith(1, 20201010, [], [], ["없음"], undefined, ["미취업자"], undefined, undefined, undefined, undefined, undefined, undefined)
+            expect(userService.updateUserInfo).toHaveBeenCalledWith(1, 20201010, [], [], ["없음"], undefined, ["미취업"], undefined, undefined, undefined, undefined, undefined, undefined)
         })
         it("시·도를 선택해 주세요 시·군을 선택해주세요로 들어왔을 때 빈값으로 바뀌는가", async () => {
             req.params.userId = paramsUserId
@@ -269,7 +269,7 @@ describe("유저 컨트롤러 테스트", () => {
             }
 
             await userController.patchUsers(req, res, next)
-            expect(userService.updateUserInfo).toHaveBeenCalledWith(1, 20201010, [], [], ["없음"], undefined, ["미취업자"], undefined, undefined, undefined, undefined, undefined, undefined)
+            expect(userService.updateUserInfo).toHaveBeenCalledWith(1, 20201010, [], [], ["없음"], undefined, ["미취업"], undefined, undefined, undefined, undefined, undefined, undefined)
         })
         it("회원정보 수정이 되면 '회원정보 수정 완료'라는 메세지를 보내는가", async () => {
             req.params.userId = paramsUserId

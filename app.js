@@ -17,6 +17,7 @@ const passport = require("passport")
 const passportConfig = require("./kakao/index")
 const updateYouthApi = require("./openAPI/youthAPI/index")
 const updateFirstBokjiApi = require("./dataCleansing/data")
+const dDayMail = require("./API/mark/services/mark.service")
 connect()
 // const whitelist = ["http://localhost:3000"]
 // const corsOptions = {
@@ -38,9 +39,9 @@ const swaggerUi = require("swagger-ui-express")
 const swaggerFile = require("./swagger-output")
 
 app.use("/swagger", swaggerUi.serve, swaggerUi.setup(swaggerFile))
-
+const origin = process.env.WHITELIST
 const corsOptions = {
-    origin: ["http://localhost:3000", "https://boksei.com"],
+    origin,
     credentials: true,
 }
 
@@ -57,6 +58,7 @@ app.use(
         saveUninitialized: true,
         secret: process.env.SESSION_SECRET,
         cookie: {
+            sameSite: "strict",
             httpOnly: true,
             secure: true,
         },
@@ -68,6 +70,7 @@ app.use(passport.session())
 if (process.env.SCHEDULE) {
     updateFirstBokjiApi()
     updateYouthApi()
+    dDayMail.markPushMail()
 }
 
 const Router = require("./routes")

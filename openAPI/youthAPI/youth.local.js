@@ -175,6 +175,7 @@ async function load(i, regionCode, regionName) {
                 // myConsole.log({ process })
                 // myConsole.log("-------------------")
                 // await Data.updateMany({ name }, { $set: { age } })
+
                 // if (dDay) {
                 //     await Data.create({
                 //         age,
@@ -208,6 +209,7 @@ async function load(i, regionCode, regionName) {
                 //         process,
                 //     })
                 // }
+
             } else {
                 continue
             }

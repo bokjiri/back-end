@@ -91,7 +91,6 @@ exports.getUsers = async (req, res, next) => {
             data.region[0] = "시·도를 선택해 주세요"
             data.region[1] = "시·군을 선택해 주세요"
         }
-        if (data.job[0] === "미취업자") data.job[0] = "미취업"
         userService.redisSetUser(userId, data)
         /*=====================================================================================
         #swagger.responses[201] = {
@@ -142,8 +141,6 @@ exports.patchUsers = async (req, res, next) => {
 
         const { age, gender, region, disability, obstacle, job, marriage, target, salary, scholarship, family, workType } = req.body
 
-        if (job[0] === "미취업") job[0] = "미취업자"
-
         let arrRegion = region.split(" ")
 
         if (arrRegion.length === 4) {
@@ -158,7 +155,7 @@ exports.patchUsers = async (req, res, next) => {
 
         userService.redisSetUser(userId)
         userService.redisSetMain(userId)
-        await newsService.dataParsing(userId)
+        newsService.dataParsing(userId)
         /*=====================================================================================
         #swagger.responses[201] = {
             description: '정상적으로 값을 받았을 때, 아래 예제와 같은 형태로 응답받습니다.',

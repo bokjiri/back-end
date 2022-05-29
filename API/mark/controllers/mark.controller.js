@@ -1,4 +1,4 @@
-const { showMark, pushMark, showMarkRedis, pushMarkRedis, dataCheck, deleteMark, deleteMarkRedis } = require("../services/mark.service")
+const { showMark, pushMark, showMarkRedis, pushMarkRedis, dataCheck, deleteMark, deleteMarkRedis, markPush } = require("../services/mark.service")
 const { checkBookmark } = require("../../policies/services/detail.service")
 
 exports.getMarks = async (req, res, next) => {
@@ -148,31 +148,3 @@ exports.deleteMarks = async (req, res, next) => {
         }
     }
 }
-
-// exports.likeMarks = async (req, res) => {
-//     /*========================================================================================================
-//     #swagger.tags = ['Mark']
-//     #swagger.summary = '좋아요 - 사용 x'
-//     #swagger.description = '정책을 좋아요한다.'
-//     ========================================================================================================*/
-//     try {
-//         const { userId } = req.params
-//         const { dataId } = req.body
-//         await likemark(userId, dataId)
-//         /*=====================================================================================
-//         #swagger.responses[201] = {
-//             description: '정상적으로 값을 받았을 때, 아래 예제와 같은 형태로 응답받습니다.',
-//             schema: { result: "SUCCESS", message: "좋아요 성공" }
-//         }
-//         =====================================================================================*/
-//         res.status(201).json({ result: "SUCCESS", message: "좋아요 성공" })
-//     } catch (err) {
-//         /*=====================================================================================
-//         #swagger.responses[400] = {
-//             description: '정상적으로 값을 받지 못했을 때, 아래 예제와 같은 형태로 응답받습니다.',
-//             schema: { result: "FAIL", message: "좋아요 실패" }
-//         }
-//         =====================================================================================*/
-//         res.status(400).json({ result: "FAIL", message: "좋아요 실패" })
-//     }
-// }
