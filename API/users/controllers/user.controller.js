@@ -91,7 +91,6 @@ exports.getUsers = async (req, res, next) => {
             data.region[0] = "시·도를 선택해 주세요"
             data.region[1] = "시·군을 선택해 주세요"
         }
-        if (data.job[0] === "미취업자") data.job[0] = "미취업"
         userService.redisSetUser(userId, data)
         /*=====================================================================================
         #swagger.responses[201] = {
@@ -141,8 +140,6 @@ exports.patchUsers = async (req, res, next) => {
         if (tokenUserId !== userId) throw new ValidationError("토큰하고 유저아이디가 다름 비정상적인 접근")
 
         const { age, gender, region, disability, obstacle, job, marriage, target, salary, scholarship, family, workType } = req.body
-
-        if (job[0] === "미취업") job[0] = "미취업자"
 
         let arrRegion = region.split(" ")
 
