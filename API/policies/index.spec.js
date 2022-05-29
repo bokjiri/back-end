@@ -20,7 +20,6 @@ describe("detail 통합테스트", () => {
     afterAll(async () => {
         await mongoose.connection.db.dropDatabase()
         await mongoose.disconnect()
-        await redis.quit()
     })
     describe("detail 통합테스트", () => {
         let Authorization, reAuthorization
