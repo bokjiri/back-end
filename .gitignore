@@ -137,6 +137,7 @@ loadtest.csv
 token.csv
 token.js
 data.csv
+non-redis-loadtest.yml
 
 #svg
 *.svg
