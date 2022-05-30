@@ -21,6 +21,7 @@
     "dependencies": {
         "@aws-sdk/client-cloudwatch-logs": "^3.96.0",
         "aws-sdk": "^2.1120.0",
+        "aws-xray-sdk": "^3.3.5",
         "axios": "^0.27.2",
         "bcrypt": "^5.0.1",
         "cheerio": "^1.0.0-rc.10",
