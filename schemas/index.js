@@ -3,7 +3,7 @@ const MONGOURI = process.env.MONGOURI
 module.exports = () => {
     if (process.env.NODE_ENV !== "test") {
         mongoose
-            .connect(MONGOURI, { ignoreUndefined: true })
+            .connect(`mongodb://${process.env.DBID}:${process.env.DBPW}@3.36.130.225:27017/dev?authSource=admin&authMechanism=SCRAM-SHA-1`, { ignoreUndefined: true })
             .then(() => {
                 console.log("mongodb 연결완료")
             })
