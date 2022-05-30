@@ -49,7 +49,6 @@ app.use(
         },
     })
 )
-app.use(AWSXray.express.openSegment("MyApp"))
 passportConfig()
 app.use(passport.initialize())
 app.use(passport.session())
@@ -61,7 +60,6 @@ if (process.env.SCHEDULE) {
 
 const Router = require("./routes")
 app.use("/api", Router)
-app.use(AWSXray.express.closeSegment())
 
 app.use((req, res, next) => {
     res.status(404).send("요청하신 페이지를 찾을 수 없습니다.")
