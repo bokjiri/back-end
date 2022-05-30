@@ -134,6 +134,9 @@ myreports/
 
 #loadtest
 loadtest.csv
+token.csv
+token.js
+data.csv
 
 #svg
 *.svg
