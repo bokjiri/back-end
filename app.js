@@ -19,29 +19,13 @@ const updateYouthApi = require("./openAPI/youthAPI/index")
 const updateFirstBokjiApi = require("./dataCleansing/data")
 const dDayMail = require("./API/mark/services/mark.service")
 connect()
-// const whitelist = ["http://localhost:3000"]
-// const corsOptions = {
-//     origin: function (origin, callback) {
-//         if (whitelist.indexOf(origin) !== -1) {
-//             callback(null, true)
-//         } else {
-//             callback(new Error("Not Allowed Origin!"))
-//         }
-//     },
-//     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-//     preflightContinue: false,
-//     optionsSuccessStatus: 204,
-//     credentials: true,
-// }
-// app.use(cors(corsOptions))
 
 const swaggerUi = require("swagger-ui-express")
 const swaggerFile = require("./swagger-output")
 
 app.use("/swagger", swaggerUi.serve, swaggerUi.setup(swaggerFile))
-const origin = process.env.WHITELIST
 const corsOptions = {
-    origin,
+    origin: ["http://localhost:3000", "https://boksei.com"],
     credentials: true,
 }
 
