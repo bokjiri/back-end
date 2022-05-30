@@ -10,10 +10,10 @@ const { classifyPeriod } = require("./controllers/youth.controller")
 const { regionCode, regionName } = require("../category/region")
 const apiKey = process.env.CHUNG_KEY
 const fs = require("fs")
-fs.truncate("./openAPI/youthAPI/youth.txt", () => {
+fs.truncate("./openAPI/youthAPI/youth.log", () => {
     console.log("File Content Deleted")
 })
-const myConsole = new console.Console(fs.createWriteStream("./openAPI/youthAPI/youth.txt"))
+const myConsole = new console.Console(fs.createWriteStream("./openAPI/youthAPI/youth.log"))
 start()
 async function start() {
     console.log("start")
@@ -209,7 +209,6 @@ async function load(i, regionCode, regionName) {
                 //         process,
                 //     })
                 // }
-
             } else {
                 continue
             }
