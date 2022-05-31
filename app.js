@@ -18,7 +18,7 @@ connect()
 const passport = require("passport")
 const passportConfig = require("./kakao/index")
 const updateYouthApi = require("./openAPI/youthAPI/index")
-const updateFirstBokjiApi = require("./dataCleansing/data")
+const updateFirstBokjiApi = require("./openAPI/dataCleansing/data")
 const dDayMail = require("./API/mark/services/mark.service")
 
 const swaggerUi = require("swagger-ui-express")
