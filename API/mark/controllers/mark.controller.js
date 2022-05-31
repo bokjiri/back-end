@@ -37,12 +37,12 @@ exports.getMarks = async (req, res, next) => {
         if (err.message) {
             return next({
                 message: err.message,
-                stack: err,
+                stack: err.stack,
             })
         } else {
             return next({
                 message: "북마크 조회 실패",
-                stack: err,
+                stack: err.stack,
             })
         }
     }
@@ -90,12 +90,12 @@ exports.postMarks = async (req, res, next) => {
         if (err.message) {
             return next({
                 message: err.message,
-                stack: err,
+                stack: err.stack,
             })
         } else {
             return next({
                 message: "북마크 추가 삭제 실패",
-                stack: err,
+                stack: err.stack,
             })
         }
     }
@@ -138,12 +138,12 @@ exports.deleteMarks = async (req, res, next) => {
         if (err.message) {
             return next({
                 message: err.message,
-                stack: err,
+                stack: err.stack,
             })
         } else {
             return next({
                 message: "북마크 삭제 실패",
-                stack: err,
+                stack: err.stack,
             })
         }
     }

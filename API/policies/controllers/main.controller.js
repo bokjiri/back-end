@@ -81,7 +81,7 @@ exports.getMain = async (req, res, next) => {
         // })
         return next({
             message: "메인 페이지 추천 정책 조회 실패",
-            stack: error,
+            stack: error.stack,
         })
     }
 }

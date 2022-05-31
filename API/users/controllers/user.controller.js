@@ -17,7 +17,7 @@ exports.createUser = async (req, res, next) => {
         const hashPassword = await bcrypt.hash(password, 12)
         await userService.createItselfUser(email, nickname, hashPassword)
         res.status(201).json({
-            result: true,
+            result: "SUCCESS",
             message: "회원가입완료",
         })
     } catch (error) {
@@ -50,7 +50,7 @@ exports.authUser = async (req, res, next) => {
                 expiresIn: process.env.RTOKENEXPIRE,
             })
             return res.status(200).json({
-                result: true,
+                result: "SUCCESS",
                 message: "로그인완료",
                 accessToken,
                 refreshToken,
@@ -96,14 +96,14 @@ exports.getUsers = async (req, res, next) => {
         #swagger.responses[201] = {
             description: '정상적으로 값을 받았을 때, 아래 예제와 같은 형태로 응답받습니다.',
             schema: {
-            result: true,
+            result: "SUCCESS",
             message: "회원정보 조회 완료",
             data,
         }
         }
         =====================================================================================*/
         res.status(201).json({
-            result: true,
+            result: "SUCCESS",
             message: "회원정보 조회 완료",
             data,
         })
@@ -160,13 +160,13 @@ exports.patchUsers = async (req, res, next) => {
         #swagger.responses[201] = {
             description: '정상적으로 값을 받았을 때, 아래 예제와 같은 형태로 응답받습니다.',
             schema: {
-            result: true,
+            result: "SUCCESS",
             message: "회원정보 수정 완료",
         }
         }
         =====================================================================================*/
         res.status(201).json({
-            result: true,
+            result: "SUCCESS",
             message: "회원정보 수정 완료",
         })
     } catch (error) {
@@ -206,14 +206,14 @@ exports.deleteUsers = async (req, res, next) => {
         #swagger.responses[204] = {
             description: '정상적으로 값을 받았을 때, 아래 예제와 같은 형태로 응답받습니다.',
             schema: {
-            result: true,
+            result: "SUCCESS",
             message: "회원정보 삭제 완료",
             data,
         }
         }
         =====================================================================================*/
         res.status(204).json({
-            result: true,
+            result: "SUCCESS",
             message: "회원정보 삭제 완료",
         })
     } catch (error) {

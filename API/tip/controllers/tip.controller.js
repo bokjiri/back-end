@@ -40,12 +40,12 @@ exports.postTips = async (req, res, next) => {
         if (err.message) {
             return next({
                 message: err.message,
-                stack: err,
+                stack: err.stack,
             })
         } else {
             return next({
                 message: "정책 숨기기 실패",
-                stack: err,
+                stack: err.stack,
             })
         }
     }
