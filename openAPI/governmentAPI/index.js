@@ -16,8 +16,7 @@ async function serviceList() {
         let totalCount
         let page = 1
         let perPage = 1
-        let serviceKey =
-            "uTElnm5kbsfwT43AGYmytTB7jrlRXGnOiA4TcDiUTquuJSgGcuKAEpYhQ9LdJKVUwqXfC3aOxxHmOdu%2FIp238w%3D%3D"
+        let serviceKey = "uTElnm5kbsfwT43AGYmytTB7jrlRXGnOiA4TcDiUTquuJSgGcuKAEpYhQ9LdJKVUwqXfC3aOxxHmOdu%2FIp238w%3D%3D"
         let url = `https://api.odcloud.kr/api/gov24/v1/serviceList?page=${page}&perPage=${perPage}&serviceKey=${serviceKey}`
         await axios.get(url).then((response) => {
             const data = response.data
@@ -28,8 +27,7 @@ async function serviceList() {
         for (let i = 1; i < totalCount + 1; i++) {
             let page = i
             let perPage = 1
-            let serviceKey =
-                "uTElnm5kbsfwT43AGYmytTB7jrlRXGnOiA4TcDiUTquuJSgGcuKAEpYhQ9LdJKVUwqXfC3aOxxHmOdu%2FIp238w%3D%3D"
+            let serviceKey = "uTElnm5kbsfwT43AGYmytTB7jrlRXGnOiA4TcDiUTquuJSgGcuKAEpYhQ9LdJKVUwqXfC3aOxxHmOdu%2FIp238w%3D%3D"
             let url2 = `https://api.odcloud.kr/api/gov24/v1/serviceList?page=${page}&perPage=${perPage}&serviceKey=${serviceKey}`
             let serviceId
             let name
@@ -77,8 +75,7 @@ serviceDetail()
 async function serviceDetail() {
     try {
         for (let i = 0; i < supportCode.length; i++) {
-            const serviceKey =
-                "uTElnm5kbsfwT43AGYmytTB7jrlRXGnOiA4TcDiUTquuJSgGcuKAEpYhQ9LdJKVUwqXfC3aOxxHmOdu%2FIp238w%3D%3D"
+            const serviceKey = "uTElnm5kbsfwT43AGYmytTB7jrlRXGnOiA4TcDiUTquuJSgGcuKAEpYhQ9LdJKVUwqXfC3aOxxHmOdu%2FIp238w%3D%3D"
             let url2 = `https://api.odcloud.kr/api/gov24/v1/serviceDetail?page=1&perPage=1&cond%5BSVC_ID%3A%3AEQ%5D=${supportCode[i]}&serviceKey=${serviceKey}`
             let name
             let institution
@@ -135,13 +132,7 @@ async function serviceDetail() {
                     gender = "여성"
                 }
                 //---------------------------------02
-                if (
-                    data.JA0201 === "Y" &&
-                    data.JA0202 === "Y" &&
-                    data.JA0203 === "Y" &&
-                    data.JA0204 === "Y" &&
-                    data.JA0205 === "Y"
-                ) {
+                if (data.JA0201 === "Y" && data.JA0202 === "Y" && data.JA0203 === "Y" && data.JA0204 === "Y" && data.JA0205 === "Y") {
                     salary = undefined
                 } else if (data.JA0201 === "Y" && data.JA0202 === "Y" && data.JA0203 === "Y" && data.JA0204 === "Y") {
                     salary = 200
@@ -153,10 +144,7 @@ async function serviceDetail() {
                     salary = 50
                 }
                 //---------------------------------03
-                if (
-                    name.includes("미혼") === true ||
-                    (name.includes("산모") === true && name.includes("청소년") === true)
-                ) {
+                if (name.includes("미혼") === true || (name.includes("산모") === true && name.includes("청소년") === true)) {
                     marriage.push("미혼")
                 } else if (
                     name.includes("결혼") === true ||
@@ -175,30 +163,14 @@ async function serviceDetail() {
                     (name.includes("출산") === true && name.includes("장려") === true) ||
                     name.includes("맘") === true
                 ) {
-                    target.push("임신·출산")
+                    target.push("임신 · 출산")
                 }
                 if (data.JA0304 === "Y" && data.JA0305 === "Y" && name.includes("장애") === false) {
                 } else if (data.JA0304 === "Y" || data.JA0305 === "Y" || name.includes("장애") === true) {
                     disability = "있음"
                 }
-                if (
-                    data.JA0306 === "Y" &&
-                    data.JA0307 === "Y" &&
-                    data.JA0308 === "Y" &&
-                    data.JA0309 === "Y" &&
-                    data.JA0310 === "Y" &&
-                    data.JA0311 === "Y" &&
-                    data.JA0312 === "Y"
-                ) {
-                } else if (
-                    data.JA0306 === "Y" ||
-                    data.JA0307 === "Y" ||
-                    data.JA0308 === "Y" ||
-                    data.JA0309 === "Y" ||
-                    data.JA0310 === "Y" ||
-                    data.JA0311 === "Y" ||
-                    data.JA0312 === "Y"
-                ) {
+                if (data.JA0306 === "Y" && data.JA0307 === "Y" && data.JA0308 === "Y" && data.JA0309 === "Y" && data.JA0310 === "Y" && data.JA0311 === "Y" && data.JA0312 === "Y") {
+                } else if (data.JA0306 === "Y" || data.JA0307 === "Y" || data.JA0308 === "Y" || data.JA0309 === "Y" || data.JA0310 === "Y" || data.JA0311 === "Y" || data.JA0312 === "Y") {
                     target.push("보훈대상자")
                 }
                 if (data.JA0313 === "Y" && data.JA0314 === "Y" && data.JA0315 === "Y" && data.JA0316 === "Y") {
@@ -209,13 +181,7 @@ async function serviceDetail() {
                     if (data.JA0314 === "Y" || name.includes("어업") === true) {
                         target.push("어업인")
                     } else {
-                        if (
-                            data.JA0314 === "Y" ||
-                            name.includes("축산") === true ||
-                            name.includes("양축농") === true ||
-                            name.includes("송아지") === true ||
-                            name.includes("배합사료") === true
-                        ) {
+                        if (data.JA0314 === "Y" || name.includes("축산") === true || name.includes("양축농") === true || name.includes("송아지") === true || name.includes("배합사료") === true) {
                             target.push("축산업인")
                         }
                         if (data.JA0314 === "Y" || name.includes("임업") === true) {
@@ -225,24 +191,14 @@ async function serviceDetail() {
                 }
                 if (data.JA0317 === "Y" && data.JA0318 === "Y" && data.JA0319 === "Y" && data.JA0320 === "Y") {
                 } else {
-                    if (
-                        data.JA0317 === "Y" ||
-                        data.JA0318 === "Y" ||
-                        data.JA0319 === "Y" ||
-                        name.includes("인재육성") === true ||
-                        name.includes("청소년") === true
-                    ) {
+                    if (data.JA0317 === "Y" || data.JA0318 === "Y" || data.JA0319 === "Y" || name.includes("인재육성") === true || name.includes("청소년") === true) {
                         scholarship.push("고등학교 졸업 미만")
                     }
                     if (data.JA0320 === "Y" || name.includes("대학생") === true || name.includes("인재육성") === true) {
                         scholarship.push("대학(원) 재학")
                         scholarship.push("대학(원) 휴학")
                     }
-                    if (
-                        name.includes("대학진학") === true ||
-                        name.includes("대학입학") === true ||
-                        name.includes("비진학") === true
-                    ) {
+                    if (name.includes("대학진학") === true || name.includes("대학입학") === true || name.includes("비진학") === true) {
                         scholarship.push("고등학교 졸업")
                     }
                 }
@@ -294,8 +250,7 @@ async function supportConditions() {
         let totalCount
         let page = 1
         let perPage = 1
-        let serviceKey =
-            "uTElnm5kbsfwT43AGYmytTB7jrlRXGnOiA4TcDiUTquuJSgGcuKAEpYhQ9LdJKVUwqXfC3aOxxHmOdu%2FIp238w%3D%3D"
+        let serviceKey = "uTElnm5kbsfwT43AGYmytTB7jrlRXGnOiA4TcDiUTquuJSgGcuKAEpYhQ9LdJKVUwqXfC3aOxxHmOdu%2FIp238w%3D%3D"
         let url = `https://api.odcloud.kr/api/gov24/v1/supportConditions?page=${page}&perPage=${perPage}&serviceKey=${serviceKey}`
         await axios.get(url).then((response) => {
             const data = response.data
@@ -307,8 +262,7 @@ async function supportConditions() {
         for (let i = 1; i < totalCount + 1; i++) {
             let page = i
             let perPage = 1
-            let serviceKey =
-                "uTElnm5kbsfwT43AGYmytTB7jrlRXGnOiA4TcDiUTquuJSgGcuKAEpYhQ9LdJKVUwqXfC3aOxxHmOdu%2FIp238w%3D%3D"
+            let serviceKey = "uTElnm5kbsfwT43AGYmytTB7jrlRXGnOiA4TcDiUTquuJSgGcuKAEpYhQ9LdJKVUwqXfC3aOxxHmOdu%2FIp238w%3D%3D"
             let url2 = `https://api.odcloud.kr/api/gov24/v1/supportConditions?page=${page}&perPage=${perPage}&serviceKey=${serviceKey}`
 
             await axios.get(url2).then((response) => {
