@@ -36,9 +36,11 @@ exports.getMain = async (req, res, next) => {
         =====================================================================================*/
             return res.status(404).json({ result: "FAIL", code: -11, message: "데이터베이스 조회 실패" })
         }
+        //
         // console.log(isUser)
         // 정책 추천 로직
         const checkedData = await this.logic(isUser, isData)
+        // console.log(checkedData)
         if (!checkedData) {
             throw new Error()
         }
@@ -239,7 +241,7 @@ exports.logic = async (isUser, isData) => {
         //만약 isUser에 job 조건이 "미취업"으로 존재한다면
         else if (isUser.job[0] === "미취업") {
             for (let j = 0; j < checkedWithScholarship.length; j++) {
-                if (checkedWithScholarship[j].job.includes(isUser.job[0]) || !checkedWithScholarship[j].job) {
+                if (checkedWithScholarship[j].job === "미취업자" || !checkedWithScholarship[j].job) {
                     checkedWithJob.push(checkedWithScholarship[j])
                 }
             }
@@ -281,7 +283,7 @@ exports.logic = async (isUser, isData) => {
                     }
                 }
             }
-        } // console.log(checkedWithTarget)
+        } //  console.log(checkedWithTarget)
         //-----------------------------------------------------------salary/family 조건 검사-----------------------------------------------------------------//
         let checkedWithSalary = []
         //만약 isUser에 family 조건이 존재하지 않는다면 salary가 상관 없는 정책만 추가

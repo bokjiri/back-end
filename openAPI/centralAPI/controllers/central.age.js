@@ -6,22 +6,12 @@ const connect = require("../../../schemas")
 connect()
 
 const fs = require("fs")
-fs.truncate("./openAPI/index.age.txt", () => {
+fs.truncate("./openAPI/centralAPI/index.age.txt", () => {
     console.log("File Content Deleted")
 })
-const myConsole = new console.Console(fs.createWriteStream("./openAPI/index.age.txt"))
+const myConsole = new console.Console(fs.createWriteStream("./openAPI/centralAPI/index.age.txt"))
 const desireCode = [100, 110, 120, 130, 140, 150, 160, 170, 180]
-const desireName = [
-    "일자리",
-    "주거 및 일상생활",
-    "주거 및 일상생활",
-    "건강",
-    "건강",
-    "교육 및 돌봄",
-    "교육 및 돌봄",
-    "기타",
-    "안전 및 권익보장",
-]
+const desireName = ["일자리", "주거 및 일상생활", "주거 및 일상생활", "건강", "건강", "교육 및 돌봄", "교육 및 돌봄", "기타", "안전 및 권익보장"]
 const serviceKey = process.env.SERVICE_KEY
 // loadOpenApi(desireCode, desireName)
 
@@ -175,6 +165,59 @@ async function loadOpenApi(desireCode, desireName) {
         console.log(error)
     }
 }
+// pushAge()
+async function pushAge() {
+    const data = await Data.find()
+    for (let i of data) {
+        if (i.age === undefined || i.age.length === 0) {
+            let age = []
+            const checkSupport = i.support.replace(/\n/g, "").replace(/ /g, "")
+            const checkSummary = i.summary.replace(/\n/g, "").replace(/ /g, "")
+            const name = i.name
+            const checkSummarySymbol = checkSummary.search(/세~\d|\d~\d/)
+            const checkSupportSymbol = checkSupport.search(/세~\d|\d~\d/)
+            const indexCheckUpSummary = checkSummary.search(/\d세이상|\d세초과/)
+            const indexCheckDownSummary = checkSummary.search(/\d세이하|\d세미만/)
+            const indexCheckUpSupport = checkSupport.search(/\d세이상|\d세초과/)
+            const indexCheckDownSupport = checkSupport.search(/\d세이하|\d세미만/)
+            if (indexCheckUpSummary !== -1) {
+                if (!isNaN(checkSummary[indexCheckUpSummary - 1])) {
+                    age[0] = checkSummary[indexCheckUpSummary - 1] + checkSummary[indexCheckUpSummary]
+                } else {
+                    age[0] = checkSummary[indexCheckUpSummary]
+                }
+            } else if (indexCheckUpSupport !== -1) {
+                if (!isNaN(checkSupport[indexCheckUpSupport - 1])) {
+                    age[0] = checkSupport[indexCheckUpSupport - 1] + checkSupport[indexCheckUpSupport]
+                } else {
+                    age[0] = checkSupport[indexCheckUpSupport]
+                }
+            }
+            if (indexCheckDownSummary !== -1) {
+                if (age.length === 0) age[0] = "0"
+                if (!isNaN(checkSummary[indexCheckDownSummary - 1])) {
+                    age[1] = checkSummary[indexCheckDownSummary - 1] + checkSummary[indexCheckDownSummary]
+                } else {
+                    age[1] = checkSummary[indexCheckDownSummary]
+                }
+            } else if (indexCheckDownSupport !== -1) {
+                if (age.length === 0) age[0] = "0"
+                if (!isNaN(checkSupport[indexCheckDownSupport - 1])) {
+                    age[1] = checkSupport[indexCheckDownSupport - 1] + checkSupport[indexCheckDownSupport]
+                } else {
+                    age[1] = checkSupport[indexCheckDownSupport]
+                }
+            }
+            if (age.length === 2 && Number(age[0]) > Number(age[1])) {
+                continue
+            } else if (age.length !== 0) {
+                myConsole.log({ name, age, sum: i.summary, sup: i.support })
+                await Data.updateOne({ name }, { $set: { age } })
+            }
+        }
+    }
+    console.log("done")
+}
 // afterData()
 async function afterData() {
     console.log("start")
@@ -216,7 +259,7 @@ async function afterData() {
                     }
                 }
                 myConsole.log({ name, support, summary, age })
-                // await Data.updateOne({ name }, { $set: { age } })
+                await Data.updateOne({ name }, { $set: { age } })
             } else if (checkSupportSymbol !== -1) {
                 console.log(support)
                 console.log(checkSupportSymbol)
@@ -246,13 +289,13 @@ async function afterData() {
                     }
                 }
                 myConsole.log({ name, support, summary, age })
-                // await Data.updateOne({ name }, { $set: { age } })
+                await Data.updateOne({ name }, { $set: { age } })
             }
         }
     }
     console.log("done")
 }
-checkAgeData()
+// checkAgeData()
 async function checkAgeData() {
     console.log("start")
     const ageData = await Data.find({}, { _id: false })
@@ -262,4 +305,99 @@ async function checkAgeData() {
         }
     }
     console.log("end")
+}
+
+// pushStartup()
+async function pushStartup() {
+    const data = await Data.find()
+    for (i of data) {
+        const support = i.support.replace(/\n/g, "").replace(/ /g, "")
+        const summary = i.summary.replace(/\n/g, "").replace(/ /g, "")
+        const name = i.name
+        const checkSummarySymbol = summary.search(/창업|스타트업/)
+        const checkSupportSymbol = support.search(/창업|스타트업/)
+        if (checkSummarySymbol !== -1) {
+            myConsole.log(name)
+            myConsole.log(support)
+            myConsole.log(summary)
+            await Data.updateOne({ name }, { $push: { workType: "창업" } })
+        } else if (checkSupportSymbol !== -1) {
+            myConsole.log(name)
+            myConsole.log(support)
+            myConsole.log(summary)
+            await Data.updateOne({ name }, { $push: { workType: "창업" } })
+        }
+    }
+    console.log("done")
+}
+
+// pushProtect()
+async function pushProtect() {
+    const data = await Data.find()
+    for (i of data) {
+        const support = i.support.replace(/\n/g, "").replace(/ /g, "")
+        const summary = i.summary.replace(/\n/g, "").replace(/ /g, "")
+        const name = i.name
+        const checkSummarySymbol = summary.search(/보호종료/)
+        const checkSupportSymbol = support.search(/보호종료/)
+        if (checkSummarySymbol !== -1) {
+            myConsole.log(name)
+            myConsole.log(support)
+            myConsole.log(summary)
+            await Data.updateOne({ name }, { $push: { target: "보호종료" } })
+        } else if (checkSupportSymbol !== -1) {
+            myConsole.log(name)
+            myConsole.log(support)
+            myConsole.log(summary)
+            await Data.updateOne({ name }, { $push: { target: "보호종료" } })
+        }
+    }
+    console.log("done")
+}
+// pushVictim()
+async function pushVictim() {
+    const data = await Data.find()
+    for (i of data) {
+        const support = i.support.replace(/\n/g, "").replace(/ /g, "")
+        const summary = i.summary.replace(/\n/g, "").replace(/ /g, "")
+        const name = i.name
+        const checkSummarySymbol = summary.search(/가정폭력/)
+        const checkSupportSymbol = support.search(/가정폭력/)
+        if (checkSummarySymbol !== -1) {
+            myConsole.log(name)
+            myConsole.log(support)
+            myConsole.log(summary)
+            myConsole.log("\n")
+            // await Data.updateOne({ name }, { $push: { target: "가정폭력" } })
+        } else if (checkSupportSymbol !== -1) {
+            myConsole.log(name)
+            myConsole.log(support)
+            myConsole.log(summary)
+            myConsole.log("\n")
+            // await Data.updateOne({ name }, { $push: { target: "가정폭력" } })
+        }
+    }
+    console.log("done")
+}
+// pushEmployment()
+async function pushEmployment() {
+    const data = await Data.find()
+    for (i of data) {
+        const name = i.name
+        const checkName = i.name.replace(/\n/g, "").replace(/ /g, "")
+        const checkNameSymbol = checkName.search(/면접|옷장/)
+        if (checkNameSymbol !== -1) {
+            myConsole.log(name)
+            myConsole.log("\n")
+            await Data.updateOne({ name }, { $set: { job: "미취업자" } })
+        }
+    }
+    console.log("done")
+}
+aa()
+async function aa() {
+    console.time("a")
+    const data = await Data.find()
+    console.log(data)
+    console.timeEnd("a")
 }
