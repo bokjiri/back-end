@@ -65,7 +65,7 @@ exports.postSearch = async (req, res, next) => {
         =====================================================================================*/
         return next({
             message: "정책 검색 실패",
-            stack: err,
+            stack: err.stack,
         })
     }
 }

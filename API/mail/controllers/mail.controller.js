@@ -30,7 +30,7 @@ exports.sendMail = async (req, res, next) => {
                 httpOnly: true,
             })
             res.status(200).json({
-                result: true,
+                result: "SUCCESS",
                 message: "메일전송성공",
                 authCode,
             })
@@ -42,7 +42,7 @@ exports.sendMail = async (req, res, next) => {
                 httpOnly: true,
             })
             res.status(200).json({
-                result: true,
+                result: "SUCCESS",
                 message: "메일전송성공",
             })
         }
@@ -66,7 +66,7 @@ exports.certAuth = async (req, res, next) => {
         const { hashAuthCode } = req.cookies
         if (bcrypt.compareSync(authCode, hashAuthCode)) {
             res.status(201).json({
-                result: true,
+                result: "SUCCESS",
                 message: "인증성공",
             })
         } else {
