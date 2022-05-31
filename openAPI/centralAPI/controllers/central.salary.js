@@ -7,23 +7,13 @@ const connect = require("../../../schemas")
 connect()
 
 const fs = require("fs")
-fs.truncate("./openAPI/index.salary.비교.txt", () => {
+fs.truncate("./openAPI/index.salary.after.txt", () => {
     console.log("File Content Deleted")
 })
-const myConsole = new console.Console(fs.createWriteStream("./openAPI/index.salary.비교.txt"))
+const myConsole = new console.Console(fs.createWriteStream("./openAPI/index.salary.after.txt"))
 
 const desireCode = [100, 110, 120, 130, 140, 150, 160, 170, 180]
-const desireName = [
-    "일자리",
-    "주거 및 일상생활",
-    "주거 및 일상생활",
-    "건강",
-    "건강",
-    "교육 및 돌봄",
-    "교육 및 돌봄",
-    "기타",
-    "안전 및 권익보장",
-]
+const desireName = ["일자리", "주거 및 일상생활", "주거 및 일상생활", "건강", "건강", "교육 및 돌봄", "교육 및 돌봄", "기타", "안전 및 권익보장"]
 
 // loadOpenApi()
 async function loadOpenApi() {
@@ -204,18 +194,19 @@ async function checkData() {
             console.log("exSal", i.name, i.target, i.salary)
         }
     }
+    console.log("done")
 }
 // salaryData()
 async function salaryData() {
     console.log("start")
     const checkSalary = await Data.find({}, { _id: false })
     for (i of checkSalary) {
-        if (!i.salary && i.criteria) {
+        if (!i.salary) {
             const name = i.name
             let salary
             const support = i.support.replace(/\n/g, "").replace(/ /g, "")
             const summary = i.summary.replace(/\n/g, "").replace(/ /g, "")
-            const criteria = i.criteria.replace(/\n/g, "").replace(/ /g, "")
+            // const criteria = i.criteria.replace(/\n/g, "").replace(/ /g, "")
             const checkSummaryThree = summary.search(/중위소득\d\d\d%/)
             const checkSummaryThreeDot = summary.search(/중위소득.\d\d\d%/)
             const checkSummaryTwo = summary.search(/중위소득\d\d%/)
@@ -224,19 +215,15 @@ async function salaryData() {
             const checkSupportThreeDot = support.search(/중위소득.\d\d\d%/)
             const checkSupportTwo = support.search(/중위소득\d\d%/)
             const checkSupportTwoDot = support.search(/중위소득.\d\d%/)
-            const checkCriteriaThree = criteria.search(/중위소득\d\d\d%/)
-            const checkCriteriaThreeDot = criteria.search(/중위소득.\d\d\d%/)
-            const checkCriteriaTwo = criteria.search(/중위소득\d\d%/)
-            const checkCriteriaTwoDot = criteria.search(/중위소득.\d\d%/)
+            // const checkCriteriaThree = criteria.search(/중위소득\d\d\d%/)
+            // const checkCriteriaThreeDot = criteria.search(/중위소득.\d\d\d%/)
+            // const checkCriteriaTwo = criteria.search(/중위소득\d\d%/)
+            // const checkCriteriaTwoDot = criteria.search(/중위소득.\d\d%/)
             if (checkSummaryThreeDot !== -1) {
-                salary =
-                    summary[checkSummaryThreeDot + 5] +
-                    summary[checkSummaryThreeDot + 6] +
-                    summary[checkSummaryThreeDot + 7]
+                salary = summary[checkSummaryThreeDot + 5] + summary[checkSummaryThreeDot + 6] + summary[checkSummaryThreeDot + 7]
                 // myConsole.log({ name, support, summary, criteria, salary })
             } else if (checkSummaryThree !== -1) {
-                salary =
-                    summary[checkSummaryThree + 4] + summary[checkSummaryThree + 5] + summary[checkSummaryThree + 6]
+                salary = summary[checkSummaryThree + 4] + summary[checkSummaryThree + 5] + summary[checkSummaryThree + 6]
                 // myConsole.log({ name, support, summary, criteria, salary })
             } else if (checkSummaryTwoDot !== -1) {
                 salary = summary[checkSummaryTwoDot + 5] + summary[checkSummaryTwoDot + 6]
@@ -245,14 +232,10 @@ async function salaryData() {
                 salary = summary[checkSummaryTwo + 4] + summary[checkSummaryTwo + 5]
                 // myConsole.log({ name, support, summary, criteria, salary })
             } else if (checkSupportThreeDot !== -1) {
-                salary =
-                    support[checkSupportThreeDot + 5] +
-                    support[checkSupportThreeDot + 6] +
-                    support[checkSupportThreeDot + 7]
+                salary = support[checkSupportThreeDot + 5] + support[checkSupportThreeDot + 6] + support[checkSupportThreeDot + 7]
                 // myConsole.log({ name, support, summary, criteria, salary })
             } else if (checkSupportThree !== -1) {
-                salary =
-                    support[checkSupportThree + 4] + support[checkSupportThree + 5] + support[checkSupportThree + 6]
+                salary = support[checkSupportThree + 4] + support[checkSupportThree + 5] + support[checkSupportThree + 6]
                 // myConsole.log({ name, support, summary, criteria, salary })
             } else if (checkSupportTwoDot !== -1) {
                 salary = support[checkSupportTwoDot + 5] + support[checkSupportTwoDot + 6]
@@ -260,28 +243,29 @@ async function salaryData() {
             } else if (checkSupportTwo !== -1) {
                 salary = support[checkSupportTwo + 4] + support[checkSupportTwo + 5]
                 // myConsole.log({ name, support, summary, criteria, salary })
-            } else if (checkCriteriaThreeDot !== -1) {
-                salary =
-                    criteria[checkCriteriaThreeDot + 5] +
-                    criteria[checkCriteriaThreeDot + 6] +
-                    criteria[checkCriteriaThreeDot + 7]
-                // myConsole.log({ name, support, summary, criteria, salary })
-            } else if (checkCriteriaThree !== -1) {
-                salary =
-                    criteria[checkCriteriaThree + 4] +
-                    criteria[checkCriteriaThree + 5] +
-                    criteria[checkCriteriaThree + 6]
-                // myConsole.log({ name, support, summary, criteria, salary })
-            } else if (checkCriteriaTwoDot !== -1) {
-                salary = criteria[checkCriteriaTwoDot + 5] + criteria[checkCriteriaTwoDot + 6]
-                // myConsole.log({ name, support, summary, criteria, salary })
-            } else if (checkCriteriaTwo !== -1) {
-                salary = criteria[checkCriteriaTwo + 4] + criteria[checkCriteriaTwo + 5]
-                // myConsole.log({ name, support, summary, criteria, salary })
             }
+            // else if (checkCriteriaThreeDot !== -1) {
+            //     salary =
+            //         criteria[checkCriteriaThreeDot + 5] +
+            //         criteria[checkCriteriaThreeDot + 6] +
+            //         criteria[checkCriteriaThreeDot + 7]
+            //     // myConsole.log({ name, support, summary, criteria, salary })
+            // } else if (checkCriteriaThree !== -1) {
+            //     salary =
+            //         criteria[checkCriteriaThree + 4] +
+            //         criteria[checkCriteriaThree + 5] +
+            //         criteria[checkCriteriaThree + 6]
+            //     // myConsole.log({ name, support, summary, criteria, salary })
+            // } else if (checkCriteriaTwoDot !== -1) {
+            //     salary = criteria[checkCriteriaTwoDot + 5] + criteria[checkCriteriaTwoDot + 6]
+            //     // myConsole.log({ name, support, summary, criteria, salary })
+            // } else if (checkCriteriaTwo !== -1) {
+            //     salary = criteria[checkCriteriaTwo + 4] + criteria[checkCriteriaTwo + 5]
+            //     // myConsole.log({ name, support, summary, criteria, salary })
+            // }
             if (salary) {
-                myConsole.log({ name, support, summary, criteria, salary })
-                // await Data.updateOne({ name }, { $set: { salary } })
+                myConsole.log({ name, support, summary, salary })
+                await Data.updateOne({ name }, { $set: { salary } })
             }
             // const checkSummary = summary.search(/\d%/)
             // let salary

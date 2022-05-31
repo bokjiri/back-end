@@ -153,9 +153,9 @@ exports.patchUsers = async (req, res, next) => {
         const result = await userService.updateUserInfo(userId, age, gender, arrRegion, disability, obstacle, job, marriage, target, salary, scholarship, family, workType)
         if (!result) throw new ValidationError("db에서 update 실패")
 
-        userService.redisSetUser(userId)
-        userService.redisSetMain(userId)
-        newsService.dataParsing(userId)
+        await userService.redisSetUser(userId)
+        await userService.redisSetMain(userId)
+        await newsService.dataParsing(userId)
         /*=====================================================================================
         #swagger.responses[201] = {
             description: '정상적으로 값을 받았을 때, 아래 예제와 같은 형태로 응답받습니다.',
