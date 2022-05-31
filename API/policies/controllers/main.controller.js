@@ -101,12 +101,12 @@ exports.logic = async (isUser, isData) => {
             if (isData[j].age[0] && isData[j].age[0] <= isUser.age && isData[j].age[1] > isUser.age) {
                 checkedWithAge.push(isData[j])
             }
-            // //isData에 lifeCycle 기준이 존재할 때
-            // else if (!isData[j].age[0] && isUser.lifeCycle[0]) {
-            //     if (isData[j].lifeCycle.includes(isUser.lifeCycle[0]) === true) {
-            //         checkedWithAge.push(isData[j])
-            //     }
-            // }
+            //isData에 lifeCycle 기준이 존재할 때
+            else if (!isData[j].age[0]) {
+                if (isData[j].lifeCycle.includes(isUser.lifeCycle[0]) === true) {
+                    checkedWithAge.push(isData[j])
+                }
+            }
             //isData에 age와 lifeCycle 기준이 존재하지 않을 때
             else if (!isData[j].age[0] && !isData[j].lifeCycle[0]) {
                 checkedWithAge.push(isData[j])
