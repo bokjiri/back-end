@@ -6,7 +6,7 @@ const { genderData, marriageData, scholarshipData, workTypeData } = require("./c
 // const connect = require("../schemas")
 // connect()
 
-module.exports = () => {
+module.exports = async () => {
     const rule = new schedule.RecurrenceRule()
     rule.dayOfWeek = [0, new schedule.Range(0, 6)]
     rule.hour = 11

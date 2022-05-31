@@ -3,6 +3,7 @@ const Data = require("../../../schemas/data")
 const Guestbook = require("../../../schemas/guestbook")
 const moment = require("moment-timezone")
 moment.tz.setDefault("Asia/Seoul")
+const badWord = require("../../../badWord")
 
 async function findFeed(feedId) {
     return await Guestbook.findOne({ feedId })
@@ -26,7 +27,15 @@ exports.createFeed = async (content, user) => {
     const userId = user.userId
     const nickname = user.nickname
     const profileUrl = user.profileUrl
-    const createFeed = await Guestbook.create({ userId, nickname, profileUrl, date, content })
+    const badWordList = badWord
+    let result = content
+    for (let i of badWordList) {
+        const regexp = new RegExp(i, "g")
+        if (regexp.test(result)) {
+            result = result.replace(regexp, "**")
+        }
+    }
+    const createFeed = await Guestbook.create({ userId, nickname, profileUrl, date, content: result })
     return { nickname: createFeed.nickname, profileUrl: createFeed.profileUrl, date: createFeed.date, content: createFeed.content, feedId: createFeed.feedId }
 }
 exports.updateFeed = async (feedId, content) => {

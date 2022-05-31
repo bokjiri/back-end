@@ -137,3 +137,6 @@ loadtest.csv
 
 #svg
 *.svg
+
+#badWord.js
+badWord.js
