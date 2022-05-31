@@ -239,7 +239,7 @@ exports.logic = async (isUser, isData) => {
         //만약 isUser에 job 조건이 "미취업"으로 존재한다면
         else if (isUser.job[0] === "미취업") {
             for (let j = 0; j < checkedWithScholarship.length; j++) {
-                if (checkedWithScholarship[j].job === isUser.job[0] || !checkedWithScholarship[j].job) {
+                if (checkedWithScholarship[j].job.includes(isUser.job[0]) || !checkedWithScholarship[j].job) {
                     checkedWithJob.push(checkedWithScholarship[j])
                 }
             }
