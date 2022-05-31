@@ -247,6 +247,7 @@ exports.kakaoCallback = async (req, res) => {
         const refreshToken = jwt.sign({ userId }, process.env.REFRESHKEY, {
             expiresIn: process.env.RTOKENEXPIRE,
         })
+        res.clearCookie("connect.sid")
         res.status(200).json({ result: true, accessToken, refreshToken })
     } catch (error) {
         if (error instanceof ValidationError) {

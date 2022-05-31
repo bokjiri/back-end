@@ -5,43 +5,28 @@ const app = express()
 const session = require("express-session")
 const cookieParser = require("cookie-parser")
 const cors = require("cors")
-const morgan = require("morgan")
 const helmet = require("helmet")
+const AWSXray = require("aws-xray-sdk")
+const morgan = require("morgan")
 const moment = require("moment-timezone")
 moment.tz.setDefault("Asia/Seoul")
 morgan.token("date", () => {
     return moment().format("YYYY-MM-DD HH:mm:ss:ms")
 })
 const connect = require("./schemas")
+connect()
 const passport = require("passport")
 const passportConfig = require("./kakao/index")
 const updateYouthApi = require("./openAPI/youthAPI/index")
 const updateFirstBokjiApi = require("./dataCleansing/data")
 const dDayMail = require("./API/mark/services/mark.service")
-connect()
-// const whitelist = ["http://localhost:3000"]
-// const corsOptions = {
-//     origin: function (origin, callback) {
-//         if (whitelist.indexOf(origin) !== -1) {
-//             callback(null, true)
-//         } else {
-//             callback(new Error("Not Allowed Origin!"))
-//         }
-//     },
-//     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-//     preflightContinue: false,
-//     optionsSuccessStatus: 204,
-//     credentials: true,
-// }
-// app.use(cors(corsOptions))
 
 const swaggerUi = require("swagger-ui-express")
 const swaggerFile = require("./swagger-output")
 
 app.use("/swagger", swaggerUi.serve, swaggerUi.setup(swaggerFile))
-const origin = process.env.WHITELIST
 const corsOptions = {
-    origin,
+    origin: ["http://localhost:3000", "https://boksei.com"],
     credentials: true,
 }
 
@@ -64,6 +49,7 @@ app.use(
         },
     })
 )
+app.use(AWSXray.express.openSegment("MyApp"))
 passportConfig()
 app.use(passport.initialize())
 app.use(passport.session())
@@ -75,6 +61,7 @@ if (process.env.SCHEDULE) {
 
 const Router = require("./routes")
 app.use("/api", Router)
+app.use(AWSXray.express.closeSegment())
 
 app.use((req, res, next) => {
     res.status(404).send("요청하신 페이지를 찾을 수 없습니다.")
