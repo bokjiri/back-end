@@ -4,13 +4,22 @@ const User = require("../../../schemas/user")
 exports.findData = async (dataId) => {
     try {
         detailData = await Data.findOne({ dataId }, { _id: false, __v: false })
-        const newSummary = `${detailData.summary}`.replace(/(\.\s)/gs, `. \n`).replace(/(\n){2,}/gs, `\n\n`)
+        const newSummary = `${detailData.summary}`
+            .replace(/([^\d\.\s]\.\s)/gs, `. \n`)
+            .replace(/(\n \n)/gs, `\n\n`)
+            .replace(/(\n){2,}/gs, `\n\n`)
         // const newSummary = await this.replaceBrTag(`${detailData.summary}`)
 
-        const newSupport = `${detailData.support}`.replace(/(\.\s)/gs, `. \n`).replace(/(\n){2,}/gs, `\n\n`)
+        const newSupport = `${detailData.support}`
+            .replace(/([^\d\.\s]\.\s)/gs, `. \n`)
+            .replace(/(\n \n)/gs, `\n\n`)
+            .replace(/(\n){2,}/gs, `\n\n`)
         // const newSupport = await this.replaceBrTag(`${detailData.support}`)
 
-        const newCriteria = `${detailData.criteria}`.replace(/(\.\s)/gs, `. \n`).replace(/(\n){2,}/gs, `\n\n`)
+        const newCriteria = `${detailData.criteria}`
+            .replace(/([^\d\.\s]\.\s)/gs, `. \n`)
+            .replace(/(\n \n)/gs, `\n\n`)
+            .replace(/(\n){2,}/gs, `\n\n`)
         // const newCriteria = await this.replaceBrTag(`${detailData.criteria}`)
 
         detailData.summary = newSummary

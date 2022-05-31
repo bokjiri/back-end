@@ -6,7 +6,7 @@ const newYouthApiDataDate = moment().format("YYYY-MM-DD")
 const Data = require("../../schemas/data")
 const { classifyPeriod } = require("./controllers/youth.controller")
 const { regionCode, regionName } = require("../category/region")
-const dirrr = process.env.UPDATE_DATA_LOG || "./openAPI/dataUpdating/samples"
+const dirrr = process.env.UPDATE_DATA_LOG || "./openAPI/youthAPI/youth.txt"
 const fs = require("fs")
 const dir = `${dirrr}${newYouthApiDataDate}.log`
 
@@ -138,10 +138,26 @@ async function load(myConsole) {
                         } else if (k.plcyTpNm._cdata === "코로나19") {
                             desire = "기타"
                         }
+                        let workType
+                        let summary = k.polyItcnCn._cdata //정책소개
+                        if (/농업/.test(name) || /농어민|농업인/.test(summary)) {
+                            workType = ["농업"]
+                        }
+                        if (/광업/.test(name) || /광업/.test(summary)) {
+                            workType = ["광업"]
+                        }
+                        if (/임업/.test(name) || /임업/.test(summary)) {
+                            workType = ["임업"]
+                        }
+                        if (/축산업/.test(name) || /축산업/.test(summary)) {
+                            workType = ["축산업"]
+                        }
+                        if (/어업/.test(name) || /어업|어선원/.test(summary)) {
+                            workType = ["어업"]
+                        }
 
                         // let total = k.totalCnt._cdata //총건수
 
-                        let summary = k.polyItcnCn._cdata //정책소개
                         let job // 참여요건 - 취업상태
                         if (k.empmSttsCn._cdata !== "제한없음") job = k.empmSttsCn._cdata // 참여요건 - 취업상태
                         let scholarship // 참여요건 - 학력
@@ -169,6 +185,7 @@ async function load(myConsole) {
                         myConsole.log({ summary })
                         myConsole.log({ desire })
                         myConsole.log({ job })
+                        myConsole.log({ workType })
                         myConsole.log({ scholarship })
                         myConsole.log({ institution })
                         myConsole.log({ region })
@@ -194,6 +211,7 @@ async function load(myConsole) {
                             gender,
                             period,
                             process,
+                            workType,
                         })
                     } else {
                         continue

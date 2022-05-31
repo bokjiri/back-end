@@ -5,12 +5,12 @@ exports.markRedis = async (req, res, next) => {
 
     const redis = await Client.get(userId)
     if (!redis) {
-        console.log("redis No such data found ㅠㅠ")
         next()
     } else {
         const stringToJsonData = JSON.parse(redis)
-        console.log("redis have bookmark data!!!")
         res.status(200).json({
+            result: "SUCCESS",
+            message: "마크 조회 완료",
             userMark: stringToJsonData,
         })
     }
@@ -18,12 +18,12 @@ exports.markRedis = async (req, res, next) => {
 exports.topMarkRedis = async (req, res, next) => {
     const redis = await Client.get("topMarkList")
     if (!redis) {
-        console.log("redis No such data found ㅠㅠ")
         next()
     } else {
         const stringToJsonData = JSON.parse(redis)
-        console.log("redis have data!!!")
         res.status(200).json({
+            result: "SUCCESS",
+            message: "탑마크 조회 완료",
             userMark: stringToJsonData,
         })
     }
@@ -32,12 +32,12 @@ exports.newsData = async (req, res, next) => {
     const { userId } = res.locals
     const redis = await Client.get(`newsData${userId}`)
     if (!redis) {
-        console.log("redis No such news data found ㅠㅠ")
         next()
     } else {
         const stringToJsonData = JSON.parse(redis)
-        console.log("redis have news data!!!")
         res.status(200).json({
+            result: "SUCCESS",
+            message: "뉴스 조회 완료",
             newsList: stringToJsonData,
         })
     }
@@ -46,12 +46,12 @@ exports.mainData = async (req, res, next) => {
     const { userId } = res.locals
     const redis = await Client.get(`main${userId}`)
     if (!redis) {
-        console.log("redis No such main data found ㅠㅠ")
         next()
     } else {
         const dataList = JSON.parse(redis)
-        console.log("redis have main data!!!")
         res.status(200).json({
+            result: "SUCCESS",
+            message: "메인 조회 완료",
             dataList,
         })
     }
@@ -60,13 +60,11 @@ exports.userData = async (req, res, next) => {
     const { userId } = res.locals
     const redis = await Client.get(`user${userId}`)
     if (!redis) {
-        console.log("redis No such user data found ㅠㅠ")
         next()
     } else {
         const data = JSON.parse(redis)
-        console.log("redis have user data!!!")
         res.status(201).json({
-            result: true,
+            result: "SUCCESS",
             message: "회원정보 조회 완료",
             data,
         })
