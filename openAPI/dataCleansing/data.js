@@ -2,6 +2,7 @@ require("dotenv").config()
 const axios = require("axios")
 const convert = require("xml-js")
 const schedule = require("node-schedule")
+const Data = require("../../schemas/data")
 const { genderData, marriageData, scholarshipData, workTypeData } = require("./cleansing")
 // const connect = require("../schemas")
 // connect()
@@ -14,7 +15,9 @@ module.exports = async () => {
     rule.second = 11
     rule.tz = "Asia/Seoul"
     schedule.scheduleJob(rule, async () => {
+        console.log("Updating...")
         await loadOpenApi()
+        console.log("Done")
     })
 }
 
@@ -49,6 +52,10 @@ async function getDetail(servList, desireName) {
         const servId = i.servId._text
         const desire = desireName
         const name = i.servNm._text
+        const checkData = await Data.findOne({ name })
+        if (checkData) {
+            continue
+        }
         let target
         if (i.trgterIndvdlArray !== undefined) {
             let a = i.trgterIndvdlArray._text.split(", ")
@@ -92,10 +99,10 @@ async function getDetail(servList, desireName) {
         }
 
         const institution = jsonParse.wantedDtl.jurMnofNm._text
-        const promise1 = genderData(lifeCycle, institution, support, link, obstacle, target, desire, name, summary)
-        const promise2 = marriageData(lifeCycle, institution, support, link, obstacle, target, desire, name, summary)
-        const promise3 = scholarshipData(lifeCycle, institution, support, link, obstacle, target, desire, name, summary)
-        const promise4 = workTypeData(lifeCycle, institution, support, link, obstacle, target, desire, name, summary)
-        Promise.all([promise1, promise2, promise3, promise4])
+        const gender = await genderData(name, summary)
+        const marriage = await marriageData(name, summary)
+        const scholarship = await scholarshipData(lifeCycle, name, summary)
+        const workType = await workTypeData(support, name, summary)
+        await Data.create({ lifeCycle, institution, support, link, obstacle, target, desire, gender, name, summary, marriage, scholarship, workType })
     }
 }
