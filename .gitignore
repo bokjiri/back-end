@@ -141,6 +141,3 @@ non-redis-loadtest.yml
 
 #svg
 *.svg
-
-#badWord.js
-badWord.js
