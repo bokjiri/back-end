@@ -1,5 +1,5 @@
 config:
-    target: "https://pooreum.shop"
+    target:
     payload:
         # -
         # path: "./token.csv"
