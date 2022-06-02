@@ -8,18 +8,21 @@ exports.findData = async (dataId) => {
             .replace(/([^\d\.\s]\.\s)/gs, `. \n`)
             .replace(/(\n \n)/gs, `\n\n`)
             .replace(/(\n){2,}/gs, `\n\n`)
+            .replace(/니./g, `니다.`)
         // const newSummary = await this.replaceBrTag(`${detailData.summary}`)
 
         const newSupport = `${detailData.support}`
             .replace(/([^\d\.\s]\.\s)/gs, `. \n`)
             .replace(/(\n \n)/gs, `\n\n`)
             .replace(/(\n){2,}/gs, `\n\n`)
+            .replace(/니./g, `니다.`)
         // const newSupport = await this.replaceBrTag(`${detailData.support}`)
 
         const newCriteria = `${detailData.criteria}`
             .replace(/([^\d\.\s]\.\s)/gs, `. \n`)
             .replace(/(\n \n)/gs, `\n\n`)
             .replace(/(\n){2,}/gs, `\n\n`)
+            .replace(/니./g, `니다.`)
         // const newCriteria = await this.replaceBrTag(`${detailData.criteria}`)
 
         detailData.summary = newSummary
