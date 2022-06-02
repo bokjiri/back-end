@@ -88,18 +88,22 @@ exports.markPushMail = async () => {
         let datePeriod
         let endDate
         const dataList = await BokjiApi.find({})
-        const today = new Date()
+        const today = new Date(`2022-9-23`)
+        // console.log(today)
         let info = []
         let checkDataId = []
         for (let i of dataList) {
             const dataPeriod = await classifyPeriod(i.period)
             if (Array.isArray(dataPeriod)) {
+                // console.log(datePeriod)
                 period = dataPeriod[1]
                 datePeriod = `20${period[0]}${period[1]}-${period[2]}${period[3]}-${period[4]}${period[5]}`
                 endDate = new Date(datePeriod)
                 const result = endDate - today
                 const dDay = Math.floor(result / (1000 * 60 * 60 * 24))
+                // console.log(dDay)
                 if (dDay === 7) {
+                    console.log(i.name)
                     info.push({ dataName: i.name, dataId: i.dataId })
                     checkDataId.push(i.dataId)
                 }

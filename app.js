@@ -56,7 +56,7 @@ app.use(passport.session())
 if (process.env.SCHEDULE) {
     updateFirstBokjiApi()
     updateYouthApi()
-    dDayMail.markPushMail()
+    // dDayMail.markPushMail()
 }
 
 const Router = require("./routes")
