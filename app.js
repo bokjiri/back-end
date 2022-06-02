@@ -19,7 +19,7 @@ const passport = require("passport")
 const passportConfig = require("./kakao/index")
 const updateYouthApi = require("./openAPI/youthAPI/index")
 const updateFirstBokjiApi = require("./openAPI/dataCleansing/data")
-const dDayMail = require("./API/mark/services/mark.service")
+const { dDayMail } = require("./API/mark/services/mark.service")
 
 const swaggerUi = require("swagger-ui-express")
 const swaggerFile = require("./swagger-output")
@@ -56,7 +56,7 @@ app.use(passport.session())
 if (process.env.SCHEDULE) {
     updateFirstBokjiApi()
     updateYouthApi()
-    // dDayMail.markPushMail()
+    dDayMail()
 }
 
 const Router = require("./routes")
