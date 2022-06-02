@@ -30,7 +30,7 @@ describe("버그제보 테스트 코드", () => {
             err = new Error("userId , dataId를 확인 해주세요")
             const errMessage = { message: "userId , dataId를 확인 해주세요", stack: err }
             await tipController.postTips(req, res, next)
-            expect(next).toBeCalledWith(errMessage)
+            expect(next).toBeCalledWith(expect.objectContaining({ message: errMessage.message }))
         })
         it("userId가 없으면 에러를 뱉는가?", async () => {
             req.body.dataId = dataId
@@ -38,7 +38,7 @@ describe("버그제보 테스트 코드", () => {
             err = new Error("userId , dataId를 확인 해주세요")
             const errMessage = { message: "userId , dataId를 확인 해주세요", stack: err }
             await tipController.postTips(req, res, next)
-            expect(next).toBeCalledWith(errMessage)
+            expect(next).toBeCalledWith(expect.objectContaining({ message: errMessage.message }))
         })
         it("BokjiAPI.findOne이 잘 실행되는가?", async () => {
             req.body.dataId = dataId
@@ -54,7 +54,7 @@ describe("버그제보 테스트 코드", () => {
             const errMessage = { message: "DB에 dataID가 없거나 이미 버그제보한 데이터입니다.", stack: err }
             BokjiAPI.findOne.mockReturnValue(null)
             await tipController.postTips(req, res, next)
-            expect(next).toBeCalledWith(errMessage)
+            expect(next).toBeCalledWith(expect.objectContaining({ message: errMessage.message }))
         })
         it("User.find가 잘 실행되는가?", async () => {
             req.body.dataId = dataId
@@ -93,7 +93,7 @@ describe("버그제보 테스트 코드", () => {
             User.find.mockReturnValue(markList)
             User.findOne.mockReturnValue(failDismatchData)
             await tipController.postTips(req, res, next)
-            expect(next).toBeCalledWith(errMessage)
+            expect(next).toBeCalledWith(expect.objectContaining({ message: errMessage.message }))
         })
         it("postTips이 성공 했을때 응답값을 잘 보내는가?", async () => {
             req.body.dataId = dataId

@@ -46,7 +46,7 @@ describe("북마크 테스트 코드", () => {
             err = new Error("누구니???")
             const errMessage = { message: "누구니???", stack: err }
             await markController.getMarks(req, res, next)
-            expect(next).toBeCalledWith(errMessage)
+            expect(next).toBeCalledWith(expect.objectContaining({ message: errMessage.message }))
         })
         it("showMark가 200과 응답값을 잘 리턴하는가?", async () => {
             req.params = paramsUserId
@@ -67,7 +67,7 @@ describe("북마크 테스트 코드", () => {
             err = new Error("userId , dataId를 확인 해주세요")
             const errMessage = { message: "userId , dataId를 확인 해주세요", stack: err }
             await markController.postMarks(req, res, next)
-            expect(next).toBeCalledWith(errMessage)
+            expect(next).toBeCalledWith(expect.objectContaining({ message: errMessage.message }))
         })
         it("User findOne이 잘 되는가?", async () => {
             res.locals.userId = userId
@@ -171,7 +171,7 @@ describe("북마크 테스트 코드", () => {
             const checkId = { mark: [9500] }
             User.findOne.mockReturnValue(checkId)
             await markController.deleteMarks(req, res, next)
-            expect(next).toBeCalledWith(errMessage)
+            expect(next).toBeCalledWith(expect.objectContaining({ message: errMessage.message }))
         })
         it("User update가 200과 응답값을 잘 리턴하는가?", async () => {
             req.params.dataId = dataId
