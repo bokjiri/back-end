@@ -1,145 +1,113 @@
 require("dotenv").config()
 const axios = require("axios")
 const convert = require("xml-js")
-const Data = require("../schemas/data")
-const connect = require("../schemas")
-connect()
-const serviceKey = process.env.SERVICE_KEY
-const fs = require("fs")
-fs.truncate("./openAPI/central/samples/index.cri.txt", () => {
-    console.log("File Content Deleted")
-})
-const myConsole = new console.Console(fs.createWriteStream("./openAPI/central/samples/index.cri.txt"))
+const schedule = require("node-schedule")
+const Data = require("../../schemas/data")
+const { genderData, marriageData, scholarshipData, workTypeData, classifyAge, classifyEmployment, classifyProtect, classifySalary, classifyVictim } = require("./cleansing")
 
-const desireCode = [100, 110, 120, 130, 140, 150, 160, 170, 180]
-const desireName = [
-    "일자리",
-    "주거 및 일상생활",
-    "주거 및 일상생활",
-    "건강",
-    "건강",
-    "교육 및 돌봄",
-    "교육 및 돌봄",
-    "기타",
-    "안전 및 권익보장",
-]
-
-loadOpenApi()
+module.exports = async () => {
+    const rule = new schedule.RecurrenceRule()
+    rule.dayOfWeek = [0, new schedule.Range(0, 6)]
+    rule.hour = 11
+    rule.minute = 11
+    rule.second = 11
+    rule.tz = "Asia/Seoul"
+    schedule.scheduleJob(rule, async () => {
+        console.log("Updating...")
+        await loadOpenApi()
+        console.log("Done")
+    })
+}
 
 async function loadOpenApi() {
     try {
-        // for (let i = 0; i < desireCode.length; i++) {
-        let url = "http://apis.data.go.kr/B554287/NationalWelfareInformations/NationalWelfarelist"
-        let queryParams = "?" + encodeURIComponent("serviceKey") + "=" + serviceKey /* Service Key*/
-        queryParams += "&" + encodeURIComponent("callTp") + "=" + encodeURIComponent("L") /* */
-        queryParams += "&" + encodeURIComponent("pageNo") + "=" + encodeURIComponent("1") /* */
-        queryParams += "&" + encodeURIComponent("numOfRows") + "=" + encodeURIComponent("500") /* */
-        queryParams += "&" + encodeURIComponent("srchKeyCode") + "=" + encodeURIComponent("003") /* */
-        // queryParams += "&" + encodeURIComponent("desireArray") + "=" + encodeURIComponent(desireCode[i]) /* */
+        const desireCode = [100, 110, 120, 130, 140, 150, 160, 170, 180]
+        const desireName = ["일자리", "주거 및 일상생활", "주거 및 일상생활", "건강", "건강", "교육 및 돌봄", "교육 및 돌봄", "기타", "안전 및 권익보장"]
+        for (let i = 0; i < desireCode.length; i++) {
+            let url = "http://apis.data.go.kr/B554287/NationalWelfareInformations/NationalWelfarelist"
+            let queryParams = "?" + encodeURIComponent("serviceKey") + "=" + process.env.SERVICE_KEY /* Service Key*/
+            queryParams += "&" + encodeURIComponent("callTp") + "=" + encodeURIComponent("L") /* */
+            queryParams += "&" + encodeURIComponent("pageNo") + "=" + encodeURIComponent("1") /* */
+            queryParams += "&" + encodeURIComponent("numOfRows") + "=" + encodeURIComponent("500") /* */
+            queryParams += "&" + encodeURIComponent("srchKeyCode") + "=" + encodeURIComponent("003") /* */
+            queryParams += "&" + encodeURIComponent("desireArray") + "=" + encodeURIComponent(desireCode[i]) /* */
 
-        const response = await axios.get(url + queryParams)
-        const data = response.data
-        const xmlToJson = convert.xml2json(data, {
-            compact: true,
-            space: 4,
-        })
-        const jsonParse = JSON.parse(xmlToJson)
-        // console.log(jsonParse)
-        const servList = jsonParse.wantedList.servList
-        // console.log(servList)
-
-        // console.log(i)
-        // await getDetail(servList, desireName[i])
-        for (let j of servList) {
-            console.log("doing")
-            const servId = j.servId._text
-            const name = j.servNm._text
-            let detailUrl = "http://apis.data.go.kr/B554287/NationalWelfareInformations/NationalWelfaredetailed"
-            let qqueryParams = "?" + encodeURIComponent("serviceKey") + "=" + serviceKey /* Service Key*/
-            qqueryParams += "&" + encodeURIComponent("callTp") + "=" + encodeURIComponent("D") /* */
-            qqueryParams += "&" + encodeURIComponent("servId") + "=" + encodeURIComponent(servId) /* */
-            console.log("beforedetail")
-            const response = await axios.get(detailUrl + qqueryParams)
-            console.log("afterdetail")
+            const response = await axios.get(url + queryParams)
             const data = response.data
             const xmlToJson = convert.xml2json(data, {
                 compact: true,
                 space: 4,
             })
             const jsonParse = JSON.parse(xmlToJson)
-            // console.log(jsonParse.OpenAPI_ServiceResponse.cmmMsgHeader)
-            // console.log(jsonParse.OpenAPI_ServiceResponse.cmmMsgHeader.errMsg)
-            if (jsonParse.wantedDtl.slctCritCn !== undefined) {
-                const criteria = jsonParse.wantedDtl.slctCritCn._text.trim()
-                myConsole.log({ name, criteria })
-                console.log("beforeDB")
-                await Data.updateOne({ name }, { $set: { criteria } })
-                console.log("afterDB")
+            const servList = jsonParse.wantedList.servList
+            for (let j of servList) {
+                const servId = j.servId._text
+                const desire = desireName[i]
+                const name = j.servNm._text
+                const checkData = await Data.findOne({ name })
+                if (checkData) continue
+
+                let target
+                if (j.trgterIndvdlArray !== undefined) {
+                    target = j.trgterIndvdlArray._text.split(", ")
+                } else {
+                    target = []
+                }
+                let obstacle
+                if (j.obstKiArray !== undefined) {
+                    obstacle = j.obstKiArray._text.split(", ")
+                } else {
+                    obstacle = []
+                }
+                let lifeCycle
+                if (j.lifeArray !== undefined) {
+                    lifeCycle = j.lifeArray._text.split(", ")
+                } else {
+                    lifeCycle = []
+                }
+                const link = j.servDtlLink._text
+
+                let detailUrl = "http://apis.data.go.kr/B554287/NationalWelfareInformations/NationalWelfaredetailed"
+                let detailQueryParams = "?" + encodeURIComponent("serviceKey") + "=" + process.env.SERVICE_KEY /* Service Key*/
+                detailQueryParams += "&" + encodeURIComponent("callTp") + "=" + encodeURIComponent("D") /* */
+                detailQueryParams += "&" + encodeURIComponent("servId") + "=" + encodeURIComponent(servId) /* */
+
+                const response = await axios.get(detailUrl + detailQueryParams)
+                const data = response.data
+                const xmlToJson = convert.xml2json(data, {
+                    compact: true,
+                    space: 4,
+                })
+                const jsonParse = JSON.parse(xmlToJson)
+                let summary
+                let support
+
+                if (jsonParse.wantedDtl.tgtrDtlCn !== undefined) {
+                    summary = jsonParse.wantedDtl.tgtrDtlCn._text.trim()
+                }
+                if (jsonParse.wantedDtl.alwServCn !== undefined) {
+                    support = jsonParse.wantedDtl.alwServCn._text.trim()
+                }
+
+                const institution = jsonParse.wantedDtl.jurMnofNm._text
+
+                const gender = genderData(name, summary)
+                const marriage = marriageData(name, summary)
+                const scholarship = scholarshipData(lifeCycle, name, summary)
+                const workType = workTypeData(support, name, summary)
+                const victim = classifyVictim(summary, support)
+                const age = classifyAge(summary, support)
+                const job = classifyEmployment(name)
+                const protect = classifyProtect(summary, support)
+                const salary = classifySalary(summary, support)
+                await Promise.all([gender, marriage, scholarship, workType, age, victim, job, protect, salary])
+
+                if (victim) target.push(victim)
+                if (protect) target.push(protect)
+                await Data.create({ lifeCycle, institution, support, link, obstacle, target, desire, gender, name, summary, marriage, scholarship, workType, salary, job, age })
             }
         }
-        // }
-        console.log("done")
     } catch (error) {
         console.log(error)
-    }
-}
-
-async function getDetail(servList, desireName) {
-    for (i of servList) {
-        console.log("doing")
-        const servId = i.servId._text
-        const name = i.servNm._text
-        // const desire = desireName
-        // let target
-        // if (i.trgterIndvdlArray !== undefined) {
-        //     let a = i.trgterIndvdlArray._text.split(", ")
-        //     console.log(a)
-        //     target = a
-        // } else {
-        // }
-        // let obstacle
-        // if (i.obstKiArray !== undefined) {
-        //     let b = i.obstKiArray._text.split(", ")
-        //     console.log(b)
-        //     obstacle = b
-        // } else {
-        // }
-        // let lifeCycle
-        // if (i.lifeArray !== undefined) {
-        //     let c = i.lifeArray._text.split(", ")
-        //     console.log(c)
-        //     lifeCycle = c
-        // } else {
-        // }
-        // const link = i.servDtlLink._text
-
-        let detailUrl = "http://apis.data.go.kr/B554287/NationalWelfareInformations/NationalWelfaredetailed"
-        let qqueryParams = "?" + encodeURIComponent("serviceKey") + process.env.SERVICE_KEY /* Service Key*/
-        qqueryParams += "&" + encodeURIComponent("callTp") + "=" + encodeURIComponent("D") /* */
-        qqueryParams += "&" + encodeURIComponent("servId") + "=" + encodeURIComponent(servId) /* */
-
-        const response = await axios.get(detailUrl + qqueryParams)
-        const data = response.data
-        const xmlToJson = convert.xml2json(data, {
-            compact: true,
-            space: 4,
-        })
-        const jsonParse = JSON.parse(xmlToJson)
-        const criteria = jsonParse.wantedDtl.slctCritCn._text.trim()
-        // let summary
-        // let support
-
-        // if (jsonParse.wantedDtl.tgtrDtlCn !== undefined) {
-        //     summary = jsonParse.wantedDtl.tgtrDtlCn._text.trim()
-        // }
-        // if (jsonParse.wantedDtl.alwServCn !== undefined) {
-        //     support = jsonParse.wantedDtl.alwServCn._text.trim()
-        // }
-
-        // const institution = jsonParse.wantedDtl.jurMnofNm._text
-        myConsole.log({ name, criteria })
-        await Data.updateOne({ name }, { $set: { criteria } })
-        // myConsole.log({ desire, name, target, obstacle, lifeCycle, link, institution, summary, support })
-        // await Data.create({ desire, name, target, obstacle, lifeCycle, link, institution, summary, support })
     }
 }

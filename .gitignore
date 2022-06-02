@@ -141,3 +141,6 @@ non-redis-loadtest.yml
 
 #svg
 *.svg
+
+#설문조사 당첨자
+serveyWinner.js

@@ -1,11 +1,3 @@
-// const connect = require("../schemas")
-// connect()
-// const fs = require("fs")
-// fs.truncate("./openAPI/dataCleansing/job.txt", () => {
-//     console.log("File Content Deleted")
-// })
-// const myConsole = new console.Console(fs.createWriteStream("./openAPI/dataCleansing/job.txt"))
-
 exports.genderData = async (name, summary) => {
     if (/여성/.test(name)) {
         name = name
@@ -353,25 +345,6 @@ exports.classifyEmployment = async (name) => {
         const job = "미취업자"
         return job
     }
-}
-
-// changeDataId()
-exports.changeDataId = async () => {
-    // const beforeData = await Ec2data.find()
-    for (let i of beforeData) {
-        const name = i.name
-        const dataId = i.dataId
-        // const afterData = await Data.findOne({ name })
-        if (afterData) {
-            myConsole.log(afterData.name)
-            myConsole.log(afterData.dataId)
-            myConsole.log(name)
-            myConsole.log(dataId)
-            myConsole.log("\n")
-            // await Data.updateOne({ name }, { $set: { dataId } })
-        }
-    }
-    console.log("done")
 }
 
 // checkSalaryData()
