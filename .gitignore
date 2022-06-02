@@ -141,3 +141,6 @@ non-redis-loadtest.yml
 
 #svg
 *.svg
+
+#test.js
+test.js
