@@ -5,6 +5,7 @@ const Data = require("../../schemas/data")
 const sampleData = require("../../test/data/sample.json")
 const jwt = require("jsonwebtoken")
 const dataId = 1
+const patchUserData = require("../../test/user/patch.json")
 describe("버그제보 통합 테스트", () => {
     beforeAll(async () => {
         try {
@@ -32,6 +33,7 @@ describe("버그제보 통합 테스트", () => {
             Authorization = `Bearer ${aToken}`
             reAuthorization = `Bearer ${rToken}`
             userId = jwt.decode(aToken).userId
+            await request(app).patch(`/api/users/${userId}`).set({ Authorization, reAuthorization }).send(patchUserData)
         })
         it("POST /api/tips 가 잘 되나?", async () => {
             const res = await request(app).post("/api/tips").set({ Authorization, reAuthorization }).send({ dataId })
