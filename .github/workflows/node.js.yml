@@ -31,7 +31,7 @@ jobs:
       with:
         redis-version: ${{ matrix.redis-version }}
 
-    - run: npm ci
+    - run: npm i
     - name: Create .env file
       run: |
           touch .env
