@@ -21,7 +21,7 @@ exports.postipService = async (userId, dataId) => {
             }
         }
 
-        // await pushMarkRedis(userId)
+        await pushMarkRedis(userId)
 
         const { dismatchData } = await User.findOne({ userId }, { _id: false, dismatchData: true })
         if (dismatchData.includes(dataId)) throw new Error()

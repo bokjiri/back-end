@@ -4,7 +4,7 @@ const agent = request.agent(app)
 const mongoose = require("mongoose")
 const redis = require("../../schemas/redis")
 
-describe("유저 통합테스트", () => {
+describe("메일 통합테스트", () => {
     beforeAll(async () => {
         try {
             await mongoose.connect(`mongodb://${process.env.DBID}:${process.env.DBPW}@3.36.130.225:27017/test_mail?authSource=admin&authMechanism=SCRAM-SHA-1`, { ignoreUndefined: true })

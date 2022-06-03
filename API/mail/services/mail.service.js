@@ -4,14 +4,11 @@ exports.mailSender = async (param) => {
     if (process.env.NODE_ENV === "test") {
         return new Promise((resolve, reject) => {
             const mailConfig = {
-                service: "naver", // 메일 보내는 곳
-                host: "smtp.naver.com",
+                host: "smtp.ethereal.email",
                 port: 587,
-                secure: false,
-                requireTLS: true,
                 auth: {
-                    user: process.env.MAIL_ID,
-                    pass: process.env.MAIL_PW,
+                    user: process.env.TEST_MAIL_ID,
+                    pass: process.env.TEST_MAIL_PW,
                 },
             }
             const mailOptions = {

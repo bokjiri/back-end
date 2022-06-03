@@ -20,6 +20,7 @@
     "homepage": "https://github.com/bokjiri/back-end#readme",
     "dependencies": {
         "@aws-sdk/client-cloudwatch-logs": "^3.96.0",
+        "applicationinsights": "^2.3.3",
         "aws-sdk": "^2.1120.0",
         "aws-xray-sdk": "^3.3.5",
         "axios": "^0.27.2",

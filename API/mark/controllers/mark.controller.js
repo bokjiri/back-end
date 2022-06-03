@@ -1,4 +1,4 @@
-const { showMark, pushMark, showMarkRedis, pushMarkRedis, dataCheck, deleteMark, deleteMarkRedis, markPush } = require("../services/mark.service")
+const { showMark, pushMark, showMarkRedis, pushMarkRedis, dataCheck, deleteMark, deleteMarkRedis, markPushMail } = require("../services/mark.service")
 const { checkBookmark } = require("../../policies/services/detail.service")
 
 exports.getMarks = async (req, res, next) => {
@@ -13,7 +13,6 @@ exports.getMarks = async (req, res, next) => {
         if (localsUserId !== parseInt(paramsUserId)) throw new Error("누구니???")
         const userMark = await showMark(localsUserId)
         await showMarkRedis(localsUserId)
-
         /*=====================================================================================
         #swagger.responses[200] = {
             description: '정상적으로 값을 받았을 때, 아래 예제와 같은 형태로 응답받습니다.',
@@ -143,6 +142,24 @@ exports.deleteMarks = async (req, res, next) => {
         } else {
             return next({
                 message: "북마크 삭제 실패",
+                stack: err.stack,
+            })
+        }
+    }
+}
+exports.mailtest = async (req, res, next) => {
+    try {
+        markPushMail()
+        res.status(201).json({ result: "SUCCESS", message: "메일 테스트 성공" })
+    } catch (err) {
+        if (err.message) {
+            return next({
+                message: err.message,
+                stack: err.stack,
+            })
+        } else {
+            return next({
+                message: "메일 테스트 실패",
                 stack: err.stack,
             })
         }

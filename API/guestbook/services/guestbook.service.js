@@ -32,7 +32,7 @@ exports.createFeed = async (content, user) => {
     for (let i of badWordList) {
         const regexp = new RegExp(i, "g")
         if (regexp.test(result)) {
-            result = result.replace(regexp, "**")
+            result = result.replace(regexp, "❤❤")
         }
     }
     const createFeed = await Guestbook.create({ userId, nickname, profileUrl, date, content: result })
@@ -40,7 +40,15 @@ exports.createFeed = async (content, user) => {
 }
 exports.updateFeed = async (feedId, content) => {
     const date = moment().format("YYYY-MM-DD")
-    await Guestbook.updateOne({ feedId }, { $set: { date, content } })
+    const badWordList = badWord
+    let result = content
+    for (let i of badWordList) {
+        const regexp = new RegExp(i, "g")
+        if (regexp.test(result)) {
+            result = result.replace(regexp, "❤❤")
+        }
+    }
+    await Guestbook.updateOne({ feedId }, { $set: { date, content: result } })
     const updateFeed = await Guestbook.findOne({ feedId })
     return { nickname: updateFeed.nickname, profileUrl: updateFeed.profileUrl, date: updateFeed.date, content: updateFeed.content, feedId: updateFeed.feedId }
 }

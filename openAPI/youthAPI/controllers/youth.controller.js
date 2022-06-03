@@ -1,4 +1,3 @@
-const Data = require("../../../schemas/data")
 const moment = require("moment")
 
 exports.classifyPeriod = async (period3) => {
@@ -93,4 +92,70 @@ exports.deletePastPeriod = async (period1, period2) => {
     } else {
         return false
     }
+}
+exports.classifyWorkType = async (name, summary) => {
+    let workType = []
+    if (/농업/.test(name) || /농어민|농업인/.test(summary)) {
+        workType.push("농업")
+    }
+    if (/광업/.test(name) || /광업/.test(summary)) {
+        workType.push("광업")
+    }
+    if (/임업/.test(name) || /임업/.test(summary)) {
+        workType.push("임업")
+    }
+    if (/축산업/.test(name) || /축산업/.test(summary)) {
+        workType.push("축산업")
+    }
+    if (/어업/.test(name) || /어업|어선원/.test(summary)) {
+        workType.push("어업")
+    }
+    return workType
+}
+
+exports.classifyAge = async (ageInfo) => {
+    let age = []
+    if (/~/.test(ageInfo)) {
+        age = ageInfo.split("~")
+        age[0] = age[0].replace(/[^0-9]/g, "")
+        if (!age[0]) age[0] = "20"
+        age[1] = age[1].replace(/[^0-9]/g, "")
+        if (!age[1]) age[1] = "39"
+    } else if (/제한없음/.test(ageInfo)) {
+        age[0] = "20"
+        age[1] = "39"
+    } else if (/이상/.test(ageInfo) && /[^이하]/.test(ageInfo)) {
+        age[0] = ageInfo.replace(/[^0-9]/g, "")
+        age[1] = "39"
+    } else if (/[^이상]/.test(ageInfo) && /이하/.test(ageInfo)) {
+        age[0] = "20"
+        age[1] = ageInfo.replace(/[^0-9]/g, "")
+    } else {
+        age = ageInfo
+    }
+    return age
+}
+
+exports.classifyDesire = async (desireInfo) => {
+    let desire
+    if (desireInfo === "취업지원" || desireInfo === "창업지원") {
+        desire = "일자리"
+    } else if (desireInfo === "주거·금융") {
+        desire = "주거 및 일상생활"
+    } else if (desireInfo === "생활·복지") {
+        desire = "건강"
+    } else if (desireInfo === "정책참여") {
+        desire = "안전 및 권익보장"
+    } else if (desireInfo === "코로나19") {
+        desire = "기타"
+    }
+    return desire
+}
+
+exports.classifyGender = async (name) => {
+    let gender
+    if (name.search(/여성|출산/) !== -1) {
+        gender = "여성"
+    }
+    return gender
 }

@@ -142,5 +142,8 @@ non-redis-loadtest.yml
 #svg
 *.svg
 
-#badWord.js
-badWord.js
+#설문조사 당첨자
+serveyWinner.js
+
+#prac.js
+prac.js

@@ -1,16 +1,35 @@
-{
-    "lifeCycle": ["중장년", "노년"],
-    "age": ["40", "120"],
-    "region": [],
-    "obstacle": [],
-    "scholarship": [],
-    "target": [],
-    "marriage": [],
-    "desire": "일자리",
-    "name": "중장년 기술창업센터 지원",
-    "summary": "만 40세 이상 (예비)창업자를 지원합니다.",
-    "support": "중장년 기술창업센터 지원 주관기관 운영비, 창업공간, 상담 및 자원, 커뮤니티 운영, 기술창업교육을 제공합니다.",
-    "institution": "중소벤처기업부 창업생태계조성과",
-    "link": "https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003205&wlfareInfoReldBztpCd=01",
-    "criteria": "만 40세 이상으로서 기술창업 분야의 (예비)창업자 및 (예비)퇴직자입니다."
-}
+[
+    {
+        "lifeCycle": ["중장년", "노년"],
+        "age": ["40", "120"],
+        "region": [],
+        "obstacle": [],
+        "scholarship": [],
+        "target": [],
+        "marriage": [],
+        "desire": "일자리",
+        "name": "중장년 기술창업센터 지원",
+        "summary": "만 40세 이상 (예비)창업자를 지원합니다.",
+        "support": "중장년 기술창업센터 지원 주관기관 운영비, 창업공간, 상담 및 자원, 커뮤니티 운영, 기술창업교육을 제공합니다.",
+        "institution": "중소벤처기업부 창업생태계조성과",
+        "link": "https://bokjiro.go.kr/ssis-teu/twataa/wlfareInfo/moveTWAT52011M.do?wlfareInfoId=WLF00003205&wlfareInfoReldBztpCd=01",
+        "criteria": "만 40세 이상으로서 기술창업 분야의 (예비)창업자 및 (예비)퇴직자입니다."
+    },
+    {
+        "lifeCycle": [],
+        "age": ["19", "39"],
+        "region": ["서울특별시", "중구"],
+        "obstacle": [],
+        "scholarship": [],
+        "target": [],
+        "marriage": [],
+        "process": "1. 창업실 입주\n- 신청 홈페이지에 접속하여 신청서 및 증빙서류 등 양식 다운\n- 구비 서류 양식 작성 및 증빙서류 구비\n- 방문접수\n2. 기타 프로그램 신청 : 블로그에서 양식에 내용 기입 후 온라인 신청\n- 창업실 입주 : 홈페이지 공고란에서 일정 확인 후 방문 접수\n",
+        "desire": "일자리",
+        "name": "청년창업센터 충무창업큐브 운영",
+        "summary": "청년창업자들의 초기 경제적부담 완화를 위해 창업공간을 제공하고 기초 역량 강화를 위한 창업 교육 진행",
+        "support": "창업 공간 제공 및 창업 교육 지원 등",
+        "period": "창업실 입주 : 공실 발생시 별도 공지\n기타 프로그램 : 프로그램 진행시 상시 접수",
+        "institution": "주관기관과 동일",
+        "link": "https://blog.naver.com/cubestup"
+    }
+]
