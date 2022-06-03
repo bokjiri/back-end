@@ -34,7 +34,7 @@ describe("버그제보 통합 테스트", () => {
             reAuthorization = `Bearer ${rToken}`
             userId = jwt.decode(aToken).userId
             await request(app).patch(`/api/users/${userId}`).set({ Authorization, reAuthorization }).send(patchUserData)
-        })
+        }, 15000)
         it("POST /api/tips 가 잘 되나?", async () => {
             const res = await request(app).post("/api/tips").set({ Authorization, reAuthorization }).send({ dataId })
             expect(res.statusCode).toBe(200)
