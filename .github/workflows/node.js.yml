@@ -47,6 +47,8 @@ jobs:
           echo MAIL_PW=${{ secrets.MAIL_PW }} >> .env
           echo ATOKENEXPIRE=${{ secrets.ATOKENEXPIRE }} >> .env
           echo RTOKENEXPIRE=${{ secrets.RTOKENEXPIRE }} >> .env
+          echo TEST_MAIL_ID=${{ secrets.TEST_MAIL_ID }} >> .env
+          echo TEST_MAIL_PW=${{ secrets.TEST_MAIL_PW }} >> .env
           cat .env
     - run: npm run build --if-present
     - run: npm test
