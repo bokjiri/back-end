@@ -145,5 +145,5 @@ non-redis-loadtest.yml
 #설문조사 당첨자
 serveyWinner.js
 
-#test.js
-test.js
+#prac.js
+prac.js
