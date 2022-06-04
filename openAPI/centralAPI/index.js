@@ -3,7 +3,13 @@ const axios = require("axios")
 const convert = require("xml-js")
 const schedule = require("node-schedule")
 const Data = require("../../schemas/data")
+const fs = require("fs")
 const { genderData, marriageData, scholarshipData, workTypeData, classifyAge, classifyEmployment, classifyProtect, classifySalary, classifyVictim } = require("./cleansing")
+
+fs.truncate("./openAPI/jungbu.category3.txt", () => {
+    console.log("File Content Deleted")
+})
+const myConsole = new console.Console(fs.createWriteStream("./openAPI/centralAPI/centralAPI.txt"))
 
 module.exports = async () => {
     const rule = new schedule.RecurrenceRule()
@@ -100,11 +106,15 @@ async function loadOpenApi() {
                 const job = classifyEmployment(name)
                 const protect = classifyProtect(summary, support)
                 const salary = classifySalary(summary, support)
-                await Promise.all([gender, marriage, scholarship, workType, age, victim, job, protect, salary])
 
-                if (victim) target.push(victim)
-                if (protect) target.push(protect)
-                await Data.create({ lifeCycle, institution, support, link, obstacle, target, desire, gender, name, summary, marriage, scholarship, workType, salary, job, age })
+                await Promise.all([gender, marriage, scholarship, workType, age, victim, job, protect, salary]).then(
+                    async ([gender, marriage, scholarship, workType, age, victim, job, protect, salary]) => {
+                        // myConsole.log({ gender, marriage, scholarship, workType, age, victim, job, protect, salary })
+                        if (victim) target.push(victim)
+                        if (protect) target.push(protect)
+                        await Data.create({ lifeCycle, institution, support, link, obstacle, target, desire, gender, name, summary, marriage, scholarship, workType, salary, job, age })
+                    }
+                )
             }
         }
     } catch (error) {
