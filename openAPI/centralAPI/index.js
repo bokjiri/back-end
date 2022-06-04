@@ -2,14 +2,18 @@ require("dotenv").config()
 const axios = require("axios")
 const convert = require("xml-js")
 const schedule = require("node-schedule")
+const moment = require("moment")
+const newYouthApiDataDate = moment().format("YYYY-MM-DD")
 const Data = require("../../schemas/data")
 const fs = require("fs")
 const { genderData, marriageData, scholarshipData, workTypeData, classifyAge, classifyEmployment, classifyProtect, classifySalary, classifyVictim } = require("./cleansing")
-
-fs.truncate("./openAPI/jungbu.category3.txt", () => {
+const dirrr = process.env.UPDATE_DATA_CENTRAL_LOG || "./openAPI/centralAPI/index.txt"
+const dir = `${dirrr}${newYouthApiDataDate}.log`
+const { Logger } = require("../../logging")
+fs.truncate(dir, () => {
     console.log("File Content Deleted")
 })
-const myConsole = new console.Console(fs.createWriteStream("./openAPI/centralAPI/centralAPI.txt"))
+const myConsole = new console.Console(fs.createWriteStream(dir))
 
 module.exports = async () => {
     const rule = new schedule.RecurrenceRule()
@@ -19,9 +23,9 @@ module.exports = async () => {
     rule.second = 11
     rule.tz = "Asia/Seoul"
     schedule.scheduleJob(rule, async () => {
-        console.log("Updating...")
+        myConsole.log("Updating...")
         await loadOpenApi()
-        console.log("Done")
+        myConsole.log("Done")
     })
 }
 
@@ -107,17 +111,15 @@ async function loadOpenApi() {
                 const protect = classifyProtect(summary, support)
                 const salary = classifySalary(summary, support)
 
-                await Promise.all([gender, marriage, scholarship, workType, age, victim, job, protect, salary]).then(
-                    async ([gender, marriage, scholarship, workType, age, victim, job, protect, salary]) => {
-                        // myConsole.log({ gender, marriage, scholarship, workType, age, victim, job, protect, salary })
-                        if (victim) target.push(victim)
-                        if (protect) target.push(protect)
-                        await Data.create({ lifeCycle, institution, support, link, obstacle, target, desire, gender, name, summary, marriage, scholarship, workType, salary, job, age })
-                    }
-                )
+                Promise.all([gender, marriage, scholarship, workType, age, victim, job, protect, salary]).then(async ([gender, marriage, scholarship, workType, age, victim, job, protect, salary]) => {
+                    myConsole.log({ name, gender, marriage, scholarship, workType, age, victim, job, protect, salary })
+                    if (victim) target.push(victim)
+                    if (protect) target.push(protect)
+                    await Data.create({ lifeCycle, institution, support, link, obstacle, target, desire, gender, name, summary, marriage, scholarship, workType, salary, job, age })
+                })
             }
         }
     } catch (error) {
-        console.log(error)
+        Logger.error(error)
     }
 }
