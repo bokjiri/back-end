@@ -36,7 +36,7 @@ describe("북마크 통합 테스트", () => {
             Authorization = `Bearer ${aToken}`
             reAuthorization = `Bearer ${rToken}`
             userId = jwt.decode(aToken).userId
-        })
+        }, 15000)
 
         it("PUT /api/marks/ dataId 에러 상황?", async () => {
             const res = await request(app).put("/api/marks").set({ Authorization, reAuthorization }).send({ errDataId })

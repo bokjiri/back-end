@@ -32,7 +32,7 @@ describe("detail 통합테스트", () => {
             const res = await request(app).post(`/api/users/auth`).send({ email, password })
             Authorization = `Bearer ${res.body.accessToken}`
             reAuthorization = `Bearer ${res.body.accessToken}`
-        })
+        }, 15000)
         afterAll(async () => {
             await User.deleteMany()
             await Data.deleteMany()
@@ -77,7 +77,7 @@ describe("main 통합테스트", () => {
             reAuthorization = `Bearer ${res.body.accessToken}`
             userId = jwt.decode(aToken).userId
             await request(app).patch(`/api/users/${userId}`).set({ Authorization, reAuthorization }).send(patchUserData)
-        })
+        }, 15000)
         afterAll(async () => {
             await User.deleteMany()
             await Data.deleteMany()
