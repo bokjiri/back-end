@@ -24,6 +24,7 @@ exports.dataParsing = async (userId) => {
             //     )
             // }
         } catch (err) {
+            // throw err
             // console.log(err)
         }
     }
@@ -100,6 +101,7 @@ exports.newsDataList = async (userId) => {
         })
         return newsArr
     } catch (err) {
+        // throw err
         // console.log(err)
     }
 }
