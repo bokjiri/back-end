@@ -1,5 +1,5 @@
-const app = require("./app")
 const port = process.env.PORT || 3000
+const { server } = require("./socket")
 
 // const fs = require("fs")
 // const https = require("https")
@@ -20,7 +20,7 @@ const port = process.env.PORT || 3000
 //     console.log("HTTPS SERVER RUNNING ON PORT 443")
 // })
 
-app.listen(port, () => {
+server.listen(port, () => {
     console.log(port, "번으로 서버가 연결되었습니다.")
     console.log(`http://localhost:${port}`)
 })
