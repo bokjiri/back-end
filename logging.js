@@ -6,7 +6,7 @@ const { combine, timestamp, printf, colorize } = winston.format
 const moment = require("moment-timezone")
 moment.tz.setDefault("Asia/Seoul")
 const timezone = () => {
-    return moment().format("YYYY-MM-DD HH:mm:ss:ms")
+    return moment().format("YYYY-MM-DD HH:mm:ss.SSS")
 }
 
 const logDir = process.env.LOGDIR || "logs"

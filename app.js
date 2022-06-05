@@ -14,10 +14,10 @@ const helmet = require("helmet")
 const AWSXray = require("aws-xray-sdk")
 const morgan = require("morgan")
 const moment = require("moment-timezone")
-moment.tz.setDefault("Asia/Seoul")
 morgan.token("date", () => {
-    return moment().format("YYYY-MM-DD HH:mm:ss:ms")
+    return moment().tz("Asia/Seoul").format("YYYY-MM-DD HH:mm:ss.SSS")
 })
+
 const connect = require("./schemas")
 connect()
 const passport = require("passport")
@@ -37,7 +37,7 @@ const corsOptions = {
 
 app.use(cors(corsOptions))
 app.use(helmet())
-app.use(morgan("common", { stream }))
+app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent" :response-time ms ', { stream }))
 app.use(express.json())
 app.use(express.static("public"))
 app.use(express.urlencoded({ extended: false }))
