@@ -9,7 +9,7 @@ const patchUserData = require("../../test/user/patch.json")
 describe("유저 통합테스트", () => {
     beforeAll(async () => {
         try {
-            await mongoose.connect(`mongodb://${process.env.DBID}:${process.env.DBPW}@3.36.130.225:27017/test_user?authSource=admin&authMechanism=SCRAM-SHA-1`, { ignoreUndefined: true })
+            await mongoose.connect(`mongodb://${process.env.DBID}:${process.env.DBPW}@3.36.113.209:27017/test_user?authSource=admin&authMechanism=SCRAM-SHA-1`, { ignoreUndefined: true })
         } catch (error) {
             console.error(error)
         }
