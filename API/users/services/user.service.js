@@ -7,8 +7,7 @@ const mainService = require("../../policies/services/main.service")
 exports.redisSetUser = async (userId, data) => {
     if (data) {
         const redisInsertUser = JSON.stringify(data)
-        await Client.set(`user${userId}`, redisInsertUser)
-        await Client.expire(`user${userId}`, 3600)
+        return Client.set(`user${userId}`, redisInsertUser, { EX: 3600 })
     } else {
         const userData = await this.checkById(userId)
         if (!userData) throw new ValidationError("회원정보가 없음")
@@ -19,8 +18,7 @@ exports.redisSetUser = async (userId, data) => {
         }
         if (userData.job[0] === "미취업자") userData.job[0] = "미취업"
         const redisInsertUser = JSON.stringify(userData)
-        await Client.set(`user${userId}`, redisInsertUser)
-        await Client.expire(`user${userId}`, 3600)
+        return Client.set(`user${userId}`, redisInsertUser, { EX: 3600 })
     }
 }
 exports.redisSetMain = async (userId) => {
@@ -29,8 +27,7 @@ exports.redisSetMain = async (userId) => {
     const checkedData = await mainController.logic(isUser, isData)
     const { work, health, houseLife, eduCare, etc, safetyRight } = await mainController.categorize(checkedData)
     const redisInsertMain = JSON.stringify({ checkedData, work, houseLife, health, eduCare, safetyRight, etc })
-    await Client.set(`main${userId}`, redisInsertMain)
-    await Client.expire(`main${userId}`, 3600)
+    return Client.set(`main${userId}`, redisInsertMain, { EX: 3600 })
 }
 exports.updateUserInfo = async (userId, age, gender, region, disability, obstacle, job, marriage, target, salary, scholarship, family, workType) => {
     try {
