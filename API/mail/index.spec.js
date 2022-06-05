@@ -21,11 +21,11 @@ describe("메일 통합테스트", () => {
         it("메일 잘 보내는가", async () => {
             const res = await request(app).post("/api/mail/send").send({ email: "boksei_@naver.com" })
             expect(res.statusCode).toBe(200)
-        })
+        }, 15000)
         it("메일 형식이 아님", async () => {
             const res = await request(app).post("/api/mail/send").send({ email: "asdfasdf" })
             expect(res.statusCode).toBe(400)
-        })
+        }, 15000)
     })
     describe("post /api/mail/cert", () => {
         let cookie, authCode
@@ -33,22 +33,22 @@ describe("메일 통합테스트", () => {
             const response = await request(app).post("/api/mail/send").send({ email: "boksei_@naver.com" })
             authCode = response.body.authCode
             cookie = response.headers["set-cookie"]
-        })
+        }, 15000)
         it("본인인증 잘함?", async () => {
             const res = await request(app).post("/api/mail/cert").set("Cookie", cookie).send({ authCode })
             expect(res.statusCode).toBe(201)
-        })
+        }, 15000)
         it("본인인증 쿠키없이 됨?", async () => {
             const res = await request(app).post("/api/mail/cert").send({ authCode })
             expect(res.statusCode).toBe(400)
-        })
+        }, 15000)
         it("본인인증 authCode 없이 됨?", async () => {
             const res = await request(app).post("/api/mail/cert").set("Cookie", cookie)
             expect(res.statusCode).toBe(400)
-        })
+        }, 15000)
         it("본인인증 엉터리 authCode 됨?", async () => {
             const res = await request(app).post("/api/mail/cert").set("Cookie", cookie).send({ authCode: "asdf" })
             expect(res.statusCode).toBe(400)
-        })
+        }, 15000)
     })
 })
