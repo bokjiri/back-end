@@ -1,14 +1,16 @@
 config:
   target: 
+  tls:
+    rejectUnauthorized: false
   payload:
     -
-      path: "./token.csv"
+      path: "../token.csv"
       fields:
         - "token"
         - "userId"
         - "nickname"
     -
-      path: "./data.csv"
+      path: "../data.csv"
       fields:
         - "dataId"
   http:
@@ -16,7 +18,7 @@ config:
   phases:
     # - duration: 10
     #   arrivalRate: 10
-    - duration: 1800
+    - duration: 1000
       arrivalRate: 50
     # - duration: 10
     #   arrivalRate: 10
