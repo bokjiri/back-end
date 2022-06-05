@@ -32,7 +32,9 @@ exports.showMark = async (userId) => {
     try {
         const markInfo = await User.findOne({ userId }, { _id: false, mark: true })
         return await BokjiApi.find({ dataId: markInfo.mark }, { _id: false, dataId: true, name: true, desire: true })
-    } catch (err) {}
+    } catch (err) {
+        throw err
+    }
 }
 
 exports.pushMark = async (userId, dataId) => {
@@ -55,7 +57,7 @@ exports.pushMark = async (userId, dataId) => {
         }
     } catch (err) {
         // console.log(err)
-        return err
+        throw err
     }
 }
 
@@ -70,6 +72,7 @@ exports.deleteMark = async (userId, dataId) => {
                 }
             )
     } catch (err) {
+        throw err
         // console.log(err)
     }
 }
@@ -79,7 +82,7 @@ exports.dataCheck = async (dataId) => {
         return await BokjiApi.findOne({ dataId }, { _id: false, dataId: true, bookmarkState: true })
     } catch (error) {
         // console.log(error)
-        return error
+        throw err
     }
 }
 exports.dDayMail = async () => {
@@ -165,5 +168,7 @@ markPushMail = async () => {
                 })
             }, 1500)
         }
-    } catch (err) {}
+    } catch (err) {
+        throw err
+    }
 }
