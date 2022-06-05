@@ -36,7 +36,7 @@ const corsOptions = {
 }
 
 app.use(cors(corsOptions))
-app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent" :response-time ms ', { stream }))
+app.use(morgan(':remote-addr - :remote-user ":method :url HTTP/:http-version" :status :res[content-length] :response-time ms ', { stream }))
 // app.use(helmet())
 app.use(express.static("public", express.static(__dirname + "/public")))
 app.use(express.json())
