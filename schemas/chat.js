@@ -2,7 +2,7 @@ const mongoose = require("mongoose")
 const autoIdSetter = require("./autoidsetter")
 const chatSchema = mongoose.Schema({
     userId: {
-        type: String,
+        type: Number,
         required: true,
     },
     nickname: {
