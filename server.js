@@ -1,5 +1,4 @@
 const port = process.env.PORT || 3000
-const app = require("./app")
 const { server } = require("./socket")
 
 server.listen(port, () => {
@@ -8,7 +7,7 @@ server.listen(port, () => {
     console.log(`http://localhost:${port}`)
 })
 process.on("SIGINT", () => {
-    app.close(() => {
+    server.close(() => {
         console.log("server closed")
         process.exit(0)
     })
