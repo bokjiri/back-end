@@ -10,10 +10,6 @@ const { genderData, marriageData, scholarshipData, workTypeData, classifyAge, cl
 const dirrr = process.env.UPDATE_DATA_CENTRAL_LOG || "./openAPI/centralAPI/index.txt"
 const dir = `${dirrr}${newYouthApiDataDate}.log`
 const { Logger } = require("../../logging")
-fs.truncate(dir, () => {
-    console.log("File Content Deleted")
-})
-const myConsole = new console.Console(fs.createWriteStream(dir))
 
 module.exports = async () => {
     const rule = new schedule.RecurrenceRule()
@@ -31,6 +27,10 @@ module.exports = async () => {
 
 async function loadOpenApi() {
     try {
+        fs.truncate(dir, () => {
+            console.log("File Content Deleted")
+        })
+        const myConsole = new console.Console(fs.createWriteStream(dir))
         const desireCode = [100, 110, 120, 130, 140, 150, 160, 170, 180]
         const desireName = ["일자리", "주거 및 일상생활", "주거 및 일상생활", "건강", "건강", "교육 및 돌봄", "교육 및 돌봄", "기타", "안전 및 권익보장"]
         for (let i = 0; i < desireCode.length; i++) {
