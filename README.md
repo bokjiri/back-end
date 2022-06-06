@@ -14,7 +14,7 @@
 
 ### 🛠 Architecture
 
-![image](https://user-images.githubusercontent.com/100919074/171970140-fc0fdb85-26fc-413c-97d5-344516c2c388.png)
+![image](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/5b6b35ff-22aa-44f7-9bc4-f49e8202c52e/%E1%84%89%E1%85%A5%E1%84%87%E1%85%B5%E1%84%89%E1%85%B3_%E1%84%8B%E1%85%A1%E1%84%8F%E1%85%B5%E1%84%90%E1%85%A6%E1%86%A8%E1%84%8E%E1%85%A7_%282%29.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220606%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220606T034143Z&X-Amz-Expires=86400&X-Amz-Signature=487c7d40a5990bd334db3724231784edcc69879b16bd3c1d293e51a84b88aca7&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22%25E1%2584%2589%25E1%2585%25A5%25E1%2584%2587%25E1%2585%25B5%25E1%2584%2589%25E1%2585%25B3%2520%25E1%2584%258B%25E1%2585%25A1%25E1%2584%258F%25E1%2585%25B5%25E1%2584%2590%25E1%2585%25A6%25E1%2586%25A8%25E1%2584%258E%25E1%2585%25A7%2520%282%29.png%22&x-id=GetObject)
 
 <hr/>
 
@@ -57,7 +57,11 @@
 
 - 입력한 지역 정보에 맞는 맞춤 복지 뉴스 추천돼요
 
-#### 🤠 놓치기 쉬운 정책을 알림 서비스로 놓치지 않기
+#### 💬 이용자들과의 실시간 채팅 기능
+
+- 복세편살을 이용중인 사람들과 자유롭게 실시간으로 대화를 나눌 수 있어요!
+
+#### 💡 놓치기 쉬운 정책을 알림 서비스로 놓치지 않기
 
 - 정책 신청 기한이 끝나기 일주일 전에 이메일로 정책을 북마크 해둔 사용자에게 알려드려요!
 <hr/>
@@ -145,17 +149,6 @@
 > **문제** : Redux의 경우 서버의 응답값을 저장해 놓는 스토어 역할이 아닌 전역 상태 관리를 위한 라이브러리로, useEffect를 통해 mount될 때마다 서버에 불필요한 GET 요청을 하게 된다.
 >
 > **해결** :  SWR은 기존 흐름을 벗어나지 않고 캐시 기능까지 가능한 data Fetching 라이브러리이며, 리덕스 action, reducer, store 등을 사용하지 않아 로직이 매우 간결해진다. 또한 캐시된 데이터를 활용하여 불필요한 데이터 호출과 랜더링에 시간을 쓰지 않아 효율적이다.
-
-- **Redis**
-    
-    응답속도개선을 위한 캐싱처리
-    
-    ❓ 뉴스 크롤링과 유저 정보를 통한 정책 추천 로직을 메인 페이지가 보여질 때마다 지속적으로 GET해야 하기 때문에 트래픽에 따라 성능상의 큰 문제가 있을 수 있음
-    
-     ❗️  Redis를 통해 계산된 데이터들을 캐싱 처리하여 불필요하게 반복되는 정책 추천 로직을 줄여 개선
-    
-    [redis 적용 효과 전후비교](https://www.notion.so/redis-9fc88b2014e544c7b1612c81260a9abd) 
-  
 </details>
 
 <details>
