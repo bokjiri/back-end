@@ -31,8 +31,7 @@ exports.findData = async (dataId) => {
 
         return detailData
     } catch (error) {
-        console.error(error)
-        return error
+        throw error
     }
 }
 
@@ -40,8 +39,7 @@ exports.checkBookmark = async (userId) => {
     try {
         return await User.findOne({ userId }, { _id: false, mark: true })
     } catch (error) {
-        console.error(error)
-        return error
+        throw error
     }
 }
 

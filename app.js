@@ -10,14 +10,14 @@ const app = express()
 const session = require("express-session")
 const cookieParser = require("cookie-parser")
 const cors = require("cors")
-const helmet = require("helmet")
+// const helmet = require("helmet")
 const AWSXray = require("aws-xray-sdk")
 const morgan = require("morgan")
 const moment = require("moment-timezone")
-moment.tz.setDefault("Asia/Seoul")
 morgan.token("date", () => {
-    return moment().format("YYYY-MM-DD HH:mm:ss:ms")
+    return moment().tz("Asia/Seoul").format("YYYY-MM-DD HH:mm:ss.SSS")
 })
+
 const connect = require("./schemas")
 connect()
 const passport = require("passport")
@@ -36,10 +36,10 @@ const corsOptions = {
 }
 
 app.use(cors(corsOptions))
-app.use(helmet())
-app.use(morgan("common", { stream }))
+app.use(morgan(':remote-addr - :remote-user ":method :url HTTP/:http-version" :status :res[content-length] :response-time ms ', { stream }))
+// app.use(helmet())
+app.use(express.static("public", express.static(__dirname + "/public")))
 app.use(express.json())
-app.use(express.static("public"))
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(
