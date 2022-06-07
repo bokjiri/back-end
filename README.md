@@ -180,5 +180,5 @@
 >
 > **해결** : 프로미스 올을 사용하여 세가지 레디스 셋 작업이 동시에 이루어질 수 있도록 코드를 수정
 >
-> **효과** : 약 6.2퍼센트의 응답시간 개선/약 69퍼센트의 개선율을 확인
+> **효과** : [비동기 처리 방식 전후비교](https://enshrined-scallion-665.notion.site/async-await-vs-Promise-all-74013b19e54a43258aee8a2a7560d8ae)
 </details>
