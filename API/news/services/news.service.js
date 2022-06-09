@@ -7,8 +7,8 @@ const cheerio = require("cheerio")
 
 async function redisSet(userId, userNewsList) {
     const jsonNewsData = JSON.stringify(userNewsList)
-    await Client.set(`newsData${userId}`, jsonNewsData)
-    await Client.expire(`newsData${userId}`, 3600)
+    Client.set(`newsData${userId}`, jsonNewsData, { EX: 720 })
+    // await Client.expire(`newsData${userId}`, 3600)
 }
 
 exports.dataParsing = async (userId) => {
