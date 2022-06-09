@@ -5,8 +5,7 @@ const today = new Date()
 
 exports.redisSet = async (userId, checkedData, work, houseLife, health, eduCare, safetyRight, etc) => {
     const redisInsertMain = JSON.stringify({ checkedData, work, houseLife, health, eduCare, safetyRight, etc })
-    await Client.set(`main${userId}`, redisInsertMain)
-    await Client.expire(`main${userId}`, 3600)
+    await Client.set(`main${userId}`, redisInsertMain, { EX: 720 })
 }
 exports.checkUser = async (userId) => {
     const [userData] = await User.find({ userId }, { _id: false, __v: false, likeMark: false, email: false, nickname: false, profileUrl: false, topLikeMarkList: false })
