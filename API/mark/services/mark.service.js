@@ -10,7 +10,7 @@ redisSet = async (userId) => {
     const checkMark = await BokjiApi.find({ dataId: markInfo.mark }, { _id: false, dataId: true, name: true, desire: true })
     const redisInsertMark = JSON.stringify(checkMark)
     await Client.set(userId, redisInsertMark)
-    await Client.expire(userId, 7200)
+    await Client.expire(userId, 720)
 }
 
 exports.showMarkRedis = async (userId) => {
