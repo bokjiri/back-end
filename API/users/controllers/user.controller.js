@@ -2,6 +2,8 @@ const userService = require("../services/user.service")
 const jwt = require("jsonwebtoken")
 const bcrypt = require("bcrypt")
 const newsService = require("../../news/services/news.service")
+const AWS = require("aws-sdk")
+const AWSXray = require("aws-xray-sdk")
 
 class ValidationError extends Error {
     constructor(message) {
@@ -79,6 +81,7 @@ exports.getUsers = async (req, res, next) => {
     #swagger.summary = '회원정보 조회'
     #swagger.description = '회원정보를 조회한다.'
     ========================================================================================================*/
+    const sub = AWSXray.getSegment().addNewSubsegment("gethUsers")
     try {
         const userId = parseInt(req.params.userId)
         const tokenUserId = res.locals.userId
@@ -125,6 +128,8 @@ exports.getUsers = async (req, res, next) => {
                 stack: error.stack,
             })
         }
+    } finally {
+        sub.close()
     }
 }
 
@@ -134,6 +139,8 @@ exports.patchUsers = async (req, res, next) => {
     #swagger.summary = '회원정보 수정'
     #swagger.description = '회원정보를 수정한다.'
     ========================================================================================================*/
+    const sub = AWSXray.getSegment().addNewSubsegment("patchUsers")
+
     try {
         const userId = parseInt(req.params.userId)
         const tokenUserId = res.locals.userId
@@ -154,9 +161,10 @@ exports.patchUsers = async (req, res, next) => {
         if (!result) throw new ValidationError("db에서 update 실패")
 
         const redisSetUser = userService.redisSetUser(userId)
-        const redisSetMain = userService.redisSetMain(userId)
         const redisSetNews = newsService.dataParsing(userId)
+        const redisSetMain = userService.redisSetMain(userId)
         await Promise.all([redisSetMain, redisSetNews, redisSetUser])
+
         /*=====================================================================================
         #swagger.responses[201] = {
             description: '정상적으로 값을 받았을 때, 아래 예제와 같은 형태로 응답받습니다.',
@@ -188,6 +196,8 @@ exports.patchUsers = async (req, res, next) => {
                 stack: error.stack,
             })
         }
+    } finally {
+        sub.close()
     }
 }
 exports.deleteUsers = async (req, res, next) => {
@@ -196,6 +206,7 @@ exports.deleteUsers = async (req, res, next) => {
     #swagger.summary = '회원정보 삭제'
     #swagger.description = '회원정보를 삭제한다.'
     ========================================================================================================*/
+    const sub = AWSXray.getSegment().addNewSubsegment("deletehUsers")
     try {
         const userId = parseInt(req.params.userId)
         const tokenUserId = res.locals.userId
@@ -235,6 +246,8 @@ exports.deleteUsers = async (req, res, next) => {
                 stack: error.stack,
             })
         }
+    } finally {
+        sub.close()
     }
 }
 exports.kakaoCallback = async (req, res) => {
@@ -248,7 +261,6 @@ exports.kakaoCallback = async (req, res) => {
         const refreshToken = jwt.sign({ userId }, process.env.REFRESHKEY, {
             expiresIn: process.env.RTOKENEXPIRE,
         })
-        res.clearCookie("connect.sid")
         res.status(200).json({ result: true, accessToken, refreshToken })
     } catch (error) {
         if (error instanceof ValidationError) {
