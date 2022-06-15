@@ -2,11 +2,12 @@ const httpMocks = require("node-mocks-http")
 const userController = require("./user.controller")
 jest.mock("../services/user.service")
 jest.mock("../../policies/services/main.service")
+jest.mock("../../news/services/news.service")
 const userService = require("../services/user.service")
 const mainService = require("../../policies/services/main.service")
-jest.mock("../../news/services/news.service")
 const newsService = require("../../news/services/news.service")
-
+jest.mock("aws-xray-sdk")
+const AWSXray = require("aws-xray-sdk")
 const paramsUserId = "1"
 class ValidationError extends Error {
     constructor(message) {
@@ -19,6 +20,11 @@ beforeEach(() => {
     req = httpMocks.createRequest()
     res = httpMocks.createResponse()
     next = jest.fn()
+    AWSXray.getSegment = jest.fn(() => ({
+        addNewSubsegment: jest.fn(() => ({
+            close: jest.fn(),
+        })),
+    }))
     userService.checkById = jest.fn()
     userService.updateUserInfo = jest.fn()
     userService.deleteUserInfo = jest.fn()
