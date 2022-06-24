@@ -32,6 +32,7 @@ const io = require("socket.io")(server, {
 
 io.on("connection", (socket) => {
     socket.on("chatRoom", async () => {
+        console.log("connect socketId : ", socket.id)
         const chatList = await Chat.find({}, { _id: false, __v: false })
         io.emit("chatList", chatList)
     })
